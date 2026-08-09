@@ -24,14 +24,14 @@ warnings.filterwarnings("ignore", category=Warning)
 warnings.filterwarnings("ignore", message=".*NotOpenSSLWarning.*")
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_BASE = "https://redfox.hk"
-ENV_KEY = "REDFOX_API_KEY"
+API_BASE = "https://yige.zone"
+ENV_KEY = "YIGE_API_KEY"
 
 DEFAULT_PAGE_SIZE = 10
 MAX_PAGE_SIZE = 50
 DEFAULT_RATE_LIMIT = 1.0
 
-SUPPORT_EMAIL = "redfoxdata@proton.me"
+SUPPORT_EMAIL = "yigedata@proton.me"
 
 # ─── 作品列表缓存（全量拉取优化）─────────────────────────────────────
 CACHE_DIR = Path.home() / ".qoder" / "account_video_extractor_cache"
@@ -64,7 +64,7 @@ def step(msg: str):
 
 # ─── API Key 管理 ──────────────────────────────────────────────────────────────────
 def get_api_key() -> Optional[str]:
-    """从环境变量 REDFOX_API_KEY 获取 API Key"""
+    """从环境变量 YIGE_API_KEY 获取 API Key"""
     return os.environ.get(ENV_KEY)
 
 

@@ -21,24 +21,24 @@ B站账号作品列表实时查询工具，根据B站UP主的UID获取该UP主�
 
 ### 前置条件
 
-- 已获取红狐 hub 的 API Key（`REDFOX_API_KEY`）
+- 已获取一格数据 hub 的 API Key（`YIGE_API_KEY`）
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY
 
 ### 配置 API Key
 
-方案1: 以 Qoder 为例，将 REDFOX_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
+方案1: 以 Qoder 为例，将 YIGE_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 📖 使用指南

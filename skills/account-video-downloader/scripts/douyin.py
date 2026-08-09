@@ -74,7 +74,7 @@ class DouyinDownloader(BaseDownloader):
         url = f"{API_BASE}{self.WORKS_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:
@@ -151,7 +151,7 @@ class DouyinDownloader(BaseDownloader):
         url = f"{API_BASE}{self.DOWNLOAD_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:

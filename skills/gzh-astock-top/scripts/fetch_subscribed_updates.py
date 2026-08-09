@@ -32,16 +32,16 @@ import urllib.error
 
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-ACCOUNT_QUERY_URL = "https://redfox.hk/story/api/gzhUser/query"
+ACCOUNT_QUERY_URL = "https://yige.zone/story/api/gzhUser/query"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "A股公众号大V-GitHub"
 
 SKILL_DIR = Path(__file__).parent.parent
 SUBSCRIPTIONS_FILE = SKILL_DIR / "subscriptions.json"
 
-DATA_UPDATE_TIME = "07:00"  # 红狐平台每日数据更新时间
+DATA_UPDATE_TIME = "07:00"  # 一格数据平台每日数据更新时间
 
 
 # ─── API Key 管理 ──────────────────────────────────────────────────────────────────
@@ -170,7 +170,7 @@ def build_update_item(sub_entry, account_detail):
         "accountName": account_detail.get("accountName", sub_entry.get("accountName")),
         "accountId": account_detail.get("accountId", sub_entry.get("accountId")),
         "avgReadCount": account_detail.get("avgReadCount"),
-        "redfoxIndex": account_detail.get("redfoxIndex"),
+        "yigeIndex": account_detail.get("yigeIndex"),
         "latestArticle": None,
     }
 
@@ -206,7 +206,7 @@ def main():
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY", file=sys.stderr)
         sys.exit(1)
 
     # ── --accounts 临时查询模式 ──
@@ -303,7 +303,7 @@ def main():
                             "accountId": item["accountId"],
                             "accountName": item["accountName"],
                             "avgReadCount": item.get("avgReadCount"),
-                            "redfoxIndex": item.get("redfoxIndex"),
+                            "yigeIndex": item.get("yigeIndex"),
                         })
                         existing_ids.add(item["accountId"])
                         added.append(f"{item['accountName']}（官媒）")
@@ -316,7 +316,7 @@ def main():
                             "accountId": item["accountId"],
                             "accountName": item["accountName"],
                             "avgReadCount": item.get("avgReadCount"),
-                            "redfoxIndex": item.get("redfoxIndex"),
+                            "yigeIndex": item.get("yigeIndex"),
                         })
                         existing_ids.add(item["accountId"])
                         added.append(f"{item['accountName']}（大V）")
@@ -374,7 +374,7 @@ def main():
                 "accountName": sub["accountName"],
                 "accountId": sub["accountId"],
                 "avgReadCount": sub.get("avgReadCount"),
-                "redfoxIndex": sub.get("redfoxIndex"),
+                "yigeIndex": sub.get("yigeIndex"),
                 "latestArticle": None,
                 "error": "账号详情获取失败",
             })
@@ -389,7 +389,7 @@ def main():
                 "accountName": sub["accountName"],
                 "accountId": sub["accountId"],
                 "avgReadCount": sub.get("avgReadCount"),
-                "redfoxIndex": sub.get("redfoxIndex"),
+                "yigeIndex": sub.get("yigeIndex"),
                 "latestArticle": None,
                 "error": "账号详情获取失败",
             })

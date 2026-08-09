@@ -36,10 +36,10 @@ Daily automatic scanning of AI WeChat public account articles, finding the hotte
 
 ## API Key Acquisition & Security
 
-- The skill uses the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain your `REDFOX_API_KEY`.
-- Configure the device environment variable `REDFOX_API_KEY` before using this skill.
+- The skill uses the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Visit [YigeHub](https://yige.zone?source=github) to register and obtain your `YIGE_API_KEY`.
+- Configure the device environment variable `YIGE_API_KEY` before using this skill.
 - Before providing your key, verify its origin, scope, validity period, and whether reset/revocation is supported.
 - Never hardcode or expose the key in code, prompts, logs, or output files.
 

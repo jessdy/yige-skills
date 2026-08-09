@@ -39,16 +39,16 @@ TikTok 账号主页视频批量提取工具。只需提供 TikTok 账号主页�
 
 ### 鉴权（使用前必读）
 
-本技能调用 redfox.hk 接口，需要先获取 API Key。
+本技能调用 yige.zone 接口，需要先获取 API Key。
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key。
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key。
 
 ```bash
 # 环境变量配置（推荐）
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # Windows PowerShell
-$env:REDFOX_API_KEY="ak_你的密钥"
+$env:YIGE_API_KEY="ak_你的密钥"
 ```
 
 ### secUserId 获取方式（账号标识获取指南）
@@ -181,7 +181,7 @@ python3 "$SKILL_PATH/scripts/tiktok-home-downloader.py" --account "@tiktok" --pa
 ## 常见问题
 
 **Q：如何获取 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取。
 
 **Q：下载的视频有水印吗？**
 A：无水印。解析后的视频直链已去除 TikTok 水印。

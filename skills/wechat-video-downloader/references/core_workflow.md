@@ -6,8 +6,8 @@
 
 ## Step 0: 鉴权前置检查
 
-1. 检查环境变量 `REDFOX_API_KEY` 是否已配置
-2. 未配置 → 引导用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取并配置
+1. 检查环境变量 `YIGE_API_KEY` 是否已配置
+2. 未配置 → 引导用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取并配置
 3. 已配置 → 进入 Step 1
 
 ---
@@ -26,7 +26,7 @@
 
 ## Step 2: 执行数据采集
 
-**接口**: `POST https://redfox.hk/story/api/parseWork/videoDownload/sph`
+**接口**: `POST https://yige.zone/story/api/parseWork/videoDownload/sph`
 
 **请求头**: `Content-Type: application/json` + `X-API-KEY: {API Key}`
 
@@ -139,7 +139,7 @@
 |------|----------|
 | 链接无效 | 提示用户检查链接是否有效 |
 | 系统繁忙 | 提示稍后重试 |
-| 积分不足 | 提示前往红狐hub充值 |
+| 积分不足 | 提示前往一格hub充值 |
 
 > ⛔ **重要：** 当 API 返回异常时，直接向用户展示 API 原始错误信息，**不得**通过浏览器或其他方式访问链接内容作为回退方案。
 

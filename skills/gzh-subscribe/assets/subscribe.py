@@ -33,10 +33,10 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/gzhData/queryWorkList"
+API_URL = "https://yige.zone/story/api/gzhData/queryWorkList"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "公众号账号订阅-GitHub"
 
 SUBSCRIPTIONS_FILE = Path.home() / ".qoder" / "gzh_subscriptions.json"
@@ -275,8 +275,8 @@ def fetch_account_articles(session, account_id, account_name, date_str):
                 error(f"API Key 错误 (code {code}): {result.get('msg', '')}")
             elif code == 3203:
                 warn(f"「{account_name}」不在优质热门库中，暂未收录")
-                print(f"    💡 当前 Skill 基于红狐优质热门库，覆盖主流热门公众号。")
-                print(f"    如需更广的公众号覆盖，可联系红狐获取广域库数据：redfoxdata@proton.me")
+                print(f"    💡 当前 Skill 基于一格数据优质热门库，覆盖主流热门公众号。")
+                print(f"    如需更广的公众号覆盖，可联系一格数据获取广域库数据：yigedata@proton.me")
             elif code:
                 warn(f"API 返回错误 (code {code}): {result.get('msg', '')} — {account_name}")
             return all_articles if all_articles else []
@@ -838,11 +838,11 @@ Examples:
             print(f"{RED}╔══════════════════════════════════════════════════╗{RESET}")
             print(f"{RED}║  未配置 API Key，请通过以下方式之一配置：      ║{RESET}")
             print(f"{RED}║                                                ║{RESET}")
-            print(f"{RED}║  export REDFOX_API_KEY=ak_你的密钥             ║{RESET}")
+            print(f"{RED}║  export YIGE_API_KEY=ak_你的密钥             ║{RESET}")
             print(f"{RED}║  python3 subscribe.py --api-key ak_你的密钥     ║{RESET}")
-            print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/redfox.json ║" + RESET)
+            print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/yige.json ║" + RESET)
             print(f"{RED}║                                                ║{RESET}")
-            print(f"{RED}║  注册获取 Key: https://redfox.hk/settings/api-keys ║{RESET}")
+            print(f"{RED}║  注册获取 Key: https://yige.zone/settings/api-keys ║{RESET}")
             print(f"{RED}╚══════════════════════════════════════════════════╝{RESET}")
             sys.exit(1)
 
@@ -862,8 +862,8 @@ Examples:
 
         if not articles:
             warn("未获取到任何文章")
-            print(f"    💡 当前 Skill 基于红狐优质热门库，覆盖主流热门公众号。")
-            print(f"    如需更广的公众号覆盖，可联系红狐获取广域库数据：redfoxdata@proton.me")
+            print(f"    💡 当前 Skill 基于一格数据优质热门库，覆盖主流热门公众号。")
+            print(f"    如需更广的公众号覆盖，可联系一格数据获取广域库数据：yigedata@proton.me")
             sys.exit(1)
 
         info(f"拉取完成: 共 {len(articles)} 篇文章")

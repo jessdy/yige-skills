@@ -92,10 +92,10 @@ def match_category(user_input: str) -> str:
 # ==================== API Key 获取 ====================
 
 def get_api_key():
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    api_key = os.getenv("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    api_key = os.getenv("YIGE_API_KEY")
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
         sys.exit(1)
     return api_key
 
@@ -153,7 +153,7 @@ def fetch_articles_by_category(type: str, source: str, start_date: str = "", end
     Returns:
         API 响应数据
     """
-    url = "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime"
+    url = "https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime"
 
     # 获取 API Key（环境变量 > shell配置文件 > 提示用户配置）
     api_key = get_api_key()
@@ -382,7 +382,7 @@ def output_table(articles: list, limit: int = 20, mode: str = "preview", categor
     else:
         print(f"\n共获取到{total}条爆款原创热门文章。")
 
-    print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+    print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
 
 # ==================== 主函数 ====================

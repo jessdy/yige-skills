@@ -27,8 +27,8 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/parseWork/queryDyAiMsgs"
-ENV_KEY = "REDFOX_API_KEY"
+API_URL = "https://yige.zone/story/api/parseWork/queryDyAiMsgs"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "AI抖音信息源-GitHub"
 
 DEFAULT_KEYWORD = "AI"
@@ -71,9 +71,9 @@ def get_api_key():
         return key
     error(f"未检测到环境变量 {ENV_KEY}")
     print(f"\n{YELLOW}  请先配置 API Key：{RESET}")
-    print(f"  {CYAN}方式一（推荐）{RESET}：export REDFOX_API_KEY=ak_你的密钥")
-    print(f"  {CYAN}方式二{RESET}：将 export REDFOX_API_KEY=ak_你的密钥 写入 ~/.zshrc 或 ~/.bashrc")
-    print(f"\n  获取 API Key：{CYAN}https://www.redfox.hk/login{RESET}")
+    print(f"  {CYAN}方式一（推荐）{RESET}：export YIGE_API_KEY=ak_你的密钥")
+    print(f"  {CYAN}方式二{RESET}：将 export YIGE_API_KEY=ak_你的密钥 写入 ~/.zshrc 或 ~/.bashrc")
+    print(f"\n  获取 API Key：{CYAN}https://yige.zone/login{RESET}")
     sys.exit(1)
 
 

@@ -5,19 +5,19 @@
       "accountId": "gh_9dc0e48d383a",
       "accountName": "央视财经",
       "avgReadCount": 48309,
-      "redfoxIndex": 1011.25
+      "yigeIndex": 1011.25
     },
     {
       "accountId": "gh_a4a87df43a4c",
       "accountName": "中国基金报",
       "avgReadCount": 31588,
-      "redfoxIndex": 991.05
+      "yigeIndex": 991.05
     },
     {
       "accountId": "gh_6df2146bcb82",
       "accountName": "券商中国",
       "avgReadCount": 30796,
-      "redfoxIndex": 1000.57
+      "yigeIndex": 1000.57
     }
   ],
   "kol": [
@@ -25,13 +25,13 @@
       "accountId": "gh_ba045a96f332",
       "accountName": "孤独大脑",
       "avgReadCount": 31738,
-      "redfoxIndex": 812.68
+      "yigeIndex": 812.68
     },
     {
       "accountId": "gh_4156c1154279",
       "accountName": "达叔读书会",
       "avgReadCount": 11614,
-      "redfoxIndex": 692.4
+      "yigeIndex": 692.4
     }
   ],
   "updated_at": "2026-06-17 11:29:52"

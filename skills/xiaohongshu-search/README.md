@@ -31,8 +31,8 @@
 
 ## 密钥来源与安全说明
 
-- 本技能需要使用环境变量：`REDFOX_API_KEY`。
-- `REDFOX_API_KEY` 由 [红狐 hub](https://redfox.hk/dashboard/keys?source=github) (`https://redfox.hk`)签发，用于其接口鉴权。
+- 本技能需要使用环境变量：`YIGE_API_KEY`。
+- `YIGE_API_KEY` 由 [一格数据 hub](https://yige.zone/dashboard/keys?source=github) (`https://yige.zone`)签发，用于其接口鉴权。
 - 在提供密钥前，请先确认密钥来源、可用范围、有效期及是否支持重置/撤销。
 - 禁止在代码、提示词、日志或输出文件中硬编码/明文暴露密钥。
 
@@ -40,22 +40,22 @@
 
 ## 前置条件
 
-### 注册红狐 hub 账号获取 REDFOX_API_KEY
+### 注册一格数据 hub 账号获取 YIGE_API_KEY
 
-- 获取 REDFOX_API_KEY（前往 [红狐 hub](https://redfox.hk/dashboard/keys?source=github) 申请）
+- 获取 YIGE_API_KEY（前往 [一格数据 hub](https://yige.zone/dashboard/keys?source=github) 申请）
 
 ### 环境变量配置
 
 | 变量名           | 必填 | 说明         |
 | ---------------- | ---- | ------------ |
-| `REDFOX_API_KEY` | 是   | API 访问密钥 |
+| `YIGE_API_KEY` | 是   | API 访问密钥 |
 
 **macOS（zsh）**
 
 在 `~/.zshrc` 末尾添加一行（将引号内换成你的密钥）：
 
 ```bash
-export REDFOX_API_KEY="your_api_key_here"
+export YIGE_API_KEY="your_api_key_here"
 ```
 
 保存后执行：
@@ -69,13 +69,13 @@ source ~/.zshrc
 - **仅本次终端有效**：执行后立刻生效，**无需再跑别的命令**；关掉窗口后失效。
 
 ```powershell
-$env:REDFOX_API_KEY = "your_api_key_here"
+$env:YIGE_API_KEY = "your_api_key_here"
 ```
 
-- **写入用户环境变量（持久）**：执行 `setx` 后，**当前这个 PowerShell 窗口里仍然没有该变量**，需要 **关闭并重新打开** 终端（或重启 Cursor / VS Code 等），新开的窗口里才会读到 `REDFOX_API_KEY`。
+- **写入用户环境变量（持久）**：执行 `setx` 后，**当前这个 PowerShell 窗口里仍然没有该变量**，需要 **关闭并重新打开** 终端（或重启 Cursor / VS Code 等），新开的窗口里才会读到 `YIGE_API_KEY`。
 
 ```powershell
-setx REDFOX_API_KEY "your_api_key_here"
+setx YIGE_API_KEY "your_api_key_here"
 ```
 
 ---

@@ -14,9 +14,9 @@ dependency:
   - requests==2.31.0
   - beautifulsoup4==4.12.3
   external_sensitive_word_api:
-  default_base: https://redfox.hk
+  default_base: https://yige.zone
   default_path: /story/api/cozeSkill/sensitiveWordSearch
-  auth: REDFOX_API_KEY
+  auth: YIGE_API_KEY
   env_override: PROHIBITED_WORD_API_URL
 ---
 
@@ -66,23 +66,23 @@ dependency:
 ### 前置条件
 
 - Python 3.8+，已安装依赖 `requests==2.31.0`、`beautifulsoup4==4.12.3`
-- 获取 `REDFOX_API_KEY`（访问 [RedFox 官网](https://redfox.hk/) 注册账号，新用户获赠免费积分）
+- 获取 `YIGE_API_KEY`（访问 [Yige 官网](https://yige.zone/) 注册账号，新用户获赠免费积分）
 
 ### 鉴权
 
 #### 获取 API Key
 
-1. 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+1. 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 #### 配置 API Key
 
-- `REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
-- 若未设置，提示用户自行配置：`export REDFOX_API_KEY=<你的apikey>`；若用户不会配置，Agent应主动帮用户设置：
-  - **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
-  - **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
-  - 配置完成后应验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确保换一个skill也能读取到
+- `YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
+- 若未设置，提示用户自行配置：`export YIGE_API_KEY=<你的apikey>`；若用户不会配置，Agent应主动帮用户设置：
+  - **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
+  - **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
+  - 配置完成后应验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确保换一个skill也能读取到
 
 ### 自建部署
 
@@ -246,8 +246,8 @@ multi-wordcheck/
 | 运行环境     | Python 3.8+                                                  |
 | 核心依赖     | `requests`（API 调用）、`beautifulsoup4`（网页内容提取）      |
 | 检测后端     | 基于官方违禁词库的独立 API 服务                       |
-| 默认 API     | `https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch`   |
-| 认证方式     | HTTP Header `X-API-KEY`，从环境变量 `REDFOX_API_KEY` 读取     |
+| 默认 API     | `https://yige.zone/story/api/cozeSkill/sensitiveWordSearch`   |
+| 认证方式     | HTTP Header `X-API-KEY`，从环境变量 `YIGE_API_KEY` 读取     |
 | 替代部署     | 通过 `PROHIBITED_WORD_API_URL` 环境变量指向自建或合规网关      |
 
 ### 数据流向
@@ -264,7 +264,7 @@ multi-wordcheck/
 
 **Q: 提示 API Key 无效或未配置怎么办？**
 
-检查 `REDFOX_API_KEY` 环境变量是否已设置（`echo $REDFOX_API_KEY` 或 `echo %REDFOX_API_KEY%`）。若未设置，按照上方「鉴权」章节的指引完成配置。确认 Key 格式为 `ak_` 开头且未过期。
+检查 `YIGE_API_KEY` 环境变量是否已设置（`echo $YIGE_API_KEY` 或 `echo %YIGE_API_KEY%`）。若未设置，按照上方「鉴权」章节的指引完成配置。确认 Key 格式为 `ak_` 开头且未过期。
 
 **Q: 能否使用自建的违禁词检测服务？**
 

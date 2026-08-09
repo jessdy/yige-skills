@@ -33,10 +33,10 @@ Kimi WebSearch is an intelligent web search tool. Simply describe what you want 
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain your `REDFOX_API_KEY`.
-- Configure the environment variable `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Visit [YigeHub](https://yige.zone?source=github) to register and obtain your `YIGE_API_KEY`.
+- Configure the environment variable `YIGE_API_KEY` on your device before using this skill.
 - Before providing a key, verify its source, scope, expiration, and whether it supports reset/revocation.
 - Do not hardcode or expose the key in plain text within code, prompts, logs, or output files.
 

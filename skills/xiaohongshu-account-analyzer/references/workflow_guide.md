@@ -58,7 +58,7 @@ python scripts/xiaohongshu_analyzer.py query --user_ids "账号ID"
         ```bash
         python scripts/xiaohongshu_analyzer.py sync_notes --red_ids "redId"
         ```
-     c. 同步接口：`https://redfox.hk/story/api/xhsUser/syncUserNotes`，参数 `redId` 从账号信息中获取
+     c. 同步接口：`https://yige.zone/story/api/xhsUser/syncUserNotes`，参数 `redId` 从账号信息中获取
      d. 输出提示：「订阅成功！系统将在30分钟后自动向您推送该账号的诊断报告，请耐心等待」
   3. 用户输入编号"2"或回复"下次再说"，结束本次分析
 

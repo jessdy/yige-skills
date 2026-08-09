@@ -35,10 +35,10 @@ Search Douyin for trending cultural tourism content, ranked by likes with automa
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain your `REDFOX_API_KEY`.
-- Configure the `REDFOX_API_KEY` environment variable on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Visit [YigeHub](https://yige.zone?source=github) to register and obtain your `YIGE_API_KEY`.
+- Configure the `YIGE_API_KEY` environment variable on your device before using this skill.
 - Before providing the key, verify its source, scope, expiration, and whether it supports reset/revocation.
 - Do not hardcode or expose the key in code, prompts, logs, or output files.
 

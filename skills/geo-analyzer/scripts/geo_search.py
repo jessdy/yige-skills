@@ -9,7 +9,7 @@ GEO 搜索调度器 — 3平台 x N问题 批量提交 + 并行轮询
     output/search_results.json
 
 环境变量:
-    REDFOX_API_KEY — 红狐 API Key（必填）
+    YIGE_API_KEY — 一格数据 API Key（必填）
 """
 
 import sys
@@ -52,8 +52,8 @@ def main():
     if not API_KEY:
         result = {
             "error": (
-                "未配置 REDFOX_API_KEY 环境变量，"
-                "请前往 https://redfox.hk/settings/api-keys?source=github 获取 API Key"
+                "未配置 YIGE_API_KEY 环境变量，"
+                "请前往 https://yige.zone/settings/api-keys?source=github 获取 API Key"
             )
         }
         print(json.dumps(result, ensure_ascii=False))

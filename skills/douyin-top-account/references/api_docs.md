@@ -4,10 +4,10 @@
 
 | 字段 | 值 |
 |------|-----|
-| 接口地址 | `https://redfox.hk/story/api/dyData/query` |
+| 接口地址 | `https://yige.zone/story/api/dyData/query` |
 | 请求方式 | POST |
 | Content-Type | `application/json` |
-| 认证方式 | `X-API-KEY`（从环境变量 `REDFOX_API_KEY` 获取，格式 `ak_xxxxxxxx`） |
+| 认证方式 | `X-API-KEY`（从环境变量 `YIGE_API_KEY` 获取，格式 `ak_xxxxxxxx`） |
 
 ---
 

@@ -31,10 +31,10 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/gzhData/searchArticle"
+API_URL = "https://yige.zone/story/api/gzhData/searchArticle"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "公众号搜索爬虫-GitHub"
 
 DEFAULT_OUTPUT_DIR = Path.home() / "Downloads" / "QoderGzhSearch"
@@ -542,7 +542,7 @@ body {
         <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">加载更多结果</button>
     </div>
 </main>
-<footer class="footer">Generated at {{TIMESTAMP}} by 公众号搜索 Skill | Powered by redfox.hk</footer>
+<footer class="footer">Generated at {{TIMESTAMP}} by 公众号搜索 Skill | Powered by yige.zone</footer>
 <script>
 const API_URL = '{{API_URL}}';
 const API_KEY = '{{API_KEY}}';
@@ -859,11 +859,11 @@ Examples:
         print(f"{RED}╔══════════════════════════════════════════════════╗{RESET}")
         print(f"{RED}║  未配置 API Key，请通过以下方式之一配置：      ║{RESET}")
         print(f"{RED}║                                                ║{RESET}")
-        print(f"{RED}║  export REDFOX_API_KEY=ak_你的密钥             ║{RESET}")
+        print(f"{RED}║  export YIGE_API_KEY=ak_你的密钥             ║{RESET}")
         print(f"{RED}║  python3 search.py --api-key ak_你的密钥        ║{RESET}")
-        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/redfox.json ║" + RESET)
+        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/yige.json ║" + RESET)
         print(f"{RED}║                                                ║{RESET}")
-        print(f"{RED}║  注册获取 Key: https://redfox.hk/settings/api-keys ║{RESET}")
+        print(f"{RED}║  注册获取 Key: https://yige.zone/settings/api-keys ║{RESET}")
         print(f"{RED}╚══════════════════════════════════════════════════╝{RESET}")
         sys.exit(1)
 
@@ -918,7 +918,7 @@ Examples:
         else:
             print(f"  {YELLOW}建议:{RESET} 尝试更短的关键词（如「{keyword[:2] if len(keyword)>=2 else 'AI'}」）")
             print(f"  {YELLOW}建议:{RESET} 使用英文关键词重试")
-            warn("如需搜索全量公众号内容，请访问 https://redfox.hk/settings/api-keys?source=github")
+            warn("如需搜索全量公众号内容，请访问 https://yige.zone/settings/api-keys?source=github")
             sys.exit(0)
 
     # 表格展示（有结果时）

@@ -10,19 +10,19 @@
 
 ### API Key 获取
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 环境变量设置
 
-`REDFOX_API_KEY` 需从环境变量获取。若未设置，Agent 会主动帮你配置：
+`YIGE_API_KEY` 需从环境变量获取。若未设置，Agent 会主动帮你配置：
 
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 对应文件
-- **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 对应文件
+- **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端）
 
-配置完成后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+配置完成后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 
 ---
 
@@ -30,7 +30,7 @@
 
 ### Step 0：鉴权前置检查
 
-- 确认环境变量 `REDFOX_API_KEY` 已设置，否则提示用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key
+- 确认环境变量 `YIGE_API_KEY` 已设置，否则提示用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key
 - 若未配置，给出配置指引后中止，不可继续执行
 
 ### Step 1：理解用户意图，提取 tweetId
@@ -40,7 +40,7 @@
 - 若用户未提供，主动询问：「请提供推文链接或推文ID」
 - 若上一轮已查询某推文且本轮输入模糊（如「评论分析」），沿用上一轮 tweetId
 - **多链接检测**：若用户一次输入 **1 条以上** 推文链接，提取所有 tweetId 后，先提示用户：
-  > 由于您输入了 **{N}** 条查询链接，本次查询共需 **{N}** 次红狐（[红狐hub](https://redfox.hk)）积分，请确保积分充足后进行查询～ 回复【是】即可继续查询
+  > 由于您输入了 **{N}** 条查询链接，本次查询共需 **{N}** 次一格数据（[一格hub](https://yige.zone)）积分，请确保积分充足后进行查询～ 回复【是】即可继续查询
   - 用户确认后，按顺序逐一执行 Step 2~3（每条推文独立输出推文详情、查询范围、评论表格、四维分析四个板块）
   - 用户取消则中止，不消耗积分
 
@@ -103,7 +103,7 @@ python3 "$SKILL_PATH/scripts/tweet_comment_search.py" "<tweetId>" --cursor "<上
 
 一行告知（固定话术，不得改写）：
 
-> 「共 **{total_count}** 条评论数据，本次获取到 **{total_fetched}** 条一级评论，skill暂不支持查询二级评论，红狐配套全量数据库可提供完整详实数据，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询。」
+> 「共 **{total_count}** 条评论数据，本次获取到 **{total_fetched}** 条一级评论，skill暂不支持查询二级评论，一格数据配套全量数据库可提供完整详实数据，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询。」
 
 若 `has_next=true`，追加提示：「还有下一页；如需继续翻页请说『下一页』，会再消耗一次 API 积分」
 
@@ -145,7 +145,7 @@ python3 "$SKILL_PATH/scripts/tweet_comment_search.py" "<tweetId>" --cursor "<上
 1. 链接访问说明：
    > ⚠️ 链接访问说明：以上所有链接均为 X（Twitter）平台外链，境内网络无法直接访问。
 2. 企业服务引导：
-   > 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+   > 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 
 ### 行为红线
 
@@ -160,7 +160,7 @@ python3 "$SKILL_PATH/scripts/tweet_comment_search.py" "<tweetId>" --cursor "<上
 
 | 错误类型 | 处理方式 |
 |---------|---------|
-| 无 API Key | 提示配置 REDFOX_API_KEY，给出配置指引 |
+| 无 API Key | 提示配置 YIGE_API_KEY，给出配置指引 |
 | 推文ID无效 | 提示「未找到该推文的评论，请检查推文链接是否正确」 |
 | 接口返回 502 错误 | 服务返回 502 错误，可能存在网络不稳定问题，请稍后重试 |
 | 获取 0 条评论 | 提示「该推文暂无评论」并建议检查推文是否存在或已删除；严禁替换查询其他推文 |

@@ -236,29 +236,29 @@ options:
 
 ### 认证方式
 
-本技能需要 `REDFOX_API_KEY` 环境变量。
+本技能需要 `YIGE_API_KEY` 环境变量。
 
-**获取方式：** 前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 注册并获取 API Key。
+**获取方式：** 前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 注册并获取 API Key。
 
 **配置方式：**
 
 方案 1 — 配置文件（推荐）：
 
 ```json
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案 2 — 终端环境变量：
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 接口信息
 
 | 项目 | 说明 |
 |-----|------|
-| 端点 | `POST https://redfox.hk/story/api/sphAllData/searchWork` |
+| 端点 | `POST https://yige.zone/story/api/sphAllData/searchWork` |
 | 认证 | Header `X-API-Key` |
 | source 参数 | `视频号作品爬虫-GitHub` |
 

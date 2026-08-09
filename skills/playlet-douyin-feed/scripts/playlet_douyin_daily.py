@@ -16,7 +16,7 @@ from urllib import request, error
 
 
 # API 配置
-API_BASE_URL = "https://redfox.hk/story/api/parseWork/queryPlayletMsgs"
+API_BASE_URL = "https://yige.zone/story/api/parseWork/queryPlayletMsgs"
 CACHE_DIR = os.path.expanduser("~/.workbuddy/cache")
 CACHE_FILE = os.path.join(CACHE_DIR, "playlet_douyin_data.json")
 OUTPUT_DIR = os.path.expanduser("~/Downloads/QoderReports")
@@ -25,10 +25,10 @@ DATA_UPDATE_HOUR = 15  # 每日15:00更新前一天数据
 
 def get_api_key():
     """从环境变量获取 API Key"""
-    api_key = os.environ.get("REDFOX_API_KEY")
+    api_key = os.environ.get("YIGE_API_KEY")
     if not api_key:
-        print("❌ 错误:未找到 REDFOX_API_KEY 环境变量")
-        print("请先配置:export REDFOX_API_KEY=<你的apikey>")
+        print("❌ 错误:未找到 YIGE_API_KEY 环境变量")
+        print("请先配置:export YIGE_API_KEY=<你的apikey>")
         sys.exit(1)
     return api_key
 
@@ -124,7 +124,7 @@ def fetch_playlet_data(
             with request.urlopen(req, timeout=30) as response:
                 result = json.loads(response.read().decode('utf-8'))
                 
-                # 检查响应状态（红狐API成功码为2000）
+                # 检查响应状态（一格数据API成功码为2000）
                 if result.get("code") != 2000:
                     print(f"❌ API 错误:{result.get('msg', '未知错误')}")
                     continue
@@ -336,7 +336,7 @@ a.article-title:hover {{ color: #FB7299; text-decoration: underline; }}
     <div class="stat-item"><div class="stat-value">{format_number(total_likes)}</div><div class="stat-label">总点赞</div></div>
 </div>
 <div class="cards">{category_cards}</div>
-<div class="footer">Generated at {timestamp} by 短剧-抖音信息源 Skill<br>数据说明：每日15:00更新前一天的数据 | 数据来源：红狐Hub</div>
+<div class="footer">Generated at {timestamp} by 短剧-抖音信息源 Skill<br>数据说明：每日15:00更新前一天的数据 | 数据来源：一格Hub</div>
 </body>
 </html>'''
     

@@ -38,10 +38,10 @@ A weekly content surge monitoring tool that tracks tens of thousands of Douyin w
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please register an account at [RedFoxHub](https://redfox.hk?source=github) to obtain your `REDFOX_API_KEY`.
-- Configure the `REDFOX_API_KEY` environment variable on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please register an account at [YigeHub](https://yige.zone?source=github) to obtain your `YIGE_API_KEY`.
+- Configure the `YIGE_API_KEY` environment variable on your device before using this skill.
 - Before providing your key, verify its source, scope, validity period, and whether reset/revocation is supported.
 - Never hardcode or expose keys in plain text within code, prompts, logs, or output files.
 

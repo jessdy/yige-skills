@@ -42,20 +42,20 @@ description: 全网持续收录每日超过1000+公众号10w+文章内容，向�
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置：
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -66,7 +66,7 @@ export REDFOX_API_KEY="ak_xxxx..."
 
 | 变量名 | 说明 | 必填 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 红狐 API Key | 是 |
+| `YIGE_API_KEY` | 一格数据 API Key | 是 |
 
 ## 4. 使用指南
 
@@ -288,7 +288,7 @@ wechat-10w-hot/
 | 组件 | 技术 | 说明 |
 |------|------|------|
 | 脚本语言 | Python 3 | 使用标准库（urllib.request） |
-| 数据接口 | Redfox API (GET) | `https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime` |
+| 数据接口 | Yige API (GET) | `https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime` |
 | 认证方式 | X-API-KEY | 请求头认证 |
 | 报告模板 | HTML/CSS/JS | 微信绿主题风格 |
 | PDF导出 | html2pdf.js | 自适应单页模式 |
@@ -313,8 +313,8 @@ wechat-10w-hot/
 
 ### 安装相关
 
-**Q: 脚本运行报错 "REDFOX_API_KEY not found"**
-A: 请确保已配置环境变量 `REDFOX_API_KEY`，可参考上方鉴权章节配置。
+**Q: 脚本运行报错 "YIGE_API_KEY not found"**
+A: 请确保已配置环境变量 `YIGE_API_KEY`，可参考上方鉴权章节配置。
 
 **Q: 是否需要安装Python依赖？**
 A: 不需要，脚本使用Python标准库（urllib.request），无需额外安装。

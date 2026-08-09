@@ -32,7 +32,7 @@ python scripts/wechat_similar_accountr.py --account_type "科技数码"
 python scripts/wechat_similar_accountr.py --account_name "科技前沿" --account_type "科技数码"
 ```
 
-API接口：POST https://redfox.hk/story/api/gzhUser/querySimilarAccounts
+API接口：POST https://yige.zone/story/api/gzhUser/querySimilarAccounts
 
 **API 响应结构**：返回 `currentAccount`（查询账号基本信息及 works 近5篇文章数据）+ `benchmarkAccounts`（同阶对标）+ `topAccounts`（高阶标杆）。脚本优先从 `currentAccount` 获取查询账号信息，当 `currentAccount` 为空时（如按分类查询未命中具体账号），从 benchmarkAccounts + topAccounts 中按 accountName/accountId 匹配。
 
@@ -41,13 +41,13 @@ API接口：POST https://redfox.hk/story/api/gzhUser/querySimilarAccounts
 - `interactiveCountSeven`：近7天**互动量**（非阅读量），不可作为阅读数使用
 - `avgReadCount`：平均阅读数，可能为 null，此时需从 works 中计算 effective_avg
 - `clicksCount`：文章阅读数，最大值 100001（10w+ 封顶值）
-- `redfoxIndex`：红狐指数，账号综合质量评分
+- `yigeIndex`：一格指数，账号综合质量评分
 - `works`：近期文章列表，包含 title/clicksCount/likeCount/commentCount/watchCount/interactiveCount/shareCount/publishTime/workUrl 等
 - 近7天阅读数：API 无直接字段，需从 works 中累加 clicksCount 计算
 
 **按分类查询注意事项**：
 
-RedFox 平台的分类体系与自然语言存在差异，`--account_type` 查询成功率较低。当用户以自然语言分类（如「风景」「情感」）查询时，应：
+Yige 平台的分类体系与自然语言存在差异，`--account_type` 查询成功率较低。当用户以自然语言分类（如「风景」「情感」）查询时，应：
 1. 查找该领域代表性公众号（如「风景」→「中国国家地理」，「情感」→「夜听」）
 2. 使用 `--account_name "代表性名称"` 执行查询
 3. 从返回结果的「账号分类」字段确认平台内部归类
@@ -73,7 +73,7 @@ RedFox 平台的分类体系与自然语言存在差异，`--account_type` 查�
 - 账号名称：科技前沿
 - 账号ID：gh_xxx
 - 账号分类：科技数码
-- 红狐指数：750
+- 一格指数：750
 - 平均阅读数：8000
 - 近7天阅读数：3.5w
 - 近7天发文章数：6
@@ -88,13 +88,13 @@ RedFox 平台的分类体系与自然语言存在差异，`--account_type` 查�
 | 数据说明：数据获取时间为xxx，和实时数据存在差别。
 👉【可直接抄的同阶对标（5个）】（和查询账号阅读数最接近，可直接复制玩法）
 
-| 账号名称 | 红狐指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |
+| 账号名称 | 一格指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |
 | --- | --- | --- | --- | --- | --- |
 | [账号名](https://open.weixin.qq.com/qr/code?username={accountId}) | 850 | 1.2w | 5000 | 6 | 同属「科技数码」赛道，内容聚焦于**干货教程**/**资源盘点**<br>日更高产，图文深度/中等深度内容，早间7点固定发文<br>互动率3.2%，分享率5.1%，内容传播力强 |
 
 👉【可追赶的高阶标杆（5个）】（阅读数是查询账号的3-5倍，模式成熟可参考）
 
-| 账号名称 | 红狐指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |
+| 账号名称 | 一格指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |
 | --- | --- | --- | --- | --- | --- |
 | [账号名](https://open.weixin.qq.com/qr/code?username={accountId}) | 920 | 5w | 2w | 5 | 同赛道近7天3篇爆文，全聚焦于**深度观点评论**/**科技数码产品**<br>爆文「**ChatGPT高效使用指南…**」达均阅3.2倍<br>日更高产，图文深度/长文深度解析，晚间21点固定发文<br>互动率1.5%，分享率8.2%，内容传播力强 |
 
@@ -103,7 +103,7 @@ RedFox 平台的分类体系与自然语言存在差异，`--account_type` 查�
        1. 是否订阅"科技前沿"的相似账号推送，每日下午19点更新最新数据。你可自行选择推送频率和时间~
        2. 暂不需要
 
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 ```
 
 **数值格式化**：< 10000 直接展示原值，>= 10000 格式化为 "X.Xw"
@@ -157,7 +157,7 @@ RedFox 平台的分类体系与自然语言存在差异，`--account_type` 查�
 | 3 | 更新节奏 + 内容策略 + 发文时段 | articleCountSeven + works | 有文章数据 | 日更高产，图文深度/中等深度内容，早间7点固定发文 |
 | 4 | 互动率 + 分享率 | works中互动/分享/阅读数据 | 互动率/分享率在合理区间(0.1%-100%) | 互动率3.2%，分享率5.1%，内容传播力强 |
 | 5 | 近7天互动数 | interactiveCountSeven | avgReadCount 为 null 且互动数 > 0 | 近7天互动49.8w，用户活跃度可参考 |
-| 6 | 红狐指数阶段定位 | redfoxIndex + accountType | 近7天阅读或平均阅读为0时补充 | 红狐指数932，账号综合质量在「**文摘精选**」赛道中表现突出 |
+| 6 | 一格指数阶段定位 | yigeIndex + accountType | 近7天阅读或平均阅读为0时补充 | 一格指数932，账号综合质量在「**文摘精选**」赛道中表现突出 |
 | 7 | 数据稀疏补充 | 多维度兜底 | 以上维度不足2条时补充 | 内容方向：亲子育儿/健康养生，近7天发文5篇 |
 
 ### 关键机制

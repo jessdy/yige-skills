@@ -16,7 +16,7 @@ description: 专注于小红书平台的内容趋势分析，基于近7天热门
 
 **适用对象**：品牌方、MCN 机构、小红书博主、内容运营、增长团队
 
-**技术基础**：Python 3 + RedFox 小红书数据 API，数据每日 19:00 更新
+**技术基础**：Python 3 + Yige 小红书数据 API，数据每日 19:00 更新
 
 ---
 
@@ -45,21 +45,21 @@ description: 专注于小红书平台的内容趋势分析，基于近7天热门
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. 新注册用户将获赠免费积分，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-`REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`。
+`YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`。
 
-若未设置，提示用户自行配置：`export REDFOX_API_KEY=<你的apikey>`；若不会配置，Agent 可主动帮用户设置：
+若未设置，提示用户自行配置：`export YIGE_API_KEY=<你的apikey>`；若不会配置，Agent 可主动帮用户设置：
 
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
-- **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
+- **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
 
-配置完成后应验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确保换一个 skill 也能读取到。
+配置完成后应验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确保换一个 skill 也能读取到。
 
 ---
 
@@ -68,9 +68,9 @@ description: 专注于小红书平台的内容趋势分析，基于近7天热门
 ### 前置条件
 
 - Python 3.8+
-- 网络可访问 `redfox.hk` 数据 API
+- 网络可访问 `yige.zone` 数据 API
 - 已安装 `requests` 库（`pip install requests`）
-- 已配置 `REDFOX_API_KEY` 环境变量（参见上方「鉴权」章节）
+- 已配置 `YIGE_API_KEY` 环境变量（参见上方「鉴权」章节）
 
 ### 安装方式
 
@@ -248,7 +248,7 @@ xiaohongshu-weeklytop/
 |------|------|
 | 运行环境 | Python 3.8+ |
 | HTTP 请求 | `requests`（原生 Python） |
-| 数据来源 | RedFox 小红书 Coze Skill API |
+| 数据来源 | Yige 小红书 Coze Skill API |
 | 输出格式 | Markdown 表格 + 独立 HTML 文件 |
 | 部署平台 | WorkBuddy / Cursor Agent Skills |
 
@@ -279,9 +279,9 @@ xiaohongshu-weeklytop/
 
 A: 该依赖为标准 Python HTTP 库。请运行 `pip install requests` 安装。若在虚拟环境中运行，请确保已激活对应环境。
 
-**Q2: 脚本提示「未找到 REDFOX_API_KEY」？**
+**Q2: 脚本提示「未找到 YIGE_API_KEY」？**
 
-A: 请按照上方「鉴权」章节完成 API Key 的获取和配置。确保环境变量 `REDFOX_API_KEY` 已正确设置且格式为 `ak_xxxxxxxx`。
+A: 请按照上方「鉴权」章节完成 API Key 的获取和配置。确保环境变量 `YIGE_API_KEY` 已正确设置且格式为 `ak_xxxxxxxx`。
 
 **Q3: 如何将 Skill 添加到 Cursor / WorkBuddy？**
 
@@ -311,7 +311,7 @@ A: HTML 生成时从已获取的 JSON 数据文件读取，与表格使用完全
 **Q7: API 请求失败或无数据？**
 
 A: 按以下步骤排查：
-1. 确认网络可访问  [红狐Hub 官网](https://redfox.hk/)
+1. 确认网络可访问  [一格Hub 官网](https://yige.zone/)
 2. 检查 `--rank_date` 是否为有效日期
 3. 尝试更换关键词或指定 `--category`
 4. 19:00 前查询时，确认是否应使用前天日期

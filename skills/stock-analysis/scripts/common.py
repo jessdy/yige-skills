@@ -37,11 +37,11 @@ PROFILES_DIR = SKILL_DIR / "profiles"
 OUTPUT_DIR = SKILL_DIR / "output"
 
 # ─── API 配置 ──────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/gzhData/queryWorkList"
-RECORD_API_URL = "https://redfox.hk/story/api/skill/record/save"
+API_URL = "https://yige.zone/story/api/gzhData/queryWorkList"
+RECORD_API_URL = "https://yige.zone/story/api/skill/record/save"
 RECORD_SOURCE = "公众号股票大V蒸馏-GitHub"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
 ENV_KEY = "X_API_KEY"
 
 STOCK_ANALYSTS = ["财躺平", "猫笔刀", "格兰投研", "投资明见", "终身黑白"]
@@ -101,16 +101,16 @@ def get_api_key(cli_key=None):
 
     error("未配置 API Key，请通过以下方式之一配置：")
     print(f"  1. 环境变量：$env:X_API_KEY=\"ak_你的密钥\"")
-    print(f"  2. 配置文件：~/.qoder/apis/redfox.json")
+    print(f"  2. 配置文件：~/.qoder/apis/yige.json")
     print(f"  3. 命令行参数：--api-key ak_你的密钥")
-    print(f"\n  注册地址：https://www.redfox.hk/login")
+    print(f"\n  注册地址：https://yige.zone/login")
     return None
 
 
 # ─── 调用记录 ──────────────────────────────────────────────────────────────────────
 def record_call(api_key, mode=None, authors=None):
     """
-    向 redfox.hk 上报 skill 调用记录（fire-and-forget，失败不影响主流程）。
+    向 yige.zone 上报 skill 调用记录（fire-and-forget，失败不影响主流程）。
 
     Args:
         api_key: X_API_KEY
@@ -135,7 +135,7 @@ def record_call(api_key, mode=None, authors=None):
         resp = requests.post(
             RECORD_API_URL,
             json=payload,
-            headers={"Content-Type": "application/json", "REDFOX_API_KEY": api_key},
+            headers={"Content-Type": "application/json", "YIGE_API_KEY": api_key},
             timeout=5,
         )
         # 静默处理，不阻塞主流程
@@ -308,7 +308,7 @@ def fetch_articles_paginated(api_key, account, account_name=None, days=7, count=
         return []
 
     session = requests.Session()
-    session.headers.update({"Content-Type": "application/json", "REDFOX_API_KEY": api_key})
+    session.headers.update({"Content-Type": "application/json", "YIGE_API_KEY": api_key})
 
     end_date = datetime.now()
     start_date = end_date - timedelta(days=days)

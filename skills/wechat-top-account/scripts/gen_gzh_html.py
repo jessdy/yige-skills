@@ -25,7 +25,7 @@ import requests
 
 
 # ===== 常量 =====
-API_URL = "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataIndex"
+API_URL = "https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataIndex"
 SOURCE = "公众号综合实力账号榜-GitHub"
 
 CATEGORIES = [
@@ -253,11 +253,11 @@ def match_category(user_input):
 
 
 # ===== 认证 =====
-def _get_redfox_api_key():
-    """三级认证回退获取 红狐Hub API Key
+def _get_yige_api_key():
+    """三级认证回退获取 一格Hub API Key
 
     优先级：
-    1. 环境变量 REDFOX_API_KEY
+    1. 环境变量 YIGE_API_KEY
     2. Shell 配置文件（.zshrc / .bashrc / PowerShell Profile）
     3. 返回 None，由上层提示用户配置
 
@@ -265,7 +265,7 @@ def _get_redfox_api_key():
         str or None: API Key
     """
     # 第一级：环境变量
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key and api_key.startswith("ak_"):
         return api_key
 
@@ -299,14 +299,14 @@ def _get_redfox_api_key():
             content = config.read_text(encoding="utf-8", errors="ignore")
             for line in content.splitlines():
                 line = line.strip()
-                if line.startswith("export REDFOX_API_KEY=") or line.startswith("set REDFOX_API_KEY="):
+                if line.startswith("export YIGE_API_KEY=") or line.startswith("set YIGE_API_KEY="):
                     parts = line.split("=", 1)
                     if len(parts) == 2:
                         key = parts[1].strip().strip('"').strip("'")
                         if key and key.startswith("ak_"):
                             return key
-                # 匹配 PowerShell: $env:REDFOX_API_KEY = "xxx"
-                if "$env:REDFOX_API_KEY" in line:
+                # 匹配 PowerShell: $env:YIGE_API_KEY = "xxx"
+                if "$env:YIGE_API_KEY" in line:
                     parts = line.split("=", 1)
                     if len(parts) == 2:
                         key = parts[1].strip().strip('"').strip("'")
@@ -331,16 +331,16 @@ def fetch_gzh_growth(rank_type="day", rank_date=None, category="人文资讯"):
         "source": SOURCE,
     }
 
-    credential = _get_redfox_api_key()
+    credential = _get_yige_api_key()
     if not credential:
         print(
-            "未检测到 红狐Hub API Key。请按以下步骤配置：\n"
-            "1. 访问 https://redfox.hk/ 了解服务详情\n"
-            "2. 前往 https://redfox.hk/login 注册账号（新用户获赠免费积分）\n"
+            "未检测到 一格Hub API Key。请按以下步骤配置：\n"
+            "1. 访问 https://yige.zone/ 了解服务详情\n"
+            "2. 前往 https://yige.zone/login 注册账号（新用户获赠免费积分）\n"
             "3. 注册登录后在个人中心获取 API Key（格式 ak_xxxxxxxx）\n"
             "4. 设置环境变量：\n"
-            "   macOS/Linux: export REDFOX_API_KEY=<你的apikey>\n"
-            "   Windows PowerShell: $env:REDFOX_API_KEY = \"<你的apikey>\"\n"
+            "   macOS/Linux: export YIGE_API_KEY=<你的apikey>\n"
+            "   Windows PowerShell: $env:YIGE_API_KEY = \"<你的apikey>\"\n"
             "   或告知我帮你自动配置到 Shell 配置文件中",
             file=sys.stderr
         )

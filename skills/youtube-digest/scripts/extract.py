@@ -33,9 +33,9 @@ except ImportError:
     HAS_TRANSLATOR = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/youtube/transcript"
-CONFIG_FILE = Path.home() / ".qoder" / "apis" / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+API_URL = "https://yige.zone/story/api/youtube/transcript"
+CONFIG_FILE = Path.home() / ".qoder" / "apis" / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "YouTube提文案-GitHub"
 
 DEFAULT_OUTPUT_DIR = Path.home() / "Downloads" / "QoderYoutubeDigest"
@@ -136,11 +136,11 @@ def get_api_key(cli_key=None):
 
 
 def print_key_guide():
-    error("未检测到 RedFox API Key，请任选一种方式配置：")
+    error("未检测到 Yige API Key，请任选一种方式配置：")
     print(f"  1. 环境变量（推荐）：export {ENV_KEY}=ak_你的密钥")
     print(f"  2. 命令行参数：--api-key ak_你的密钥")
-    print(f"  3. 配置文件：echo '{{\"api_key\":\"ak_你的密钥\"}}' > ~/.qoder/apis/redfox.json")
-    print(f"  注册地址：https://redfox.hk/settings/api-keys?source=github")
+    print(f"  3. 配置文件：echo '{{\"api_key\":\"ak_你的密钥\"}}' > ~/.qoder/apis/yige.json")
+    print(f"  注册地址：https://yige.zone/settings/api-keys?source=github")
 
 
 # ─── 工具函数 ─────────────────────────────────────────────────────────────────────
@@ -176,7 +176,7 @@ def fetch_transcript(session, api_key, video_url, language, include_timestamp, s
         "language": language,
         "source": SOURCE,
     }
-    headers = {"REDFOX_API_KEY": api_key, "Content-Type": "application/json"}
+    headers = {"YIGE_API_KEY": api_key, "Content-Type": "application/json"}
 
     for attempt in range(MAX_RETRIES):
         try:
@@ -333,7 +333,7 @@ def main():
     parser.add_argument("--no-translate", dest="translate", action="store_false",
                         help="禁用自动翻译（默认非中文字幕自动翻译为中文）")
     parser.set_defaults(translate=True)
-    parser.add_argument("--api-key", default=None, help="指定 RedFox API Key")
+    parser.add_argument("--api-key", default=None, help="指定 Yige API Key")
     args = parser.parse_args()
 
     if not HAS_REQUESTS:

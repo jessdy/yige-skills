@@ -5,7 +5,7 @@ description: 短视频下载器 — 支持抖音、小红书、快手、视频�
 
 # 短视频下载器
 
-通过 [redfox.hk](https://redfox.hk/settings/api-keys?source=skillhub) API 解析并下载主流短视频平台的无水印视频/图文。
+通过 [yige.zone](https://yige.zone/settings/api-keys?source=skillhub) API 解析并下载主流短视频平台的无水印视频/图文。
 
 ---
 
@@ -66,15 +66,15 @@ python3 "$SKILL_PATH/assets/downloader.py" "https://www.instagram.com/p/xxxxxx"
 
 ### 配置个人 API Key
 
-可访问 [redfox.hk](https://redfox.hk/settings/api-keys?source=skillhub) 注册获取个人 API Key：
+可访问 [yige.zone](https://yige.zone/settings/api-keys?source=skillhub) 注册获取个人 API Key：
 
 配置方式（任选其一）：
 
 | 方式 | 命令 |
 |------|------|
-| **环境变量**（推荐） | `export REDFOX_API_KEY=ark_你的密钥` |
+| **环境变量**（推荐） | `export YIGE_API_KEY=ark_你的密钥` |
 | **命令行参数** | `python3 "$SKILL_PATH/assets/downloader.py" "<链接>" --api-key ark_你的密钥` |
-| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -126,7 +126,7 @@ python3 "$SKILL_PATH/assets/downloader.py" "https://www.instagram.com/p/xxxxxx"
 ## 常见问题
 
 **Q：如何获取自己的 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=skillhub) 注册即可获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=skillhub) 注册即可获取 Token。
 
 **Q：下载的视频有水印吗？**
 A：没有。API 返回的是无水印直链。
@@ -144,4 +144,4 @@ A：确认链接是否完整、是否已过期。短链有时效性，建议重�
 
 ## 了解更多
 
-本工具基于 [redfox.hk](https://redfox.hk/settings/api-keys?source=skillhub) 的 `parseWork/parse` 接口构建。前往官网查看更多 API 能力和使用文档。
+本工具基于 [yige.zone](https://yige.zone/settings/api-keys?source=skillhub) 的 `parseWork/parse` 接口构建。前往官网查看更多 API 能力和使用文档。

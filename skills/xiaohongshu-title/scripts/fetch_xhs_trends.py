@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书热门数据查询脚本
-接口地址：https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData
+接口地址：https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData
 """
 
 import os
@@ -28,12 +28,12 @@ def fetch_xhs_trends(keyword: str, debug: bool = False, max_retries: int = 3, st
     Raises:
         Exception: 当API调用失败时抛出异常
     """
-    url = "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+    url = "https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData"
 
     # 从环境变量获取 API Key
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if not api_key:
-        raise Exception("未找到 REDFOX_API_KEY 环境变量，请先配置 API Key。参考文档中的鉴权说明进行配置。")
+        raise Exception("未找到 YIGE_API_KEY 环境变量，请先配置 API Key。参考文档中的鉴权说明进行配置。")
 
     params = {
         "keyword": keyword,

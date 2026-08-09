@@ -34,10 +34,10 @@ Enter a WeChat public account ID and it automatically pulls articles and distill
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please visit [RedFoxHub](https://redfox.hk?source=github) to register an account and obtain your `REDFOX_API_KEY`.
-- Configure the environment variable `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please visit [YigeHub](https://yige.zone?source=github) to register an account and obtain your `YIGE_API_KEY`.
+- Configure the environment variable `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, please verify the key source, available scope, validity period, and whether reset/revocation is supported.
 - Never hardcode or expose your key in plaintext within code, prompts, logs, or output files.
 

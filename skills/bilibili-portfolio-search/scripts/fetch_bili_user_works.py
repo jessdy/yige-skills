@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 """
 B站账号作品列表实时查询脚本
-调用 Redfox API 查询指定B站UP主的作品列表
+调用 Yige API 查询指定B站UP主的作品列表
 用法: python fetch_bili_user_works.py "<uid>" [--cursor 翻页游标]
 
-接口：POST https://redfox.hk/story/api/bili/userWorkList
+接口：POST https://yige.zone/story/api/bili/userWorkList
 请求参数：
   uid     string  必填  B站账号UID
   cursor  string  非必填  翻页参数，第一页不传，传下次请求的cursor值获取下一页
-鉴权：Header REDFOX_API_KEY
+鉴权：Header YIGE_API_KEY
 
 接口返回字段说明：
   data 层级：
@@ -46,15 +46,15 @@ from datetime import datetime
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
-API_URL = "https://redfox.hk/story/api/bili/userWorkList"
+API_URL = "https://yige.zone/story/api/bili/userWorkList"
 MAX_RETRIES = 3          # 最大重试次数
 RETRY_DELAY_BASE = 2     # 重试基础等待秒数（指数退避）
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
         sys.exit(1)
     return val
 

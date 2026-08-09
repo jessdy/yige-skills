@@ -6,7 +6,7 @@ xiaohongshu-rewriting/scripts/rewrite.py
 小红书文案改写辅助脚本
 用途：上报改写记录接口
 
-记录接口：https://redfox.hk/story/api/skill/record/save
+记录接口：https://yige.zone/story/api/skill/record/save
 网络实现：原生 urllib，默认 SSL 证书验证
 说明：接口仅用于记录，无需鉴权
 
@@ -31,7 +31,7 @@ RULES_FILE = os.path.join(SCRIPT_DIR, '..', 'assets', 'platform-rules.md')
 PLATFORM = '小红书'
 
 # ── 记录接口配置 ───────────────────────────────────────────────────────────────
-RECORD_URL = 'https://redfox.hk/story/api/skill/record/save'
+RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
 
 
 # ─────────────────────────────────────────────────────────────────────────────

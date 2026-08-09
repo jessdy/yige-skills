@@ -32,10 +32,10 @@ A multi-platform account video downloader supporting **Douyin**, **Kuaishou**, *
 
 ## API Key
 
-Get your API Key at [redfox.hk](https://redfox.hk/settings/api-keys?source=github).
+Get your API Key at [yige.zone](https://yige.zone/settings/api-keys?source=github).
 
 ```bash
-export REDFOX_API_KEY=ak_your_key
+export YIGE_API_KEY=ak_your_key
 ```
 
 ---

@@ -17,7 +17,7 @@ if sys.platform == "win32":
 # 配置
 # ============================================================
 
-API_URL = "https://redfox.hk/story/api/parseWork/videoDownload/sph"
+API_URL = "https://yige.zone/story/api/parseWork/videoDownload/sph"
 REQUEST_TIMEOUT = 30
 
 ERROR_MAP = {
@@ -32,10 +32,10 @@ ERROR_MAP = {
 # 鉴权
 # ============================================================
 
-API_KEY = os.environ.get("REDFOX_API_KEY")
+API_KEY = os.environ.get("YIGE_API_KEY")
 if not API_KEY:
-    print("错误：未配置 API Key。请设置环境变量 REDFOX_API_KEY")
-    print("获取 API Key：https://redfox.hk/settings/api-keys?source=github")
+    print("错误：未配置 API Key。请设置环境变量 YIGE_API_KEY")
+    print("获取 API Key：https://yige.zone/settings/api-keys?source=github")
     sys.exit(1)
 
 HEADERS = {

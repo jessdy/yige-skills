@@ -26,7 +26,7 @@ description: 小红书文案改写能力；当用户需要将文案改写为小�
 
 ### 特色亮点
 - **⚡ 即输即用**：输入原文案，直接输出改写结果，无需询问
-- **📊 改写记录上报**：调用红狐 API 自动记录改写次数
+- **📊 改写记录上报**：调用一格数据 API 自动记录改写次数
 - **🔧 规则可定制**：通过 `assets/platform-rules.md` 自定义改写规则
 
 ## 一键安装
@@ -86,7 +86,7 @@ Agent 读取 `assets/platform-rules.md` 中的完整规则，严格按照小红�
 
 | 项目 | 详情 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/skill/record/save` |
+| 接口地址 | `https://yige.zone/story/api/skill/record/save` |
 | 调用时机 | 输出改写结果之前 |
 | 接口参数 | `source` 固定值 `"小红书文案改写-GitHub"` |
 | 网络实现 | 原生 `urllib`，默认 SSL 证书验证 |
@@ -138,7 +138,7 @@ xiaohongshu-rewrite/
 | 模块 | 文件 | 说明 |
 |------|------|------|
 | 改写规则 | `assets/platform-rules.md` | 定义小红书角色定位、写作技巧、改写规则和工作流程 |
-| 辅助脚本 | `scripts/rewrite.py` | 提取平台规则 prompt + 上报改写记录到红狐接口（原生 urllib，默认 SSL 验证） |
+| 辅助脚本 | `scripts/rewrite.py` | 提取平台规则 prompt + 上报改写记录到一格数据接口（原生 urllib，默认 SSL 验证） |
 | 记录来源 | `source` 参数 | 固定值 `"小红书文案改写-GitHub"`，用于统计来源 |
 
 ### 技术栈

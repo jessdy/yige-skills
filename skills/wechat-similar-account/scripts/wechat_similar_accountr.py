@@ -16,9 +16,9 @@ import urllib.request
 
 
 def get_api_key():
-    """获取 RedFox API Key，依次从环境变量、shell配置文件中读取，均未找到则提示用户配置"""
+    """获取 Yige API Key，依次从环境变量、shell配置文件中读取，均未找到则提示用户配置"""
     # 1. 从环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key:
         return api_key.strip()
 
@@ -35,10 +35,10 @@ def get_api_key():
     # 3. 未找到，提示用户配置
     if system == "Windows":
         config_hint = (
-            "未找到 REDFOX_API_KEY 配置，请按以下步骤配置：\n"
-            "  1. 访问 https://redfox.hk/ 注册账号并获取 API Key\n"
+            "未找到 YIGE_API_KEY 配置，请按以下步骤配置：\n"
+            "  1. 访问 https://yige.zone/ 注册账号并获取 API Key\n"
             "  2. 在 PowerShell 中执行：\n"
-            '     [Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的API Key>", "User")\n'
+            '     [Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的API Key>", "User")\n'
             "  3. 重启终端后生效"
         )
     else:
@@ -50,16 +50,16 @@ def get_api_key():
         else:
             rc_file = "~/.bashrc"
         config_hint = (
-            "未找到 REDFOX_API_KEY 配置，请按以下步骤配置：\n"
-            "  1. 访问 https://redfox.hk/ 注册账号并获取 API Key\n"
-            f"  2. 执行：echo 'export REDFOX_API_KEY=<你的API Key>' >> {rc_file}\n"
+            "未找到 YIGE_API_KEY 配置，请按以下步骤配置：\n"
+            "  1. 访问 https://yige.zone/ 注册账号并获取 API Key\n"
+            f"  2. 执行：echo 'export YIGE_API_KEY=<你的API Key>' >> {rc_file}\n"
             f"  3. 执行：source {rc_file}"
         )
     raise ValueError(config_hint)
 
 
 def _read_api_key_from_unix_shell_config():
-    """从 Unix shell 配置文件中读取 REDFOX_API_KEY"""
+    """从 Unix shell 配置文件中读取 YIGE_API_KEY"""
     config_files = [
         os.path.expanduser("~/.zshrc"),
         os.path.expanduser("~/.bashrc"),
@@ -73,8 +73,8 @@ def _read_api_key_from_unix_shell_config():
             with open(config_file, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     line = line.strip()
-                    # 匹配 export REDFOX_API_KEY=xxx 或 REDFOX_API_KEY=xxx
-                    m = re.match(r'^(?:export\s+)?REDFOX_API_KEY=["\']?(.+?)["\']?\s*$', line)
+                    # 匹配 export YIGE_API_KEY=xxx 或 YIGE_API_KEY=xxx
+                    m = re.match(r'^(?:export\s+)?YIGE_API_KEY=["\']?(.+?)["\']?\s*$', line)
                     if m:
                         return m.group(1)
         except (IOError, OSError):
@@ -83,13 +83,13 @@ def _read_api_key_from_unix_shell_config():
 
 
 def _read_api_key_from_windows():
-    """从 Windows 环境中读取 REDFOX_API_KEY（注册表 + PowerShell Profile）"""
+    """从 Windows 环境中读取 YIGE_API_KEY（注册表 + PowerShell Profile）"""
     # 2a. 尝试从注册表读取用户级环境变量
     try:
         import winreg
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment")
         try:
-            value, _ = winreg.QueryValueEx(key, "REDFOX_API_KEY")
+            value, _ = winreg.QueryValueEx(key, "YIGE_API_KEY")
             if value:
                 return str(value)
         finally:
@@ -109,8 +109,8 @@ def _read_api_key_from_windows():
             with open(profile_path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     line = line.strip()
-                    # 匹配 $env:REDFOX_API_KEY = "xxx" 或 setx REDFOX_API_KEY xxx
-                    m = re.match(r'\$env:REDFOX_API_KEY\s*=\s*["\']?(.+?)["\']?\s*$', line)
+                    # 匹配 $env:YIGE_API_KEY = "xxx" 或 setx YIGE_API_KEY xxx
+                    m = re.match(r'\$env:YIGE_API_KEY\s*=\s*["\']?(.+?)["\']?\s*$', line)
                     if m:
                         return m.group(1)
         except (IOError, OSError):
@@ -123,7 +123,7 @@ def query_similar_accounts(accountId=None, accountName=None, accountType=None):
     """调用API查询对标账号和头部账号"""
     credential = get_api_key()
 
-    url = "https://redfox.hk/story/api/gzhUser/querySimilarAccounts"
+    url = "https://yige.zone/story/api/gzhUser/querySimilarAccounts"
     headers = {
         "Content-Type": "application/json",
         "X-API-KEY": credential
@@ -363,16 +363,16 @@ def _calc_share_rate(works):
     return rate
 
 
-def _add_sparse_data_reasons(parts, account, account_type, redfox_index, article_count_seven, works, content_themes):
+def _add_sparse_data_reasons(parts, account, account_type, yige_index, article_count_seven, works, content_themes):
     """当近7天阅读数或平均阅读数为0时，补充其他维度的推荐理由"""
-    # 红狐指数维度：作为账号综合质量的参考
-    if redfox_index > 0:
-        if redfox_index >= 800:
-            parts.append(f"红狐指数{redfox_index:.0f}，账号综合质量在「{account_type}」赛道中表现突出")
-        elif redfox_index >= 500:
-            parts.append(f"红狐指数{redfox_index:.0f}，账号处于成长阶段，发展潜力可关注")
+    # 一格指数维度：作为账号综合质量的参考
+    if yige_index > 0:
+        if yige_index >= 800:
+            parts.append(f"一格指数{yige_index:.0f}，账号综合质量在「{account_type}」赛道中表现突出")
+        elif yige_index >= 500:
+            parts.append(f"一格指数{yige_index:.0f}，账号处于成长阶段，发展潜力可关注")
         else:
-            parts.append(f"红狐指数{redfox_index:.0f}，同赛道起步阶段定位匹配")
+            parts.append(f"一格指数{yige_index:.0f}，同赛道起步阶段定位匹配")
 
     # 近7天互动数维度：仅在主函数未输出过时才补充
     interactive_count_seven = account.get("interactiveCountSeven") or 0
@@ -456,7 +456,7 @@ def generate_recommendation_reason(account):
     avg_read = account.get("avgReadCount") or 0
     seven_day_reads = calc_seven_day_reads(account)
     article_count_seven = account.get("articleCountSeven") or 0
-    redfox_index = account.get("redfoxIndex") or 0
+    yige_index = account.get("yigeIndex") or 0
     interactive_count_seven = account.get("interactiveCountSeven") or 0
 
     # 从 works 计算实际阅读数据（当 avgReadCount 为 null 时仍可从 works 获取）
@@ -533,7 +533,7 @@ def generate_recommendation_reason(account):
 
     # 6. 当近7天阅读数或平均阅读数为0时，补充其他维度的推荐理由
     if seven_day_reads == 0 or avg_read == 0:
-        _add_sparse_data_reasons(parts, account, account_type, redfox_index, article_count_seven, works, content_themes)
+        _add_sparse_data_reasons(parts, account, account_type, yige_index, article_count_seven, works, content_themes)
 
     # 7. 结论
     if parts:
@@ -575,7 +575,7 @@ def format_query_account_info(query_account):
     account_id = query_account.get("accountId") or "未知"
     account_type = query_account.get("accountType") or "未知"
     account_url = get_account_url(account_id)
-    redfox_index = query_account.get("redfoxIndex") or 0
+    yige_index = query_account.get("yigeIndex") or 0
     avg_read = query_account.get("avgReadCount") or 0
     seven_day_reads = calc_seven_day_reads(query_account)
     article_count_seven = query_account.get("articleCountSeven")
@@ -587,7 +587,7 @@ def format_query_account_info(query_account):
     lines.append(f"- 账号名称：[{account_name}]({account_url})")
     lines.append(f"- 账号ID：{account_id}")
     lines.append(f"- 账号分类：{account_type}")
-    lines.append(f"- 红狐指数：{redfox_index:.0f}" if redfox_index else "- 红狐指数：无")
+    lines.append(f"- 一格指数：{yige_index:.0f}" if yige_index else "- 一格指数：无")
     lines.append(f"- 平均阅读数：{format_number(avg_read)}")
     lines.append(f"- 近7天阅读数：{format_number(seven_day_reads)}")
     lines.append(f"- 近7天发文章数：{article_count_seven}")
@@ -621,17 +621,17 @@ def format_table(accounts, title_line, query_account=None):
     lines = []
     lines.append(title_line)
     lines.append("")
-    lines.append("| 账号名称 | 红狐指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |")
+    lines.append("| 账号名称 | 一格指数 | 平均阅读数 | 近7天阅读数 | 近7日文章发布数 | 推荐理由 |")
     lines.append("| --- | --- | --- | --- | --- | --- |")
 
     qa_id = (query_account or {}).get("accountId")
 
     for account in accounts:
         account_name = account.get("accountName") or "未知"
-        redfox_index = account.get("redfoxIndex") or 0
+        yige_index = account.get("yigeIndex") or 0
         avg_read = format_number(account.get("avgReadCount"))
         seven_day_reads = format_number(calc_seven_day_reads(account))
-        redfox_display = f"{redfox_index:.0f}" if redfox_index else "无"
+        yige_display = f"{yige_index:.0f}" if yige_index else "无"
         account_url = get_account_url(account.get("accountId") or "")
         account_link = f"[{account_name}]({account_url})"
 
@@ -644,10 +644,10 @@ def format_table(accounts, title_line, query_account=None):
 
         # 查询账号标注
         if qa_id and account.get("accountId") == qa_id:
-            lines.append(f"| **{account_link}（查询账号）** | **{redfox_display}** | **{avg_read}** | **{seven_day_reads}** | **{article_count_display}** | —（当前账号） |")
+            lines.append(f"| **{account_link}（查询账号）** | **{yige_display}** | **{avg_read}** | **{seven_day_reads}** | **{article_count_display}** | —（当前账号） |")
         else:
             recommendation = generate_recommendation_reason(account)
-            lines.append(f"| {account_link} | {redfox_display} | {avg_read} | {seven_day_reads} | {article_count_display} | {recommendation} |")
+            lines.append(f"| {account_link} | {yige_display} | {avg_read} | {seven_day_reads} | {article_count_display} | {recommendation} |")
 
     return "\n".join(lines)
 
@@ -667,14 +667,14 @@ def generate_analysis_summary(benchmark_accounts, top_accounts):
     if benchmark_accounts:
         avg_read = sum(a.get("avgReadCount") or 0 for a in benchmark_accounts) / len(benchmark_accounts)
         avg_seven_reads = sum(calc_seven_day_reads(a) for a in benchmark_accounts) / len(benchmark_accounts)
-        avg_redfox = sum(a.get("redfoxIndex") or 0 for a in benchmark_accounts) / len(benchmark_accounts)
-        lines.append(f"- 同阶对标平均阅读数：{format_number(avg_read)}，平均近7天阅读数：{format_number(avg_seven_reads)}，平均红狐指数：{avg_redfox:.0f}")
+        avg_yige = sum(a.get("yigeIndex") or 0 for a in benchmark_accounts) / len(benchmark_accounts)
+        lines.append(f"- 同阶对标平均阅读数：{format_number(avg_read)}，平均近7天阅读数：{format_number(avg_seven_reads)}，平均一格指数：{avg_yige:.0f}")
 
     if top_accounts:
         avg_read = sum(a.get("avgReadCount") or 0 for a in top_accounts) / len(top_accounts)
         avg_seven_reads = sum(calc_seven_day_reads(a) for a in top_accounts) / len(top_accounts)
-        avg_redfox = sum(a.get("redfoxIndex") or 0 for a in top_accounts) / len(top_accounts)
-        lines.append(f"- 高阶标杆平均阅读数：{format_number(avg_read)}，平均近7天阅读数：{format_number(avg_seven_reads)}，平均红狐指数：{avg_redfox:.0f}")
+        avg_yige = sum(a.get("yigeIndex") or 0 for a in top_accounts) / len(top_accounts)
+        lines.append(f"- 高阶标杆平均阅读数：{format_number(avg_read)}，平均近7天阅读数：{format_number(avg_seven_reads)}，平均一格指数：{avg_yige:.0f}")
 
     if benchmark_accounts or top_accounts:
         lines.append("- 对标匹配基于3层加权体系：核心基础匹配(40%)+运营变现匹配(35%)+数据特征匹配(25%)")
@@ -737,7 +737,7 @@ def format_output(query_account, benchmark_accounts, top_accounts):
 
     # 企业采购引导（所有输出结果末尾统一追加）
     output_lines.append("")
-    output_lines.append("> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询")
+    output_lines.append("> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询")
 
     return "\n".join(output_lines)
 

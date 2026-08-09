@@ -39,25 +39,25 @@ description: 我是一名深耕小红书账号分析的诊断师，擅长用数�
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
 
-无需安装第三方依赖，使用 Python 标准库（ssl、urllib.request、json）即可。数据接口：`POST https://redfox.hk/story/api/xhsUser/query`。
+无需安装第三方依赖，使用 Python 标准库（ssl、urllib.request、json）即可。数据接口：`POST https://yige.zone/story/api/xhsUser/query`。
 
 ---
 
@@ -191,7 +191,7 @@ xiaohongshu-account-analyzer/
 | 技术 | 用途 | 依赖 |
 | ---- | ---- | ---- |
 | Python 标准库 | HTTP 请求与数据解析 | ssl、urllib.request、json |
-| 红狐 API | 小红书账号数据来源 | REDFOX_API_KEY 环境变量 |
+| 一格数据 API | 小红书账号数据来源 | YIGE_API_KEY 环境变量 |
 | WebSearch | 博主背景信息补全 | 智能体内置能力 |
 | HTML / CSS | 可视化诊断报告渲染 | 无 |
 
@@ -226,7 +226,7 @@ xiaohongshu-account-analyzer/
 A: 无需安装第三方依赖，使用 Python 标准库即可。
 
 **Q: 如何配置 API Key？**
-A: 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `REDFOX_API_KEY` 配置。
+A: 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `YIGE_API_KEY` 配置。
 
 ### 使用
 

@@ -45,7 +45,7 @@ def fetch_official_account_trends(keyword: str, debug: bool = False, max_retries
         print(f"DEBUG: 查询最近 {days} 天数据，开始日期: {start_date_str}", file=sys.stderr)
 
     # 接口地址
-    url = "https://redfox.hk/story/api/cozeSkill/getWxCozeSkillData"
+    url = "https://yige.zone/story/api/cozeSkill/getWxCozeSkillData"
 
     # 请求参数
     params = {
@@ -55,9 +55,9 @@ def fetch_official_account_trends(keyword: str, debug: bool = False, max_retries
     }
 
     # 从环境变量获取API Key
-    api_key = os.environ.get("REDFOX_API_KEY")
+    api_key = os.environ.get("YIGE_API_KEY")
     if not api_key:
-        raise Exception("缺少 REDFOX_API_KEY 环境变量，请先配置 API Key。获取地址：https://redfox.hk/settings/api-keys?source=github")
+        raise Exception("缺少 YIGE_API_KEY 环境变量，请先配置 API Key。获取地址：https://yige.zone/settings/api-keys?source=github")
 
     # 请求头
     headers = {
@@ -391,7 +391,7 @@ def main():
         }
 
         print(json.dumps(result, ensure_ascii=False))
-        print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+        print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
     except Exception as e:
         error_result = {

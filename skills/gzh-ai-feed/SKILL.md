@@ -7,7 +7,7 @@ description: AI公众号信息源 — Daily scan of AI WeChat public accounts, f
 
 每日自动扫描全网 AI 公众号，按阅读量找出最火的爆款内容，智能聚类后生成精美 HTML 日报。
 
-> API 请求均携带 `AI公众号信息源-SkillHub` 标识。需先配置 API Key，通过环境变量 REDFOX_API_KEY 或 --api-key 参数传入。
+> API 请求均携带 `AI公众号信息源-SkillHub` 标识。需先配置 API Key，通过环境变量 YIGE_API_KEY 或 --api-key 参数传入。
 
 ---
 
@@ -49,30 +49,30 @@ python3 "$SKILL_PATH/assets/daily_report.py" --unsubscribe
 
 ```bash
 # 方式一：环境变量（推荐）
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 方式二：配置文件
 mkdir -p ~/.qoder/apis
-echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json
+echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json
 
 # 然后运行
 python3 "$SKILL_PATH/assets/daily_report.py"
 ```
 
-注册获取 Key：[redfox.hk](https://redfox.hk/settings/api-keys?source=github)
+注册获取 Key：[yige.zone](https://yige.zone/settings/api-keys?source=github)
 
 
 ---
 
 ## 后续使用
 
-前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取个人 API Token：
+前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取个人 API Token：
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -117,4 +117,4 @@ A：日报是特定日期的聚类展示；搜索是实时查询全库内容（�
 A：默认 `~/Downloads/QoderReports/`，文件名格式 `AI日报_2026-05-27.html`。
 
 **Q：额度用完怎么办？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 Token。

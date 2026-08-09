@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "基于多搜索引擎的深度情报调查工具，支持竞品分析、舆情监测、人物背景调查、信息交叉验证",
   "record_save": {
-    "url": "https://redfox.hk/story/api/skill/record/save",
+    "url": "https://yige.zone/story/api/skill/record/save",
     "method": "POST",
     "auth_header": "X-API-Key",
     "auth_note": "apikey必须通过X-API-Key请求头传入，放在Body中会返回code:3106错误",

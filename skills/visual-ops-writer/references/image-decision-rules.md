@@ -227,7 +227,7 @@ python decide_images.py --input article.md --output image_plan.json
 #         （脚本不替 LLM 做 prompt 创作）
 
 # Step 3: 批量生图
-python generate_image.py --batch prompts.json --style redfox --api-key "{apiKey}"
+python generate_image.py --batch prompts.json --style yige --api-key "{apiKey}"
 ```
 
 **为什么不让脚本生成完整 prompt？**
@@ -240,6 +240,6 @@ python generate_image.py --batch prompts.json --style redfox --api-key "{apiKey}
 ## 九、未来扩展方向
 
 - **章节内多生图点**：当前一个章节最多 1 张，未来支持在章节内按段落细分
-- **风格化 hint**：根据 mode 决定 `suggested_prompt_hint` 的风格（redfox / reference / none）
+- **风格化 hint**：根据 mode 决定 `suggested_prompt_hint` 的风格（yige / reference / none）
 - **L2 缓存**：同一文章多次决策时，可基于 hash 缓存
 - **可视化报告**：把决策结果以 HTML 报告呈现，标注在原文高亮位置

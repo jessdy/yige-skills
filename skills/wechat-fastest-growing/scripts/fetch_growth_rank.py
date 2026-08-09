@@ -12,7 +12,7 @@ import requests
 
 
 SKILL_ID = "7633629455969337344"
-API_URL = "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise"
+API_URL = "https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataRaise"
 
 
 def parse_date(date_str: str) -> str:
@@ -37,15 +37,15 @@ def parse_date(date_str: str) -> str:
 
 
 def _extract_api_key_from_config(filepath: str) -> str | None:
-    """从shell配置文件中提取 REDFOX_API_KEY 的值"""
+    """从shell配置文件中提取 YIGE_API_KEY 的值"""
     try:
         with open(filepath, "r", encoding="utf-8") as f:
             for line in f:
                 line_stripped = line.strip()
-                if "REDFOX_API_KEY" not in line_stripped:
+                if "YIGE_API_KEY" not in line_stripped:
                     continue
-                # 匹配 export REDFOX_API_KEY=xxx、export REDFOX_API_KEY="xxx"、set REDFOX_API_KEY=xxx 等
-                m = re.search(r'REDFOX_API_KEY\s*[=:]\s*["\']?([^\s"\'#]+)["\']?', line_stripped)
+                # 匹配 export YIGE_API_KEY=xxx、export YIGE_API_KEY="xxx"、set YIGE_API_KEY=xxx 等
+                m = re.search(r'YIGE_API_KEY\s*[=:]\s*["\']?([^\s"\'#]+)["\']?', line_stripped)
                 if m:
                     return m.group(1)
     except (OSError, UnicodeDecodeError):
@@ -56,12 +56,12 @@ def _extract_api_key_from_config(filepath: str) -> str | None:
 def get_api_key() -> str:
     """获取 API Key，三级回退：环境变量 → shell配置文件 → 提示用户配置"""
     # 第一级：从当前设备环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key:
         return api_key
 
     # 兼容旧变量名
-    api_key = os.getenv(f"COZE_REDFOX_API_{SKILL_ID}")
+    api_key = os.getenv(f"COZE_YIGE_API_{SKILL_ID}")
     if api_key:
         return api_key
 
@@ -83,10 +83,10 @@ def get_api_key() -> str:
     # 第三级：提示用户配置
     raise ValueError(
         "缺少 API Key，请按以下步骤配置：\n"
-        "1. 访问 https://redfox.hk/login 注册账号\n"
+        "1. 访问 https://yige.zone/login 注册账号\n"
         "2. 登录后在个人中心获取 API Key（格式：ak_xxxxxxxx）\n"
-        "3. 设置环境变量：export REDFOX_API_KEY=<你的apikey>\n"
-        "   或永久配置：echo 'export REDFOX_API_KEY=<你的apikey>' >> ~/.bashrc && source ~/.bashrc"
+        "3. 设置环境变量：export YIGE_API_KEY=<你的apikey>\n"
+        "   或永久配置：echo 'export YIGE_API_KEY=<你的apikey>' >> ~/.bashrc && source ~/.bashrc"
     )
 
 

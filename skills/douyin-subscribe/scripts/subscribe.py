@@ -30,15 +30,15 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/dy/data/listWorkByAccount"
-ENV_KEY = "REDFOX_API_KEY"
+API_URL = "https://yige.zone/story/api/dy/data/listWorkByAccount"
+ENV_KEY = "YIGE_API_KEY"
 
 SUBSCRIPTIONS_FILE = Path.home() / ".qoder" / "douyin_subscriptions.json"
 MAX_SUBSCRIPTIONS = 20
 
 # 失败计数文件（规则3：同一参数 6h 内 3 次失败后拒绝调用）
 FAILURES_FILE = Path.home() / ".qoder" / "douyin_subscribe_failures.json"
-SUPPORT_EMAIL = "redfoxdata@proton.me"
+SUPPORT_EMAIL = "yigedata@proton.me"
 RATE_LIMIT_MAX_FAILURES = 3
 RATE_LIMIT_WINDOW_HOURS = 6
 
@@ -77,10 +77,10 @@ def get_api_key(cli_key=None):
     env_key = os.environ.get(ENV_KEY)
     if env_key:
         return env_key
-    error("未找到 REDFOX_API_KEY，请先配置 API Key：")
-    print(f"  {CYAN}方案1（推荐）：{RESET}export REDFOX_API_KEY=ak_你的密钥")
+    error("未找到 YIGE_API_KEY，请先配置 API Key：")
+    print(f"  {CYAN}方案1（推荐）：{RESET}export YIGE_API_KEY=ak_你的密钥")
     print(f"  {CYAN}方案2：{RESET}命令行参数 --api-key ak_你的密钥")
-    print(f"  {CYAN}获取地址：{RESET}https://redfox.hk/settings/api-keys?source=github")
+    print(f"  {CYAN}获取地址：{RESET}https://yige.zone/settings/api-keys?source=github")
     sys.exit(1)
 
 
@@ -1051,7 +1051,7 @@ def generate_html_report(works, subscriptions, date_label, empty_accounts, outpu
     html += f"""
 <div class="footer">
   订阅账号: {len(subscriptions)} 个 | 作品总数: {len(works)} 条 | 无更新: {len(empty_accounts)} 个 | 限流: {len(rate_limited_accounts)} 个<br>
-  由抖音账号订阅追踪自动生成 | redfox.hk
+  由抖音账号订阅追踪自动生成 | yige.zone
 </div>
 
 </div>
@@ -1235,7 +1235,7 @@ Examples:
         session.verify = True
         session.headers.update({
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": api_key,
+            "YIGE_API_KEY": api_key,
         })
 
         date_str = args.date or ""
@@ -1319,7 +1319,7 @@ Examples:
             info(f"拉取完成: 共 {len(works)} 条作品")
 
         # ── 未收录账号提示 ──
-        NOT_FOUND_MSG = "未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系红狐数据咨询：redfoxdata@proton.me"
+        NOT_FOUND_MSG = "未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系一格数据咨询：yigedata@proton.me"
 
         # ── 输出（终端 / Markdown / HTML） ──
         want_html = getattr(args, 'html', False)

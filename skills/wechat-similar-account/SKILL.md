@@ -15,19 +15,19 @@ description: 公众号创作者对标账号匹配工具，基于3层加权匹配
 - 🚀 推荐高阶标杆账号（模式成熟可追赶）
 - 📈 基于3层加权体系生成个性化推荐理由
 
-适用于公众号创作者、内容运营、账号投放决策等需要对标参考的场景。基于 [RedFox](https://redfox.hk/) 数据平台提供支持。
+适用于公众号创作者、内容运营、账号投放决策等需要对标参考的场景。基于 [Yige](https://yige.zone/) 数据平台提供支持。
 
 ## 功能特性
 
 ### 🎯 核心功能
 - **🔍 智能查询**：支持按公众号名称、公众号ID、账号分类三种方式查询
-- **📊 账号诊断**：展示查询账号的基本信息、红狐指数、阅读数据及近5篇文章
+- **📊 账号诊断**：展示查询账号的基本信息、一格指数、阅读数据及近5篇文章
 - **🎯 同阶对标**：推荐阅读数最接近的同赛道账号，可直接复制运营玩法
 - **🚀 高阶标杆**：推荐阅读数3-5倍的成熟账号，模式可参考追赶
 
 ### ✨ 特色亮点
 - **⚖️ 3层加权匹配**：核心基础(40%) + 运营变现(35%) + 数据特征(25%)，推荐结果科学可落地
-- **💡 7维度推荐理由**：涵盖爆文标题引用、发文时段规律、分享传播力、互动率等，数据稀疏时自动补充红狐指数/近7天互动等维度
+- **💡 7维度推荐理由**：涵盖爆文标题引用、发文时段规律、分享传播力、互动率等，数据稀疏时自动补充一格指数/近7天互动等维度
 - **🔄 订阅推送**：支持订阅对标账号推送，每日更新最新数据
 - **📱 多输入方式**：名称/ID/分类灵活查询，组合查询更精准
 
@@ -35,21 +35,21 @@ description: 公众号创作者对标账号匹配工具，基于3层加权匹配
 
 ### 前置条件
 - Python 3.x 运行环境（仅依赖标准库，无需 pip install）
-- 红狐Hub API Key（前往 [RedFox 官网](https://redfox.hk/) 注册获取，新用户赠送免费积分）
+- 一格Hub API Key（前往 [Yige 官网](https://yige.zone/) 注册获取，新用户赠送免费积分）
 
 ### 获取 API Key
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
-`REDFOX_API_KEY` 从环境变量获取。若未设置，Agent 应主动帮用户配置：
+`YIGE_API_KEY` 从环境变量获取。若未设置，Agent 应主动帮用户配置：
 
 | 系统 | 配置方式 | 验证命令 |
 | --- | --- | --- |
-| Windows | `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` | `echo %REDFOX_API_KEY%` |
-| macOS/Linux | `echo 'export REDFOX_API_KEY=<值>' >> ~/.zshrc && source ~/.zshrc` | `echo $REDFOX_API_KEY` |
+| Windows | `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` | `echo %YIGE_API_KEY%` |
+| macOS/Linux | `echo 'export YIGE_API_KEY=<值>' >> ~/.zshrc && source ~/.zshrc` | `echo $YIGE_API_KEY` |
 
 > 配置后需重启终端生效，确保换一个 skill 也能读取到。
 
@@ -57,7 +57,7 @@ description: 公众号创作者对标账号匹配工具，基于3层加权匹配
 
 | 变量名 | 必填 | 说明 |
 | --- | --- | --- |
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
 
 ## 使用指南
 
@@ -94,7 +94,7 @@ python scripts/wechat_similar_accountr.py --account_name "科技前沿" --accoun
 ```
 
 #### 5. 按分类查询注意事项
-红狐数据 平台的分类体系与自然语言存在差异，`--account_type` 查询成功率较低。当用户以自然语言分类（如「风景」「情感」）查询时，应：
+一格数据 平台的分类体系与自然语言存在差异，`--account_type` 查询成功率较低。当用户以自然语言分类（如「风景」「情感」）查询时，应：
 1. 查找该领域代表性公众号（如「风景」→「中国国家地理」，「情感」→「夜听」）
 2. 使用 `--account_name "代表性名称"` 执行查询
 3. 从返回结果的「账号分类」字段确认平台内部归类
@@ -196,14 +196,14 @@ wechat-similar-account/
 | --- | --- |
 | **运行环境** | Python 3.x |
 | **依赖** | Python 标准库（json、argparse、os、urllib、platform、re） |
-| **数据源** | 红狐数据 API（https://redfox.hk/） |
-| **API 接口** | POST https://redfox.hk/story/api/gzhUser/querySimilarAccounts |
+| **数据源** | 一格数据 API（https://yige.zone/） |
+| **API 接口** | POST https://yige.zone/story/api/gzhUser/querySimilarAccounts |
 
 ### 核心模块说明
 
 | 模块 | 职责 |
 | --- | --- |
-| `query_similar_accounts()` | 调用 红狐数据 API 查询对标账号和头部账号（API返回 currentAccount + benchmarkAccounts + topAccounts） |
+| `query_similar_accounts()` | 调用 一格数据 API 查询对标账号和头部账号（API返回 currentAccount + benchmarkAccounts + topAccounts） |
 | `format_output()` | 格式化完整文本输出，包含查询账号信息、对标表格、分析总结 |
 | `generate_recommendation_reason()` | 基于3层加权匹配体系生成推荐理由，支持7个维度的组合输出 |
 | `_analyze_publish_schedule()` | 从文章 publishTime 推断固定发文时段（如"早间7点固定发文""晚间时段为主"） |
@@ -229,7 +229,7 @@ API (`POST /gzhUser/querySimilarAccounts`) **返回以下字段**：
 | `interactiveCountSeven` | 近7天**互动量**（非阅读量），不可作为阅读数使用 |
 | `avgReadCount` | 平均阅读数，可能为 null，此时需从 works 中计算 effective_avg |
 | `clicksCount` | 文章阅读数，最大值为 100001（10w+ 封顶值） |
-| `redfoxIndex` | 红狐指数，账号综合质量评分 |
+| `yigeIndex` | 一格指数，账号综合质量评分 |
 | `works` | 近期文章列表，包含 title/clicksCount/likeCount/commentCount/watchCount/interactiveCount/shareCount/publishTime/workUrl 等 |
 
 ### 推荐理由生成维度
@@ -241,7 +241,7 @@ API (`POST /gzhUser/querySimilarAccounts`) **返回以下字段**：
 | 3 | 更新节奏 + 内容策略 + 发文时段 | articleCountSeven + works | 日更高产，图文深度/中等深度内容，早间7点固定发文 |
 | 4 | 互动率 + 分享率 | works中互动/分享/阅读数据 | 互动率3.2%，分享率5.1%，内容传播力强 |
 | 5 | 近7天互动数 | interactiveCountSeven | 近7天互动49.8w，用户活跃度可参考 |
-| 6 | 红狐指数阶段定位 | redfoxIndex + accountType | 红狐指数932，账号综合质量在「**文摘精选**」赛道中表现突出 |
+| 6 | 一格指数阶段定位 | yigeIndex + accountType | 一格指数932，账号综合质量在「**文摘精选**」赛道中表现突出 |
 | 7 | 数据稀疏补充 | 多维度兜底 | 内容方向：亲子育儿/健康养生，近7天发文5篇 |
 
 **关键机制**：
@@ -253,12 +253,12 @@ API (`POST /gzhUser/querySimilarAccounts`) **返回以下字段**：
 
 ### 安装相关问题
 
-**Q1: 提示 "未找到 REDFOX_API_KEY 配置" 怎么办？**
+**Q1: 提示 "未找到 YIGE_API_KEY 配置" 怎么办？**
 
 A: 请按以下步骤配置：
-1. 访问 https://redfox.hk/ 注册账号并获取 API Key
-2. Windows 用户在 PowerShell 执行：`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的API Key>", "User")`
-3. macOS/Linux 用户执行：`echo 'export REDFOX_API_KEY=<你的API Key>' >> ~/.zshrc` 然后 `source ~/.zshrc`
+1. 访问 https://yige.zone/ 注册账号并获取 API Key
+2. Windows 用户在 PowerShell 执行：`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的API Key>", "User")`
+3. macOS/Linux 用户执行：`echo 'export YIGE_API_KEY=<你的API Key>' >> ~/.zshrc` 然后 `source ~/.zshrc`
 4. 重启终端后生效
 
 **Q2: 需要安装额外的 Python 依赖吗？**
@@ -287,7 +287,7 @@ A: 同阶对标的阅读数与查询账号最接近，可直接复制玩法；�
 
 **Q6: 按分类查询无结果怎么办？**
 
-A: 红狐数据 平台的分类体系与自然语言存在差异，建议使用该领域代表性公众号名称查询。例如「风景」→「中国国家地理」，「情感」→「夜听」。
+A: 一格数据 平台的分类体系与自然语言存在差异，建议使用该领域代表性公众号名称查询。例如「风景」→「中国国家地理」，「情感」→「夜听」。
 
 ---
 
@@ -297,7 +297,7 @@ A: 红狐数据 平台的分类体系与自然语言存在差异，建议使用�
 
 A: 请检查以下几点：
 1. 确认 API Key 是否正确且未过期
-2. 确认网络可以正常访问 https://redfox.hk/
+2. 确认网络可以正常访问 https://yige.zone/
 3. 检查 API Key 是否有足够的积分余额
 
 **Q8: 输出结果中某些字段为空或为0？**
@@ -309,4 +309,4 @@ A: 这是正常现象，说明该账号在对应数据维度上暂无数据记�
 ### 获取帮助
 
 如有其他问题，可通过以下方式获取帮助：
-- 📧 访问 [红狐数据 官网](https://redfox.hk/) 了解更多
+- 📧 访问 [一格数据 官网](https://yige.zone/) 了解更多

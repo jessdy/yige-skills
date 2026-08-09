@@ -39,7 +39,7 @@ class XSource(BaseSource):
         if code not in SUCCESS_CODES:
             msg = result.get("msg", "")
             if code == 3203:
-                raise PlatformUnavailable(f"X 上游能力故障（RedFox 侧）: {msg}")
+                raise PlatformUnavailable(f"X 上游能力故障（Yige 侧）: {msg}")
             raise PlatformUnavailable(f"X 搜索接口错误 (code {code}): {msg}")
 
         data = result.get("data") or {}

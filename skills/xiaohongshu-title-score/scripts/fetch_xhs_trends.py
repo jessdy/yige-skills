@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 小红书热门数据查询脚本
-- 接口地址：https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData
-- 认证方式：X-API-KEY（通过环境变量 REDFOX_API_KEY 获取）
+- 接口地址：https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData
+- 认证方式：X-API-KEY（通过环境变量 YIGE_API_KEY 获取）
 """
 
 import os
@@ -23,7 +23,7 @@ def get_api_key():
     """获取 API Key，优先从环境变量，其次从 shell 配置文件，仍未获取则提示用户配置"""
 
     # 1. 从当前环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key:
         return api_key
 
@@ -34,7 +34,7 @@ def get_api_key():
         try:
             result = subprocess.run(
                 ['powershell', '-NoProfile', '-Command',
-                 '[Environment]::GetEnvironmentVariable("REDFOX_API_KEY", "User")'],
+                 '[Environment]::GetEnvironmentVariable("YIGE_API_KEY", "User")'],
                 capture_output=True, text=True, timeout=5
             )
             if result.returncode == 0 and result.stdout.strip():
@@ -57,9 +57,9 @@ def get_api_key():
                     with open(config_file, 'r', encoding='utf-8') as f:
                         for line in f:
                             line = line.strip()
-                            # 匹配: export REDFOX_API_KEY="value" 或 export REDFOX_API_KEY=value
+                            # 匹配: export YIGE_API_KEY="value" 或 export YIGE_API_KEY=value
                             match = re.search(
-                                r'export\s+REDFOX_API_KEY\s*=\s*["\']?([^"\'\s]+)["\']?',
+                                r'export\s+YIGE_API_KEY\s*=\s*["\']?([^"\'\s]+)["\']?',
                                 line
                             )
                             if match:
@@ -73,21 +73,21 @@ def get_api_key():
     system = platform.system()
     if system == "Windows":
         hint = (
-            "缺少 API Key 配置，请设置环境变量 REDFOX_API_KEY。\n"
+            "缺少 API Key 配置，请设置环境变量 YIGE_API_KEY。\n"
             "Windows 设置方式：\n"
-            "  PowerShell 永久设置：[Environment]::SetEnvironmentVariable('REDFOX_API_KEY', '<你的apikey>', 'User')\n"
-            "  CMD 永久设置：setx REDFOX_API_KEY <你的apikey>\n"
+            "  PowerShell 永久设置：[Environment]::SetEnvironmentVariable('YIGE_API_KEY', '<你的apikey>', 'User')\n"
+            "  CMD 永久设置：setx YIGE_API_KEY <你的apikey>\n"
             "设置后需重启终端生效。\n"
-            "获取 API Key: 访问 https://redfox.hk 注册账号，在个人中心获取"
+            "获取 API Key: 访问 https://yige.zone 注册账号，在个人中心获取"
         )
     else:
         hint = (
-            "缺少 API Key 配置，请设置环境变量 REDFOX_API_KEY。\n"
+            "缺少 API Key 配置，请设置环境变量 YIGE_API_KEY。\n"
             "macOS/Linux 设置方式：\n"
             "  在 ~/.zshrc（zsh）或 ~/.bashrc（bash）中添加：\n"
-            "  export REDFOX_API_KEY=<你的apikey>\n"
+            "  export YIGE_API_KEY=<你的apikey>\n"
             "  然后 source ~/.zshrc 或 source ~/.bashrc 使其生效\n"
-            "获取 API Key: 访问 https://redfox.hk 注册账号，在个人中心获取"
+            "获取 API Key: 访问 https://yige.zone 注册账号，在个人中心获取"
         )
     raise ValueError(hint)
 
@@ -108,7 +108,7 @@ def fetch_xhs_trends(keyword: str, debug: bool = False, max_retries: int = 3, st
     """
     api_key = get_api_key()
 
-    url = "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+    url = "https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData"
     params = {"keyword": keyword, "source": "小红书标题生成与评分-GitHub"}
     if start_date:
         params["startDate"] = start_date

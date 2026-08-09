@@ -7,7 +7,7 @@ description: 小红书账号榜单追踪分析工具，支持查询日榜周榜�
 
 ## 概述
 
-本 Skill 基于 `https://redfox.hk/story/api/xhsData/query` 数据接口，
+本 Skill 基于 `https://yige.zone/story/api/xhsData/query` 数据接口，
 提供小红书全品类/分品类账号每日/每周/每月的表现榜单查询。支持三大核心能力：
 1. **排名查询** — 查日榜、周榜、月榜 TOP50
 2. **领域查询** — 按品类筛选（美妆、美食、旅行、母婴、健身/体育锻炼等）
@@ -20,20 +20,20 @@ description: 小红书账号榜单追踪分析工具，支持查询日榜周榜�
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ---

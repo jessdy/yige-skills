@@ -4,7 +4,7 @@
 TikTok 主页视频批量提取 — 根据 TikTok 账号（主页链接 / @handle / secUserId）
 拉取主页作品列表，解析无水印下载链接，批量下载到本地
 ================================================================================
-基于 redfox.hk API：
+基于 yige.zone API：
   1. POST /story/api/tiktok/ability/userAwemeList       — 拉取用户主页作品数据
   2. POST /story/api/parseWork/videoDownload/tiktok     — 解析视频下载链接
 
@@ -48,12 +48,12 @@ warnings.filterwarnings("ignore", category=Warning)
 warnings.filterwarnings("ignore", message=".*NotOpenSSLWarning.*")
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_BASE = "https://redfox.hk"
+API_BASE = "https://yige.zone"
 WORKS_ENDPOINT = "/story/api/tiktok/ability/userAwemeList"
 DOWNLOAD_ENDPOINT = "/story/api/parseWork/videoDownload/tiktok"
 
-ENV_KEY = "REDFOX_API_KEY"
-CONFIG_FILE = Path.home() / ".qoder" / "apis" / "redfox.json"
+ENV_KEY = "YIGE_API_KEY"
+CONFIG_FILE = Path.home() / ".qoder" / "apis" / "yige.json"
 
 # 接口调用来源标识（随每次 API 请求上送）
 REQUEST_SOURCE = "TikTok主页视频批量提取-GitHub"
@@ -72,7 +72,7 @@ BROWSER_UA = (
 FAILURES_FILE = Path.home() / ".qoder" / "tiktok-home-downloader_failures.json"
 RATE_LIMIT_MAX_FAILURES = 5      # 6 小时内累计失败次数上限
 RATE_LIMIT_WINDOW_HOURS = 6      # 失败计数窗口
-SUPPORT_EMAIL = "redfoxdata@proton.me"
+SUPPORT_EMAIL = "yigedata@proton.me"
 
 # ─── 终端颜色 ──────────────────────────────────────────────────────────────────────
 GREEN = "\033[92m"
@@ -398,7 +398,7 @@ class TikTokHomeVideoExtractor:
         url = f"{API_BASE}{WORKS_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:
@@ -506,7 +506,7 @@ class TikTokHomeVideoExtractor:
         url = f"{API_BASE}{DOWNLOAD_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:
@@ -719,7 +719,7 @@ def print_markdown_table(account: dict, results: list[dict], page_num: int = 1,
         parts.append(f"{fail_count} 条下载失败")
     print(f"**合计：** {total} 条作品，{'，'.join(parts)}")
     if fail_count > 0:
-        print(f"\n> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **redfoxdata@proton.me** 处理。")
+        print(f"\n> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **yigedata@proton.me** 处理。")
     print(f"\n> 💡 支持输入想提取的作品时间范围，如 `--date-start 2026-07-01 --date-end 2026-07-20`")
     if success_count > 0:
         print(f"> 💾 需要将这 {success_count} 条作品批量下载到本地吗？直接告诉我即可。")
@@ -989,8 +989,8 @@ def main():
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        error("未找到 API Key，请设置 REDFOX_API_KEY 环境变量或使用 --api-key 参数")
-        print("  获取 Key: https://redfox.hk/settings/api-keys?source=github")
+        error("未找到 API Key，请设置 YIGE_API_KEY 环境变量或使用 --api-key 参数")
+        print("  获取 Key: https://yige.zone/settings/api-keys?source=github")
         sys.exit(1)
 
     # ── 下载目录 ──

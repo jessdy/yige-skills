@@ -39,7 +39,7 @@ version: 1.0.0
 
 - Python 3.8 及以上版本
 - `requests` 库：`pip install requests`
-- 红狐Hub API Key，格式 `ak_xxxxxxxx`
+- 一格Hub API Key，格式 `ak_xxxxxxxx`
 
 ### 安装方式
 
@@ -64,29 +64,29 @@ pip install requests
 python scripts/fetch_growth_rank.py --rankDate yesterday
 ```
 
-安装完成后，访问 [红狐 Hub](https://redfox.hk/)网站 [登录](https://redfox.hk/login) 注册并获取 API Key（新用户获赠免费积分），配置环境变量 `REDFOX_API_KEY`（见下方），重启终端即可在对话中发起查询。
+安装完成后，访问 [一格数据 Hub](https://yige.zone/)网站 [登录](https://yige.zone/login) 注册并获取 API Key（新用户获赠免费积分），配置环境变量 `YIGE_API_KEY`（见下方），重启终端即可在对话中发起查询。
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 |---|---|---|
-| `REDFOX_API_KEY` | 是 | 红狐 Hub API 访问密钥，格式 `ak_xxxxxxxx` |
-| `COZE_REDFOX_API_7633629455969337344` | 否 | 兼容旧变量名（脚本自动回退读取） |
+| `YIGE_API_KEY` | 是 | 一格数据 Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `COZE_YIGE_API_7633629455969337344` | 否 | 兼容旧变量名（脚本自动回退读取） |
 
 **macOS / Linux**：
 
 ```bash
-echo 'export REDFOX_API_KEY=<你的apikey>' >> ~/.zshrc
+echo 'export YIGE_API_KEY=<你的apikey>' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Windows**（PowerShell）：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的apikey>", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的apikey>", "User")
 ```
 
-配置后需重启终端。验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）。
+配置后需重启终端。验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）。
 
 > **三级回退机制**：脚本读取 API Key 时，按 环境变量 → shell 配置文件（~/.bashrc / ~/.zshrc / ~/.bash_profile / ~/.profile）→ 提示用户配置 的顺序自动获取，无需显式传入。
 
@@ -94,14 +94,14 @@ source ~/.zshrc
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-- `REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
+- `YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
 - 脚本支持三级回退读取：环境变量 → shell 配置文件自动探测 → 提示手动配置
 - 推荐通过环境变量持久化配置（详见上方 [环境变量配置](#环境变量配置)）
 
@@ -236,7 +236,7 @@ wechat-fastest-growing/
 ├── SKILL.md                          # 产品说明文档
 ├── references/
 │   ├── core_workflow.md              # 标准流程、公式、分析字段与硬性约束
-│   └── api-spec.md                   # 红狐 Hub API 参数与响应说明
+│   └── api-spec.md                   # 一格数据 Hub API 参数与响应说明
 └── scripts/
     └── fetch_growth_rank.py          # 调用 API 获取榜单并输出 Markdown 表格
 ```
@@ -247,14 +247,14 @@ wechat-fastest-growing/
 |---|---|
 | 运行环境 | Python 3.8+ |
 | 核心依赖 | `requests`（其余为标准库） |
-| 数据来源 | 红狐 Hub API（`getGzhCozeSkillDataRaise`） |
+| 数据来源 | 一格数据 Hub API（`getGzhCozeSkillDataRaise`） |
 | 部署方式 | SkillHub / ClawHub / 命令行脚本 |
 
 ### 核心模块
 
 | 模块 | 职责 |
 |---|---|
-| `fetch_growth_rank.py` | 解析 `rankDate`、调用 红狐 Hub API、输出 Markdown 榜单表格（标题为可点击链接） |
+| `fetch_growth_rank.py` | 解析 `rankDate`、调用 一格数据 Hub API、输出 Markdown 榜单表格（标题为可点击链接） |
 | `core_workflow.md` | 用户意图映射、`rankDate` 规则、stdout 原样约束、三点分析模板与条数上限 |
 | `api-spec.md` | 接口地址、鉴权、请求参数与字段说明 |
 
@@ -265,11 +265,11 @@ wechat-fastest-growing/
 
 **Q1：未检测到 API Key 怎么办？**
 
-按 [一键安装](#一键安装) 注册 红狐Hub 并配置 `REDFOX_API_KEY`。新注册用户有免费积分。
+按 [一键安装](#一键安装) 注册 一格Hub 并配置 `YIGE_API_KEY`。新注册用户有免费积分。
 
 **Q2：如何验证配置已生效？**
 
-执行 `echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确认输出为 `ak_` 开头。若未生效，重启终端。
+执行 `echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确认输出为 `ak_` 开头。若未生效，重启终端。
 
 **Q3：支持哪些部署方式？**
 
@@ -301,7 +301,7 @@ wechat-fastest-growing/
 
 **Q8：脚本返回空数据或失败？**
 
-确认 `REDFOX_API_KEY` 有效、日期在 30 天窗口内。查看脚本 stderr 错误信息，勿用模型补齐排行。
+确认 `YIGE_API_KEY` 有效、日期在 30 天窗口内。查看脚本 stderr 错误信息，勿用模型补齐排行。
 
 ---
 
@@ -309,7 +309,7 @@ wechat-fastest-growing/
 
 **Q9：API Key 如何保管？**
 
-`REDFOX_API_KEY` 仅通过环境变量读取，请勿写入代码仓库或公开分享。
+`YIGE_API_KEY` 仅通过环境变量读取，请勿写入代码仓库或公开分享。
 
 **Q10：数据使用边界？**
 

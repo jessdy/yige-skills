@@ -48,21 +48,21 @@ description: "短剧-公众号信息源 — 每日扫描公众号短剧爆款文
 ### 前置条件
 
 - Python 3 运行环境
-- 红狐Hub API Key(前往 [红狐Hub 官网](https://redfox.hk/) 注册获取,格式为 `ak_xxxxxxxx`)
+- 一格Hub API Key(前往 [一格Hub 官网](https://yige.zone/) 注册获取,格式为 `ak_xxxxxxxx`)
 
 ### 环境变量配置
 
-数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `REDFOX_API_KEY` 获取。
+数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `YIGE_API_KEY` 获取。
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥 |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥 |
 
 **配置方式**:
 
-- **macOS/Linux**:将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
-- **Windows**:`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`(需重启终端)
-- 配置后验证:`echo $REDFOX_API_KEY`(macOS/Linux)或 `echo %REDFOX_API_KEY%`(Windows)
+- **macOS/Linux**:将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
+- **Windows**:`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`(需重启终端)
+- 配置后验证:`echo $YIGE_API_KEY`(macOS/Linux)或 `echo %YIGE_API_KEY%`(Windows)
 
 > 查询接口调用时通过 `source` 字段同步记录（值为 `短剧公众号信息源-GitHub`），无需额外请求保存接口。
 
@@ -379,7 +379,7 @@ python3 "$SKILL_PATH/assets/daily_report.py" --unsubscribe
 | 组件 | 技术 | 说明 |
 |------|------|------|
 | 运行环境 | Python 3 | 脚本语言 |
-| 数据源 | 红狐Hub API | 公众号短剧数据接口 |
+| 数据源 | 一格Hub API | 公众号短剧数据接口 |
 | 鉴权方式 | X-API-KEY | 请求头鉴权 |
 | 输出格式 | HTML/CSS | 深色主题可视化日报 |
 | 缓存机制 | JSON 文件 | 1 小时有效期 |
@@ -414,7 +414,7 @@ python3 "$SKILL_PATH/assets/daily_report.py" --unsubscribe
 **保持一致的部分**:日期预检机制、数据更新规则、批量查询策略、题材聚类算法、去重机制、缓存机制、输出格式模板、订阅功能、创作趋势分析逻辑。
 
 **注意事项**:
-1. API 接口使用相同端点 `https://redfox.hk/story/api/parseWork/queryPlayletMsgs`
+1. API 接口使用相同端点 `https://yige.zone/story/api/parseWork/queryPlayletMsgs`
 2. 必须设置 `platform: 0` 才能获取公众号数据
 3. 公众号和抖音使用不同的缓存文件,互不干扰
 
@@ -425,7 +425,7 @@ python3 "$SKILL_PATH/assets/daily_report.py" --unsubscribe
 
 **Q1: API Key 怎么获取?**
 
-A: 前往 [红狐Hub 官网](https://redfox.hk/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+A: 前往 [一格Hub 官网](https://yige.zone/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 **Q2: 配置了 API Key 但提示无效?**
 
@@ -461,11 +461,11 @@ A: 常见错误码对照:
 | 错误码 | 含义 | 解决方式 |
 |--------|------|---------|
 | 1002 | 每页条数超过 200 | 脚本自动限制,无需处理 |
-| 3106 | 缺少 API Key | 配置 `REDFOX_API_KEY` 环境变量 |
+| 3106 | 缺少 API Key | 配置 `YIGE_API_KEY` 环境变量 |
 | 3107 | API Key 无效 | 检查 Key 格式和有效性 |
 | 3108 | 请求过于频繁 | 等待后重试 |
 | 3109 | 今日调用达上限 | 次日再试 |
-| 3201 | 积分不足 | 前往红狐Hub 充值 |
+| 3201 | 积分不足 | 前往一格Hub 充值 |
 
 ### 获取帮助
 

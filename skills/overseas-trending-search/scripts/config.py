@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
 overseas-trending-search — 统一配置与密钥加载
-密钥加载优先级：--api-key 参数 > REDFOX_API_KEY 环境变量 > ~/.qoder/apis/redfox.json
+密钥加载优先级：--api-key 参数 > YIGE_API_KEY 环境变量 > ~/.qoder/apis/yige.json
 """
 
 import json
 import os
 from pathlib import Path
 
-# ─── RedFox 网关 ──────────────────────────────────────────────────────────────────
-BASE_URL = "https://redfox.hk/story/api"
+# ─── Yige 网关 ──────────────────────────────────────────────────────────────────
+BASE_URL = "https://yige.zone/story/api"
 
 X_SEARCH_API = f"{BASE_URL}/x/search"
 X_DETAIL_API = f"{BASE_URL}/x/tweetDetail"
@@ -25,8 +25,8 @@ YOUTUBE_DETAIL_API = f"{BASE_URL}/youtube/videoDetail"
 YOUTUBE_COMMENTS_API = f"{BASE_URL}/youtube/videoComments"
 
 # ─── 密钥与渠道 ────────────────────────────────────────────────────────────────────
-CONFIG_FILE = Path.home() / ".qoder" / "apis" / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = Path.home() / ".qoder" / "apis" / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "ChinaTrendingDigest-RedSkill"
 
 DEFAULT_OUTPUT_DIR = Path.home() / "Downloads" / "QoderOverseasTrending"
@@ -34,7 +34,7 @@ SUCCESS_CODES = (200, 2000)
 
 
 def get_api_key(cli_key=None):
-    """按优先级加载 RedFox API Key，找不到返回 None"""
+    """按优先级加载 Yige API Key，找不到返回 None"""
     if cli_key:
         return cli_key
     env_key = os.environ.get(ENV_KEY)
@@ -52,7 +52,7 @@ def get_api_key(cli_key=None):
 
 
 def make_session(api_key):
-    """构造带认证头的 requests.Session（RedFox 网关统一 X-API-KEY 认证）"""
+    """构造带认证头的 requests.Session（Yige 网关统一 X-API-KEY 认证）"""
     import requests
     session = requests.Session()
     session.headers.update({
@@ -66,9 +66,9 @@ def print_no_key_guide():
     print("╔══════════════════════════════════════════════════════╗")
     print("║  未配置 API Key，请通过以下方式之一配置：            ║")
     print("║                                                      ║")
-    print("║  export REDFOX_API_KEY=ak_你的密钥                   ║")
+    print("║  export YIGE_API_KEY=ak_你的密钥                   ║")
     print("║  python3 digest.py --api-key ak_你的密钥              ║")
-    print("║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/redfox.json ║")
+    print("║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/yige.json ║")
     print("║                                                      ║")
-    print("║  注册获取 Key: https://redfox.hk/settings/api-keys   ║")
+    print("║  注册获取 Key: https://yige.zone/settings/api-keys   ║")
     print("╚══════════════════════════════════════════════════════╝")

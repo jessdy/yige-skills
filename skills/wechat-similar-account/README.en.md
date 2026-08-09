@@ -10,7 +10,7 @@ A benchmark account matching tool for WeChat Official Account creators. Using a 
 
 - **Dual-group smart recommendations**: Delivers both "Peer Benchmarks" (copyable playbooks) and "Top Aspirationals" (mature models to chase) in a single query, meeting needs at every growth stage.
 - **3-tier weighted matching**: Core fundamentals (niche/tags/content format/audience profile) + Operations & monetization (cadence/traffic/private domain/revenue) + Data characteristics (engagement structure/viral patterns/resource endowments)—scientifically grounded and actionable.
-- **7-dimension recommendation reasons**: Each recommended account comes with detailed analysis spanning viral insights, content focus, publishing cadence, engagement rate, and share rate—with automatic fallback to RedFox Index when data is sparse.
+- **7-dimension recommendation reasons**: Each recommended account comes with detailed analysis spanning viral insights, content focus, publishing cadence, engagement rate, and share rate—with automatic fallback to Yige Index when data is sparse.
 - **Subscription push**: Subscribe to benchmark account push notifications with daily data updates to continuously track niche dynamics.
 
 **Intended Users**
@@ -27,7 +27,7 @@ A benchmark account matching tool for WeChat Official Account creators. Using a 
 ### Core Capabilities
 
 - **Smart query**: Search by account name, account ID, or account category—also supports combined queries for precise targeting.
-- **Account diagnostics**: Display basic account info, RedFox Index, readership data, and the latest 5 articles for the queried account.
+- **Account diagnostics**: Display basic account info, Yige Index, readership data, and the latest 5 articles for the queried account.
 - **Peer benchmark recommendations**: Recommend same-niche accounts with the closest readership numbers—directly copy their operational playbooks.
 - **Top aspirational recommendations**: Recommend mature accounts with 3–5× your readership—reference their operational models to catch up.
 
@@ -42,10 +42,10 @@ A benchmark account matching tool for WeChat Official Account creators. Using a 
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`)
-- Register at [RedFoxHub](https://redfox.hk?source=github) to obtain `REDFOX_API_KEY`.
-- Configure `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`)
+- Register at [YigeHub](https://yige.zone?source=github) to obtain `YIGE_API_KEY`.
+- Configure `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset or revoked.
 - Do not hard-code or expose keys in plain text in code, prompts, logs, or output files.
 
@@ -67,18 +67,18 @@ Simply describe your query needs in natural language—no commands to memorize.
 
 After querying, you will receive the following structured analysis:
 
-**Account Basic Info**: Account name, ID, category, RedFox Index, average reads, past-7-day metrics, and the latest 5 articles
+**Account Basic Info**: Account name, ID, category, Yige Index, average reads, past-7-day metrics, and the latest 5 articles
 
 **✨ Peer Benchmarks (5)**: Accounts closest to your readership level—directly reference their content strategy
 
-| Account | RedFox Index | Avg Reads | 7-Day Reads | 7-Day Posts | Recommendation Reason |
+| Account | Yige Index | Avg Reads | 7-Day Reads | 7-Day Posts | Recommendation Reason |
 | … | … | … | … | … | Multi-dimension analysis: viral insights, content focus, cadence, engagement rate, etc. |
 
 **✨ Top Aspirationals (5)**: Top-tier accounts with 3–5× your readership—mature models to pursue
 
 ---
 
-> 💼 RedFox also offers a comprehensive full-scale database with detailed data. For enterprise procurement plans, visit RedFox Hub [Enterprise Services](https://redfox.hk/dashboard/enterprise) for consultation.
+> 💼 Yige also offers a comprehensive full-scale database with detailed data. For enterprise procurement plans, visit Yige Hub [Enterprise Services](https://yige.zone/dashboard/enterprise) for consultation.
 
 ---
 
@@ -95,7 +95,7 @@ After querying, you will receive the following structured analysis:
 
 ## Important Data Notes
 
-- Data is sourced from the RedFox data platform; the displayed data retrieval time may differ from real-time figures.
+- Data is sourced from the Yige data platform; the displayed data retrieval time may differ from real-time figures.
 - Recommended account metrics (reads, engagement, etc.) are based on platform data; engagement counts should not be used as read counts.
 - When searching by category, the platform's classification system may differ from natural language; using a representative account name for lookup is recommended.
 - Maximum displayed read count is 100,001 (10w+ cap); actual readership may be higher.

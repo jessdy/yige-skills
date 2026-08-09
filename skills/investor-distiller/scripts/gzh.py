@@ -9,7 +9,7 @@
 UUID 缓存：首次获取后自动保存到 output/{account}_uuids.json，
 后续运行直接读取缓存，避免重复消耗积分。
 
-认证：REDFOX_API_KEY（环境变量 > 配置文件 > 公共Key）
+认证：YIGE_API_KEY（环境变量 > 配置文件 > 公共Key）
 """
 
 import json
@@ -32,12 +32,12 @@ except ImportError:
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
 
-WORK_LIST_URL = "https://redfox.hk/story/api/gzhData/queryWorkList"
-WORK_DETAIL_URL = "https://redfox.hk/story/api/gzhData/queryWork"
+WORK_LIST_URL = "https://yige.zone/story/api/gzhData/queryWorkList"
+WORK_DETAIL_URL = "https://yige.zone/story/api/gzhData/queryWork"
 
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 PUBLIC_API_KEY = "ak_db0e200c049b44288d46da0e758d53dd"
 SOURCE = "公众号投资博主蒸馏-GitHub"
 
@@ -85,7 +85,7 @@ def get_api_key(cli_key=None):
     if CONFIG_FILE.exists():
         try:
             data = json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
-            key = data.get("api_key") or data.get("REDFOX_API_KEY")
+            key = data.get("api_key") or data.get("YIGE_API_KEY")
             if key:
                 return key
         except (json.JSONDecodeError, OSError):

@@ -17,7 +17,7 @@ except ImportError as e:
     sys.exit(1)
 
 # API配置
-API_URL = "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+API_URL = "https://yige.zone/story/api/cozeSkill/sensitiveWordSearch"
 
 # API单次查询内容长度上限（字符数）
 MAX_CONTENT_LENGTH = 3000
@@ -31,9 +31,9 @@ MAX_TOTAL_LENGTH = 10000
 # ============================================================
 
 def _get_api_key():
-    """获取 REDFOX_API_KEY，优先级：环境变量 > shell 配置文件，均未获取到返回 None"""
+    """获取 YIGE_API_KEY，优先级：环境变量 > shell 配置文件，均未获取到返回 None"""
     # 1. 从环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key and api_key.strip():
         return api_key.strip()
 
@@ -52,9 +52,9 @@ def _get_api_key():
         try:
             with open(config_path, "r", encoding="utf-8", errors="replace") as f:
                 for line in f:
-                    # 匹配 export REDFOX_API_KEY=... 或 REDFOX_API_KEY=...
+                    # 匹配 export YIGE_API_KEY=... 或 YIGE_API_KEY=...
                     m = re.match(
-                        r'^\s*(?:export\s+)?REDFOX_API_KEY\s*=\s*["\']?([^"\'\n]+)["\']?\s*$',
+                        r'^\s*(?:export\s+)?YIGE_API_KEY\s*=\s*["\']?([^"\'\n]+)["\']?\s*$',
                         line
                     )
                     if m:
@@ -189,7 +189,7 @@ def check_sensitive_words(content):
             "status": "error",
             "platform": "抖音",
             "original_content": content,
-            "error": "未找到 REDFOX_API_KEY，请设置环境变量 REDFOX_API_KEY=ak_xxxxxxxx 或在 shell 配置文件（~/.bashrc / ~/.zshrc 等）中添加 export REDFOX_API_KEY=ak_xxxxxxxx"
+            "error": "未找到 YIGE_API_KEY，请设置环境变量 YIGE_API_KEY=ak_xxxxxxxx 或在 shell 配置文件（~/.bashrc / ~/.zshrc 等）中添加 export YIGE_API_KEY=ak_xxxxxxxx"
         }
 
     # 请求参数

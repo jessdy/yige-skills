@@ -33,10 +33,10 @@ Paste a YouTube video link and get watermark-free download URLs instantly — re
 
 ## API Key & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please register at [RedFoxHub](https://redfox.hk?source=github) to obtain your `REDFOX_API_KEY`.
-- Configure the `REDFOX_API_KEY` environment variable on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please register at [YigeHub](https://yige.zone?source=github) to obtain your `YIGE_API_KEY`.
+- Configure the `YIGE_API_KEY` environment variable on your device before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset/revoked.
 - Never hardcode or expose the key in code, prompts, logs, or output files.
 

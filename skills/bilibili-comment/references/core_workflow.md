@@ -32,7 +32,7 @@ python3 "$SKILL_PATH/scripts/bili_comment_search.py" "<bvId>" [--page <page>]
 - 基于B站梗文化理解（awsl / 爷青回 / xswl / yyds / 绝绝子 等）
 - 每条要点引用代表评论关键词/短语
 - 百分比为各类评论占总评论数比例，四类总和可超100%
-- 若 `total_fetched` < `work_detail.reply_count`，追加提示引导用户前往红狐平台
+- 若 `total_fetched` < `work_detail.reply_count`，追加提示引导用户前往一格数据平台
 
 A0~A3 在同一轮输出中连续完成，不可省略任何一步。
 
@@ -79,7 +79,7 @@ JSON 字段：`positive_ratio`、`negative_ratio`、`demand_ratio`、`competitor
 
 | 错误类型 | 处理方式 |
 |---------|---------|
-| 无 API Key | 提示配置 REDFOX_API_KEY，给出配置指引 |
+| 无 API Key | 提示配置 YIGE_API_KEY，给出配置指引 |
 | 视频链接无效 | 提示「未找到该视频的评论，请检查视频链接是否正确」 |
 | 接口返回 502 错误 | 服务返回 502 错误，可能存在网络不稳定问题，请稍后重试 |
 | 获取 0 条评论 | 提示「该视频暂无评论」并建议检查视频是否存在或已删除 |

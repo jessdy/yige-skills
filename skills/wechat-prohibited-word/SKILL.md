@@ -55,7 +55,7 @@ dependency:
 ### 前置条件
 - **Python 3.7+** 运行环境
 - **pip** 包管理器
-- 已注册 [红狐Hub](https://redfox.hk/) 账号并获取 API Key
+- 已注册 [一格Hub](https://yige.zone/) 账号并获取 API Key
 
 ### 安装步骤
 
@@ -72,8 +72,8 @@ playwright install chromium
 ### API Key 配置
 
 #### 获取 API Key
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
@@ -81,10 +81,10 @@ playwright install chromium
 
 | 配置方式 | 操作 | 说明 |
 |----------|------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_xxxxxxxx` | 在当前终端会话生效 |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_xxxxxxxx` | 在当前终端会话生效 |
 | Shell 配置文件 | 将上述 export 语句写入 `~/.bashrc` 或 `~/.zshrc`，执行 `source ~/.bashrc` | 永久生效，脚本自动读取 |
 
-> 脚本获取 Key 的优先级：环境变量 `REDFOX_API_KEY` → Shell 配置文件自动扫描 → 提示用户配置
+> 脚本获取 Key 的优先级：环境变量 `YIGE_API_KEY` → Shell 配置文件自动扫描 → 提示用户配置
 
 ---
 
@@ -203,13 +203,13 @@ wechat-prohibited-word/
 | HTTP 请求 | requests | 标准 HTTP 库，调用检测 API |
 | 文档解析 | python-docx | Word 文档 (.doc/.docx) 文本提取 |
 | 网页解析 | beautifulsoup4 + playwright | 静态 HTML 解析 + JS 动态页面渲染 |
-| API 服务 | 红狐Hub | 官方违禁词库，POST+JSON 方式调用 |
+| API 服务 | 一格Hub | 官方违禁词库，POST+JSON 方式调用 |
 
 ### 数据流转
 ```
 用户输入（文本/文件/网页/图片）
     → 脚本提取文本内容
-    → HTTPS POST 发送至红狐Hub API
+    → HTTPS POST 发送至一格Hub API
     → API 匹配违禁词库，返回标注结果
     → 脚本过滤英文误匹配，格式化输出 JSON
     → Agent 按模板呈现三板块结果 + 写入优化文案文件
@@ -229,11 +229,11 @@ pip install requests python-docx beautifulsoup4 playwright
 playwright install chromium
 ```
 
-**Q: 提示 "未配置 REDFOX_API_KEY" 怎么办？**
+**Q: 提示 "未配置 YIGE_API_KEY" 怎么办？**
 A: 请按以下步骤处理：
-1. 访问 [redfox.hk](https://redfox.hk/) 注册账号
+1. 访问 [yige.zone](https://yige.zone/) 注册账号
 2. 在个人中心复制 API Key（格式 `ak_xxxxxxxx`）
-3. 执行 `export REDFOX_API_KEY=ak_xxxxxxxx` 或写入 `~/.bashrc`
+3. 执行 `export YIGE_API_KEY=ak_xxxxxxxx` 或写入 `~/.bashrc`
 
 ---
 
@@ -266,7 +266,7 @@ A: 支持的文本文件格式：TXT、DOC、DOCX、CSV、MD、LOG、JSON、XML�
 ### 获取帮助
 
 如有其他问题，可通过以下方式获取支持：
-- 🌐 访问 [红狐Hub](https://redfox.hk/) 查看文档
+- 🌐 访问 [一格Hub](https://yige.zone/) 查看文档
 - 📧 邮件联系服务提供商
 
 ---

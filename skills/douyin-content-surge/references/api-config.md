@@ -5,7 +5,7 @@
 在使用本 skill 前，需配置以下环境变量（或在 Qoder 设置中配置 API Key）：
 
 ```bash
-REDFOX_API_KEY=your_api_key_here
+YIGE_API_KEY=your_api_key_here
 ```
 
 ## 接口说明
@@ -13,7 +13,7 @@ REDFOX_API_KEY=your_api_key_here
 ### 查询每日点赞飙升榜
 
 ```
-POST https://redfox.hk/story/api/dy/search/hotContentRank
+POST https://yige.zone/story/api/dy/search/hotContentRank
 Content-Type: application/json
 ```
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 | Header | 说明 |
 |--------|------|
-| X-API-KEY | API 密钥，从环境变量 `REDFOX_API_KEY` 中获取 |
+| X-API-KEY | API 密钥，从环境变量 `YIGE_API_KEY` 中获取 |
 
 **请求体（JSON）：**
 
@@ -35,10 +35,10 @@ Content-Type: application/json
 
 ```bash
 curl -X POST \
-  -H "X-API-KEY: $REDFOX_API_KEY" \
+  -H "X-API-KEY: $YIGE_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"source":"<见脚本>","type":"美食","startTime":"2026-05-28"}' \
-  "https://redfox.hk/story/api/dy/search/hotContentRank"
+  "https://yige.zone/story/api/dy/search/hotContentRank"
 ```
 
 **响应示例：**

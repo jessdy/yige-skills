@@ -2,7 +2,7 @@
 
 ## 接口信息
 
-- **接口地址**：`https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime`
+- **接口地址**：`https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime`
 - **请求方法**：GET
 - **Content-Type**：application/json
 
@@ -10,7 +10,7 @@
 
 | 参数 | 说明 |
 |------|------|
-| X-API-KEY | API密钥，从环境变量 `REDFOX_API_KEY` 获取，未设置则自动从 shell 配置文件（`~/.zshrc`、`~/.bash_profile` 等）读取 |
+| X-API-KEY | API密钥，从环境变量 `YIGE_API_KEY` 获取，未设置则自动从 shell 配置文件（`~/.zshrc`、`~/.bash_profile` 等）读取 |
 
 ## 请求头
 
@@ -41,19 +41,19 @@ X-API-KEY: <your_api_key>
 ### 1. 查询总排名（昨日数据）
 
 ```
-GET https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime?type=总排名&source=公众号10w+阅读文章推荐&startDate=2026-05-13&endDate=2026-05-14
+GET https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime?type=总排名&source=公众号10w+阅读文章推荐&startDate=2026-05-13&endDate=2026-05-14
 ```
 
 ### 2. 查询科技数码分类
 
 ```
-GET https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime?type=科技数码&source=公众号10w+阅读文章推荐&startDate=2026-05-13&endDate=2026-05-14
+GET https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime?type=科技数码&source=公众号10w+阅读文章推荐&startDate=2026-05-13&endDate=2026-05-14
 ```
 
 ### 3. 查询财富理财分类
 
 ```
-GET https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime?type=财富理财&source=公众号10w+阅读文章推荐&startDate=2026-05-10&endDate=2026-05-14
+GET https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime?type=财富理财&source=公众号10w+阅读文章推荐&startDate=2026-05-10&endDate=2026-05-14
 ```
 
 ## 响应数据结构

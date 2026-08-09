@@ -7,7 +7,7 @@ description: 专注于获取抖音最新的热榜数据，每小时更新，包�
 
 ## 简介
 
-抖音热榜是一款实时追踪抖音平台热点趋势的数据工具，对接 [红狐Hub](https://redfox.hk/) 数据 API，每小时更新热榜内容，并提供创作者视角的深度分析。
+抖音热榜是一款实时追踪抖音平台热点趋势的数据工具，对接 [一格Hub](https://yige.zone/) 数据 API，每小时更新热榜内容，并提供创作者视角的深度分析。
 
 通过简单的自然语言指令，你可以：
 
@@ -19,7 +19,7 @@ description: 专注于获取抖音最新的热榜数据，每小时更新，包�
 
 适用于内容创作者、短视频运营、MCN 机构、品牌营销人员等需要追踪抖音热点、寻找创作灵感、制定内容策略的场景。
 
-**技术基础**：Python 3.x + `requests` 库，通过 红狐Hub APIKey获取数据。
+**技术基础**：Python 3.x + `requests` 库，通过 一格Hub APIKey获取数据。
 
 ---
 
@@ -47,7 +47,7 @@ description: 专注于获取抖音最新的热榜数据，每小时更新，包�
 ### 前置条件
 
 - 已安装 Python 3.x 及 `requests` 库
-- 已注册 [红狐Hub官网](https://redfox.hk/login) 账号并获取 API Key（格式 `ak_xxxxxxxx`）
+- 已注册 [一格Hub官网](https://yige.zone/login) 账号并获取 API Key（格式 `ak_xxxxxxxx`）
 - 新注册用户将获赠免费积分，可立即开始使用
 
 ### 安装方式
@@ -67,29 +67,29 @@ pip install requests
 
 1. 将技能文件夹放置到对应环境的 skills 目录
 2. 确保 Agent 可读取 `SKILL.md` 与 `references/core_workflow.md`
-3. 配置 `REDFOX_API_KEY` 环境变量
+3. 配置 `YIGE_API_KEY` 环境变量
 4. 执行 `pip install requests`
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 |------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
 
 **配置方式**（任选其一）：
 
 ```bash
 # 方式一：直接设置环境变量（推荐）
-export REDFOX_API_KEY=ak_xxxxxxxx
+export YIGE_API_KEY=ak_xxxxxxxx
 
 # 方式二：写入 Shell 配置文件（~/.bashrc / ~/.bash_profile / ~/.zshrc）
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.bashrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.bashrc
 source ~/.bashrc
 ```
 
 若未配置环境变量，技能将自动从 Shell 配置文件读取；若仍未获取到，会在运行时提示配置。
 
-**在 WorkBuddy 中配置 Key**：可在系统环境变量中设置 `REDFOX_API_KEY`，或在 Shell 配置文件中写入后重启 WorkBuddy，无需在每次对话中手动传入。
+**在 WorkBuddy 中配置 Key**：可在系统环境变量中设置 `YIGE_API_KEY`，或在 Shell 配置文件中写入后重启 WorkBuddy，无需在每次对话中手动传入。
 
 ---
 
@@ -251,7 +251,7 @@ douyin-hot-trend/
 
 | 模块 | 文件 | 职责 |
 |------|------|------|
-| 数据获取 | `hotspot_fetcher.py` | 调用 红狐Hub API 获取抖音热榜 JSON，支持实时与历史查询 |
+| 数据获取 | `hotspot_fetcher.py` | 调用 一格Hub API 获取抖音热榜 JSON，支持实时与历史查询 |
 | 报告生成 | `gen_douyin_hot_html.py` | 将热榜数据渲染为紫色极简风格 HTML，支持导出 PDF |
 | 页面模板 | `douyin_hot_trend_template.html` | 独立 HTML 模板，支持占位符快速替换生成 |
 
@@ -262,7 +262,7 @@ douyin-hot-trend/
 | 运行环境 | Python 3.x |
 | HTTP 请求 | 原生 `requests` 库 |
 | 认证方式 | `X-API-KEY` 请求头，三级回退（环境变量 → Shell 配置 → 提示配置） |
-| 数据来源 | [红狐Hub API](https://redfox.hk/) |
+| 数据来源 | [一格Hub API](https://yige.zone/) |
 | 部署平台 | WorkBuddy / Cursor 等 Agent 环境 |
 
 
@@ -270,11 +270,11 @@ douyin-hot-trend/
 
 ### 安装相关问题
 
-**Q1: 运行时提示「缺少 REDFOX_API_KEY 配置」怎么办？**
+**Q1: 运行时提示「缺少 YIGE_API_KEY 配置」怎么办？**
 
 A: 请按以下步骤排查：
-1. 确认已注册 红狐Hub 账号并在个人中心获取 API Key
-2. 设置环境变量：`export REDFOX_API_KEY=ak_xxxxxxxx`
+1. 确认已注册 一格Hub 账号并在个人中心获取 API Key
+2. 设置环境变量：`export YIGE_API_KEY=ak_xxxxxxxx`
 3. 或写入 Shell 配置文件后执行 `source ~/.bashrc` 使其生效
 4. 确认 API Key 格式正确，以 `ak_` 开头
 
@@ -284,7 +284,7 @@ A: 仅需 `requests` 库：`pip install requests`
 
 **Q3: 如何在 WorkBuddy（龙虾）中启用本技能？**
 
-A: 将技能文件夹放入 WorkBuddy 的 skills 目录，配置好 `REDFOX_API_KEY` 后，在对话中说「抖音热榜」即可触发。Agent 将按 `references/core_workflow.md` 执行完整工作流。
+A: 将技能文件夹放入 WorkBuddy 的 skills 目录，配置好 `YIGE_API_KEY` 后，在对话中说「抖音热榜」即可触发。Agent 将按 `references/core_workflow.md` 执行完整工作流。
 
 ---
 
@@ -306,9 +306,9 @@ A: 最长支持查询近 30 天的历史热榜。超过 30 天的数据暂不支
 **Q6: API 调用失败怎么办？**
 
 A: 请按以下顺序排查：
-1. 检查网络连接，确认可以访问 `https://redfox.hk`
+1. 检查网络连接，确认可以访问 `https://yige.zone`
 2. 确认 API Key 未过期，账户积分是否充足
-3. 检查环境变量：`echo $REDFOX_API_KEY`
+3. 检查环境变量：`echo $YIGE_API_KEY`
 4. 稍后重试，API 服务可能存在临时波动
 
 **Q7: 订阅推送没有收到怎么办？**
@@ -332,7 +332,7 @@ A: 建议通过环境变量或 Shell 配置文件存储，不要将 Key 写入�
 
 **Q10: 数据来源与使用许可？**
 
-A: 热榜数据来自 [红狐Hub](https://redfox.hk/) 官方 API，使用时须遵守 红狐Hub 平台服务条款及抖音平台相关规定。本技能仅作数据展示与分析辅助，不保证数据的商业用途合规性。
+A: 热榜数据来自 [一格Hub](https://yige.zone/) 官方 API，使用时须遵守 一格Hub 平台服务条款及抖音平台相关规定。本技能仅作数据展示与分析辅助，不保证数据的商业用途合规性。
 
 ---
 
@@ -341,8 +341,8 @@ A: 热榜数据来自 [红狐Hub](https://redfox.hk/) 官方 API，使用时须�
 如有其他问题，可通过以下方式获取帮助：
 
 - 📖 查阅 Agent 执行参考：`references/core_workflow.md`
-- 🌐 红狐Hub 官网：[https://redfox.hk](https://redfox.hk/)
-- 📧 联系 红狐Hub 平台客服获取 API 相关问题支持
+- 🌐 一格Hub 官网：[https://yige.zone](https://yige.zone/)
+- 📧 联系 一格Hub 平台客服获取 API 相关问题支持
 
 ---
 

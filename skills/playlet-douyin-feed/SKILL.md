@@ -46,25 +46,25 @@ description: "短剧-抖音信息源 — 每日扫描抖音短剧爆款内容,�
 ### 前置条件
 
 - 已安装 Python 3 运行环境
-- 获取红狐Hub API Key
+- 获取一格Hub API Key
 
 ### API Key 获取
 
-数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `REDFOX_API_KEY` 获取。
+数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `YIGE_API_KEY` 获取。
 
-前往 [红狐Hub 官网](https://redfox.hk/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+前往 [一格Hub 官网](https://yige.zone/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥,格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥,格式 `ak_xxxxxxxx` |
 
 **配置方式**:
 
-- **macOS/Linux**:将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
-- **Windows**:`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`(需重启终端)
-- 配置后验证:`echo $REDFOX_API_KEY`(macOS/Linux)或 `echo %REDFOX_API_KEY%`(Windows)
+- **macOS/Linux**:将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
+- **Windows**:`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`(需重启终端)
+- 配置后验证:`echo $YIGE_API_KEY`(macOS/Linux)或 `echo %YIGE_API_KEY%`(Windows)
 
 
 ## 使用指南
@@ -272,7 +272,7 @@ python3 scripts/playlet_douyin_daily.py --topics "悬疑,推理,反转,惊悚"
 | 组件 | 技术 | 说明 |
 |------|------|------|
 | 运行环境 | Python 3 | 脚本执行环境 |
-| 数据接口 | 红狐Hub API | 抖音短剧创作数据,RESTful接口 |
+| 数据接口 | 一格Hub API | 抖音短剧创作数据,RESTful接口 |
 | 鉴权方式 | X-API-KEY | 请求头鉴权,环境变量配置 |
 | 输出格式 | HTML(深色主题) | 自动浏览器打开,响应式设计 |
 | 缓存策略 | JSON本地缓存 | 1小时有效期,路径 `~/.workbuddy/cache/` |
@@ -287,14 +287,14 @@ python3 scripts/playlet_douyin_daily.py --topics "悬疑,推理,反转,惊悚"
 
 **Q: 提示 "缺少 API Key" 怎么办?**
 
-A: 请确认已正确配置环境变量 `REDFOX_API_KEY`:
-1. 前往 [红狐Hub](https://redfox.hk/) 注册并获取 API Key(格式 `ak_xxxxxxxx`)
-2. Windows:`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxx", "User")`
-3. 重启终端后验证:`echo %REDFOX_API_KEY%`
+A: 请确认已正确配置环境变量 `YIGE_API_KEY`:
+1. 前往 [一格Hub](https://yige.zone/) 注册并获取 API Key(格式 `ak_xxxxxxxx`)
+2. Windows:`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxx", "User")`
+3. 重启终端后验证:`echo %YIGE_API_KEY%`
 
 **Q: API Key 无效或过期?**
 
-A: 登录红狐Hub个人中心检查Key状态,确认Key未过期且账户积分充足。
+A: 登录一格Hub个人中心检查Key状态,确认Key未过期且账户积分充足。
 
 ### 使用相关
 
@@ -329,11 +329,11 @@ A: 确认系统默认浏览器已正确设置,日报文件始终保存在 `~/Dow
 | 错误码 | 说明 | 解决方式 |
 |--------|------|---------|
 | 1002 | 每页条数超过200 | 脚本已自动限制,无需处理 |
-| 3106 | 缺少API Key | 配置环境变量 `REDFOX_API_KEY` |
+| 3106 | 缺少API Key | 配置环境变量 `YIGE_API_KEY` |
 | 3107 | API Key无效 | 检查Key格式和有效性 |
 | 3108 | 请求过于频繁 | 等待后重试 |
 | 3109 | 今日调用达上限 | 次日再试 |
-| 3201 | 积分不足 | 前往红狐Hub充值 |
+| 3201 | 积分不足 | 前往一格Hub充值 |
 
 ## 参考文档
 

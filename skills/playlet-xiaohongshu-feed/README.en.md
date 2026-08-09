@@ -44,10 +44,10 @@ Daily scanning of trending Xiaohongshu short drama content, filtering popular po
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain your `REDFOX_API_KEY`.
-- Configure the environment variable `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please visit [YigeHub](https://yige.zone?source=github) to register and obtain your `YIGE_API_KEY`.
+- Configure the environment variable `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, verify its source, available scope, validity period, and whether reset/revocation is supported.
 - Do not hardcode or expose the key in plaintext within code, prompts, logs, or output files.
 
@@ -97,5 +97,5 @@ A visual report page is also generated, with cover images, engagement data, and 
 - **Data Update Time**: Daily at 15:00, updating the previous day's data
 - Before 15:00, the latest available date is two days prior (T-2); after 15:00, it is the previous day (T-1)
 - When target date data has not yet been updated, users are prompted for confirmation before any API call
-- Data source: RedFoxHub API, based on Xiaohongshu platform (platform=3)
+- Data source: YigeHub API, based on Xiaohongshu platform (platform=3)
 - Data tracking: API requests include a `source` field set to `短剧小红书信息源-GitHub` for usage attribution

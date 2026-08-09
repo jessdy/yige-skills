@@ -17,20 +17,20 @@ from datetime import date, datetime, timedelta
 import urllib.request
 import urllib.error
 
-API_URL = "https://redfox.hk/story/api/dyData/query"
+API_URL = "https://yige.zone/story/api/dyData/query"
 
 
 def _get_api_key() -> str:
     """
-    从环境变量 REDFOX_API_KEY 获取 API Key。
+    从环境变量 YIGE_API_KEY 获取 API Key。
     """
-    api_key = os.environ.get("REDFOX_API_KEY", "").strip()
+    api_key = os.environ.get("YIGE_API_KEY", "").strip()
     if api_key:
         return api_key
 
-    print("[ERROR] 未设置 REDFOX_API_KEY 环境变量", file=sys.stderr)
-    print("[HINT] 请运行: export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
-    print("[HINT] 访问 https://redfox.hk/login 注册获取 API Key", file=sys.stderr)
+    print("[ERROR] 未设置 YIGE_API_KEY 环境变量", file=sys.stderr)
+    print("[HINT] 请运行: export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
+    print("[HINT] 访问 https://yige.zone/login 注册获取 API Key", file=sys.stderr)
     sys.exit(4)
 
 # ─────────────────────────────────────────────────────────
@@ -381,7 +381,7 @@ def fetch(period: str, rank_date_start: str, rank_date_end: str, category: str) 
             print("[ERROR] 请求超时，请检查网络后重试", file=sys.stderr)
         else:
             print(f"[ERROR] 无法连接到数据源：{e.reason}", file=sys.stderr)
-            print("[HINT] 请稍后重试，或联系管理员检查数据源 redfox.hk 的可用性", file=sys.stderr)
+            print("[HINT] 请稍后重试，或联系管理员检查数据源 yige.zone 的可用性", file=sys.stderr)
         sys.exit(2)
     except json.JSONDecodeError:
         print("[ERROR] 返回数据格式异常（非 JSON）", file=sys.stderr)

@@ -2,8 +2,8 @@
 
 ## 数据来源
 
-**接口**: 红狐数据 - 公众号爆款文章搜索
-**URL**: `https://redfox.hk/story/api/gzh/search/hotArticleNew`
+**接口**: 一格数据 - 公众号爆款文章搜索
+**URL**: `https://yige.zone/story/api/gzh/search/hotArticleNew`
 **API Key**: `ak_c4fc9018ffb14ce4ae35dafd92f466c3`
 
 ---
@@ -162,4 +162,4 @@ python scripts/fetch_gzh_trends.py --keyword "公众号,AI技能,爆款,效率�
 
 ## 更新记录
 
-- 2026-06-01: 接口替换为红狐数据API，适配新的返回字段结构
+- 2026-06-01: 接口替换为一格数据API，适配新的返回字段结构

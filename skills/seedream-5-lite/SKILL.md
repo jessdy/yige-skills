@@ -7,7 +7,7 @@ description: 基于火山方舟 seedream 5.0 lite 模型的 AI 图片生成器�
 
 ## 简介
 
-基于火山方舟 **seedream 5.0 lite** 模型的 AI 图片生成工具。通过 redfox.hk 平台封装了复杂的 ARK API 鉴权流程，**一行命令即可生成高质量图片**。
+基于火山方舟 **seedream 5.0 lite** 模型的 AI 图片生成工具。通过 yige.zone 平台封装了复杂的 ARK API 鉴权流程，**一行命令即可生成高质量图片**。
 
 ### 为什么用这个 Skill？
 
@@ -155,25 +155,25 @@ python3 "$SKILL_PATH/assets/seedream.py" "将画面转换成宫崎骏动画风�
 
 ```bash
 # 设置环境变量
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 运行
 python3 "$SKILL_PATH/assets/seedream.py" "一只橘色的猫咪坐在窗台上看着窗外的夕阳"
 ```
 
-> 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key。
+> 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key。
 
 ---
 
 ## 后续使用
 
-前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册账号获取自己的 API Token，三种配置方式任选其一：
+前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册账号获取自己的 API Token，三种配置方式任选其一：
 
 | 配置方式 | 说明 | 命令 |
 |----------|------|------|
-| **环境变量**（推荐） | 设置一次，全局生效 | `export REDFOX_API_KEY=ak_你的密钥` |
+| **环境变量**（推荐） | 设置一次，全局生效 | `export YIGE_API_KEY=ak_你的密钥` |
 | **命令行参数** | 临时使用，单次生效 | `python3 "$SKILL_PATH/assets/seedream.py" "prompt" --api-key ak_你的密钥` |
-| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -287,7 +287,7 @@ seedream-5-lite/
 |------|------|
 | 运行环境 | Python 3.6+ |
 | HTTP 库 | requests |
-| API 平台 | redfox.hk |
+| API 平台 | yige.zone |
 | 底层模型 | 火山方舟 seedream 5.0 lite (`doubao-seedream-5-0-260128`) |
 | 输出格式 | PNG、JPEG |
 
@@ -305,7 +305,7 @@ seedream-5-lite/
 ### 数据流转
 
 ```
-用户输入提示词 → submit_task() → redfox.hk API → 火山方舟 seedream 5.0 lite
+用户输入提示词 → submit_task() → yige.zone API → 火山方舟 seedream 5.0 lite
                                                                       ↓
 用户获得图片 ← download_images() ← poll_result() ← 任务完成回调
 ```
@@ -322,11 +322,11 @@ A：命令行直接调用 seedream 5.0 lite 模型，支持文生图、图生图
 
 **Q2：如何获取 API Key？**
 
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取自己的 API Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取自己的 API Token。
 
 **Q3：配置文件放在哪里？**
 
-A：放在 `~/.qoder/apis/redfox.json`，内容格式为：`{"api_key": "ak_你的密钥"}`。
+A：放在 `~/.qoder/apis/yige.json`，内容格式为：`{"api_key": "ak_你的密钥"}`。
 
 **Q4：如何验证 API Key 是否配置成功？**
 
@@ -366,7 +366,7 @@ A：脚本最多等待 6 分钟。超时后会打印 taskId，你可以稍后通
 
 **Q11：提示"API request failed"？**
 
-A：检查网络连接是否正常，确认 redfox.hk 服务可访问。如果持续失败，可能是 API Key 已过期或余额不足。
+A：检查网络连接是否正常，确认 yige.zone 服务可访问。如果持续失败，可能是 API Key 已过期或余额不足。
 
 **Q12：图片下载失败？**
 
@@ -376,4 +376,4 @@ A：确认输出目录有写入权限，磁盘空间充足。如果 OSS 链接�
 
 ### 获取帮助
 
-如有其他问题，可前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 查看平台文档或联系客服。
+如有其他问题，可前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 查看平台文档或联系客服。

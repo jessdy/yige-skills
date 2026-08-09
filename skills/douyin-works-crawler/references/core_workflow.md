@@ -6,14 +6,14 @@
 
 ## 1. 数据来源
 
-**唯一数据源：红狐数据API**
+**唯一数据源：一格数据API**
 
 ### 1.1 查询接口
 
 | 配置项 | 值 |
 |--------|-----|
-| 接口地址 | `POST https://redfox.hk/story/api/dyData/queryUserWithWorks` |
-| 认证 | 请求头 `X-API-KEY`（环境变量 `REDFOX_API_KEY`，格式 `ak_xxx`） |
+| 接口地址 | `POST https://yige.zone/story/api/dyData/queryUserWithWorks` |
+| 认证 | 请求头 `X-API-KEY`（环境变量 `YIGE_API_KEY`，格式 `ak_xxx`） |
 | 积分 | 是（resourceId: `/story/api/dyData/queryUserWithWorks`） |
 
 **请求参数：**
@@ -30,7 +30,7 @@
 
 **响应字段：**
 
-- 账号级：nickname / accountId / uniqueId / uid / secUid / province / city / ipLocation / followerCount / awemeCount / totalFavorited / redfoxIndex
+- 账号级：nickname / accountId / uniqueId / uid / secUid / province / city / ipLocation / followerCount / awemeCount / totalFavorited / yigeIndex
 - 作品级（workList，近期作品数据，最多50条，按发布时间倒序）：title / likeCount / commentCount / shareCount / interactiveCount / publishTime / url
 
 **数据范围说明：**
@@ -74,9 +74,9 @@ API调用失败（如积分不足、网络异常）时明确告知用户错误�
 
 ### 账号基础信息
 
-| 昵称 | 抖音号 | UID | 地域 | 粉丝数 | 获赞 | 作品总数 | 红狐指数 |
+| 昵称 | 抖音号 | UID | 地域 | 粉丝数 | 获赞 | 作品总数 | 一格指数 |
 |------|--------|-----|------|--------|------|---------|---------|
-| [nickname](https://www.douyin.com/user/[secUid]) | [accountId] | [uid] | [province·city] | [followerCount] | [totalFavorited] | [awemeCount] | [redfoxIndex] |
+| [nickname](https://www.douyin.com/user/[secUid]) | [accountId] | [uid] | [province·city] | [followerCount] | [totalFavorited] | [awemeCount] | [yigeIndex] |
 
 ---
 
@@ -118,10 +118,10 @@ API调用失败（如积分不足、网络异常）时明确告知用户错误�
 - **数据范围：** 近期作品数据，最多50条，按发布时间倒序
 - **作品链接：** 接口返回url字段，提供作品直达链接；url为空时显示"-"
 - **数字格式：** ≥1万显示为x.xw（如3.2w），≥1亿显示为x.x亿，<1万用千分位逗号
-- **数据来源：** 红狐数据API
+- **数据来源：** 一格数据API
 
 *爬取时间：[YYYY-MM-DD HH:mm]*
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 ```
 
 ---
@@ -151,7 +151,7 @@ python3 scripts/douyin_works_fetcher.py --account "抖音名称或抖音号"
 
 ## 5. 注意事项
 
-- 🔌 **唯一数据源：** 所有数据仅从红狐API获取，不使用第三方渠道补充或估算
+- 🔌 **唯一数据源：** 所有数据仅从一格数据API获取，不使用第三方渠道补充或估算
 - 📊 **数据范围：** 近期作品数据，最多50条，非账号全部历史作品
 - 🔢 **数字格式：** ≥1万显示为 `x.xw`（如3.2w），≥1亿显示为 `x.x亿`，<1万用千分位逗号（如8,642）
 - 🔗 **作品链接：** 接口返回url字段，表格中显示为 `[链接](url)`，无url时显示 `-`

@@ -15,7 +15,7 @@ description: B站搜索批量下载工具。输入关键词即可搜索B站全�
 
 - **核心价值**：将「搜索 → 筛选 → 下载」三步合一，一次对话完成从发现到采集的全流程，大幅提升视频素材收集效率
 - **适用对象**：内容创作者、社媒运营、市场策划、MCN机构、视频剪辑师、竞品分析人员
-- **技术基础**：基于红狐数据平台的 B站作品搜索与视频解析能力
+- **技术基础**：基于一格数据平台的 B站作品搜索与视频解析能力
 
 ---
 
@@ -79,17 +79,17 @@ description: B站搜索批量下载工具。输入关键词即可搜索B站全�
 
 ### 鉴权配置
 
-使用本技能前需要配置红狐 API 密钥 `REDFOX_API_KEY`：
+使用本技能前需要配置一格数据 API 密钥 `YIGE_API_KEY`：
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号（新用户获赠免费积分）
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号（新用户获赠免费积分）
 3. 登录后在 API 密钥管理页面创建密钥，格式为 `ak_xxxxxxxx`
-4. 将密钥设置为环境变量 `REDFOX_API_KEY`
+4. 将密钥设置为环境变量 `YIGE_API_KEY`
 
 环境变量设置方式：
 
-- **macOS/Linux**：在终端执行 `export REDFOX_API_KEY=ak_xxxx`，或追加到 `~/.zshrc` / `~/.bashrc` 后 `source`
-- **Windows**：在 PowerShell 执行 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxxx", "User")`，重启终端生效
+- **macOS/Linux**：在终端执行 `export YIGE_API_KEY=ak_xxxx`，或追加到 `~/.zshrc` / `~/.bashrc` 后 `source`
+- **Windows**：在 PowerShell 执行 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxxx", "User")`，重启终端生效
 
 ### 触发方式
 
@@ -228,7 +228,7 @@ description: B站搜索批量下载工具。输入关键词即可搜索B站全�
 
 ### 安装相关
 
-**Q1: 提示"未找到 REDFOX_API_KEY"怎么办？**
+**Q1: 提示"未找到 YIGE_API_KEY"怎么办？**
 
 A: 请参见上方使用指南中的鉴权配置说明设置环境变量。如果不会配置，直接告诉 Agent，它会帮你操作。
 
@@ -274,7 +274,7 @@ A: 可能原因：视频链接有误；视频已被删除或设为私密；网�
 
 **Q10: 提示积分不足？**
 
-A: 每次搜索和下载均消耗一次积分。请前往 [红狐Hub](https://redfox.hk/) 查看积分余额或充值。
+A: 每次搜索和下载均消耗一次积分。请前往 [一格Hub](https://yige.zone/) 查看积分余额或充值。
 
 ---
 
@@ -298,7 +298,7 @@ bilibili-search-download/
 | 组件 | 技术 |
 |------|------|
 | 运行环境 | Python 3.6+（零依赖） |
-| 数据源 | 红狐数据平台 |
+| 数据源 | 一格数据平台 |
 | 输出格式 | Markdown（对话内） |
 | 请求方式 | HTTP POST（JSON） |
 
@@ -313,6 +313,6 @@ bilibili-search-download/
 
 ### 获取帮助
 
-- 红狐Hub 官网：[https://redfox.hk/](https://redfox.hk/)
-- 企业服务（全量数据库）：[https://redfox.hk/dashboard/enterprise](https://redfox.hk/dashboard/enterprise)
+- 一格Hub 官网：[https://yige.zone/](https://yige.zone/)
+- 企业服务（全量数据库）：[https://yige.zone/dashboard/enterprise](https://yige.zone/dashboard/enterprise)
 - 技能实现细节：参见 [核心工作流](references/core_workflow.md) 与 [API接口指南](references/api_guide.md)

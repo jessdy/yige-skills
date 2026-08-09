@@ -58,7 +58,7 @@ This skill is a standard Skill file package, compatible with all AI Agent platfo
 
 Prerequisites: Python 3.6+, no additional dependencies required.
 
-Configure the data service access credential (REDFOX_API_KEY) — see the Usage Guide > Authentication Configuration section.
+Configure the data service access credential (YIGE_API_KEY) — see the Usage Guide > Authentication Configuration section.
 
 ---
 
@@ -75,5 +75,5 @@ Configure the data service access credential (REDFOX_API_KEY) — see the Usage 
 
 ## Get Help
 
-- RedFoxHub Official: [https://redfox.hk/](https://redfox.hk/)
-- Enterprise Services: [https://redfox.hk/dashboard/enterprise](https://redfox.hk/dashboard/enterprise)
+- YigeHub Official: [https://yige.zone/](https://yige.zone/)
+- Enterprise Services: [https://yige.zone/dashboard/enterprise](https://yige.zone/dashboard/enterprise)

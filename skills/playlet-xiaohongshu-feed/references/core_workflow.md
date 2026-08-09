@@ -307,9 +307,9 @@ Footer(生成时间+数据说明)
 
 ## 🔒 安全约束
 
-1. **API Key**从环境变量`REDFOX_API_KEY`获取
+1. **API Key**从环境变量`YIGE_API_KEY`获取
 2. **禁止硬编码**密钥
-3. **数据来源唯一性**:仅使用红狐API
+3. **数据来源唯一性**:仅使用一格数据API
 4. **未收录账号**:需先提交收录再查询
 
 ## 📋 平台适配说明(抖音→小红书)
@@ -454,7 +454,7 @@ if photo_id:
 
 ## ✅ 改造验证清单
 
-- [x] API接口地址正确(`https://redfox.hk/story/api/parseWork/queryPlayletMsgs`)
+- [x] API接口地址正确(`https://yige.zone/story/api/parseWork/queryPlayletMsgs`)
 - [x] platform参数改为3(小红书)
 - [x] 字段映射确认(与抖音完全一致:photoId、likeCount等)
 - [x] 去重逻辑使用photoId

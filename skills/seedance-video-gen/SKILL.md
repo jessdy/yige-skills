@@ -7,7 +7,7 @@ description: 基于 Seedance 2.0 模型的 AI 视频生成器，输入关键词/
 
 ## 简介
 
-Seedance2.0是一款基于火山方舟 **Seedance 2.0** 模型的 AI 视频生成工具。通过 redfox.hk 平台封装了复杂的 ARK API 鉴权流程，**一行命令即可生成视频**。
+Seedance2.0是一款基于火山方舟 **Seedance 2.0** 模型的 AI 视频生成工具。通过 yige.zone 平台封装了复杂的 ARK API 鉴权流程，**一行命令即可生成视频**。
 
 > **Skill 特色**
 >
@@ -152,25 +152,25 @@ python3 "$SKILL_PATH/scripts/videogen.py" "太阳系行星围绕太阳旋转的�
 
 ```bash
 # 设置环境变量
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 运行
 python3 "$SKILL_PATH/scripts/videogen.py" "一只橘猫在窗台上打哈欠，阳光温暖地照在它的毛上"
 ```
 
-> 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key。
+> 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key。
 
 ---
 
 ## 后续使用
 
-可前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册账号获取自己的 API Key，三种配置方式任选其一：
+可前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册账号获取自己的 API Key，三种配置方式任选其一：
 
 | 配置方式 | 说明 | 命令 |
 |----------|------|------|
-| **环境变量**（推荐） | 设置一次，全局生效 | `export REDFOX_API_KEY=ak_你的密钥` |
+| **环境变量**（推荐） | 设置一次，全局生效 | `export YIGE_API_KEY=ak_你的密钥` |
 | **命令行参数** | 临时使用，单次生效 | `python3 "$SKILL_PATH/scripts/videogen.py" "prompt" --api-key ak_你的密钥` |
-| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -186,7 +186,7 @@ pip3 install requests
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | — | redfox.hk 平台的 API 访问密钥 |
+| `YIGE_API_KEY` | — | yige.zone 平台的 API 访问密钥 |
 
 ---
 
@@ -292,7 +292,7 @@ seedance-video-gen/
 |------|------|
 | 运行环境 | Python 3.6+ |
 | HTTP 库 | requests |
-| API 平台 | redfox.hk |
+| API 平台 | yige.zone |
 | 底层模型 | 火山方舟 Seedance 2.0 (doubao-seedance-2-0-260128) |
 | 输出格式 | MP4 |
 
@@ -309,7 +309,7 @@ seedance-video-gen/
 ### 数据流转
 
 ```
-用户输入提示词 → submit_video_task() → redfox.hk API → 火山方舟 Seedance 2.0
+用户输入提示词 → submit_video_task() → yige.zone API → 火山方舟 Seedance 2.0
                                                                       ↓
 用户获得 MP4 ← download_video() ← poll_video_result() ← 任务完成回调
 ```
@@ -322,12 +322,12 @@ seedance-video-gen/
 
 **Q1：需要 API Key 吗？**
 
-A：需要。前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取自己的 API Key，通过环境变量 `REDFOX_API_KEY` 或 `--api-key` 参数配置。
+A：需要。前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取自己的 API Key，通过环境变量 `YIGE_API_KEY` 或 `--api-key` 参数配置。
 
 
 **Q2：配置文件放在哪里？**
 
-A：放在 `~/.qoder/apis/redfox.json`，内容格式为：`{"api_key": "ak_你的密钥"}`。
+A：放在 `~/.qoder/apis/yige.json`，内容格式为：`{"api_key": "ak_你的密钥"}`。
 
 **Q3：如何验证 API Key 是否配置成功？**
 
@@ -363,7 +363,7 @@ A：脚本最多等待 20 分钟。超时后会打印 taskId，你可以稍后�
 
 **Q9：提示"API request failed"？**
 
-A：检查网络连接是否正常，确认 redfox.hk 服务可访问。如果持续失败，可能是 API Key 已过期或余额不足。
+A：检查网络连接是否正常，确认 yige.zone 服务可访问。如果持续失败，可能是 API Key 已过期或余额不足。
 
 **Q10：视频下载失败？**
 
@@ -373,4 +373,4 @@ A：确认输出目录有写入权限，磁盘空间充足。如果 OSS 链接�
 
 ### 获取帮助
 
-如有其他问题，可前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 查看平台文档或联系客服。
+如有其他问题，可前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 查看平台文档或联系客服。

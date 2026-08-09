@@ -26,10 +26,10 @@
     }
   ],
   "api": {
-    "url": "https://redfox.hk/story/api/dy/data/listWorkByAccount",
+    "url": "https://yige.zone/story/api/dy/data/listWorkByAccount",
     "method": "POST",
     "headers": {
-      "REDFOX_API_KEY": "ak_xxx",
+      "YIGE_API_KEY": "ak_xxx",
       "Content-Type": "application/json"
     }
   },

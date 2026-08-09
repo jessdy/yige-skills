@@ -60,7 +60,7 @@ class YouTubeDownloader(BaseDownloader):
         url = f"{API_BASE}{self.WORKS_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:
@@ -73,12 +73,12 @@ class YouTubeDownloader(BaseDownloader):
         except json.JSONDecodeError:
             return {"success": False, "account": None, "works": [], "error": "API 返回无效数据"}
 
-        # YouTube API 响应可能被 redfox 的 {code, data, msg} 包裹，也可能直接返回
+        # YouTube API 响应可能被 yige 的 {code, data, msg} 包裹，也可能直接返回
         code = result.get("code")
         msg = result.get("msg", "")
 
         if code is not None:
-            # 标准 redfox 包裹格式
+            # 标准 yige 包裹格式
             if code not in (200, 2000):
                 if code == 3108:
                     return {"success": False, "account": None, "works": [],
@@ -103,7 +103,7 @@ class YouTubeDownloader(BaseDownloader):
         url = f"{API_BASE}{self.DOWNLOAD_ENDPOINT}"
         headers = {
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": self.api_key,
+            "YIGE_API_KEY": self.api_key,
         }
 
         try:

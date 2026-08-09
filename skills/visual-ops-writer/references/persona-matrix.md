@@ -24,7 +24,7 @@
 
 | 标签 | 风格 | 适用场景 |
 |------|------|---------|
-| `redfox`（红狐讲解员，默认） | 红色狐狸 + 美式复古报刊 + 圆框眼镜 | 亲切科普、入门向 |
+| `yige`（一格讲解员，默认） | 红色狐狸 + 美式复古报刊 + 圆框眼镜 | 亲切科普、入门向 |
 | `analyst`（严肃分析师） | 深色西装 + 商务报表 + 数据可视化 | 深度分析、行业研究 |
 | `none`（无 IP） | 纯文字/纯图，无人物 | 资讯类、官方公告 |
 
@@ -32,10 +32,10 @@
 
 ## 18 种组合的完整配置
 
-### direct × individual × redfox（默认组合）
+### direct × individual × yige（默认组合）
 - **语气**：直白坦率 + 经验分享感
 - **读者**：个人可执行方法、周计划、中腰部账号案例
-- **IP**：红狐讲解员，姿态随章节切换（封面=欢迎/分析=前倾/方法论=托腮/操作=打字）
+- **IP**：一格讲解员，姿态随章节切换（封面=欢迎/分析=前倾/方法论=托腮/操作=打字）
 - **典型文章**：找对标账号、运营工具推荐、入门指南
 
 ### direct × individual × analyst
@@ -50,10 +50,10 @@
 - **IP**：无视觉 IP，纯文字+表格
 - **典型文章**：纯干货清单、工具清单
 
-### direct × team × redfox
+### direct × team × yige
 - **语气**：直白坦率
 - **读者**：团队/企业
-- **IP**：红狐讲解员
+- **IP**：一格讲解员
 - **典型文章**：团队协作指南、内部 SOP
 
 ### direct × team × analyst
@@ -68,10 +68,10 @@
 - **IP**：无
 - **典型文章**：内部备忘录、流程文档
 
-### professional × individual × redfox
+### professional × individual × yige
 - **语气**：专业严谨
 - **读者**：个人创作者
-- **IP**：红狐讲解员（亲和力缓和专业感）
+- **IP**：一格讲解员（亲和力缓和专业感）
 - **典型文章**：深度方法论个人版、行业研究入门
 
 ### professional × individual × analyst
@@ -86,10 +86,10 @@
 - **IP**：无
 - **典型文章**：纯学术风干货
 
-### professional × team × redfox
+### professional × team × yige
 - **语气**：专业严谨
 - **读者**：团队/企业
-- **IP**：红狐讲解员
+- **IP**：一格讲解员
 - **典型文章**：企业内训、团队白皮书
 
 ### professional × team × analyst
@@ -104,10 +104,10 @@
 - **IP**：无
 - **典型文章**：白皮书、官方报告
 
-### casual × individual × redfox
+### casual × individual × yige
 - **语气**：轻松对话
 - **读者**：个人创作者
-- **IP**：红狐讲解员
+- **IP**：一格讲解员
 - **典型文章**：随笔、个人故事、入门科普
 
 ### casual × individual × analyst
@@ -122,10 +122,10 @@
 - **IP**：无
 - **典型文章**：博客随笔、社交媒体长文
 
-### casual × team × redfox
+### casual × team × yige
 - **语气**：轻松对话
 - **读者**：团队/企业
-- **IP**：红狐讲解员
+- **IP**：一格讲解员
 - **典型文章**：团队文化、内部沟通
 
 ### casual × team × analyst
@@ -158,16 +158,16 @@ python scripts/generate_image.py \
 
 ### 隐式默认
 
-未指定时使用 `direct-individual-redfox`（默认组合）。
+未指定时使用 `direct-individual-yige`（默认组合）。
 
 ### 切换 IP 风格时的注意事项
 
-- `redfox → analyst`：去掉狐狸描述，改为"商务感/数据仪表盘/极简线条"
-- `analyst → redfox`：追加红狐讲解员姿态描述
+- `yige → analyst`：去掉狐狸描述，改为"商务感/数据仪表盘/极简线条"
+- `analyst → yige`：追加一格讲解员姿态描述
 - `xxx → none`：去掉所有 IP 描述，prompt 保持原始
 
 风格切换由 `generate_image.py` 的 `--style` 参数控制（已实现）：
-- `--style redfox`：自动追加红狐风格
+- `--style yige`：自动追加一格数据风格
 - `--style reference`：原 prompt 不变（参考图自带）
 - `--style none`：原 prompt 不变（无风格）
 

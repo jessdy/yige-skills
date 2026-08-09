@@ -6,13 +6,13 @@
 
 | 风格名称 | --style 值 | 视觉特征 | 底色 | 主角 | 氛围 |
 |----------|-----------|---------|------|------|------|
-| **美式复古报刊风** | `redfox`（默认） | 复古报刊条漫、胶片颗粒、严格三栏网格 | 暖米淡黄色 | 红色狐狸讲解员 | 专业、经典、稳重 |
+| **美式复古报刊风** | `yige`（默认） | 复古报刊条漫、胶片颗粒、严格三栏网格 | 暖米淡黄色 | 红色狐狸讲解员 | 专业、经典、稳重 |
 | **现代波普漫画风** | `popcomic` | 波普网点纹理、多角色互动场景、浮动UI图标 | 高饱和亮黄色 | 干练讲解员卡通人物 + 困惑从业者群 | 活泼、年轻、动感 |
 | **亮黄信息图漫画风** | `yellowcomic` | 斜纹底、分类表格中心、操作类图标装饰 | 亮黄色斜纹 | 自信讲解员手持文档 + 多人分工场景 | 流程感强、清晰、实用 |
 
 ---
 
-## 风格 A — redfox：美式复古报刊暖米黄底（默认）
+## 风格 A — yige：美式复古报刊暖米黄底（默认）
 
 ```
 横向宽幅多格美式复古报刊科普条漫信息长图，90年代美式商业卡通画风，粗重清晰黑色轮廓线，纯色平涂高饱和明快马卡龙色块，复古印刷网点纸半调纹理，整体暖米淡黄色底色，柔和浅平阴影，2D矢量商业插画，8K高清印刷质感；
@@ -190,13 +190,13 @@
 **方法一：批量模式（推荐）**
 ```bash
 # --style random 会自动整批选一个风格，所有图片一致
-python generate_image.py --batch prompts.json --style random --api-key "$REDFOX_API_KEY"
+python generate_image.py --batch prompts.json --style random --api-key "$YIGE_API_KEY"
 ```
 
 **方法二：单张模式手动控制**
 ```bash
 # 第一步：先随机选一个风格（在 bash 中执行一次）
-STYLE=$(python -c "import random; print(random.choice(['redfox','popcomic','yellowcomic']))")
+STYLE=$(python -c "import random; print(random.choice(['yige','popcomic','yellowcomic']))")
 echo "本次使用风格: $STYLE"
 
 # 第二步：所有图都用同一个 $STYLE

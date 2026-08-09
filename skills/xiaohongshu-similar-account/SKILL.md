@@ -38,20 +38,20 @@ description: 小红书创作者对标账号匹配工具，输入小红书账号I
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -97,7 +97,7 @@ python scripts/xiaohongshu_account_recommender.py --track "美味佳肴" --min_f
 
 **步骤 2：调用脚本查询对标账号**
 
-API 接口：`POST https://redfox.hk/story/api/xhsUser/querySimilarAccounts`
+API 接口：`POST https://yige.zone/story/api/xhsUser/querySimilarAccounts`
 
 **步骤 3：按标准模板输出结果**
 
@@ -223,12 +223,12 @@ xiaohongshu-similar-account/
 | 技术 | 用途 |
 | ---- | ---- |
 | Python 标准库 (urllib, json, ssl) | HTTP 请求与数据解析 |
-| 红狐 API | 小红书相似账号数据来源 |
+| 一格数据 API | 小红书相似账号数据来源 |
 | HTML / CSS | 可视化对标报告渲染 |
 
 ### 核心模块说明
 
-- **xiaohongshu_account_recommender.py**：支持按账号 ID 或赛道 + 粉丝数 + 等级两种方式调用红狐相似账号 API，自动处理赛道和等级映射，生成包含同阶对标和高阶标杆的 HTML 报告。
+- **xiaohongshu_account_recommender.py**：支持按账号 ID 或赛道 + 粉丝数 + 等级两种方式调用一格数据相似账号 API，自动处理赛道和等级映射，生成包含同阶对标和高阶标杆的 HTML 报告。
 
 ### 资源索引
 
@@ -247,7 +247,7 @@ xiaohongshu-similar-account/
 A: 无需安装第三方依赖，使用 Python 标准库即可。
 
 **Q: 如何配置 API Key？**
-A: 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `REDFOX_API_KEY` 配置。
+A: 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `YIGE_API_KEY` 配置。
 
 ### 使用
 
@@ -263,4 +263,4 @@ A: 系统会提示 "暂未匹配到符合条件的对标账号，请尝试调整
 ### 故障排除
 
 **Q: 所有数据来源于哪里？**
-A: 所有数据来源于红狐 API 接口，严禁任何联网搜索。
+A: 所有数据来源于一格数据 API 接口，严禁任何联网搜索。

@@ -7,10 +7,10 @@
     python generate_image.py --prompt "图片描述" --api-key "ak_xxx"
     # 图生图（传入参考图）
     python generate_image.py --prompt "图片描述" --image assets/skill标题.jpg --api-key "ak_xxx"
-    # 链接仿写模式（红狐风格不启用，参考图作为风格参照）
+    # 链接仿写模式（一格数据风格不启用，参考图作为风格参照）
     python generate_image.py --prompt "图片描述" --reference-image "https://xxx.com/img.jpg" --style reference --api-key "ak_xxx"
     # 风格切换
-    python generate_image.py --prompt "..." --style {redfox|reference|none} --api-key "ak_xxx"
+    python generate_image.py --prompt "..." --style {yige|reference|none} --api-key "ak_xxx"
     # 批量生成（prompts.json 中可指定 image 字段）
     python generate_image.py --batch prompts.json --api-key "ak_xxx"
     # 查询已有任务
@@ -22,18 +22,18 @@
 
 prompts.json 格式：
     [
-        {"id": "img1", "prompt": "...", "chapter": "封面", "image": "assets/skill标题.jpg", "style": "redfox"},
+        {"id": "img1", "prompt": "...", "chapter": "封面", "image": "assets/skill标题.jpg", "style": "yige"},
         {"id": "img2", "prompt": "...", "chapter": "热点分析", "image": "assets/02.jpg", "style": "reference"},
         {"id": "img3", "prompt": "...", "chapter": "操作指南", "style": "popcomic"}
     ]
 
 style 参数说明：
-    - redfox（默认）：红狐讲解员 + 美式复古报刊暖米黄底
+    - yige（默认）：一格讲解员 + 美式复古报刊暖米黄底
     - popcomic：现代波普漫画风 + 亮黄底 + 多角色场景 + 浮动图标
     - yellowcomic：亮黄信息图漫画风 + 斜纹底 + 分类表格中心
     - reference：原 prompt 不变，仅作图生图参考（适合链接仿写）
     - none：原 prompt 不动，不追加任何风格修饰
-    - random：从 redfox / popcomic / yellowcomic 中随机选一个，同批次所有图用同一风格
+    - random：从 yige / popcomic / yellowcomic 中随机选一个，同批次所有图用同一风格
 """
 
 import argparse
@@ -48,12 +48,12 @@ import ssl
 import tempfile
 from pathlib import Path
 
-SUBMIT_URL = "https://redfox.hk/story/api/parseWork/imageGen/submitSkill"
-RESULT_URL = "https://redfox.hk/story/api/parseWork/imageGen/result"
-UPLOAD_URL = "https://redfox.hk/story/api/parseWork/imageGen/uploadImage"
+SUBMIT_URL = "https://yige.zone/story/api/parseWork/imageGen/submitSkill"
+RESULT_URL = "https://yige.zone/story/api/parseWork/imageGen/result"
+UPLOAD_URL = "https://yige.zone/story/api/parseWork/imageGen/uploadImage"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 
 DEFAULT_PARAMS = {
     "modelName": "gpt-image-2",
@@ -75,8 +75,8 @@ MAX_PROMPT_LENGTH = 500
 
 # 风格修饰器：三种可选视觉风格
 
-# 风格 A — redfox：红狐讲解员 IP + 美式复古报刊暖米黄底
-REDFOX_STYLE_SUFFIX = (
+# 风格 A — yige：一格讲解员 IP + 美式复古报刊暖米黄底
+YIGE_STYLE_SUFFIX = (
     "，画面中心为红色狐狸讲解员（红色毛皮、白色胸腹、大尾巴、海军蓝小马甲、圆框眼镜），"
     "美式复古报刊科普条漫风格，横向宽幅多格分镜，胶片颗粒质感，"
     "无装饰性边框，狐狸为视觉中心，参考 prompt 描述的姿态（封面=欢迎、分析=前倾拿教鞭、"
@@ -102,21 +102,21 @@ YELLOWCOMIC_STYLE_SUFFIX = (
 )
 
 # 所有可用风格（random 从中选取，排除 reference 和 none）
-RANDOMIZABLE_STYLES = ["redfox", "popcomic", "yellowcomic"]
-VALID_STYLES = {"redfox", "popcomic", "yellowcomic", "reference", "none", "random"}
+RANDOMIZABLE_STYLES = ["yige", "popcomic", "yellowcomic"]
+VALID_STYLES = {"yige", "popcomic", "yellowcomic", "reference", "none", "random"}
 
 
 def apply_style(prompt, style):
     """根据 style 参数对 prompt 做风格修饰。
 
-    - redfox: 追加红狐讲解员 + 美式复古报刊条漫风格
+    - yige: 追加一格讲解员 + 美式复古报刊条漫风格
     - popcomic: 追加现代波普漫画风（亮黄底+多角色场景）
     - yellowcomic: 追加亮黄信息图漫画风（斜纹底+分类表格中心）
     - reference: 原 prompt 不变（参考图自带风格）
     - none: 原 prompt 不变
     """
     style_suffix_map = {
-        "redfox": REDFOX_STYLE_SUFFIX,
+        "yige": YIGE_STYLE_SUFFIX,
         "popcomic": POPCOMIC_STYLE_SUFFIX,
         "yellowcomic": YELLOWCOMIC_STYLE_SUFFIX,
     }
@@ -161,7 +161,7 @@ def make_request(url, data, api_key, timeout=30):
         data=payload,
         headers={
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": api_key,
+            "YIGE_API_KEY": api_key,
         },
         method="POST",
     )
@@ -293,16 +293,16 @@ def download_images(image_urls, output_dir, prefix="image"):
     return downloaded
 
 
-def submit_task(prompt, api_key, image_path=None, fidelity=None, size=None, quality=None, style="redfox"):
+def submit_task(prompt, api_key, image_path=None, fidelity=None, size=None, quality=None, style="yige"):
     """Submit an image generation task. Returns taskId or None.
 
     style:
-        - redfox: 红狐讲解员 + 美式复古报刊风格（默认）
+        - yige: 一格讲解员 + 美式复古报刊风格（默认）
         - popcomic: 现代波普漫画风（亮黄底+多角色场景）
         - yellowcomic: 亮黄信息图漫画风（斜纹底+分类表格中心）
         - reference: prompt 不变，靠参考图自带的风格
         - none: prompt 不变
-        - random: 从 redfox/popcomic/yellowcomic 中随机选一个（调用方需自行确保同批次一致性）
+        - random: 从 yige/popcomic/yellowcomic 中随机选一个（调用方需自行确保同批次一致性）
     """
     operation = "generate"
     images = None
@@ -313,8 +313,8 @@ def submit_task(prompt, api_key, image_path=None, fidelity=None, size=None, qual
         print(f"[OK] Random style selected: {style}")
 
     if style not in VALID_STYLES:
-        print(f"[WARN] Unknown style '{style}', fallback to 'redfox'")
-        style = "redfox"
+        print(f"[WARN] Unknown style '{style}', fallback to 'yige'")
+        style = "yige"
     final_prompt = apply_style(prompt, style)
     if final_prompt != prompt:
         print(f"[OK] Style applied: {style} (+{len(final_prompt) - len(prompt)} chars)")
@@ -400,7 +400,7 @@ def poll_result(task_id, api_key):
     return None
 
 
-def generate_single(prompt, api_key, image_path=None, fidelity=None, size=None, quality=None, style="redfox"):
+def generate_single(prompt, api_key, image_path=None, fidelity=None, size=None, quality=None, style="yige"):
     """Generate a single image. Returns list of URLs or empty list."""
     task_id = submit_task(prompt, api_key, image_path=image_path, fidelity=fidelity, size=size, quality=quality, style=style)
     if not task_id:
@@ -409,7 +409,7 @@ def generate_single(prompt, api_key, image_path=None, fidelity=None, size=None, 
     return result or []
 
 
-def generate_batch(prompts_file, api_key, default_style="redfox"):
+def generate_batch(prompts_file, api_key, default_style="yige"):
     """Generate multiple images from a JSON file. Returns dict of id -> URLs.
 
     每个 item 可独立指定 style 字段；未指定则用 default_style。
@@ -462,8 +462,8 @@ def main():
     parser.add_argument("--fidelity", type=str, default=None, choices=["high", "low"], help="图生图保真度（high=高保真/low=低保真）")
     parser.add_argument("--size", type=str, default="1792x1024", help=f"图片尺寸（默认 1792x1024，可选: {', '.join(sorted(ALLOWED_SIZES))}）")
     parser.add_argument("--quality", type=str, default="medium", choices=["low", "medium", "high", "auto"], help="图片质量（默认 medium）")
-    parser.add_argument("--style", type=str, default="redfox", choices=sorted(VALID_STYLES), help="风格模式：redfox（默认）/ popcomic / yellowcomic / reference / none / random（随机，同批次内需手动保持一致）")
-    parser.add_argument("--api-key", type=str, default=None, help="REDFOX_API_KEY")
+    parser.add_argument("--style", type=str, default="yige", choices=sorted(VALID_STYLES), help="风格模式：yige（默认）/ popcomic / yellowcomic / reference / none / random（随机，同批次内需手动保持一致）")
+    parser.add_argument("--api-key", type=str, default=None, help="YIGE_API_KEY")
     parser.add_argument("--output", type=str, default="results.json", help="结果输出文件")
     parser.add_argument("--task-id", type=str, default=None, help="查询已有任务结果（跳过提交）")
     parser.add_argument("--download-dir", type=str, default=None, help="下载图片到本地目录（不传则仅返回 URL）")
@@ -482,8 +482,8 @@ def main():
 
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        print("[ERR] REDFOX_API_KEY is required. Set via --api-key or REDFOX_API_KEY env var.")
-        print("  Get key: https://redfox.hk/settings/api-keys?source=skillhub")
+        print("[ERR] YIGE_API_KEY is required. Set via --api-key or YIGE_API_KEY env var.")
+        print("  Get key: https://yige.zone/settings/api-keys?source=skillhub")
         sys.exit(1)
 
     # Mode: Query existing task

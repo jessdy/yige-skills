@@ -2,7 +2,7 @@
 
 ## 接口信息
 
-**接口地址**: `https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise`
+**接口地址**: `https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataRaise`
 
 **请求方式**: GET
 
@@ -13,9 +13,9 @@
 ## 认证方式
 
 脚本按以下三级回退读取 API Key：
-1. **环境变量** `REDFOX_API_KEY`（推荐）
-2. **环境变量** `COZE_REDFOX_API_7633629455969337344`（兼容旧变量名）
-3. **Shell 配置文件** 自动探测（~/.bashrc / ~/.zshrc / ~/.bash_profile / ~/.profile），提取其中 `REDFOX_API_KEY` 的值
+1. **环境变量** `YIGE_API_KEY`（推荐）
+2. **环境变量** `COZE_YIGE_API_7633629455969337344`（兼容旧变量名）
+3. **Shell 配置文件** 自动探测（~/.bashrc / ~/.zshrc / ~/.bash_profile / ~/.profile），提取其中 `YIGE_API_KEY` 的值
 4. **提示用户配置**：未找到时输出配置指引并退出
 
 请求使用原生 `requests` 库，不依赖任何 Coze 工作负载身份模块。
@@ -35,12 +35,12 @@
 
 ### 示例1：获取昨日增长榜
 ```
-GET https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise?rankDate=2026-04-15&source=公众号阅读增长榜-GitHub
+GET https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataRaise?rankDate=2026-04-15&source=公众号阅读增长榜-GitHub
 ```
 
 ### 示例2：获取指定日期增长榜
 ```
-GET https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataRaise?rankDate=2026-04-01&source=公众号阅读增长榜-GitHub
+GET https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataRaise?rankDate=2026-04-01&source=公众号阅读增长榜-GitHub
 ```
 
 ## 返回数据

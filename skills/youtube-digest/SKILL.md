@@ -19,7 +19,7 @@ description: YouTube 提文案 — 输入 YouTube 视频链接或 ID，一键提
 - 字幕按 `zh,en,asr` 优先级选轨：**视频有中文字幕轨时直接输出中文**；没有中文轨时回退英文，**脚本自动将非中文字幕翻译为中文**（基于 Google Translate，批量翻译提升效率）；加 `--no-translate` 可禁用自动翻译、保留原文
 - 默认自动获取视频元数据（标题/频道），无需额外参数
 
-> 需先配置 API Key，通过环境变量 REDFOX_API_KEY 或 --api-key 参数传入。
+> 需先配置 API Key，通过环境变量 YIGE_API_KEY 或 --api-key 参数传入。
 > 文字稿来源：视频字幕轨（手动字幕 + 自动生成字幕 asr），按语言优先级选轨、中文轨优先；非中文字幕由脚本端自动翻译为中文。
 
 ---
@@ -122,7 +122,7 @@ Markdown 存档默认保存在 `~/Downloads/QoderYoutubeDigest/`，文件名 `{�
 | `--no-save` | 不保存 Markdown 文件 | 自动保存 |
 | `--output-dir` | 输出目录 | `~/Downloads/QoderYoutubeDigest` |
 | `--no-translate` | 禁用自动翻译，保留字幕原文输出 | 默认**自动翻译**非中文字幕为中文 |
-| `--api-key` | 指定 RedFox API Key | — |
+| `--api-key` | 指定 Yige API Key | — |
 
 ---
 
@@ -132,11 +132,11 @@ Markdown 存档默认保存在 `~/Downloads/QoderYoutubeDigest/`，文件名 `{�
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
-注册地址：[redfox.hk](https://redfox.hk/settings/api-keys?source=github)
+注册地址：[yige.zone](https://yige.zone/settings/api-keys?source=github)
 
 ---
 
@@ -184,4 +184,4 @@ A：链接无效返回 `Invalid YouTube URL or video ID`（积分不扣除），
 A：可以让 AI 直接总结成笔记、翻译成中文、改写成公众号文章（配合 gzh-design 排版、md-to-wechat 一键推送草稿）。
 
 **Q：额度用完怎么办？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 Token。

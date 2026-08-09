@@ -21,11 +21,11 @@ import urllib.error
 
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-SEARCH_USER_URL = "https://redfox.hk/story/api/gzhData/searchUser"
-ACCOUNT_QUERY_URL = "https://redfox.hk/story/api/gzhUser/query"
+SEARCH_USER_URL = "https://yige.zone/story/api/gzhData/searchUser"
+ACCOUNT_QUERY_URL = "https://yige.zone/story/api/gzhUser/query"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "A股公众号大V-验证脚本"
 
 # 测试关键词
@@ -127,7 +127,7 @@ def test_search_user(api_key, keywords, max_per_keyword=20):
             account_info = {
                 "accountName": name,
                 "account": acc.get("account", ""),  # 微信号
-                "redfoxIndex": acc.get("redfoxIndex", 0),
+                "yigeIndex": acc.get("yigeIndex", 0),
                 "description": acc.get("description", ""),
                 "verifyInfo": acc.get("verifyInfo", ""),
                 "accountType": acc.get("accountType", ""),
@@ -144,7 +144,7 @@ def test_search_user(api_key, keywords, max_per_keyword=20):
             print(f"\n  示例账号 {i+1}:")
             print(f"    名称: {acc.get('accountName')}")
             print(f"    微信号: {acc.get('account')}")
-            print(f"    红狐指数: {acc.get('redfoxIndex')}")
+            print(f"    一格指数: {acc.get('yigeIndex')}")
             print(f"    账号分类: {acc.get('accountType')}")
             print(f"    认证信息: {acc.get('verifyInfo')}")
             print(f"    最新文章: {acc.get('lastArticleTitle')}")
@@ -199,7 +199,7 @@ def test_gzh_user_query(api_key, accounts, test_count=5):
                 detail = data1[0]
                 print(f"    ✅ 方式1(accountName) 成功")
                 print(f"       avgReadCount: {detail.get('avgReadCount', 'N/A')}")
-                print(f"       redfoxIndex: {detail.get('redfoxIndex', 'N/A')}")
+                print(f"       yigeIndex: {detail.get('yigeIndex', 'N/A')}")
                 
                 # 检查 works 字段
                 works = detail.get("works", [])
@@ -232,7 +232,7 @@ def test_gzh_user_query(api_key, accounts, test_count=5):
                     detail2 = data2[0]
                     print(f"    ✅ 方式2(微信号) 成功")
                     print(f"       avgReadCount: {detail2.get('avgReadCount', 'N/A')}")
-                    print(f"       redfoxIndex: {detail2.get('redfoxIndex', 'N/A')}")
+                    print(f"       yigeIndex: {detail2.get('yigeIndex', 'N/A')}")
                 else:
                     print(f"    ⚠️ 方式2(微信号) 返回空数据")
             else:
@@ -314,14 +314,14 @@ def analyze_vertical_classification(accounts):
     kol_accounts = [acc for acc in accounts if not any(kw in (acc.get("verifyInfo") or "").lower() or kw in (acc.get("accountType") or "").lower() for kw in official_keywords)]
     for acc in kol_accounts[:3]:
         desc = acc.get('description') or ""
-        print(f"    - {acc['accountName']} | 红狐指数: {acc.get('redfoxIndex')} | {desc[:30]}")
+        print(f"    - {acc['accountName']} | 一格指数: {acc.get('yigeIndex')} | {desc[:30]}")
 
 
 # ─── 主函数 ──────────────────────────────────────────────────────────────────────
 def main():
     api_key = get_api_key()
     if not api_key:
-        print("❌ 未找到API Key，请设置环境变量 REDFOX_API_KEY 或配置文件")
+        print("❌ 未找到API Key，请设置环境变量 YIGE_API_KEY 或配置文件")
         sys.exit(1)
     
     print("🚀 开始验证 searchUser 接口效果")
@@ -333,9 +333,9 @@ def main():
     print(f"\n✅ searchUser 测试完成:")
     print(f"   发现账号总数: {len(accounts)}")
     
-    redfox_indices = [float(a['redfoxIndex']) for a in accounts if a.get('redfoxIndex') is not None]
-    if redfox_indices:
-        print(f"   红狐指数范围: {min(redfox_indices):.1f} - {max(redfox_indices):.1f}")
+    yige_indices = [float(a['yigeIndex']) for a in accounts if a.get('yigeIndex') is not None]
+    if yige_indices:
+        print(f"   一格指数范围: {min(yige_indices):.1f} - {max(yige_indices):.1f}")
     
     # 保存原始数据
     output_file = Path("search_user_test_result.json")
@@ -354,7 +354,7 @@ def main():
     print(f"{'='*80}\n")
     
     print("✅ searchUser 接口能力:")
-    print("   1. 直接返回账号列表（含红狐指数、简介、分类）")
+    print("   1. 直接返回账号列表（含一格指数、简介、分类）")
     print("   2. 支持最热排序（按阅读数）")
     print("   3. 返回 accountType 辅助分类")
     print("   4. 返回 lastArticleTitle（最新文章标题）")

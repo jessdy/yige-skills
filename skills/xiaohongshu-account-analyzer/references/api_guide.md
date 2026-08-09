@@ -3,7 +3,7 @@
 ## 接口请求
 
 **请求方式**：POST
-**请求地址**：https://redfox.hk/story/api/xhsUser/query
+**请求地址**：https://yige.zone/story/api/xhsUser/query
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|

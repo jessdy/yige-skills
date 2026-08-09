@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 抖音账号诊断报告生成器 v4.0
-基于红狐API /story/api/dyUser/query 接口返回的数据生成标准诊断报告
+基于一格数据API /story/api/dyUser/query 接口返回的数据生成标准诊断报告
 四维度评估:账号体量(35分) + 内容表现(35分) + 运营活跃度(20分) + 平台指数(10分)
 """
 
@@ -78,7 +78,7 @@ class DouyinDiagnosisReportV3:
         初始化报告生成器
 
         Args:
-            account_data: 红狐API /story/api/dyUser/query 返回的账号数据(单条)
+            account_data: 一格数据API /story/api/dyUser/query 返回的账号数据(单条)
         """
         self.data = account_data
         self.works = account_data.get("works", [])
@@ -121,7 +121,7 @@ class DouyinDiagnosisReportV3:
         n = len(works)
         aweme_count = self.data.get("awemeCount", 0) or 0
         sig = self.data.get("signature", "") or ""
-        redfox_index = self.data.get("redfoxIndex")
+        yige_index = self.data.get("yigeIndex")
 
         # ---- 维度一：账号体量(35分) ----
         follower_levels = [
@@ -237,17 +237,17 @@ class DouyinDiagnosisReportV3:
         op_sub = s1_fr + s2_pp + s3_sig + s4_aw
 
         # ---- 维度四：平台指数(10分) ----
-        if redfox_index is None:
+        if yige_index is None:
             s1_rx, cond_rx = 0, "\u672a\u8fd4\u56de"
         else:
-            redfox_levels = [
+            yige_levels = [
                 (900, 10, "\u2265900"), (800, 8, "800-900"),
                 (700, 6, "700-800"), (600, 4, "600-700"),
                 (500, 2, "500-600"), (0, 0, "<500"),
             ]
             s1_rx = 0; cond_rx = ""
-            for th, sc, cond in redfox_levels:
-                if redfox_index >= th:
+            for th, sc, cond in yige_levels:
+                if yige_index >= th:
                     s1_rx, cond_rx = sc, cond; break
         platform_sub = s1_rx
 
@@ -291,10 +291,10 @@ class DouyinDiagnosisReportV3:
 
         lines.append("")
         lines.append(f"**维度四：平台指数（10分）**")
-        if redfox_index is not None:
-            lines.append(f"+ 红狐指数 {redfox_index:.1f}（{cond_rx}）→ {s1_rx}分")
+        if yige_index is not None:
+            lines.append(f"+ 一格指数 {yige_index:.1f}（{cond_rx}）→ {s1_rx}分")
         else:
-            lines.append(f"+ 红狐指数 未返回 → 0分")
+            lines.append(f"+ 一格指数 未返回 → 0分")
         if platform_sub == 10:
             lines.append(f"+ **小计：{platform_sub}分（满分）**")
         else:
@@ -350,8 +350,8 @@ class DouyinDiagnosisReportV3:
         follower_count = format_number(self.data.get("followerCount", 0))
         total_favorited = format_number(self.data.get("totalFavorited", 0))
         aweme_count = self.data.get("awemeCount", 0)
-        redfox_index = self.data.get("redfoxIndex")
-        redfox_display = f"{redfox_index:.1f}" if redfox_index is not None else "-"
+        yige_index = self.data.get("yigeIndex")
+        yige_display = f"{yige_index:.1f}" if yige_index is not None else "-"
         crawl_time = self.data.get("crawlTime", "-")
         signature = self.data.get("signature", "")
         sig_display = signature if signature and signature.strip() else "未设置"
@@ -361,9 +361,9 @@ class DouyinDiagnosisReportV3:
 
 ### 基本信息
 
-| 昵称 | 抖音号 | 地域 | 粉丝数 | 获赞 | 作品数 | 红狐指数 | 数据时间 |
+| 昵称 | 抖音号 | 地域 | 粉丝数 | 获赞 | 作品数 | 一格指数 | 数据时间 |
 |------|--------|------|--------|------|--------|---------|----------|
-| {nickname} | {account_id} | {location} | {follower_count} | {total_favorited} | {aweme_count} | {redfox_display} | {crawl_time} |
+| {nickname} | {account_id} | {location} | {follower_count} | {total_favorited} | {aweme_count} | {yige_display} | {crawl_time} |
 
 **简介{c}** {sig_display}
 
@@ -481,7 +481,7 @@ class DouyinDiagnosisReportV3:
     def _section_footer(self) -> str:
         today = datetime.now().strftime("%Y-%m-%d")
         crawl_time = self.data.get("crawlTime", "-")
-        return f"\n*诊断时间:{today} | 数据来源:红狐API `/story/api/dyUser/query` | 数据更新:{crawl_time}*"
+        return f"\n*诊断时间:{today} | 数据来源:一格数据API `/story/api/dyUser/query` | 数据更新:{crawl_time}*"
 
     # ==================== 维度一：账号体量(40分) ====================
 
@@ -679,25 +679,25 @@ class DouyinDiagnosisReportV3:
     # ==================== 维度四：平台指数(10分) ====================
 
     def _score_platform(self):
-        """平台指数 = 红狐指数(10)
-        若API未返回redfoxIndex(值为null),得0分
+        """平台指数 = 一格指数(10)
+        若API未返回yigeIndex(值为null),得0分
         Returns: (score, details_list)"""
-        redfox_index = self.data.get("redfoxIndex")
-        if redfox_index is None:
-            return 0, ["红狐指数 API未返回 → 0/10分"]
+        yige_index = self.data.get("yigeIndex")
+        if yige_index is None:
+            return 0, ["一格指数 API未返回 → 0/10分"]
 
-        # 红狐指数(10分)
-        redfox_levels = [
+        # 一格指数(10分)
+        yige_levels = [
             (900, 10, "顶级影响力"), (800, 8, "头部影响力"),
             (700, 6, "中上影响力"), (600, 4, "中等影响力"),
             (500, 2, "初级影响力"), (0, 0, "待提升"),
         ]
         s1, level = 0, ""
-        for threshold, score, label in redfox_levels:
-            if redfox_index >= threshold:
+        for threshold, score, label in yige_levels:
+            if yige_index >= threshold:
                 s1, level = score, label
                 break
-        return s1, [f"红狐指数 {redfox_index:.1f} → {s1}/10分({level})"]
+        return s1, [f"一格指数 {yige_index:.1f} → {s1}/10分({level})"]
 
     # ==================== 辅助方法 ====================
 
@@ -781,7 +781,7 @@ class DouyinDiagnosisReportV3:
         if platform == 0:
             suggestions.append(("平台指数数据缺失", "持续稳定运营以积累平台指数,提升内容质量与互动率"))
         elif platform < 4:
-            suggestions.append(("平台指数偏低", "提升内容质量与互动率,保持稳定更新以提升红狐指数"))
+            suggestions.append(("平台指数偏低", "提升内容质量与互动率,保持稳定更新以提升一格指数"))
 
         # 至少3条
         if len(suggestions) < 3:
@@ -810,7 +810,7 @@ if __name__ == "__main__":
         "awemeCount": 236,
         "totalFavorited": 390844290,
         "crawlTime": "2026-06-02 01:57:18",
-        "redfoxIndex": 780.5,
+        "yigeIndex": 780.5,
         "works": [
             {
                 "awemeId": "7481xxx1",

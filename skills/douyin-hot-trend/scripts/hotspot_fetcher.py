@@ -3,8 +3,8 @@
 """
 抖音热榜数据获取脚本
 
-功能：调用红狐数据热榜API获取抖音实时热点数据
-接口：https://redfox.hk/story/api/hotSpot/getListByPlatform
+功能：调用一格数据热榜API获取抖音实时热点数据
+接口：https://yige.zone/story/api/hotSpot/getListByPlatform
 参数：platform=2, source=抖音热榜-GitHub, startDate, endDate（可选）
 方法：GET
 认证：X-API-KEY（三级回退：环境变量 → shell配置文件 → 提示用户配置）
@@ -21,8 +21,8 @@ import requests
 
 def get_api_key():
     """
-    获取 REDFOX_API_KEY，按三级优先级回退：
-    1. 从当前设备环境变量 REDFOX_API_KEY 获取
+    获取 YIGE_API_KEY，按三级优先级回退：
+    1. 从当前设备环境变量 YIGE_API_KEY 获取
     2. 从 shell 配置文件（~/.bashrc / ~/.bash_profile / ~/.zshrc）中读取
     3. 提示用户配置
 
@@ -33,7 +33,7 @@ def get_api_key():
         SystemExit: 未能获取到有效的 API Key
     """
     # 第一级：从环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key and api_key.strip():
         return api_key.strip()
 
@@ -50,7 +50,7 @@ def get_api_key():
                 with open(config_path, "r", encoding="utf-8", errors="ignore") as f:
                     content = f.read()
                 match = re.search(
-                    r'export\s+REDFOX_API_KEY\s*=\s*["\']?([a-zA-Z0-9_]+)["\']?',
+                    r'export\s+YIGE_API_KEY\s*=\s*["\']?([a-zA-Z0-9_]+)["\']?',
                     content
                 )
                 if match:
@@ -62,9 +62,9 @@ def get_api_key():
 
     # 第三级：提示用户配置
     error_msg = {
-        "error": "缺少 REDFOX_API_KEY 配置",
-        "hint": "请设置环境变量 REDFOX_API_KEY=ak_xxxxxxxx，或将其写入 shell 配置文件（~/.bashrc / ~/.bash_profile / ~/.zshrc）",
-        "guide": "访问 https://redfox.hk/login 注册账号，在个人中心获取 API Key"
+        "error": "缺少 YIGE_API_KEY 配置",
+        "hint": "请设置环境变量 YIGE_API_KEY=ak_xxxxxxxx，或将其写入 shell 配置文件（~/.bashrc / ~/.bash_profile / ~/.zshrc）",
+        "guide": "访问 https://yige.zone/login 注册账号，在个人中心获取 API Key"
     }
     print(json.dumps(error_msg, ensure_ascii=False))
     sys.exit(1)
@@ -88,7 +88,7 @@ def fetch_douyin_hotspot(start_date=None, end_date=None, days=None):
     credential = get_api_key()
 
     # 构建请求URL
-    url = "https://redfox.hk/story/api/hotSpot/getListByPlatform"
+    url = "https://yige.zone/story/api/hotSpot/getListByPlatform"
 
     # 构建请求参数
     params = {

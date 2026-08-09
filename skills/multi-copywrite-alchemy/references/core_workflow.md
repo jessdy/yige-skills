@@ -37,7 +37,7 @@
 
 **通用调用规范**：
 - 请求方式：`POST` JSON
-- 认证头：`X-API-KEY`（环境变量 `REDFOX_API_KEY`）
+- 认证头：`X-API-KEY`（环境变量 `YIGE_API_KEY`）
 - 成功码：`code == 2000`（不是200）
 - 超时设置：建议 30 秒
 
@@ -46,14 +46,14 @@
 ```python
 import json, urllib.request
 
-API_KEY = "环境变量 REDFOX_API_KEY"
+API_KEY = "环境变量 YIGE_API_KEY"
 
 PLATFORM_SOURCE_MAP = {
     "gzh": "复刻蒸馏写作技能-公众号-GitHub",
     "dy":  "复刻蒸馏写作技能-抖音-GitHub",
 }
 
-def redfox_api(path, payload, timeout=30):
+def yige_api(path, payload, timeout=30):
     # 根据接口路径自动注入 source
     platform_key = path.split("/")[0]  # 取路径第一段，如 gzhData / dyData
     platform_alias = {"gzhdata": "gzh", "dydata": "dy"}.get(platform_key.lower().replace("_", ""), None)
@@ -61,7 +61,7 @@ def redfox_api(path, payload, timeout=30):
         payload = {**payload, "source": PLATFORM_SOURCE_MAP[platform_alias]}
     data = json.dumps(payload).encode()
     req = urllib.request.Request(
-        f"https://redfox.hk/story/api/{path}",
+        f"https://yige.zone/story/api/{path}",
         data=data,
         headers={"X-API-KEY": API_KEY, "Content-Type": "application/json"}
     )
@@ -153,7 +153,7 @@ def redfox_api(path, payload, timeout=30):
 
 #### 平台采集通用规则
 
-1. **积分消耗提醒**：每次API调用会消耗红狐平台积分，采集前应告知用户
+1. **积分消耗提醒**：每次API调用会消耗一格数据平台积分，采集前应告知用户
 2. **采集数量**：默认采集10篇，用户可指定更多（最多50篇）
 3. **字数筛选**：自动跳过字数 < 50字的作品（内容不足以分析）
 4. **跨平台合并**：支持同时从多个平台采集同一作者的素材，合并后统一去重和预处理

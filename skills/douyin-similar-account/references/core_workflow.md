@@ -21,19 +21,19 @@ python scripts/douyin_similar_account.py --account_id "geng970616"
 - 非中文输入 → 使用 `accountId` 参数
 - 接口一次性返回 currentAccount + benchmarkAccounts + topAccounts
 
-API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
+API接口：POST https://yige.zone/story/api/dyUser/querySimilarAccounts
 
 ### 步骤3：按标准模版输出结果
 
 > **强制约束：脚本输出的完整文本即为最终结果，AI必须原样呈现，禁止任何形式的摘要、改写、增减、重组或二次加工。不得在脚本输出前后添加任何额外的总结、解读或评论。**
 
 **输出顺序**：
-1. 当前账号基本信息+红狐指数+近期作品
+1. 当前账号基本信息+一格指数+近期作品
 2. 开场白（只显示有数据的组）
 3. 对标账号表格（有数据才展示，本账号置首行）
 4. 头部账号表格（有数据才展示）
 5. 深度分析：共通点 + 差异分析 + 优化建议（有数据才展示）
-6. 数据说明：数据更新时间 + 红狐指数说明
+6. 数据说明：数据更新时间 + 一格指数说明
 
 **输出格式示例**：
 
@@ -50,7 +50,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 - 粉丝数：373.9w
 - 总获赞数：1.2亿
 - 作品总数：1238
-- 红狐指数：843.2
+- 一格指数：843.2
 - 近7天发布数：5
 - 近7天互动量：56.6w
 - 最近作品发布：2026-06-03 11:01:46
@@ -63,36 +63,36 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 
 ✨ 为你匹配到【对标账号（5个）】和【头部账号（5个）】的2组推荐，可按需参考：
 
-👉【对标账号（6个）】（红狐指数向上最近的账号，可直接复制玩法）
+👉【对标账号（6个）】（一格指数向上最近的账号，可直接复制玩法）
 
-| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 红狐指数 | 指数差距 | 推荐理由 |
+| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 一格指数 | 指数差距 | 推荐理由 |
 | --- | --- | --- | --- | --- | --- | --- |
 | **[一乐店长](账号链接)** | 373.9w | 1.2亿 | 56.6w | 843.2 | 本账号 | 「**本账号**」 |
-| [老赫晨](账号链接) | 404.7w | 2976.7w | 23.5w | 843.6 | +0.4 | 持续更新（近7天1条），短视频/中等深度<br>粉丝404.7w，总获赞2976.7w<br>红狐指数843.6，高出你0.4点 |
+| [老赫晨](账号链接) | 404.7w | 2976.7w | 23.5w | 843.6 | +0.4 | 持续更新（近7天1条），短视频/中等深度<br>粉丝404.7w，总获赞2976.7w<br>一格指数843.6，高出你0.4点 |
 
-👉【头部账号（5个）】（同分类红狐指数倒序前5，模式成熟可追赶）
+👉【头部账号（5个）】（同分类一格指数倒序前5，模式成熟可追赶）
 
-| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 红狐指数 | 指数差距 | 推荐理由 |
+| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 一格指数 | 指数差距 | 推荐理由 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [陈伯(全能王)](账号链接) | 1634.2w | 1597.8w | 72.3w | 983.9 | +140.7 | 持续更新（近7天3条），短视频/中等深度<br>粉丝1634.2w，总获赞1597.8w<br>红狐指数983.9，高出你140.7点 |
+| [陈伯(全能王)](账号链接) | 1634.2w | 1597.8w | 72.3w | 983.9 | +140.7 | 持续更新（近7天3条），短视频/中等深度<br>粉丝1634.2w，总获赞1597.8w<br>一格指数983.9，高出你140.7点 |
 
 **深度分析**
 
 📌 **共通点**
 - 更新节奏：同赛道账号平均近7天6条，保持稳定更新
 - 粉丝量级：相似账号平均粉丝659.8w，处于同一发展阶段
-- 红狐指数：相似账号平均891.8
+- 一格指数：相似账号平均891.8
 
 📊 **差异分析**
-- 红狐指数差距：对标账号平均843.7，比你高0.5点
-- 头部差距：头部标杆最高红狐指数983.9，比你高140.7点
+- 一格指数差距：对标账号平均843.7，比你高0.5点
+- 头部差距：头部标杆最高一格指数983.9，比你高140.7点
 - 更新节奏差异：部分对标账号日更（近7天18条），高频更新是流量基础
 
 💡 **优化建议**
 1. **提升更新频率**：互动量最高的对标账号近7天发布7条，建议保持稳定更新节奏
 
 *数据更新时间：2026-06-02 01:58:32*
-*红狐指数：每周更新，若统计周期内账号未发布作品，红狐指数可能为0。*
+*一格指数：每周更新，若统计周期内账号未发布作品，一格指数可能为0。*
 ```
 
 
@@ -132,7 +132,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | awemeCount | Integer | 作品总数 |
 | totalFavorited | Long | 总获赞数 |
 | crawlTime | String | 数据更新时间 |
-| redfoxIndex | Double | 红狐指数 |
+| yigeIndex | Double | 一格指数 |
 | works | List | 近7天作品列表 |
 
 ### benchmarkAccounts / topAccounts（对标/头部账号）
@@ -149,7 +149,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | interactiveCountSeven | Integer | 近7天互动量，用于表格和互动分析 |
 | interactiveCountThirty | Integer | 近30天互动数 |
 | lastAwemeCreateTime | String | 最近作品发布时间 |
-| redfoxIndex | Double | 红狐指数，用于表格和指数对比 |
+| yigeIndex | Double | 一格指数，用于表格和指数对比 |
 | works[].title | String | 作品标题，用于作品表格和主题分析 |
 | works[].playCount | Integer | 播放量，用于作品表格和互动率/点赞率计算 |
 | works[].diggCount | Integer | 点赞数，用于点赞率计算 |
@@ -166,11 +166,11 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 对标匹配由API服务端完成，返回规则如下：
 
 ### 对标账号（benchmarkAccounts）
-- 匹配逻辑：同分类中红狐指数向上最近的5个账号
+- 匹配逻辑：同分类中一格指数向上最近的5个账号
 - 特点：指数接近，运营阶段相似，玩法可直接复制
 
 ### 头部账号（topAccounts）
-- 匹配逻辑：同分类中红狐指数倒序前5
+- 匹配逻辑：同分类中一格指数倒序前5
 - 特点：同赛道顶尖账号，运营模式成熟，适合追赶学习
 
 ## 输出格式规范
@@ -178,19 +178,19 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 1. 查询账号基本信息和所有表格中的【账号名称】需添加跳转链接，统一使用 `secUid` 构造 `https://www.douyin.com/user/{secUid}`；若 `secUid` 为空，则回退使用 `uid` 构造 `https://www.douyin.com/user/{uid}`
 2. 表格中【推荐理由】需分多行展示（用 `<br>` 换行），且「」内的内容需加粗
 3. 深度分析包含三部分：共通点、差异分析、优化建议，按需输出
-4. 对标/头部账号表格列顺序：账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 红狐指数 | 指数差距 | 推荐理由
+4. 对标/头部账号表格列顺序：账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 一格指数 | 指数差距 | 推荐理由
 5. 对标账号表格第一行为本账号（加粗显示），指数差距列显示"本账号"，推荐理由为「**本账号**」，总数=对标账号数+1
 6. 指数差距列：本账号显示"本账号"，其他账号显示"+X.X"（高出查询账号）或"-X.X"（低于查询账号），无数据时显示"-"
 7. 对标账号和头部账号数量如实展示，不人为补全
 8. 末尾统一输出数据说明：
    - `*数据更新时间：{crawlTime}*`（取currentAccount.crawlTime）
-   - `*红狐指数：每周更新，若统计周期内账号未发布作品，红狐指数可能为0。*`
+   - `*一格指数：每周更新，若统计周期内账号未发布作品，一格指数可能为0。*`
 
 ## API接口详情
 
 ### 接口：查询抖音对标账号
 
-**接口地址：** `POST https://redfox.hk/story/api/dyUser/querySimilarAccounts`
+**接口地址：** `POST https://yige.zone/story/api/dyUser/querySimilarAccounts`
 
 **认证方式：** 请求头 `X-API-KEY`（ak_xxx格式）
 
@@ -229,8 +229,8 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | 字段路径 | 类型 | 说明 |
 |---------|------|------|
 | data.currentAccount | DyUserInfoVO | 当前账号信息 |
-| data.benchmarkAccounts | List\<DySimilarAccountDetailVO\> | 对标账号列表（红狐指数向上最近的5个） |
-| data.topAccounts | List\<DySimilarAccountDetailVO\> | 头部账号列表（同分类红狐指数倒序前5） |
+| data.benchmarkAccounts | List\<DySimilarAccountDetailVO\> | 对标账号列表（一格指数向上最近的5个） |
+| data.topAccounts | List\<DySimilarAccountDetailVO\> | 头部账号列表（同分类一格指数倒序前5） |
 
 **当前账号信息（DyUserInfoVO）：**
 
@@ -252,7 +252,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | awemeCount | Integer | 总发布作品数 |
 | totalFavorited | Long | 总点赞数 |
 | crawlTime | String | 账号更新时间 |
-| redfoxIndex | Double | 红狐指数 |
+| yigeIndex | Double | 一格指数 |
 | works | List\<DyWorkVO\> | 近7天作品列表 |
 | similarAccounts | List\<DySimilarAccountVO\> | 相似账号列表 |
 
@@ -271,7 +271,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | interactiveCountSeven | Integer | 近7天作品互动量 |
 | interactiveCountThirty | Integer | 近30天互动数 |
 | lastAwemeCreateTime | String | 最近作品发布时间 |
-| redfoxIndex | Double | 红狐指数 |
+| yigeIndex | Double | 一格指数 |
 | works | List\<DyWorkVO\> | 近7天作品列表 |
 
 **作品信息（DyWorkVO）：**
@@ -310,7 +310,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | --- | --- |
 | `query_similar_accounts()` | 调用 /dyUser/querySimilarAccounts 接口，支持accountId和accountName两种查询方式，返回currentAccount+benchmarkAccounts+topAccounts |
 | `format_output()` | 格式化完整文本输出，包含当前账号信息、对标表格、头部表格、深度分析 |
-| `generate_recommendation_reason()` | 基于多维度生成推荐理由，涵盖红狐指数对比、爆品引用、更新节奏、互动率等 |
+| `generate_recommendation_reason()` | 基于多维度生成推荐理由，涵盖一格指数对比、爆品引用、更新节奏、互动率等 |
 | `generate_analysis_summary()` | 基于共通点、差异分析、优化建议三维输出深度分析 |
 
 ## 推荐理由生成维度
@@ -324,7 +324,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 | 3 | 与查询账号播放倍数对比 | 查询账号 + 对标账号均播 | 均播约为你的3.2倍，模式成熟可追赶 |
 | 4 | 更新节奏+近7天发布量+内容策略 | awemeCountSeven + works | 日更高产（近7天10条），短视频/深度解析 |
 | 5 | 互动率+点赞率 | works中互动/点赞/播放数据 | 互动率8.5%，点赞率5.2%，用户粘性强 |
-| 6 | 粉丝量级+总获赞+红狐指数对比 | followerCount + totalFavorited + redfoxIndex | 粉丝5w，总获赞200w，红狐指数843.6，高出你0.4点 |
+| 6 | 粉丝量级+总获赞+一格指数对比 | followerCount + totalFavorited + yigeIndex | 粉丝5w，总获赞200w，一格指数843.6，高出你0.4点 |
 | 7 | 数据稀疏补充 | 多维度兜底 | 内容方向：美食教程/家常菜，近7天发布5条 |
 | 8 | 结论兜底 | 赛道+均播+7天互动 | 同赛道账号，均播5.2w，可参考运营策略 |
 
@@ -333,7 +333,7 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 - 互动率超过100%判定为数据异常，不输出
 - 点赞率分级描述：>=5%用户粘性极强，>=3%用户粘性强，1%-3%粘性尚可
 - 播放倍数对比：>=3倍模式成熟可追赶，>=1.5倍策略可参考，0.7-1.3倍玩法可直接复制
-- 红狐指数对比：显示对标账号与查询账号的指数差距
+- 一格指数对比：显示对标账号与查询账号的指数差距
 - 各维度间自动去重，避免同一条信息重复输出
 
 **输出约束**：
@@ -341,8 +341,8 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 - 禁止自行扩展解读、增加额外维度或改写标准话术
 - 脚本输出的推荐理由即为最终结果，AI展示时直接呈现，不做二次加工
 
-**红狐指数为0时的推荐理由**：
-当查询账号的红狐指数为0时，推荐理由走「学习点总结」模式（`_generate_learning_point_reason`），基于账号数据、内容数据、更新节奏、整体内容策略定位等总结该账号的值得学习点，输出格式不同于标准8级维度：
+**一格指数为0时的推荐理由**：
+当查询账号的一格指数为0时，推荐理由走「学习点总结」模式（`_generate_learning_point_reason`），基于账号数据、内容数据、更新节奏、整体内容策略定位等总结该账号的值得学习点，输出格式不同于标准8级维度：
 
 | 维度 | 数据来源 | 示例 |
 | --- | --- | --- |
@@ -362,5 +362,5 @@ API接口：POST https://redfox.hk/story/api/dyUser/querySimilarAccounts
 
 1. 每日下午19点推送最新数据。可自行选择推送频率和时间~
 2. 暂不需要
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 ```

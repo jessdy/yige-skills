@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书热门笔记搜索脚本（支持 HTML 卡片布局输出）
-基于红狐数据API，支持关键词搜索、分页、时间筛选
+基于一格数据API，支持关键词搜索、分页、时间筛选
 """
 
 import sys
@@ -55,15 +55,15 @@ def fetch_xhs_hot_notes(keyword: str, debug: bool = False, max_retries: int = 3,
                         page_num: int = 1, page_size: int = 50):
     """调用接口获取小红书热门笔记数据"""
     # 从环境变量读取 API Key
-    api_key = os.environ.get("REDFOX_API_KEY", "").strip()
+    api_key = os.environ.get("YIGE_API_KEY", "").strip()
     if not api_key:
-        print("❌ 错误：未找到 REDFOX_API_KEY 环境变量。", file=sys.stderr)
-        print("请在 Coze 平台的环境变量配置中添加 REDFOX_API_KEY，或在本地 shell 配置文件（如 ~/.zshrc / ~/.bashrc）中添加：", file=sys.stderr)
-        print("  export REDFOX_API_KEY=your_api_key_here", file=sys.stderr)
+        print("❌ 错误：未找到 YIGE_API_KEY 环境变量。", file=sys.stderr)
+        print("请在 Coze 平台的环境变量配置中添加 YIGE_API_KEY，或在本地 shell 配置文件（如 ~/.zshrc / ~/.bashrc）中添加：", file=sys.stderr)
+        print("  export YIGE_API_KEY=your_api_key_here", file=sys.stderr)
         sys.exit(1)
     
     # 构建请求
-    url = "https://redfox.hk/story/api/xhs/search/search"
+    url = "https://yige.zone/story/api/xhs/search/search"
     headers = {
         "Content-Type": "application/json",
         "X-API-KEY": api_key

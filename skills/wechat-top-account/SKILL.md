@@ -34,47 +34,47 @@ description: 公众号热门账号推荐快速获取微信公众号综合实力�
 - **⚡ 定时更新**：日榜每日 17:30、周榜每周一 17:30、月榜每月 3 日 23:00 自动刷新
 - **📅 有限回溯**：日榜近 7 天、周榜近 3 周、月榜近 3 个月，超出范围自动调整并提示
 - **🔗 数据一致**：榜单表格与 HTML 报告共用同一 API，顺序与内容完全一致
-- **🔒 API 接入**：通过红狐Hub API Key 调用
+- **🔒 API 接入**：通过一格Hub API Key 调用
 
 ## 鉴权
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-`REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`。脚本采用三级认证回退：
+`YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`。脚本采用三级认证回退：
 
 | 优先级 | 来源 | 说明 |
 |---|---|---|
-| 1 | 环境变量 `REDFOX_API_KEY` | 直接读取当前会话的环境变量 |
+| 1 | 环境变量 `YIGE_API_KEY` | 直接读取当前会话的环境变量 |
 | 2 | Shell 配置文件 | 自动读取 `~/.zshrc` / `~/.bashrc` / `~/.bash_profile` / PowerShell Profile 中的配置 |
 | 3 | 用户输入 | 若以上均未检测到，提示用户手动配置 |
 
 **macOS / Linux**：
 
 ```bash
-echo 'export REDFOX_API_KEY=<你的apikey>' >> ~/.zshrc
+echo 'export YIGE_API_KEY=<你的apikey>' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Windows**（PowerShell）：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的apikey>", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的apikey>", "User")
 ```
 
 或将以下内容写入 PowerShell Profile：
 
 ```powershell
-$env:REDFOX_API_KEY = "<你的apikey>"
+$env:YIGE_API_KEY = "<你的apikey>"
 ```
 
-配置后需重启终端。验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `$env:REDFOX_API_KEY`（Windows PowerShell）。
+配置后需重启终端。验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `$env:YIGE_API_KEY`（Windows PowerShell）。
 
 ## 一键安装
 
@@ -82,7 +82,7 @@ $env:REDFOX_API_KEY = "<你的apikey>"
 
 - Python 3.8 及以上版本
 - `requests` 库：`pip install requests`
-- 红狐Hub API Key，格式 `ak_xxxxxxxx`
+- 一格Hub API Key，格式 `ak_xxxxxxxx`
 
 ### 安装方式
 
@@ -121,7 +121,7 @@ python scripts/gzh_growth_fetcher.py --list_categories
 
 | 变量名 | 必填 | 说明 |
 |---|---|---|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
 
 详细获取与配置步骤见上方 [鉴权](#鉴权) 章节。
 
@@ -281,14 +281,14 @@ wechat-top-account/
 |---|---|
 | 运行环境 | Python 3.8+ |
 | 核心依赖 | `requests` |
-| 数据来源 | 红狐Hub API |
+| 数据来源 | 一格Hub API |
 | 部署方式 | SkillHub / ClawHub / 命令行脚本 |
 
 ### 核心模块
 
 | 模块 | 职责 |
 |---|---|
-| `gzh_growth_fetcher.py` | 通过 红狐Hub API 获取榜单数据，支持关键词匹配分类、日期校验与三级认证回退 |
+| `gzh_growth_fetcher.py` | 通过 一格Hub API 获取榜单数据，支持关键词匹配分类、日期校验与三级认证回退 |
 | `gen_gzh_html.py` | 将榜单数据渲染为可导出图片和 PDF 的 HTML 页面 |
 | `core_workflow.md` | 输出格式模板、Checklist、日期计算逻辑、完整操作步骤 |
 
@@ -306,11 +306,11 @@ wechat-top-account/
 
 **Q1：未检测到 API Key 怎么办？**
 
-按 [鉴权](#鉴权) 章节步骤注册 红狐Hub 并配置 `REDFOX_API_KEY` 环境变量。新注册用户有免费积分。
+按 [鉴权](#鉴权) 章节步骤注册 一格Hub 并配置 `YIGE_API_KEY` 环境变量。新注册用户有免费积分。
 
 **Q2：如何验证配置已生效？**
 
-执行 `echo $REDFOX_API_KEY`，确认输出格式为 `ak_xxxxxxxx`。若未生效，检查终端是否已重启。
+执行 `echo $YIGE_API_KEY`，确认输出格式为 `ak_xxxxxxxx`。若未生效，检查终端是否已重启。
 
 **Q3：支持哪些部署方式？**
 
@@ -354,11 +354,11 @@ wechat-top-account/
 
 **Q10：API Key 如何保管？**
 
-`REDFOX_API_KEY` 仅通过环境变量读取，请勿写入代码仓库或公开分享。Key 泄露可能导致积分被消耗。
+`YIGE_API_KEY` 仅通过环境变量读取，请勿写入代码仓库或公开分享。Key 泄露可能导致积分被消耗。
 
 **Q11：数据来源与使用范围？**
 
-榜单数据由 红狐Hub 平台提供，仅供运营分析、竞品跟踪等合法商业用途，请遵守平台服务条款。
+榜单数据由 一格Hub 平台提供，仅供运营分析、竞品跟踪等合法商业用途，请遵守平台服务条款。
 
 ## 核心工作流程
 

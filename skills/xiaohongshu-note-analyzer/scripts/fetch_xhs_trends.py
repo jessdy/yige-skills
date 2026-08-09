@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书热门数据查询脚本
-从环境变量 REDFOX_API_KEY 获取凭证，请求头新增 X-API-KEY
+从环境变量 YIGE_API_KEY 获取凭证，请求头新增 X-API-KEY
 """
 
 import os
@@ -28,12 +28,12 @@ def fetch_xhs_trends(keyword: str, debug: bool = False, max_retries: int = 3, st
         Exception: 当API调用失败时抛出异常
     """
     # 获取凭证
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if not api_key:
-        raise ValueError("缺少凭证配置，请配置环境变量 REDFOX_API_KEY")
+        raise ValueError("缺少凭证配置，请配置环境变量 YIGE_API_KEY")
 
     # 接口地址
-    url = "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+    url = "https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData"
 
     # 构建请求参数
     params = {

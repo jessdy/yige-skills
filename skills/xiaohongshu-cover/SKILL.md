@@ -26,7 +26,7 @@ Agent
 
 ### 🎯 核心功能
 - **🧠 智能意图解析**：自动解析用户文案意图，提取内容主题、类型、风格偏好和核心关键词
-- **📊 爆款数据查询**：调用红狐数据接口，获取低粉高赞、点赞最多、单日互动爆发、7日持续增长四维爆款数据
+- **📊 爆款数据查询**：调用一格数据接口，获取低粉高赞、点赞最多、单日互动爆发、7日持续增长四维爆款数据
 - **🖼️ AI 图像分析**：逐张识别爆款封面图的文字、场景、色调、构图等视觉元素，分类汇总风格规律
 - **🎨 定制方案生成**：结合用户需求与爆款风格特征，输出三种差异化封面设计方案（含生图提示词）
 
@@ -75,26 +75,26 @@ Agent
 
 ### 前置条件
 - Python 3.8+ 运行环境
-- 已获取红狐数据 API Key
+- 已获取一格数据 API Key
 
 ### 获取 API Key
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
-`REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
+`YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
 
 若未设置，提示用户自行配置；若用户不会配置，Agent 应主动帮用户设置：
 
 | 操作系统 | 配置命令 |
 |----------|----------|
-| macOS/Linux（zsh） | 将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc`，然后 `source ~/.zshrc` |
-| macOS/Linux（bash） | 将 `export REDFOX_API_KEY=<值>` 追加到 `~/.bashrc`，然后 `source ~/.bashrc` |
-| Windows | 执行 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`（需重启终端生效） |
+| macOS/Linux（zsh） | 将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc`，然后 `source ~/.zshrc` |
+| macOS/Linux（bash） | 将 `export YIGE_API_KEY=<值>` 追加到 `~/.bashrc`，然后 `source ~/.bashrc` |
+| Windows | 执行 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`（需重启终端生效） |
 
-配置完成后应验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确保换一个 skill 也能读取到
+配置完成后应验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确保换一个 skill 也能读取到
 
 ### 依赖安装
 ```
@@ -226,7 +226,7 @@ xiaohongshu-cover/
 | 组件 | 技术说明 |
 |------|----------|
 | 运行环境 | Python 3.8+ |
-| 数据源 | 红狐数据 API（redfox.hk） |
+| 数据源 | 一格数据 API（yige.zone） |
 | HTTP 请求 | requests >= 2.28.0 |
 | 图像分析 | Agent 原生图片理解能力 |
 | 数据格式 | JSON 输入/输出 |
@@ -238,7 +238,7 @@ xiaohongshu-cover/
 | `SKILL.md` | 技能入口，定义简介、功能、安装、使用方式，引用工作流程 |
 | `references/core_workflow.md` | 定义7步标准执行流程，含评分公式、输出模板、自检清单 |
 | `references/xhs_trend_data_format.md` | 定义 API 返回数据格式规范，含字段说明和示例 |
-| `scripts/fetch_explosive_covers.py` | 调用红狐数据接口，获取四维爆款数据，支持多关键词查询 |
+| `scripts/fetch_explosive_covers.py` | 调用一格数据接口，获取四维爆款数据，支持多关键词查询 |
 
 
 ---
@@ -247,13 +247,13 @@ xiaohongshu-cover/
 
 ### 安装相关问题
 
-**Q1: 提示"未找到 REDFOX_API_KEY 环境变量"怎么办？**
+**Q1: 提示"未找到 YIGE_API_KEY 环境变量"怎么办？**
 
 A: 请按以下步骤配置：
-1. 访问 [红狐Hub](https://redfox.hk/) 注册账号并获取 API Key
-2. Windows 用户：在 PowerShell 中执行 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "你的API Key", "User")`，然后重启终端
-3. macOS/Linux 用户：将 `export REDFOX_API_KEY=你的API Key` 追加到 shell 配置文件，然后 `source` 使其生效
-4. 验证配置：执行 `echo %REDFOX_API_KEY%`（Windows）或 `echo $REDFOX_API_KEY`（macOS/Linux）
+1. 访问 [一格Hub](https://yige.zone/) 注册账号并获取 API Key
+2. Windows 用户：在 PowerShell 中执行 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "你的API Key", "User")`，然后重启终端
+3. macOS/Linux 用户：将 `export YIGE_API_KEY=你的API Key` 追加到 shell 配置文件，然后 `source` 使其生效
+4. 验证配置：执行 `echo %YIGE_API_KEY%`（Windows）或 `echo $YIGE_API_KEY`（macOS/Linux）
 
 **Q2: 支持哪些平台部署？**
 

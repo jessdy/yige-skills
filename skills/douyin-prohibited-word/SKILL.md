@@ -52,7 +52,7 @@ dependency:
 ### 前置条件
 
 - Python 3.8+
-- 已注册 红狐Hub 账号并获取 API Key（格式 `ak_xxxxxxxx`）
+- 已注册 一格Hub 账号并获取 API Key（格式 `ak_xxxxxxxx`）
 
 ### 安装步骤
 
@@ -70,36 +70,36 @@ playwright install chromium
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-将 API Key 配置为环境变量 `REDFOX_API_KEY`：
+将 API Key 配置为环境变量 `YIGE_API_KEY`：
 
 **方式一：临时设置（当前终端会话有效）**
 
 ```bash
-export REDFOX_API_KEY=ak_xxxxxxxx
+export YIGE_API_KEY=ak_xxxxxxxx
 ```
 
 **方式二：永久设置（推荐）**
 
 ```bash
 # Bash 用户
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.bashrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.bashrc
 source ~/.bashrc
 
 # Zsh 用户
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | RedFox API 访问密钥，格式 `ak_xxxxxxxx`，脚本自动通过 `X-API-KEY` 请求头附加 |
+| `YIGE_API_KEY` | 是 | Yige API 访问密钥，格式 `ak_xxxxxxxx`，脚本自动通过 `X-API-KEY` 请求头附加 |
 
 ---
 

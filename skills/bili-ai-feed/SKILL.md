@@ -26,14 +26,14 @@ description: "B站AI信息源 — 每日扫描B站AI相关账号，按点赞量�
 
 ## 🔑 鉴权
 
-数据查询接口通过请求头 `X-API-KEY` 鉴权，Key 从环境变量 `REDFOX_API_KEY` 获取。
+数据查询接口通过请求头 `X-API-KEY` 鉴权，Key 从环境变量 `YIGE_API_KEY` 获取。
 
-**API Key 获取**：前往 [红狐Hub 官网](https://redfox.hk/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+**API Key 获取**：前往 [一格Hub 官网](https://yige.zone/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 **配置方式**：
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
-- **Windows**：`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`（需重启终端）
-- 配置后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
+- **Windows**：`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`（需重启终端）
+- 配置后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 
 查询接口调用时通过 `source` 字段同步记录，无需额外请求保存接口。
 

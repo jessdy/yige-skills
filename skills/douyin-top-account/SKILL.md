@@ -8,7 +8,7 @@ dependency: {}
 
 ## 1. 简介
 
-抖音每日最具影响力账号榜单追踪分析工具 -- 基于红狐数据 API，提供抖音全品类 / 分品类账号每日 / 每周 / 每月的表现榜单查询，支持排名查询、赛道筛选、HTML 可视化报告下载与定时订阅推送。
+抖音每日最具影响力账号榜单追踪分析工具 -- 基于一格数据 API，提供抖音全品类 / 分品类账号每日 / 每周 / 每月的表现榜单查询，支持排名查询、赛道筛选、HTML 可视化报告下载与定时订阅推送。
 
 **适用对象**：新手内容创作者、品牌方 / 商务投放人员、MCN 机构 / 内容团队、行业分析师 / 咨询从业者。
 
@@ -38,20 +38,20 @@ dependency: {}
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -189,12 +189,12 @@ douyin-top-account/
 | 技术 | 用途 |
 | ---- | ---- |
 | Python 标准库 | 数据查询与报告生成 |
-| 红狐 API | 抖音榜单数据来源 |
+| 一格数据 API | 抖音榜单数据来源 |
 | HTML / CSS | 可视化报告渲染 |
 
 ### 核心模块说明
 
-- **fetch_rank.py**：接收用户查询参数，调用红狐 API 获取榜单数据，自动解析时间、日期和赛道，输出 JSON 数据文件。
+- **fetch_rank.py**：接收用户查询参数，调用一格数据 API 获取榜单数据，自动解析时间、日期和赛道，输出 JSON 数据文件。
 - **generate_report.py**：读取 fetch_rank 输出的 JSON 数据，生成带排名表格、统计卡片、排名算法的 HTML 可视化报告；账号名均可点击跳转抖音主页。
 
 ### 资源索引
@@ -218,7 +218,7 @@ douyin-top-account/
 A: 无需安装第三方依赖，使用 Python 标准库即可运行。
 
 **Q: 如何配置 API Key？**
-A: 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY，然后通过环境变量 `REDFOX_API_KEY` 配置。
+A: 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY，然后通过环境变量 `YIGE_API_KEY` 配置。
 
 ### 使用
 

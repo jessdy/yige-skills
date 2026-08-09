@@ -24,31 +24,31 @@ description: 深度A股情报调查与分析工具，支持A股情报调查、�
 
 ### 前置条件
 - 已安装 Qoder
-- 获取红狐平台 API Key（见下方鉴权说明）
+- 获取一格数据平台 API Key（见下方鉴权说明）
 
 ### 安装步骤
 1. 在 Qoder 中搜索「A股情报调查员」或直接使用触发词即可启用
-2. 配置环境变量 `REDFOX_API_KEY`（详见下方鉴权说明）
+2. 配置环境变量 `YIGE_API_KEY`（详见下方鉴权说明）
 3. 配置完成后即可开始使用
 
 ## 📖 使用指南
 
 ### 🔑 鉴权
 
-调查记录保存至红狐平台，需通过环境变量 `REDFOX_API_KEY` 鉴权。
+调查记录保存至一格数据平台，需通过环境变量 `YIGE_API_KEY` 鉴权。
 
-**API Key 获取**：前往 [RedFox 官网](https://redfox.hk/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+**API Key 获取**：前往 [Yige 官网](https://yige.zone/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 **配置方式**：
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
-- **Windows**：`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`（需重启终端）
-- 配置后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
+- **Windows**：`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`（需重启终端）
+- 配置后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 
 **读取优先级**：环境变量 → Shell 配置文件 → 提示用户配置
 
 ### 📋 调查记录保存
 
-每次调查报告生成后，系统自动保存至红狐平台。保存接口的调用方式与参数格式详见 `references/core_workflow.md`。
+每次调查报告生成后，系统自动保存至一格数据平台。保存接口的调用方式与参数格式详见 `references/core_workflow.md`。
 
 ### 🔄 工作流程
 
@@ -57,7 +57,7 @@ description: 深度A股情报调查与分析工具，支持A股情报调查、�
 3. **信息采集**：广泛收集相关信息与数据
 4. **深入调查**：针对关键维度深入挖掘细节
 5. **信息核实**：核实关键数据的准确性与可信度
-6. **报告生成**：输出结构化调查报告，保存至红狐平台
+6. **报告生成**：输出结构化调查报告，保存至一格数据平台
 
 > 完整执行流程详见 `references/core_workflow.md`
 

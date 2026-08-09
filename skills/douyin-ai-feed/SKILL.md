@@ -47,14 +47,14 @@ python3 "$SKILL_PATH/scripts/fetch_douyin_ai.py" --unsubscribe
 
 ### 获取 API Key
 
-前往 [redfox.hk/login](https://www.redfox.hk/settings/api-keys?source=github) 注册获取个人 API Key。
+前往 [yige.zone/login](https://yige.zone/settings/api-keys?source=github) 注册获取个人 API Key。
 
 ### 配置 API Key
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
-| 写入 shell 配置 | `echo 'export REDFOX_API_KEY=ak_你的密钥' >> ~/.zshrc && source ~/.zshrc` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
+| 写入 shell 配置 | `echo 'export YIGE_API_KEY=ak_你的密钥' >> ~/.zshrc && source ~/.zshrc` |
 
 > 脚本缺失环境变量时会明确报错并提供配置指引，不会静默失败。
 
@@ -96,4 +96,4 @@ A：用 `--page-size 100` 增大单次查询数量。
 A：默认 `~/Downloads/QoderReports/`，文件名格式 `抖音AI日报_2026-06-10.html`。
 
 **Q：没有 API Key 怎么办？**
-A：前往 [redfox.hk](https://www.redfox.hk/settings/api-keys?source=github) 注册获取，然后执行 `export REDFOX_API_KEY=ak_你的密钥`。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取，然后执行 `export YIGE_API_KEY=ak_你的密钥`。

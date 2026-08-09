@@ -36,7 +36,7 @@ description: 图文运营创作器。从选题、撰写、配图到质检，一�
 ### 🎯 核心功能
 
 - **🔗 链接仿写**：提供任意文章链接，自动抓取原文内容与图片，学习其风格与结构，仿写全新文章。配图风格与原图保持一致，适合对标分析与竞品内容学习。
-- **📣 Skill 推广文**：提供 Skill 文件路径或名称，自动解析产品能力并抓取目标站点最新信息，生成与产品实际能力对齐的推广长文。配图采用红狐讲解员风格，视觉与内容双重匹配。
+- **📣 Skill 推广文**：提供 Skill 文件路径或名称，自动解析产品能力并抓取目标站点最新信息，生成与产品实际能力对齐的推广长文。配图采用一格讲解员风格，视觉与内容双重匹配。
 - **🖼️ 正文补图**：提供完整正文，自动按章节语义与字数密度分析文章结构，智能决定配图位置与数量，批量生成风格统一的配图。适合写完正文不想手动找图的场景。
 - **✅ 自动质量检查**：每篇文章生成后自动执行 9 项质量检查（标题长度、章节数、表格数、字数、FAQ 数量、禁忌词、段落行数、信息密度等），输出 JSON 格式质检报告。
 
@@ -65,20 +65,20 @@ description: 图文运营创作器。从选题、撰写、配图到质检，一�
 ### 前置条件
 
 - Python 3.8+（用于运行配图生成与质量检查脚本）
-- `REDFOX_API_KEY`（用于图片生成，未配置时仍可生成纯文本文章）
+- `YIGE_API_KEY`（用于图片生成，未配置时仍可生成纯文本文章）
 
 ### 安装步骤
 
 1. 将本 Skill 目录添加到你的 Agent 技能列表
-2. 获取 `REDFOX_API_KEY`：前往 [红狐 hub](https://redfox.hk?source=github) 注册账号，在 [API Keys 页面](https://redfox.hk/settings/api-keys?source=github) 创建密钥
+2. 获取 `YIGE_API_KEY`：前往 [一格数据 hub](https://yige.zone?source=github) 注册账号，在 [API Keys 页面](https://yige.zone/settings/api-keys?source=github) 创建密钥
 3. 配置环境变量：
 
 ```bash
 # macOS / Linux
-export REDFOX_API_KEY="your_key_here"
+export YIGE_API_KEY="your_key_here"
 
 # Windows PowerShell
-$env:REDFOX_API_KEY="your_key_here"
+$env:YIGE_API_KEY="your_key_here"
 ```
 
 4. 验证安装：告诉 Agent「帮我给这个 Skill 写一篇推广文」，确认技能正常响应
@@ -87,7 +87,7 @@ $env:REDFOX_API_KEY="your_key_here"
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 条件必填 | 图片生成服务密钥；未配置时文章正常生成，图片降级为占位符或跳过 |
+| `YIGE_API_KEY` | 条件必填 | 图片生成服务密钥；未配置时文章正常生成，图片降级为占位符或跳过 |
 
 ---
 
@@ -110,7 +110,7 @@ $env:REDFOX_API_KEY="your_key_here"
 
 > 用户：帮我给 xhs-ranking 这个 Skill 写一篇推广文
 >
-> Agent：已解析 Skill 能力并抓取目标站点信息，推广文章已生成，含红狐风格配图 3 张。
+> Agent：已解析 Skill 能力并抓取目标站点信息，推广文章已生成，含一格数据风格配图 3 张。
 
 #### 3. 正文补图
 
@@ -168,7 +168,7 @@ $env:REDFOX_API_KEY="your_key_here"
 
 **Q1: 没有 API Key 能用吗？**
 
-A: 可以。没有 `REDFOX_API_KEY` 时，文章正文正常生成，图片部分降级处理：链接仿写用占位符替代，Skill 推广和正文补图跳过配图，仅输出纯文本。
+A: 可以。没有 `YIGE_API_KEY` 时，文章正文正常生成，图片部分降级处理：链接仿写用占位符替代，Skill 推广和正文补图跳过配图，仅输出纯文本。
 
 **Q2: 生成的文章可以手动调整吗？**
 
@@ -176,7 +176,7 @@ A: 可以。生成后直接告诉 Agent 你想调整的方向（如「第三段�
 
 **Q3: 配图风格可以自定义吗？**
 
-A: 支持三种风格：`redfox`（红狐讲解员）、`reference`（跟随原图风格）、`none`（无风格修饰）。告诉 Agent 你的偏好即可。
+A: 支持三种风格：`yige`（一格讲解员）、`reference`（跟随原图风格）、`none`（无风格修饰）。告诉 Agent 你的偏好即可。
 
 ---
 

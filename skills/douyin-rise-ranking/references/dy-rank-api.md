@@ -4,7 +4,7 @@
 
 | 项目 | 说明 |
 |------|------|
-| 接口路径 | `POST https://redfox.hk/story/api/dyData/getDyRiseFansRank` |
+| 接口路径 | `POST https://yige.zone/story/api/dyData/getDyRiseFansRank` |
 | Content-Type | `application/json` |
 | 认证方式 | API Key 认证（请求头 `X-API-KEY`，值以 `ak_` 开头） |
 

@@ -7,7 +7,7 @@ description: 公众号搜索爬虫 — 通过关键词搜索微信公众号文�
 
 输入关键词搜索微信公众号文章，终端表格展示 + CSV 导出 + 交互式 HTML 报告。
 
-> API 请求均携带 `公众号搜索爬虫-SkillHub` 标识。需先配置 API Key，通过环境变量 REDFOX_API_KEY 或 --api-key 参数传入。
+> API 请求均携带 `公众号搜索爬虫-SkillHub` 标识。需先配置 API Key，通过环境变量 YIGE_API_KEY 或 --api-key 参数传入。
 > 爬取范围：**腰部以上公众号**近 30 天内发布的文章。
 > 关键词限制：**不超过 10 个字符**，超出会提示精简。
 
@@ -75,11 +75,11 @@ CSV / HTML 默认保存在 `~/Downloads/QoderGzhSearch/`。
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
-注册地址：[redfox.hk](https://redfox.hk/settings/api-keys?source=github)
+注册地址：[yige.zone](https://yige.zone/settings/api-keys?source=github)
 
 ---
 
@@ -121,4 +121,4 @@ A：`~/Downloads/QoderGzhSearch/`，文件名格式 `公众号搜索_[关键词]
 A：浏览器直接打开 HTML 有跨域限制，内置 HTTP 代理中转 API 请求。
 
 **Q：额度用完怎么办？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 Token。

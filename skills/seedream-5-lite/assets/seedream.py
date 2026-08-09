@@ -18,12 +18,12 @@ from pathlib import Path
 
 import requests
 
-SUBMIT_URL = "https://redfox.hk/story/api/parseWork/imageGen/arkSubmit"
-RESULT_URL = "https://redfox.hk/story/api/parseWork/imageGen/arkResult"
-UPLOAD_URL = "https://redfox.hk/story/api/parseWork/imageGen/uploadImage"
+SUBMIT_URL = "https://yige.zone/story/api/parseWork/imageGen/arkSubmit"
+RESULT_URL = "https://yige.zone/story/api/parseWork/imageGen/arkResult"
+UPLOAD_URL = "https://yige.zone/story/api/parseWork/imageGen/uploadImage"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "seedream 5.0 lite-GitHub"
 DEFAULT_MODEL = "doubao-seedream-5-0-260128"
 
@@ -309,7 +309,7 @@ Examples:
     parser.add_argument("--no-download", action="store_true",
                         help="仅提交任务并返回 taskId，不等待结果")
     parser.add_argument("--task-id", help="直接查询已有任务的结果 (跳过提交)")
-    parser.add_argument("--api-key", help="API Key (前往 https://redfox.hk/settings/api-keys?source=github 注册获取)")
+    parser.add_argument("--api-key", help="API Key (前往 https://yige.zone/settings/api-keys?source=github 注册获取)")
     parser.add_argument("-o", "--output-dir", help="输出目录 (默认 ~/Downloads/QoderImages)")
     parser.add_argument("--prefix", default="image", help="下载文件名前缀 (默认 image)")
 
@@ -327,8 +327,8 @@ Examples:
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        error("未找到 API Key，请设置环境变量 REDFOX_API_KEY 或使用 --api-key 参数")
-        print(f"  获取 Key: https://redfox.hk/settings/api-keys?source=github")
+        error("未找到 API Key，请设置环境变量 YIGE_API_KEY 或使用 --api-key 参数")
+        print(f"  获取 Key: https://yige.zone/settings/api-keys?source=github")
         sys.exit(1)
 
     # ── Session ──

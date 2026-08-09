@@ -22,14 +22,14 @@ description: 快手评论分析工具。输入作品链接即可获取一级评�
 
 ## 🔑 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：配置文件（如 OpenClaw 的 ~/.openclaw/openclaw.json）
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
 # 方式二：终端环境变量
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 🔄 工作流程
@@ -185,7 +185,7 @@ open "<html_path>"
 
 | 错误类型 | 处理方式 |
 |---------|---------|
-| 无 API Key | 提示配置 REDFOX_API_KEY |
+| 无 API Key | 提示配置 YIGE_API_KEY |
 | 作品链接无效 | 提示「未找到该作品的评论，请检查作品链接是否正确」 |
 | 接口返回错误 | 显示错误码和错误信息 |
 | 获取 0 条评论 | 提示「该作品暂无评论」 |

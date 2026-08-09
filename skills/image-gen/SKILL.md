@@ -109,25 +109,25 @@ python3 "$SKILL_PATH/assets/imagegen.py" "illustration" -o ~/Pictures/AI --prefi
 
 ```bash
 # 设置环境变量
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 运行
 python3 "$SKILL_PATH/assets/imagegen.py" "一只橘色的猫咪"
 ```
 
-> 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key。
+> 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key。
 
 ---
 
 ## 后续使用
 
-前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册账号获取自己的 API Token，三种配置方式任选其一：
+前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册账号获取自己的 API Token，三种配置方式任选其一：
 
 | 配置方式 | 说明 | 命令 |
 |----------|------|------|
-| **环境变量**（推荐） | 设置一次，全局生效 | `export REDFOX_API_KEY=ak_你的密钥` |
+| **环境变量**（推荐） | 设置一次，全局生效 | `export YIGE_API_KEY=ak_你的密钥` |
 | **命令行参数** | 临时使用，单次生效 | `python3 "$SKILL_PATH/assets/imagegen.py" "prompt" --api-key ak_你的密钥` |
-| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | 持久化存储，跨会话保留 | `mkdir -p ~/.qoder/apis && echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -146,7 +146,7 @@ A：`--fidelity high` 尽量保留原图细节（微调），`--fidelity low` �
 A：使用 `--bg transparent`，搭配 PNG 或 WebP 格式（JPEG 不支持透明）。
 
 **Q：如何获取 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取自己的 API Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取自己的 API Token。
 
 **Q：支持哪些图片格式作为参考图？**
 A：支持 PNG、JPEG、WebP 格式的本地图片文件。

@@ -4,12 +4,12 @@
 
 ## Overview
 
-A benchmark account matching tool for Douyin creators. Using the RedFox Index, it intelligently recommends benchmark accounts and top-tier accounts, providing deep analysis of commonalities, differences, and optimization suggestions—helping creators pinpoint their niche, replicate proven strategies, and plan growth trajectories.
+A benchmark account matching tool for Douyin creators. Using the Yige Index, it intelligently recommends benchmark accounts and top-tier accounts, providing deep analysis of commonalities, differences, and optimization suggestions—helping creators pinpoint their niche, replicate proven strategies, and plan growth trajectories.
 
 **Core Value**
 
-- **Dual-group smart recommendations**: Delivers both "Benchmark Accounts" (5 closest above your RedFox Index—directly copy their playbooks) and "Top Accounts" (Top 5 by RedFox Index in the same category—mature models to chase).
-- **RedFox Index gap quantification**: Every benchmark/top account displays its RedFox Index and the index gap, making the distance clear at a glance.
+- **Dual-group smart recommendations**: Delivers both "Benchmark Accounts" (5 closest above your Yige Index—directly copy their playbooks) and "Top Accounts" (Top 5 by Yige Index in the same category—mature models to chase).
+- **Yige Index gap quantification**: Every benchmark/top account displays its Yige Index and the index gap, making the distance clear at a glance.
 - **Deep analysis report**: Automatically summarizes commonalities, difference analysis, and provides actionable optimization suggestions.
 - **Subscription push**: Subscribe to similar account update notifications, pushed daily at 19:00, with customizable frequency and time.
 
@@ -27,15 +27,15 @@ A benchmark account matching tool for Douyin creators. Using the RedFox Index, i
 ### Core Capabilities
 
 - **Smart query**: Search by Douyin nickname or Douyin ID—automatically identifies the input type.
-- **Account data display**: Show basic account info, RedFox Index, follower count, view data, and recent works for the queried account.
-- **Benchmark account recommendations**: Recommend the 5 closest same-niche accounts with higher RedFox Index—directly copy their operational playbooks.
-- **Top account recommendations**: Recommend the Top 5 accounts by RedFox Index in the same category—mature models to reference and chase.
+- **Account data display**: Show basic account info, Yige Index, follower count, view data, and recent works for the queried account.
+- **Benchmark account recommendations**: Recommend the 5 closest same-niche accounts with higher Yige Index—directly copy their operational playbooks.
+- **Top account recommendations**: Recommend the Top 5 accounts by Yige Index in the same category—mature models to reference and chase.
 - **Deep analysis**: Automatically summarize commonalities and differences, providing actionable optimization suggestions.
 - **Subscription push**: At the end of each query result, support subscribing to similar account update notifications with customizable frequency and time.
 
 ### Highlights
 
-- **RedFox Index quantification**: Every account displays its RedFox Index and index gap, quantifying the benchmarking distance.
+- **Yige Index quantification**: Every account displays its Yige Index and index gap, quantifying the benchmarking distance.
 - **Multi-dimension recommendation reasons**: Covering content theme focus, viral work title quotes, publishing cadence, engagement rate, follower scale, and more.
 - **Self-account pinned first**: The benchmark table's first row is your own account (bold), enabling intuitive comparison.
 - **Multi-input flexibility**: Flexible queries by nickname or Douyin ID, with automatic Chinese-input detection.
@@ -44,10 +44,10 @@ A benchmark account matching tool for Douyin creators. Using the RedFox Index, i
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`)
-- Register at [RedFoxHub](https://redfox.hk?source=github) to obtain `REDFOX_API_KEY`.
-- Configure `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`)
+- Register at [YigeHub](https://yige.zone?source=github) to obtain `YIGE_API_KEY`.
+- Configure `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset or revoked.
 - Do not hard-code or expose keys in plain text in code, prompts, logs, or output files.
 
@@ -69,14 +69,14 @@ Simply describe your query needs in natural language—no commands to memorize.
 
 After querying, you will receive the following structured analysis:
 
-**Account Basic Info**: Nickname, Douyin ID, followers, total likes, RedFox Index, past-7-day metrics, and recent works
+**Account Basic Info**: Nickname, Douyin ID, followers, total likes, Yige Index, past-7-day metrics, and recent works
 
-**✨ Benchmark Accounts (5 closest above your RedFox Index)**: Your account pinned first in bold for intuitive comparison
+**✨ Benchmark Accounts (5 closest above your Yige Index)**: Your account pinned first in bold for intuitive comparison
 
-| Account | Followers | Total Likes | 7-Day Engagement | RedFox Index | Index Gap | Recommendation Reason |
+| Account | Followers | Total Likes | 7-Day Engagement | Yige Index | Index Gap | Recommendation Reason |
 | … | … | … | … | … | … | Multi-dimension analysis: content focus, viral quotes, cadence, engagement rate, etc. |
 
-**✨ Top Accounts (Top 5 by RedFox Index in same category)**: Mature models to pursue
+**✨ Top Accounts (Top 5 by Yige Index in same category)**: Mature models to pursue
 
 **📊 Deep Analysis**: Commonalities + Difference Analysis + Optimization Suggestions
 
@@ -98,10 +98,10 @@ After querying, you will receive the following structured analysis:
 
 ## Important Data Notes
 
-- Data is sourced from the RedFox data platform; the displayed data retrieval time may differ from real-time figures.
-- The RedFox Index is updated weekly; if no works were published during the statistical period, the index may be 0.
+- Data is sourced from the Yige data platform; the displayed data retrieval time may differ from real-time figures.
+- The Yige Index is updated weekly; if no works were published during the statistical period, the index may be 0.
 - Engagement rates exceeding 100% are flagged as data anomalies and will not be output.
-- Recommendation reasons follow an 8-level dimension standard; when the queried account's RedFox Index is 0, a "Learning Points Summary" mode is used instead.
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+- Recommendation reasons follow an 8-level dimension standard; when the queried account's Yige Index is 0, a "Learning Points Summary" mode is used instead.
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 
 ---

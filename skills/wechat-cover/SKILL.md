@@ -32,26 +32,26 @@ description: 公众号爆款封面AI设计工具。基于全网每日收录的10
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中：
 
 ```json
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## ⚙️ 前置准备
 
 - 依赖：`requests`（`pip install requests`）
-- 凭证：环境变量 `REDFOX_API_KEY`（详见鉴权章节）
+- 凭证：环境变量 `YIGE_API_KEY`（详见鉴权章节）
 - 数据范围：仅含昨天至30天前的数据，默认查询近30天
 
 ## 🔄 操作流程

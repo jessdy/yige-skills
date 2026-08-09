@@ -22,7 +22,7 @@ import requests
 
 
 # ===== 常量 =====
-API_URL = "https://redfox.hk/story/api/cozeSkill/getGzhCozeSkillDataIndex"
+API_URL = "https://yige.zone/story/api/cozeSkill/getGzhCozeSkillDataIndex"
 SOURCE = "公众号综合实力账号榜-GitHub"
 
 CATEGORIES = [
@@ -253,11 +253,11 @@ def get_today_query_reminder(rank_type="day"):
 
 
 # ===== 认证 =====
-def _get_redfox_api_key():
-    """三级认证回退获取 红狐Hub API Key
+def _get_yige_api_key():
+    """三级认证回退获取 一格Hub API Key
 
     优先级：
-    1. 环境变量 REDFOX_API_KEY
+    1. 环境变量 YIGE_API_KEY
     2. Shell 配置文件（.zshrc / .bashrc / PowerShell Profile）
     3. 返回 None，由上层提示用户配置
 
@@ -265,7 +265,7 @@ def _get_redfox_api_key():
         str or None: API Key
     """
     # 第一级：环境变量
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key and api_key.startswith("ak_"):
         return api_key
 
@@ -299,15 +299,15 @@ def _get_redfox_api_key():
             content = config.read_text(encoding="utf-8", errors="ignore")
             for line in content.splitlines():
                 line = line.strip()
-                # 匹配 export REDFOX_API_KEY=xxx 或 set REDFOX_API_KEY=xxx
-                if line.startswith("export REDFOX_API_KEY=") or line.startswith("set REDFOX_API_KEY="):
+                # 匹配 export YIGE_API_KEY=xxx 或 set YIGE_API_KEY=xxx
+                if line.startswith("export YIGE_API_KEY=") or line.startswith("set YIGE_API_KEY="):
                     parts = line.split("=", 1)
                     if len(parts) == 2:
                         key = parts[1].strip().strip('"').strip("'")
                         if key and key.startswith("ak_"):
                             return key
-                # 匹配 PowerShell: $env:REDFOX_API_KEY = "xxx"
-                if "$env:REDFOX_API_KEY" in line:
+                # 匹配 PowerShell: $env:YIGE_API_KEY = "xxx"
+                if "$env:YIGE_API_KEY" in line:
                     parts = line.split("=", 1)
                     if len(parts) == 2:
                         key = parts[1].strip().strip('"').strip("'")
@@ -324,16 +324,16 @@ def _get_api_headers():
 
     三级回退：环境变量 → Shell配置 → 报错提示
     """
-    api_key = _get_redfox_api_key()
+    api_key = _get_yige_api_key()
     if not api_key:
         raise ValueError(
-            "未检测到 红狐Hub API Key。请按以下步骤配置：\n"
-            "1. 访问 https://redfox.hk/ 了解服务详情\n"
-            "2. 前往 https://redfox.hk/login 注册账号（新用户获赠免费积分）\n"
+            "未检测到 一格Hub API Key。请按以下步骤配置：\n"
+            "1. 访问 https://yige.zone/ 了解服务详情\n"
+            "2. 前往 https://yige.zone/login 注册账号（新用户获赠免费积分）\n"
             "3. 注册登录后在个人中心获取 API Key（格式 ak_xxxxxxxx）\n"
             "4. 设置环境变量：\n"
-            "   macOS/Linux: export REDFOX_API_KEY=<你的apikey>\n"
-            "   Windows PowerShell: $env:REDFOX_API_KEY = \"<你的apikey>\"\n"
+            "   macOS/Linux: export YIGE_API_KEY=<你的apikey>\n"
+            "   Windows PowerShell: $env:YIGE_API_KEY = \"<你的apikey>\"\n"
             "   或告知我帮你自动配置到 Shell 配置文件中"
         )
     return {
@@ -566,7 +566,7 @@ def format_full_output(rank_label, category, update_time, data_description,
     # 功能询问文案（一字不改）
     parts.append(FEATURE_PROMPT)
     parts.append("")
-    parts.append("另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+    parts.append("另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
     return "\n".join(parts)
 

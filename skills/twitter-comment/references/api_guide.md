@@ -1,6 +1,6 @@
 # X作品评论分析 API 接口指南
 
-> 红狐 API `x/tweetComments` 接口调用规范与字段说明，供 Agent 与开发者排查问题时参考。
+> 一格数据 API `x/tweetComments` 接口调用规范与字段说明，供 Agent 与开发者排查问题时参考。
 
 ---
 
@@ -8,10 +8,10 @@
 
 | 项目 | 内容 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/x/tweetComments` |
+| 接口地址 | `https://yige.zone/story/api/x/tweetComments` |
 | 请求方式 | POST |
-| 请求头 | `Content-Type: application/json` + `X-API-Key: {REDFOX_API_KEY}` |
-| 认证方式 | Header `X-API-Key`，值从环境变量 `REDFOX_API_KEY` 获取 |
+| 请求头 | `Content-Type: application/json` + `X-API-Key: {YIGE_API_KEY}` |
+| 认证方式 | Header `X-API-Key`，值从环境变量 `YIGE_API_KEY` 获取 |
 | 成功响应码 | 响应体 `code` 统一为 `2000`（非 HTTP 标准 200） |
 | 积分消耗 | 每次调用消耗一次积分（含翻页；返回空数据同样扣除） |
 | 超时设置 | 脚本内置 30 秒超时 |

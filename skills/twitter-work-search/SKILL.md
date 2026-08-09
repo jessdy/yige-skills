@@ -34,11 +34,11 @@ X(Twitter)作品搜索工具，帮你快速在 X 平台按关键词精准检索�
 
 ### 🔑 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY
 
 配置方式：
 1. 在 `~/.openclaw/openclaw.json` 中配置
-2. 设置环境变量 `REDFOX_API_KEY`
+2. 设置环境变量 `YIGE_API_KEY`
 3. 使用命令行参数 `--api-key`
 
 ### 基础使用
@@ -112,7 +112,7 @@ A：每条推文包含正文、发布时间、点赞/转发/回复/收藏/浏览
 A：尝试更通用的关键词、减少限定词，或更换搜索类型（如从热门改为最新）。
 
 **Q：提示 API Key 无效？**
-A：请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 检查 API Key 是否正确配置，确保密钥有效且未过期。
+A：请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 检查 API Key 是否正确配置，确保密钥有效且未过期。
 
 **Q：翻页提示不出现了？**
 A：只有当搜索结果满 20 条时才会出现翻页提示，不足 20 条说明已经是最后一页。

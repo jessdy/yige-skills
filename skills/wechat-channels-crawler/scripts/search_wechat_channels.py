@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 视频号作品搜索脚本
-调用 Redfox API 搜索视频号热门作品数据
+调用 Yige API 搜索视频号热门作品数据
 用法: python3 search_wechat_channels.py "<关键词>" [--sort 综合|最新|最多点赞|最多收藏] [--page 1] [--size 20]
 """
 
@@ -12,15 +12,15 @@ import argparse
 import urllib.request
 import urllib.error
 
-API_URL = "https://redfox.hk/story/api/sphAllData/searchWork"
+API_URL = "https://yige.zone/story/api/sphAllData/searchWork"
 
 
 def get_api_key() -> str:
     """从环境变量获取 API Key"""
-    val = os.environ.get("REDFOX_API_KEY")
+    val = os.environ.get("YIGE_API_KEY")
     if val:
         return val
-    print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+    print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
     sys.exit(1)
 
 

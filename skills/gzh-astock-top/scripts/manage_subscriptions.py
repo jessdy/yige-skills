@@ -124,7 +124,7 @@ def action_add(subs, category, indexes, source_accounts):
             "accountId": account_id,
             "accountName": account_name,
             "avgReadCount": acc.get("avgReadCount"),
-            "redfoxIndex": acc.get("redfoxIndex"),
+            "yigeIndex": acc.get("yigeIndex"),
         }
         subs[category].append(entry)
         existing_ids.add(account_id)

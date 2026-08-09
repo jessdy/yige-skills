@@ -8,10 +8,10 @@
 
 | 项目 | 说明 |
 |---|---|
-| **API 地址** | `https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch` |
+| **API 地址** | `https://yige.zone/story/api/cozeSkill/sensitiveWordSearch` |
 | **请求方式** | POST，application/json |
 | **请求体字段** | `content`（待检测文案）、`platform`（固定为"小红书"）、`source`（来源标识） |
-| **凭证机制** | `REDFOX_API_KEY` 环境变量（格式 `ak_xxxxxxxx`），脚本自动从环境变量或 Shell 配置文件读取 |
+| **凭证机制** | `YIGE_API_KEY` 环境变量（格式 `ak_xxxxxxxx`），脚本自动从环境变量或 Shell 配置文件读取 |
 | **HTTP 库** | `urllib.request`（标准库，内置重试与超时处理） |
 
 **对话指引**：首次为用户检测前，应用一两句话说明「文案将通过加密连接发送至检测服务」；若用户拒绝外传数据，则不应调用检测脚本。
@@ -20,17 +20,17 @@
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-配置 `REDFOX_API_KEY` 环境变量，脚本按以下优先级自动获取：
+配置 `YIGE_API_KEY` 环境变量，脚本按以下优先级自动获取：
 
-1. **环境变量**：直接读取当前设备 `REDFOX_API_KEY` 环境变量
-2. **Shell 配置文件回退**：若环境变量未设置，自动扫描以下配置文件查找 `REDFOX_API_KEY` 定义：
+1. **环境变量**：直接读取当前设备 `YIGE_API_KEY` 环境变量
+2. **Shell 配置文件回退**：若环境变量未设置，自动扫描以下配置文件查找 `YIGE_API_KEY` 定义：
    - `~/.zshrc`
    - `~/.bashrc`
    - `~/.bash_profile`
@@ -40,7 +40,7 @@
 
 **配置示例**：
 ```bash
-export REDFOX_API_KEY=ak_xxxxxxxx
+export YIGE_API_KEY=ak_xxxxxxxx
 ```
 
 ## 任务目标
@@ -154,7 +154,7 @@ export REDFOX_API_KEY=ak_xxxxxxxx
 
 ## 资源索引
 
-- 脚本：见 [scripts/check_sensitive_words.py](../scripts/check_sensitive_words.py)（用途与参数：一站式小红书违禁词检测，支持三种输入方式——`--content` 直接传入文案文本，`--file` 传入 TXT/DOC/DOCX 等文本类型文件路径自动提取，`--url` 传入网页地址自动提取（使用 Playwright 无头浏览器渲染JS动态页面，回退到 urllib 静态提取）；`--extract-only` 仅提取文本不检测，返回 content 和 length；平台已硬编码为小红书；API调用需配置 REDFOX_API_KEY 环境变量）
+- 脚本：见 [scripts/check_sensitive_words.py](../scripts/check_sensitive_words.py)（用途与参数：一站式小红书违禁词检测，支持三种输入方式——`--content` 直接传入文案文本，`--file` 传入 TXT/DOC/DOCX 等文本类型文件路径自动提取，`--url` 传入网页地址自动提取（使用 Playwright 无头浏览器渲染JS动态页面，回退到 urllib 静态提取）；`--extract-only` 仅提取文本不检测，返回 content 和 length；平台已硬编码为小红书；API调用需配置 YIGE_API_KEY 环境变量）
 
 ## 注意事项
 

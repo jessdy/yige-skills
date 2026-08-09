@@ -28,10 +28,10 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/parseWork//queryBiliAiMsgs/batch"
+API_URL = "https://yige.zone/story/api/parseWork//queryBiliAiMsgs/batch"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "B站AI信息源-GitHub"
 
 DEFAULT_KEYWORDS = ["AI"]
@@ -114,7 +114,7 @@ def step(msg):
 
 # ─── API Key 管理 ──────────────────────────────────────────────────────────────────
 def _read_key_from_shell_configs():
-    """从常见 shell 配置文件中读取 REDFOX_API_KEY 的值。"""
+    """从常见 shell 配置文件中读取 YIGE_API_KEY 的值。"""
     shell_configs = [
         Path.home() / ".zshrc",
         Path.home() / ".bashrc",
@@ -170,7 +170,7 @@ def get_api_key(cli_key=None):
     else:
         print(f"  macOS/Linux (zsh):  echo 'export {ENV_KEY}=ak_你的密钥' >> ~/.zshrc && source ~/.zshrc")
         print(f"  macOS/Linux (bash): echo 'export {ENV_KEY}=ak_你的密钥' >> ~/.bashrc && source ~/.bashrc")
-    print(f"  免费注册获取 Key: https://redfox.hk/login")
+    print(f"  免费注册获取 Key: https://yige.zone/login")
     print()
     sys.exit(1)
 
@@ -238,7 +238,7 @@ def fetch_articles(session, keywords, target_count, start_time=None, end_time=No
     )
 
     if not batch:
-        warn(f"关键词 {keywords} 暂无内容（当前仅搜索 AI 相关B站视频，更多内容请访问 redfox.hk）")
+        warn(f"关键词 {keywords} 暂无内容（当前仅搜索 AI 相关B站视频，更多内容请访问 yige.zone）")
     else:
         for article in batch:
             pid = article.get("photoId", "")
@@ -1250,7 +1250,7 @@ Examples:
     parser.add_argument("--start-time", help="自定义开始时间，格式 YYYY-MM-DD HH:MM:SS (覆盖--date推算)")
     parser.add_argument("--end-time", help="自定义结束时间，格式 YYYY-MM-DD HH:MM:SS (覆盖--date推算)")
     parser.add_argument("--output-dir", help=f"输出目录 (默认: ~/Downloads/QoderReports)")
-    parser.add_argument("--api-key", help="API Key (不传则读取环境变量 REDFOX_API_KEY)")
+    parser.add_argument("--api-key", help="API Key (不传则读取环境变量 YIGE_API_KEY)")
     parser.add_argument("--subscribe", action="store_true", help="安装每日定时任务 (09:00)")
     parser.add_argument("--unsubscribe", action="store_true", help="卸载定时任务")
     parser.add_argument("--latest", action="store_true",
@@ -1380,7 +1380,7 @@ Examples:
     if not articles:
         error("未获取到任何视频")
         print(f"\n{YELLOW}  提示：当前仅搜索 AI 相关B站视频。{RESET}")
-        print(f"{YELLOW}  如需搜索全量B站内容，请访问 redfox.hk{RESET}")
+        print(f"{YELLOW}  如需搜索全量B站内容，请访问 yige.zone{RESET}")
         sys.exit(1)
 
     info(f"扫描完成: {len(articles)} 条热门视频")

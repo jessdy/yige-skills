@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 抖音作品爬取 - API调用脚本
-基于红狐API接口 /story/api/dyData/queryUserWithWorks 查询抖音账号数据和近期作品列表
+基于一格数据API接口 /story/api/dyData/queryUserWithWorks 查询抖音账号数据和近期作品列表
 """
 
 import os
@@ -16,11 +16,11 @@ from typing import Dict, Optional
 
 
 class DouyinWorksFetcher:
-    """抖音作品爬取 - 红狐数据API"""
+    """抖音作品爬取 - 一格数据API"""
 
-    BASE_URL = "https://redfox.hk"
+    BASE_URL = "https://yige.zone"
     QUERY_ENDPOINT = "/story/api/dyData/queryUserWithWorks"
-    ENV_VAR = "REDFOX_API_KEY"
+    ENV_VAR = "YIGE_API_KEY"
 
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.environ.get(self.ENV_VAR, "")
@@ -52,7 +52,7 @@ class DouyinWorksFetcher:
                 body = e.read().decode("utf-8")
             except Exception:
                 pass
-            # 红狐API限流时可能返回HTML错误页
+            # 一格数据API限流时可能返回HTML错误页
             if "<html" in body.lower():
                 return {"code": -2, "data": None, "msg": "API限流或服务异常，请稍后重试"}
             return {"code": e.code, "data": None, "msg": f"HTTP {e.code}: {body[:200]}"}
@@ -91,7 +91,7 @@ class DouyinWorksFetcher:
         msg = result.get("msg", "")
         data = result.get("data")
 
-        # 成功码为2000（红狐平台统一成功码）
+        # 成功码为2000（一格数据平台统一成功码）
         # data为空或关键字段(nickname)为空时视为未查询到账号
         has_valid_data = data and data.get("nickname")
         if code == 2000 and has_valid_data:
@@ -164,7 +164,7 @@ class DouyinWorksFetcher:
             "followerCount": data.get("followerCount", 0),
             "awemeCount": data.get("awemeCount", 0),
             "totalFavorited": data.get("totalFavorited", 0),
-            "redfoxIndex": data.get("redfoxIndex"),
+            "yigeIndex": data.get("yigeIndex"),
         }
 
     def format_markdown(self, result: Dict) -> str:
@@ -180,8 +180,8 @@ class DouyinWorksFetcher:
         now = datetime.now().strftime("%Y-%m-%d %H:%M")
 
         location = f"{account['province']}·{account['city']}" if account['province'] else account.get('ipLocation', '-')
-        redfox_index = account.get('redfoxIndex')
-        redfox_str = str(redfox_index) if redfox_index is not None else '-'
+        yige_index = account.get('yigeIndex')
+        yige_str = str(yige_index) if yige_index is not None else '-'
 
         # 昵称拼接secUid跳转链接
         nickname_display = f"[{account['nickname']}](https://www.douyin.com/user/{account['secUid']})" if account.get('secUid') else account['nickname']
@@ -191,13 +191,13 @@ class DouyinWorksFetcher:
         lines.append("")
         lines.append("### 账号基础信息")
         lines.append("")
-        lines.append("| 昵称 | 抖音号 | UID | 地域 | 粉丝数 | 获赞 | 作品总数 | 红狐指数 |")
+        lines.append("| 昵称 | 抖音号 | UID | 地域 | 粉丝数 | 获赞 | 作品总数 | 一格指数 |")
         lines.append("|------|--------|-----|------|--------|------|---------|---------|")
         lines.append(
             f"| {nickname_display} | {account['accountId']} | {account['uid']} "
             f"| {location} | {format_number(account['followerCount'])} "
             f"| {format_number(account['totalFavorited'])} | {account['awemeCount']} "
-            f"| {redfox_str} |"
+            f"| {yige_str} |"
         )
         lines.append("")
         lines.append("---")
@@ -358,7 +358,7 @@ class DouyinWorksFetcher:
         lines.append("")
         lines.append("- **数据范围：** 近期作品数据，最多50条，按发布时间倒序")
         lines.append("- **作品链接：** 接口返回url字段，提供作品直达链接")
-        lines.append("- **数据来源：** 红狐数据API")
+        lines.append("- **数据来源：** 一格数据API")
         lines.append("")
         lines.append(f"*爬取时间：{now}*")
 

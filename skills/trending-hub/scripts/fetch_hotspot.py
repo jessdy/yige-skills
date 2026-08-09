@@ -107,10 +107,10 @@ def format_hot_count(hot_count: str) -> str:
 
 
 def _get_api_key() -> str:
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    key = os.environ.get("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    key = os.environ.get("YIGE_API_KEY")
     if not key:
-        raise SystemExit("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>")
+        raise SystemExit("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>")
     return key
 
 
@@ -135,7 +135,7 @@ def fetch_hotspot_data(
         API返回的数据字典
     """
     # API配置
-    api_url = "https://redfox.hk/story/api/hotSpot/getListByPlatformWithKeyword"
+    api_url = "https://yige.zone/story/api/hotSpot/getListByPlatformWithKeyword"
 
     # 构建请求参数
     params = {

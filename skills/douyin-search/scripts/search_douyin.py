@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 抖音爆款作品搜索脚本
-调用 Redfox API 搜索抖音热门作品数据
+调用 Yige API 搜索抖音热门作品数据
 用法: python3 search_douyin.py "<关键词>" [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD]
 """
 
@@ -11,16 +11,16 @@ import json
 import urllib.request
 import urllib.error
 
-API_URL = "https://redfox.hk/story/api/dy/data/searchWork"
+API_URL = "https://yige.zone/story/api/dy/data/searchWork"
 
 
 def get_api_key() -> str:
     """从环境变量获取 API Key，"""
-    for key_name in ["REDFOX_API_KEY"]:
+    for key_name in ["YIGE_API_KEY"]:
         val = os.environ.get(key_name)
         if val:
             return val
-    print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+    print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
     sys.exit(1)
 
 
@@ -63,7 +63,7 @@ def search(keyword: str, start_date: str = "", end_date: str = "", page_num: int
         data=payload,
         headers={
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": api_key,
+            "YIGE_API_KEY": api_key,
             "User-Agent": "QoderWork/1.0",
         },
         method="POST",

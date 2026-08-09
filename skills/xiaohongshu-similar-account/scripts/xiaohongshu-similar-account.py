@@ -249,10 +249,10 @@ def match_category(user_input):
 
 
 def get_api_key():
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    api_key = os.getenv("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    api_key = os.getenv("YIGE_API_KEY")
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
         sys.exit(1)
     return api_key
 
@@ -271,7 +271,7 @@ def query_similar_accounts(redId=None, track=None, maxFans=None, minFans=None, l
     Returns:
         同阶对标和高阶标杆账号列表
     """
-    url = "https://redfox.hk/story/api/xhsUser/querySimilarAccounts"
+    url = "https://yige.zone/story/api/xhsUser/querySimilarAccounts"
 
     # 获取凭证（环境变量 > shell配置文件 > 提示用户配置）
     api_key = get_api_key()
@@ -1027,7 +1027,7 @@ def main():
 
     except Exception as e:
         # 账号未收录或其他错误
-        print(f"查询失败: {str(e)}。未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系红狐数据咨询：redfoxdata@proton.me")
+        print(f"查询失败: {str(e)}。未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系一格数据咨询：yigedata@proton.me")
 
 
 if __name__ == "__main__":

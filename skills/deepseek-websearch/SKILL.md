@@ -28,23 +28,23 @@ Deepseek WebSearch 是一款 AI 联网搜索助手，帮你突破大模型知识
 
 ### 前置条件
 
-- 已注册红狐 hub 账号并获取 API Key
+- 已注册一格数据 hub 账号并获取 API Key
 - 本地已安装 Python 3 环境
 
 ### 安装步骤
 
 1. **获取 API Key**
 
-   前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 注册并获取 `REDFOX_API_KEY`。
+   前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 注册并获取 `YIGE_API_KEY`。
 
 2. **配置环境变量**
 
    ```bash
    # 方式一：配置文件（如 OpenClaw 的 ~/.openclaw/openclaw.json）
-   { "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+   { "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
    # 方式二：终端环境变量
-   export REDFOX_API_KEY="ak_xxxx..."
+   export YIGE_API_KEY="ak_xxxx..."
    ```
 
 3. **安装依赖**
@@ -140,7 +140,7 @@ Deepseek WebSearch 是一款 AI 联网搜索助手，帮你突破大模型知识
 
 | 情况 | 处理方式 |
 |------|---------|
-| 未配置 `REDFOX_API_KEY` | 提示用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key |
+| 未配置 `YIGE_API_KEY` | 提示用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key |
 | 服务返回 502 | 服务返回 502 错误，可能存在网络不稳定问题，请稍后重试 |
 | 搜索请求失败 | 输出错误信息，建议用户重试 |
 | 搜索超时 | 提示超时，建议稍后重试 |

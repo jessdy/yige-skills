@@ -9,7 +9,7 @@ from datetime import datetime
 import requests
 
 
-API_HOST = "redfox.hk"
+API_HOST = "yige.zone"
 API_PATH_SEARCH_USER = "/story/api/gzh/data/searchUser"  # 接口1：关键词搜索账号 → 获取微信号
 API_PATH_QUERY_DATA = "/story/api/gzhUser/queryData"      # 接口2：按微信号+名称精确查询完整数据
 RAW_DATA_FILE = "raw_data.json"
@@ -51,7 +51,7 @@ def _work_publish_time(w):
 
 
 def _read_from_shell_config():
-    """从shell配置文件中尝试读取REDFOX_API_KEY（仅macOS/Linux）"""
+    """从shell配置文件中尝试读取YIGE_API_KEY（仅macOS/Linux）"""
     if sys.platform == "win32":
         return None
     home = os.path.expanduser("~")
@@ -66,7 +66,7 @@ def _read_from_shell_config():
             if os.path.isfile(config_file):
                 with open(config_file, "r", encoding="utf-8", errors="ignore") as f:
                     content = f.read()
-                match = re.search(r'export\s+REDFOX_API_KEY\s*=\s*["\']?([^"\'\n]+)["\']?', content)
+                match = re.search(r'export\s+YIGE_API_KEY\s*=\s*["\']?([^"\'\n]+)["\']?', content)
                 if match:
                     return match.group(1).strip()
         except (OSError, PermissionError):
@@ -75,8 +75,8 @@ def _read_from_shell_config():
 
 
 def _get_credential():
-    """获取API凭证 - 优先从环境变量REDFOX_API_KEY读取，其次从shell配置文件读取"""
-    credential = os.getenv("REDFOX_API_KEY")
+    """获取API凭证 - 优先从环境变量YIGE_API_KEY读取，其次从shell配置文件读取"""
+    credential = os.getenv("YIGE_API_KEY")
     if credential and credential.strip():
         return credential.strip()
 
@@ -86,10 +86,10 @@ def _get_credential():
         return credential
 
     raise ValueError(
-        "未找到 REDFOX_API_KEY，请配置环境变量后重试。\n"
-        "  macOS/Linux: export REDFOX_API_KEY=<你的apikey>\n"
-        "  Windows:     [Environment]::SetEnvironmentVariable('REDFOX_API_KEY', '<值>', 'User')\n"
-        "获取API Key: 访问 https://redfox.hk/ 注册后在个人中心获取"
+        "未找到 YIGE_API_KEY，请配置环境变量后重试。\n"
+        "  macOS/Linux: export YIGE_API_KEY=<你的apikey>\n"
+        "  Windows:     [Environment]::SetEnvironmentVariable('YIGE_API_KEY', '<值>', 'User')\n"
+        "获取API Key: 访问 https://yige.zone/ 注册后在个人中心获取"
     )
 
 

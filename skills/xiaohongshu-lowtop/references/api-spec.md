@@ -2,7 +2,7 @@
 
 ## 接口信息
 
-**接口地址**: `https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataLowFans`
+**接口地址**: `https://yige.zone/story/api/cozeSkill/getXhsCozeSkillDataLowFans`
 
 **请求方式**: GET
 
@@ -53,19 +53,19 @@
 ### 示例1：查询综合全部
 
 ```
-GET https://redfox.hk.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=综合全部
+GET https://yige.zone.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=综合全部
 ```
 
 ### 示例2：查询时尚穿搭分类
 
 ```
-GET https://redfox.hk.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=时尚穿搭
+GET https://yige.zone.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=时尚穿搭
 ```
 
 ### 示例3：查询美味佳肴分类
 
 ```
-GET https://redfox.hk.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=美味佳肴
+GET https://yige.zone.com/story/api/cozeSkill/getXhsCozeSkillDataLowFans?rankDate=2025-01-15&source=小红书冷门账号爆款文章&category=美味佳肴
 ```
 
 ## 数据筛选规则

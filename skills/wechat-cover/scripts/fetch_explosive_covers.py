@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 公众号爆款封面数据查询脚本
-对接接口：POST https://redfox.hk/story/api/gzh/search/hotArticleNew
+对接接口：POST https://yige.zone/story/api/gzh/search/hotArticleNew
 """
 
 import os
@@ -76,15 +76,15 @@ def fetch_wx_covers(keyword: str, debug: bool = False, start_date: str = None, e
     Returns:
         dict: 包含 articles / latestHotArticles / hotTopics / relatedSearches
     """
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if not api_key:
         raise ValueError(
-            "缺少 API Key 配置，请设置环境变量 REDFOX_API_KEY。"
-            "获取方式：前往 https://redfox.hk/settings/api-keys?source=github 申请，"
-            '然后执行 export REDFOX_API_KEY="ak_xxxx..."'
+            "缺少 API Key 配置，请设置环境变量 YIGE_API_KEY。"
+            "获取方式：前往 https://yige.zone/settings/api-keys?source=github 申请，"
+            '然后执行 export YIGE_API_KEY="ak_xxxx..."'
         )
 
-    base_url = "https://redfox.hk/story/api/gzh/search/hotArticleNew"
+    base_url = "https://yige.zone/story/api/gzh/search/hotArticleNew"
     headers = {
         "X-API-KEY": api_key,
         "Content-Type": "application/json",
@@ -334,7 +334,7 @@ def main():
             total = len(data.get("articles", []))
             print(f"✓ 总计: {total} 条数据", file=sys.stderr)
 
-        print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+        print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
     except Exception as e:
         print(f"❌ 错误: {str(e)}", file=sys.stderr)

@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://redfox.hk/?source=github">
-    <img src="https://lyy.redfox.hk/page/logo-redfox-name.png" alt="RedFox Logo" width="200">
+  <a href="https://yige.zone/?source=github">
+    <img src="https://lyy.yige.zone/page/logo-yige-name.png" alt="Yige Logo" width="200">
   </a>
 </p>
 
 <p align="right">
   中文
-  <a href="https://github.com/redfox-data/redfox-community/blob/main/README.en.md">English</a>
+  <a href="https://github.com/jessdy/yige-skills/blob/main/README.en.md">English</a>
 </p>
 
-# redfoxdata · Agent Skills
+# 一格数据 · Agent Skills
 
-本仓库收录 **redfoxdata** 社区维护的多枚 Agent 技能（Skill），面向灵感、选题、文案创作、数据复盘等场景。技能以 `SKILL.md` 为核心，可与 Cursor、Claude Code 等支持 Agent Skills 的工具配合使用。
+本仓库收录 **一格数据（yige.zone）** 社区维护的多枚 Agent 技能（Skill），面向灵感、选题、文案创作、数据复盘等场景。技能以 `SKILL.md` 为核心，可与 Cursor、Claude Code 等支持 Agent Skills 的工具配合使用。
 
 ## 仓库结构
 
@@ -44,11 +44,11 @@ description: 一句话说明技能适用场景与能力边界（建议具体，�
 
 可选：`references/`、`scripts/`、`assets/` 等，与 `SKILL.md` 同目录存放，保持单技能自包含、路径相对引用即可。
 
-## RedFox首页
+## 一格数据首页
 
 <p align="center">
-  <a href="https://redfox.hk/?source=github">
-    <img src="https://lyy.redfox.hk/page/redfox-page-3.png" alt="RedFox Logo" width="100%">
+  <a href="https://yige.zone/?source=github">
+    <img src="https://lyy.yige.zone/page/yige-page-3.png" alt="Yige Logo" width="100%">
   </a>
 </p>
 
@@ -58,13 +58,13 @@ description: 一句话说明技能适用场景与能力边界（建议具体，�
 
 ### 获取链接：
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格数据 Hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ## 丰富多样的Skill
 
 <p align="center">
-  <a href="https://redfox.hk/skills?source=github">
-    <img src="https://lyy.redfox.hk/page/redfox-page-2.png" alt="RedFox Logo" width="100%">
+  <a href="https://yige.zone/skills?source=github">
+    <img src="https://lyy.yige.zone/page/yige-page-2.png" alt="Yige Logo" width="100%">
   </a>
 </p>
 
@@ -82,7 +82,7 @@ description: 一句话说明技能适用场景与能力边界（建议具体，�
 请帮我在当前工作区检查并安装以下 Agent Skill。
 
 Skill：小红书最新热门笔记 / xiaohongshu-realtime-search
-源码地址：https://github.com/redfox-data/redfox-community/tree/main/skills/xiaohongshu-realtime-search
+源码地址：https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-realtime-search
 
 请按顺序执行：
 1. 检查本项目是否已安装该 Skill
@@ -101,9 +101,9 @@ Skill：小红书最新热门笔记 / xiaohongshu-realtime-search
 ```bash
 npx skills init //安装skills cli
 
-npx skills add redfox-data/redfox-community //检索redfox仓库选择安装skill
+npx skills add yige-data/yige-skills //检索yige仓库选择安装skill
 
-npx skills add https://github.com/redfox-data/redfox-community/tree/main/skills/seedance-video-gen //安装具体skill
+npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/seedance-video-gen //安装具体skill
 ```
 
 根据提示将skill安装在指定的agent文件夹中或者安装在全局
@@ -116,13 +116,13 @@ npx skills add https://github.com/redfox-data/redfox-community/tree/main/skills/
 
 #### ClawHub（`clawhub`）
 
-访问clawhub红狐数据官方主页搜索安装skill：https://clawhub.ai/user/redfox-data
+访问 clawhub 一格数据官方主页搜索安装 skill：https://clawhub.ai/user/yige-data
 
 ## 多平台API文档
 
 <p align="center">
-  <a href="https://redfox.hk/apis?source=github">
-    <img src="https://lyy.redfox.hk/page/redfox-page-1.png" alt="RedFox Logo" width="100%">
+  <a href="https://yige.zone/apis?source=github">
+    <img src="https://lyy.yige.zone/page/yige-page-1.png" alt="Yige Logo" width="100%">
   </a>
 </p>
 
@@ -139,66 +139,66 @@ npx skills add https://github.com/redfox-data/redfox-community/tree/main/skills/
 
 #### 抖音：
 
-- [获取抖音作品内容详情 (优质库)](https://redfox.hk/apis/douyin/0OT1E306)
-- [获取抖音账号信息 (优质库)](https://redfox.hk/apis/douyin/XUT4CECZ)
-- [搜索关键词获取抖音账号 (优质库)](https://redfox.hk/apis/douyin/P5CHB3BZ)
-- [搜索关键词获取抖音作品 (优质库)](https://redfox.hk/apis/douyin/774OBKK0)
-- [获取抖音账号作品列表 (优质库)](https://redfox.hk/apis/douyin/QEQLCKD6)
-- [搜索关键词获取抖音 AI 作品(优质库)](https://redfox.hk/apis/douyin/I8P3HTVH)
+- [获取抖音作品内容详情 (优质库)](https://yige.zone/apis/douyin/0OT1E306)
+- [获取抖音账号信息 (优质库)](https://yige.zone/apis/douyin/XUT4CECZ)
+- [搜索关键词获取抖音账号 (优质库)](https://yige.zone/apis/douyin/P5CHB3BZ)
+- [搜索关键词获取抖音作品 (优质库)](https://yige.zone/apis/douyin/774OBKK0)
+- [获取抖音账号作品列表 (优质库)](https://yige.zone/apis/douyin/QEQLCKD6)
+- [搜索关键词获取抖音 AI 作品(优质库)](https://yige.zone/apis/douyin/I8P3HTVH)
 
 #### 小红书：
 
-- [获取小红书账号信息 (优质库)](https://redfox.hk/apis/xiaohongshu/4IVIDHEN)
-- [获取小红书作品内容详情 (优质库)](https://redfox.hk/apis/xiaohongshu/KR1LPTBF)
-- [搜索关键词获取小红书账号 (优质库)](https://redfox.hk/apis/xiaohongshu/439NFLBD)
-- [搜索关键词获取小红书作品 (优质库)](https://redfox.hk/apis/xiaohongshu/384C6W6B)
-- [搜索关键词获取小红书 AI 作品(优质库)](https://redfox.hk/apis/xiaohongshu/047JJ3UA)
+- [获取小红书账号信息 (优质库)](https://yige.zone/apis/xiaohongshu/4IVIDHEN)
+- [获取小红书作品内容详情 (优质库)](https://yige.zone/apis/xiaohongshu/KR1LPTBF)
+- [搜索关键词获取小红书账号 (优质库)](https://yige.zone/apis/xiaohongshu/439NFLBD)
+- [搜索关键词获取小红书作品 (优质库)](https://yige.zone/apis/xiaohongshu/384C6W6B)
+- [搜索关键词获取小红书 AI 作品(优质库)](https://yige.zone/apis/xiaohongshu/047JJ3UA)
 
 #### 公众号：
 
-- [获取公众号账号信息 (优质库)](https://redfox.hk/apis/gongzhonghao/6C4A77XR)
-- [根据作品uuid获取公众号作品 (优质库)](https://redfox.hk/apis/gongzhonghao/XEO0QQNF)
-- [搜索关键词获取公众号账号 (优质库)](https://redfox.hk/apis/gongzhonghao/DNVPQZEZ)
-- [搜索关键词获取公众号作品 (优质库)](https://redfox.hk/apis/gongzhonghao/PW97QFBS)
-- [获取公众号账号作品列表 (优质库)](https://redfox.hk/apis/gongzhonghao/XNV30XZ3)
-- [根据作品地址获取公众号作品 (优质库)](https://redfox.hk/apis/gongzhonghao/VUTTKTP6)
-- [搜索关键词获取公众号 AI 创作作品 (优质库)](https://redfox.hk/apis/gongzhonghao/IE0887SO)
+- [获取公众号账号信息 (优质库)](https://yige.zone/apis/gongzhonghao/6C4A77XR)
+- [根据作品uuid获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/XEO0QQNF)
+- [搜索关键词获取公众号账号 (优质库)](https://yige.zone/apis/gongzhonghao/DNVPQZEZ)
+- [搜索关键词获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/PW97QFBS)
+- [获取公众号账号作品列表 (优质库)](https://yige.zone/apis/gongzhonghao/XNV30XZ3)
+- [根据作品地址获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/VUTTKTP6)
+- [搜索关键词获取公众号 AI 创作作品 (优质库)](https://yige.zone/apis/gongzhonghao/IE0887SO)
 
 #### 哔哩哔哩：
 
-- [获取哔哩哔哩作品内容详情 (优质库)](https://redfox.hk/apis/bilibili/TIN1NMTZ)
-- [获取哔哩哔哩账号信息 (优质库)](https://redfox.hk/apis/bilibili/EH53TOT7)
-- [搜索关键词获取哔哩哔哩账号 (优质库)](https://redfox.hk/apis/bilibili/ZXJLJQ21)
-- [搜索关键词获取哔哩哔哩作品 (优质库)](https://redfox.hk/apis/bilibili/LEN9QXR3)
-- [获取哔哩哔哩账号作品列表 (优质库)](https://redfox.hk/apis/bilibili/VPA67I98)
+- [获取哔哩哔哩作品内容详情 (优质库)](https://yige.zone/apis/bilibili/TIN1NMTZ)
+- [获取哔哩哔哩账号信息 (优质库)](https://yige.zone/apis/bilibili/EH53TOT7)
+- [搜索关键词获取哔哩哔哩账号 (优质库)](https://yige.zone/apis/bilibili/ZXJLJQ21)
+- [搜索关键词获取哔哩哔哩作品 (优质库)](https://yige.zone/apis/bilibili/LEN9QXR3)
+- [获取哔哩哔哩账号作品列表 (优质库)](https://yige.zone/apis/bilibili/VPA67I98)
 
 #### 今日头条
 
-- [获取今日头条账号作品列表 (实时)](https://redfox.hk/apis/jinritoutiao/28CFGF5I)
-- [获取今日头条作品内容详情 (实时)](https://redfox.hk/apis/jinritoutiao/PAB6Z75Y)
+- [获取今日头条账号作品列表 (实时)](https://yige.zone/apis/jinritoutiao/28CFGF5I)
+- [获取今日头条作品内容详情 (实时)](https://yige.zone/apis/jinritoutiao/PAB6Z75Y)
 
 #### Tiktok：
 
-- [Tiktok关键词搜索账号](https://redfox.hk/apis/tool-tiktok/20070019)
+- [Tiktok关键词搜索账号](https://yige.zone/apis/tool-tiktok/20070019)
 
 #### AI搜索：
 
-- [kimi纯文字搜索](https://redfox.hk/apis/tool-ai-search/USDIOVU23)
-- [豆包纯文字搜索](https://redfox.hk/apis/tool-ai-search/I9R9LIDL)
-- [Deepseek纯文字搜索](https://redfox.hk/apis/tool-ai-search/KGX4SDXQ)
+- [kimi纯文字搜索](https://yige.zone/apis/tool-ai-search/USDIOVU23)
+- [豆包纯文字搜索](https://yige.zone/apis/tool-ai-search/I9R9LIDL)
+- [Deepseek纯文字搜索](https://yige.zone/apis/tool-ai-search/KGX4SDXQ)
 
 #### AI工具：
 
-- [GPT图片生成](https://redfox.hk/apis/tool/HUV4KRFQ)
-- [豆包图片生成](https://redfox.hk/apis/tool/7OM96HCF)
-- [豆包视频生成](https://redfox.hk/apis/tool/ER2ATHKI)
-- [上传图片](https://redfox.hk/apis/tool/FXDGJO1V)
-- [上传视频/图片/音频](https://redfox.hk/apis/tool/6L178PZD)
-- [短视频下载器](https://redfox.hk/apis/tool/AWUTFI4V)
+- [GPT图片生成](https://yige.zone/apis/tool/HUV4KRFQ)
+- [豆包图片生成](https://yige.zone/apis/tool/7OM96HCF)
+- [豆包视频生成](https://yige.zone/apis/tool/ER2ATHKI)
+- [上传图片](https://yige.zone/apis/tool/FXDGJO1V)
+- [上传视频/图片/音频](https://yige.zone/apis/tool/6L178PZD)
+- [短视频下载器](https://yige.zone/apis/tool/AWUTFI4V)
 
 #### 更多平台API：
 
-- [敬请期待！！](https://redfox.hk/apis)
+- [敬请期待！！](https://yige.zone/apis)
 
 ## 参与贡献
 
@@ -211,4 +211,4 @@ npx skills add https://github.com/redfox-data/redfox-community/tree/main/skills/
 
 ---
 
-**redfoxdata** — 将可重复的新媒体工作流沉淀为可分享、可演进的 Agent 技能。
+**一格数据（yige.zone）** — 将可重复的新媒体工作流沉淀为可分享、可演进的 Agent 技能。

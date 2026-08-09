@@ -199,10 +199,10 @@ def analyze_content(title: str, summary: str) -> str:
 
 
 def _get_api_key():
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    key = os.environ.get("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    key = os.environ.get("YIGE_API_KEY")
     if not key:
-        print("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<your_api_key>", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<your_api_key>", file=sys.stderr)
         sys.exit(1)
     return key
 
@@ -222,7 +222,7 @@ def fetch_articles_by_category(category: str, start_date: str, end_date: str, so
         文章列表
     """
     # API配置
-    api_url = "https://redfox.hk/story/api/cozeSkill/getWxDataByCategoryAndTime"
+    api_url = "https://yige.zone/story/api/cozeSkill/getWxDataByCategoryAndTime"
 
     # 获取 API Key
     api_key = _get_api_key()
@@ -441,7 +441,7 @@ def main():
         print("\n============================================================")
         print("\n共获取到 0 条10w+热门文章数据")
         print("💡 建议：尝试调整分类关键词或时间范围")
-        print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+        print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
         return
 
     # 处理和排序数据
@@ -506,7 +506,7 @@ def main():
             category_name = args.type if args.type != "总排名" else "综合"
             print(f"\n💡 {category_name}赛道10w+文章较少，您可以拓展过去30天或者看看综合10w+文章~")
 
-    print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+    print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
 
 if __name__ == "__main__":

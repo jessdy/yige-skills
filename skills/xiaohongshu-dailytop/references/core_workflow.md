@@ -17,26 +17,26 @@
 - **更新时间**：每天19:00更新昨天的榜单数据
 - **数据范围**：当日的热门笔记TOP50
 - **分类覆盖**：25个垂直领域分类
-- **接口地址**：`https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataOne`
+- **接口地址**：`https://yige.zone/story/api/cozeSkill/getXhsCozeSkillDataOne`
 - **请求方式**：**GET**（query 参数：`rankDate`、`source`、`category`）；**禁止使用 POST**（会返回系统内部错误）
-- **认证方式**：请求头 `X-API-KEY`，从环境变量 `REDFOX_API_KEY` 获取；脚本通过 `requests.get` 发起请求
+- **认证方式**：请求头 `X-API-KEY`，从环境变量 `YIGE_API_KEY` 获取；脚本通过 `requests.get` 发起请求
 
 ## 鉴权
 
 ### 获取 API Key
 
-1. 访问 [RedFox 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [Yige 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 配置 API Key
 
-- `REDFOX_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
-- 若未设置，提示用户自行配置：`export REDFOX_API_KEY=<你的apikey>`；若用户不会配置，Agent 应主动帮用户设置：
-  - **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
-  - **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
-  - 配置完成后应验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确保换一个 skill 也能读取到
+- `YIGE_API_KEY` 从环境变量获取，格式 `ak_xxxxxxxx`
+- 若未设置，提示用户自行配置：`export YIGE_API_KEY=<你的apikey>`；若用户不会配置，Agent 应主动帮用户设置：
+  - **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
+  - **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
+  - 配置完成后应验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确保换一个 skill 也能读取到
 
 ## 输出规范（强制执行）
 
@@ -321,15 +321,15 @@
 
 **API Key 前置检查（强制）**：
 
-- 调用脚本前，必须先确认 `REDFOX_API_KEY` 环境变量已正确配置
+- 调用脚本前，必须先确认 `YIGE_API_KEY` 环境变量已正确配置
 - Windows 环境：Git Bash 可能无法读取 PowerShell 设置的用户级环境变量，需在命令中显式 `export`
-- 验证方式：`export REDFOX_API_KEY="ak_xxx"` 后再执行脚本，或先执行 `echo $REDFOX_API_KEY` 确认非空
+- 验证方式：`export YIGE_API_KEY="ak_xxx"` 后再执行脚本，或先执行 `echo $YIGE_API_KEY` 确认非空
 - 若 Key 缺失，直接提示用户配置并终止，**禁止进入多轮调试**
 
 调用脚本获取榜单数据，**必须携带 `--output_json` 参数**写入缓存：
 
 ```bash
-export REDFOX_API_KEY="ak_xxx" && python scripts/xhs_daily_fetcher.py --keyword "睫毛膏" --top_n 50 --output_json /tmp/xhs_daily_cache.json
+export YIGE_API_KEY="ak_xxx" && python scripts/xhs_daily_fetcher.py --keyword "睫毛膏" --top_n 50 --output_json /tmp/xhs_daily_cache.json
 ```
 
 **参数说明**：
@@ -395,13 +395,13 @@ export REDFOX_API_KEY="ak_xxx" && python scripts/xhs_daily_fetcher.py --keyword 
 **首次输出时**：
 
 ```bash
-export REDFOX_API_KEY="ak_xxx" && python scripts/gen_xhs_html.py --keyword "穿搭" --top 20 --input_json /tmp/xhs_daily_cache.json --rank_date "YYYY-MM-DD" --output "小红书每日爆款笔记_穿搭_20260528_144500.html"
+export YIGE_API_KEY="ak_xxx" && python scripts/gen_xhs_html.py --keyword "穿搭" --top 20 --input_json /tmp/xhs_daily_cache.json --rank_date "YYYY-MM-DD" --output "小红书每日爆款笔记_穿搭_20260528_144500.html"
 ```
 
 **用户输入"查看更多"后**：
 
 ```bash
-export REDFOX_API_KEY="ak_xxx" && python scripts/gen_xhs_html.py --keyword "穿搭" --top 50 --input_json /tmp/xhs_daily_cache.json --rank_date "YYYY-MM-DD" --output "小红书每日爆款笔记_穿搭_20260528_144500.html"
+export YIGE_API_KEY="ak_xxx" && python scripts/gen_xhs_html.py --keyword "穿搭" --top 50 --input_json /tmp/xhs_daily_cache.json --rank_date "YYYY-MM-DD" --output "小红书每日爆款笔记_穿搭_20260528_144500.html"
 ```
 
 **HTML文件命名规则（强制）**：

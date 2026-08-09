@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书热门笔记搜索脚本（支持 HTML 卡片布局输出）
-基于红狐数据API，支持关键词搜索、分页、时间筛选
+基于一格数据API，支持关键词搜索、分页、时间筛选
 """
 
 import sys
@@ -51,11 +51,11 @@ def fuzzy_count(value):
 
 
 def get_api_key():
-    """从环境变量 REDFOX_API_KEY 获取 API Key，未配置时报错退出"""
-    api_key = os.environ.get("REDFOX_API_KEY", "")
+    """从环境变量 YIGE_API_KEY 获取 API Key，未配置时报错退出"""
+    api_key = os.environ.get("YIGE_API_KEY", "")
     if not api_key:
-        print("❌ 未找到 API Key，请配置环境变量 REDFOX_API_KEY。", file=sys.stderr)
-        print("   示例：export REDFOX_API_KEY=your_api_key_here", file=sys.stderr)
+        print("❌ 未找到 API Key，请配置环境变量 YIGE_API_KEY。", file=sys.stderr)
+        print("   示例：export YIGE_API_KEY=your_api_key_here", file=sys.stderr)
         sys.exit(1)
     return api_key
 
@@ -64,11 +64,11 @@ def fetch_xhs_hot_notes(keyword: str, debug: bool = False, max_retries: int = 3,
                         start_date: str = None, end_date: str = None,
                         page_num: int = 1, page_size: int = 50):
     """调用接口获取小红书热门笔记数据"""
-    # API Key（从环境变量 REDFOX_API_KEY 读取，支持 shell 配置文件回退）
+    # API Key（从环境变量 YIGE_API_KEY 读取，支持 shell 配置文件回退）
     api_key = get_api_key()
 
     # 构建请求
-    url = "https://redfox.hk/story/api/xhs/search/search"
+    url = "https://yige.zone/story/api/xhs/search/search"
     headers = {
         "Content-Type": "application/json",
         "X-API-KEY": api_key

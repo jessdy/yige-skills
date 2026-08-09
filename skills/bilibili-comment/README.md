@@ -8,7 +8,7 @@
 
 **功能介绍**
 
-B站评论分析是专为内容创作者、UP主和品牌运营打造的智能评论洞察工具。基于红狐 API 实时拉取视频一级评论，每页20条，支持分页浏览；AI 深度理解B站梗文化（awsl / yyds / 爷青回 等弹幕术语），完成积极/负面/需求/竞品四维分析并引用代表评论；最终生成深色主题交互式 HTML 报告，便于保存与分享。
+B站评论分析是专为内容创作者、UP主和品牌运营打造的智能评论洞察工具。基于一格数据 API 实时拉取视频一级评论，每页20条，支持分页浏览；AI 深度理解B站梗文化（awsl / yyds / 爷青回 等弹幕术语），完成积极/负面/需求/竞品四维分析并引用代表评论；最终生成深色主题交互式 HTML 报告，便于保存与分享。
 
 **核心价值**
 
@@ -44,10 +44,10 @@ B站评论分析是专为内容创作者、UP主和品牌运营打造的智能�
 
 ## 密钥获取与安全说明
 
-- 本技能需要使用环境变量：`REDFOX_API_KEY`。
-- `REDFOX_API_KEY` 由 [红狐 hub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`) 提供。
-- 请前往 [红狐 hub](https://redfox.hk?source=github) 注册账号，获取 `REDFOX_API_KEY`。
-- 配置设备环境变量 `REDFOX_API_KEY` 后使用本技能。
+- 本技能需要使用环境变量：`YIGE_API_KEY`。
+- `YIGE_API_KEY` 由 [一格数据 hub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`) 提供。
+- 请前往 [一格数据 hub](https://yige.zone?source=github) 注册账号，获取 `YIGE_API_KEY`。
+- 配置设备环境变量 `YIGE_API_KEY` 后使用本技能。
 - 在提供密钥前，请先确认密钥来源、可用范围、有效期及是否支持重置/撤销。
 - 禁止在代码、提示词、日志或输出文件中硬编码/明文暴露密钥。
 

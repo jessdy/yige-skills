@@ -41,7 +41,7 @@ python scripts/wechat_analyzer.py query --account_ids "账号ID"
 - **严禁生成估算报告**
 
 **错误时**（`status: "error"`）：
-- 检查错误信息，如为凭证问题则引导配置 `REDFOX_API_KEY`
+- 检查错误信息，如为凭证问题则引导配置 `YIGE_API_KEY`
 
 ### 步骤4：生成报告
 - **不生成 HTML 文件**，直接读取 `output/report_data.json`，按第4节格式在对话中输出文字诊断报告
@@ -56,14 +56,14 @@ python scripts/wechat_analyzer.py query --account_ids "账号ID"
 
 | 步骤 | 用途 | 地址 |
 |------|------|------|
-| 第一步 | 按名称搜索账号，获取微信号 | `https://redfox.hk/story/api/gzh/data/searchUser` |
-| 第二步 | 按微信号精确查询完整数据 | `https://redfox.hk/story/api/gzhUser/queryData` |
+| 第一步 | 按名称搜索账号，获取微信号 | `https://yige.zone/story/api/gzh/data/searchUser` |
+| 第二步 | 按微信号精确查询完整数据 | `https://yige.zone/story/api/gzhUser/queryData` |
 
 ### 请求配置
 
 - **请求方式**：POST
-- **请求头**：`Content-Type: application/json` + `X-API-KEY: {REDFOX_API_KEY}`
-- **认证方式**：Header `X-API-KEY`，值从环境变量 `REDFOX_API_KEY` 获取
+- **请求头**：`Content-Type: application/json` + `X-API-KEY: {YIGE_API_KEY}`
+- **认证方式**：Header `X-API-KEY`，值从环境变量 `YIGE_API_KEY` 获取
 - **成功响应码**：统一为 `2000`（非 HTTP 标准 200）
 
 ### 接口一：searchUser（搜索账号）
@@ -295,7 +295,7 @@ python scripts/wechat_analyzer.py query --account_ids "账号ID"
 
 **诊断报告末尾必须依次添加以下两段提醒**：
 
-> *诊断时间：[YYYY-MM-DD] | 数据来源：[红狐数据（redfox.hk）](https://redfox.hk/) 更多平台数据、优质数据可前往查看API接口 | 置信度：[高/中/低] | 阅读数>10万显示为10w+*
+> *诊断时间：[YYYY-MM-DD] | 数据来源：[一格数据（yige.zone）](https://yige.zone/) 更多平台数据、优质数据可前往查看API接口 | 置信度：[高/中/低] | 阅读数>10万显示为10w+*
 
 > 💡 **订阅提醒**：如需持续追踪该账号数据变化，可回复"订阅 {账号名称}"，系统将自动同步最新作品数据（约需30分钟）。首次订阅后可解锁完整7天作品数据。
 

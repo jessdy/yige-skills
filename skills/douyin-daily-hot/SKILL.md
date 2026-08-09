@@ -28,26 +28,26 @@ description: 抖音每日最热作品榜查询工具。日度收录全平台抖�
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 📡 API 调用
 
-- **接口地址**：`POST https://redfox.hk/story/api/dy/search/likesRank`
-- **认证方式**：请求头 `X-API-KEY`，值从环境变量 `REDFOX_API_KEY` 获取
+- **接口地址**：`POST https://yige.zone/story/api/dy/search/likesRank`
+- **认证方式**：请求头 `X-API-KEY`，值从环境变量 `YIGE_API_KEY` 获取
 - **固定参数**：`source`（值见脚本）
 - **可选参数**：`type`（赛道）、`startTime`、`endTime`（日期范围）
 
@@ -106,7 +106,7 @@ export REDFOX_API_KEY="ak_xxxx..."
 1️⃣ 我们每日 06:00 更新昨日数据，是否需要订阅每日的抖音作品最新排名，订阅后定时推送给您
 2️⃣ 是否需要订阅具体赛道的作品表现？我们支持：[列出28个赛道]
 
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 ```
 
 ### 作品标题超链接规范（必须遵守）

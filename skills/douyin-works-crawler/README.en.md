@@ -8,7 +8,7 @@ A Douyin content data retrieval tool. Enter a Douyin nickname or ID to instantly
 
 **Core Value**
 
-- **One-click works retrieval**: Enter a nickname or Douyin ID to automatically fetch account basic info (followers, total likes, total works, RedFox Index) and recent work lists.
+- **One-click works retrieval**: Enter a nickname or Douyin ID to automatically fetch account basic info (followers, total likes, total works, Yige Index) and recent work lists.
 - **Auto data highlight analysis**: TOP 3 engagement works analysis + account feature summary (posting frequency, content direction, engagement trends, viral patterns)—quickly identify content worth learning from.
 - **Direct work links**: Each work comes with a direct link—click to jump to the original video.
 
@@ -25,7 +25,7 @@ A Douyin content data retrieval tool. Enter a Douyin nickname or ID to instantly
 
 ### Core Capabilities
 
-- **Account info query**: Enter a Douyin nickname or ID to instantly fetch account basic data (followers, total likes, total works, RedFox Index, etc.).
+- **Account info query**: Enter a Douyin nickname or ID to instantly fetch account basic data (followers, total likes, total works, Yige Index, etc.).
 - **Recent works retrieval**: Automatically fetch recent works (up to 50 items), including likes, comments, shares, engagement counts, and direct work links.
 - **Data highlight analysis**: Output TOP 3 engagement works analysis + account feature analysis (posting frequency, engagement trends, viral patterns).
 
@@ -39,10 +39,10 @@ A Douyin content data retrieval tool. Enter a Douyin nickname or ID to instantly
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`)
-- Register at [RedFoxHub](https://redfox.hk?source=github) to obtain `REDFOX_API_KEY`.
-- Configure `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`)
+- Register at [YigeHub](https://yige.zone?source=github) to obtain `YIGE_API_KEY`.
+- Configure `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset or revoked.
 - Do not hard-code or expose keys in plain text in code, prompts, logs, or output files.
 
@@ -64,7 +64,7 @@ Simply describe your query needs in natural language—no commands to memorize.
 
 After querying, you will receive the following structured results:
 
-**Account Basic Info**: Nickname (clickable to homepage), Douyin ID, region, followers, total likes, total works, RedFox Index
+**Account Basic Info**: Nickname (clickable to homepage), Douyin ID, region, followers, total likes, total works, Yige Index
 
 **Recent Works List** (up to 50 items, reverse chronological):
 
@@ -95,6 +95,6 @@ After querying, you will receive the following structured results:
 - Number formatting: ≥10k displays as `x.xw` (e.g., 3.2w), ≥100M displays as `x.x亿`; <10k uses comma separators.
 - Douyin nicknames are not unique; nickname queries may return fuzzy matches—use Douyin ID for precise lookup.
 - All data comes exclusively from the data platform; no third-party supplementation or estimation.
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 
 ---

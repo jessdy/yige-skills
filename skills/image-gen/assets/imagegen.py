@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Qoder Image Generator - 基于 gpt-image-2 的图片生成工具
-使用 redfox.hk API 提交图片生成任务并下载结果
+使用 yige.zone API 提交图片生成任务并下载结果
 支持文生图（generate）和图生图（edit）
 
 Usage:
@@ -18,12 +18,12 @@ from pathlib import Path
 
 import requests
 
-SUBMIT_URL = "https://redfox.hk/story/api/parseWork/imageGen/submitSkill"
-RESULT_URL = "https://redfox.hk/story/api/parseWork/imageGen/result"
-UPLOAD_URL = "https://redfox.hk/story/api/parseWork/imageGen/uploadImage"
+SUBMIT_URL = "https://yige.zone/story/api/parseWork/imageGen/submitSkill"
+RESULT_URL = "https://yige.zone/story/api/parseWork/imageGen/result"
+UPLOAD_URL = "https://yige.zone/story/api/parseWork/imageGen/uploadImage"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "GPT image2-GitHub"
 POLL_INTERVAL = 3  # seconds
 MAX_POLL_ATTEMPTS = 60  # max ~3 minutes
@@ -310,8 +310,8 @@ Examples:
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        error("未找到 API Key，请设置环境变量 REDFOX_API_KEY 或使用 --api-key 参数")
-        print(f"  获取 Key: https://redfox.hk/settings/api-keys?source=github")
+        error("未找到 API Key，请设置环境变量 YIGE_API_KEY 或使用 --api-key 参数")
+        print(f"  获取 Key: https://yige.zone/settings/api-keys?source=github")
         sys.exit(1)
 
     # ── Session (all requests use HTTPS with SSL verification) ──

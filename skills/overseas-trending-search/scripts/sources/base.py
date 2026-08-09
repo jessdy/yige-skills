@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 
 
 class PlatformUnavailable(Exception):
-    """平台上游能力不可用（如 RedFox 3203 能力故障），主流程应优雅降级跳过"""
+    """平台上游能力不可用（如 Yige 3203 能力故障），主流程应优雅降级跳过"""
     pass
 
 

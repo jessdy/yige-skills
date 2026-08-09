@@ -39,20 +39,20 @@ dependency:
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
 方案1: 写入 `~/.openclaw/openclaw.json`：
 
 ```json
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置：
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## ⚠️ 核心规则
@@ -60,7 +60,7 @@ export REDFOX_API_KEY="ak_xxxx..."
 ### 数据来源
 - **唯一数据来源**：通过 `scripts/fetch_official_account_trends.py` 脚本调用 API 接口
 - **禁止**：联网搜索、使用其他数据源
-- API 接口：`https://redfox.hk/story/api/cozeSkill/getWxCozeSkillData`
+- API 接口：`https://yige.zone/story/api/cozeSkill/getWxCozeSkillData`
 
 ### 用词规范
 - ❌ 禁止"爬取"、"抓取" → ✅ 统一用"获取"

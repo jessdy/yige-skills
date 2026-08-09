@@ -39,20 +39,20 @@ description: 专为小红书内容创作打造的一站式笔记生成工具，�
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -227,7 +227,7 @@ python scripts/fetch_xhs_hot_articles.py \
 xiaohongshu-write/
 ├── SKILL.md                          # 本文件
 ├── scripts/
-│   └── fetch_xhs_hot_articles.py     # 调用红狐数据API获取热门笔记数据，输出JSON到stdout
+│   └── fetch_xhs_hot_articles.py     # 调用一格数据API获取热门笔记数据，输出JSON到stdout
 └── references/
     └── xhs_hot_article_format.md     # 数据字段格式和输出规范
 ```
@@ -237,19 +237,19 @@ xiaohongshu-write/
 | 技术 | 用途 |
 | ---- | ---- |
 | Python 标准库 | HTTP 请求与数据解析 |
-| 红狐 API | 小红书爆款笔记数据来源 |
+| 一格数据 API | 小红书爆款笔记数据来源 |
 | WebSearch | 获取最新热点资讯补充创作素材 |
 | AI 智能分析 | 爆款规律提炼与文案生成 |
 
 ### 核心模块说明
 
-- **fetch_xhs_hot_articles.py**：接收关键词、max-items、page-size、start-date 参数，调用红狐 API 获取热门笔记数据，输出 JSON 格式到 stdout，包含 items（搜索结果）、latestHotArticles（推荐热门笔记）、relatedSearches（拓展词推荐）。
+- **fetch_xhs_hot_articles.py**：接收关键词、max-items、page-size、start-date 参数，调用一格数据 API 获取热门笔记数据，输出 JSON 格式到 stdout，包含 items（搜索结果）、latestHotArticles（推荐热门笔记）、relatedSearches（拓展词推荐）。
 
 ### 资源索引
 
 | 文件 | 用途 |
 | ---- | ---- |
-| [scripts/fetch_xhs_hot_articles.py](scripts/fetch_xhs_hot_articles.py) | 调用红狐数据API获取热门笔记数据，输出JSON到stdout |
+| [scripts/fetch_xhs_hot_articles.py](scripts/fetch_xhs_hot_articles.py) | 调用一格数据API获取热门笔记数据，输出JSON到stdout |
 | [references/xhs_hot_article_format.md](references/xhs_hot_article_format.md) | 了解数据字段格式和输出规范时读取 |
 
 ---
@@ -262,7 +262,7 @@ xiaohongshu-write/
 A: 无需额外安装，使用 Python 标准库即可运行。
 
 **Q: 如何配置 API Key？**
-A: 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `REDFOX_API_KEY` 配置。
+A: 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `YIGE_API_KEY` 配置。
 
 ### 使用
 

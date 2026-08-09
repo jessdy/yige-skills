@@ -1,6 +1,6 @@
 # B站视频搜索与下载 API 接口指南
 
-> 红狐 API `bili/data/workSearch` 与 `parseWork/videoDownload/bilibili` 接口调用规范与字段说明，供 Agent 与开发者排查问题时参考。
+> 一格数据 API `bili/data/workSearch` 与 `parseWork/videoDownload/bilibili` 接口调用规范与字段说明，供 Agent 与开发者排查问题时参考。
 
 ---
 
@@ -10,10 +10,10 @@
 
 | 项目 | 内容 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/bili/data/workSearch` |
+| 接口地址 | `https://yige.zone/story/api/bili/data/workSearch` |
 | 请求方式 | POST |
-| 请求头 | `Content-Type: application/json` + `REDFOX_API_KEY: {REDFOX_API_KEY}` |
-| 认证方式 | Header `REDFOX_API_KEY`，值从环境变量 `REDFOX_API_KEY` 获取 |
+| 请求头 | `Content-Type: application/json` + `YIGE_API_KEY: {YIGE_API_KEY}` |
+| 认证方式 | Header `YIGE_API_KEY`，值从环境变量 `YIGE_API_KEY` 获取 |
 | 成功响应码 | 响应体 `code` 统一为 `2000`（非 HTTP 标准 200） |
 | 积分消耗 | 每次调用消耗一次积分 |
 | 超时设置 | 脚本内置 30 秒超时 |
@@ -22,10 +22,10 @@
 
 | 项目 | 内容 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/parseWork/videoDownload/bilibili` |
+| 接口地址 | `https://yige.zone/story/api/parseWork/videoDownload/bilibili` |
 | 请求方式 | POST |
-| 请求头 | `Content-Type: application/json` + `REDFOX_API_KEY: {REDFOX_API_KEY}` |
-| 认证方式 | Header `REDFOX_API_KEY`，值从环境变量 `REDFOX_API_KEY` 获取 |
+| 请求头 | `Content-Type: application/json` + `YIGE_API_KEY: {YIGE_API_KEY}` |
+| 认证方式 | Header `YIGE_API_KEY`，值从环境变量 `YIGE_API_KEY` 获取 |
 | 成功响应码 | 响应体 `code` 统一为 `2000`（非 HTTP 标准 200） |
 | 积分消耗 | 每次调用消耗一次积分（每个视频链接独立计费） |
 | 超时设置 | 脚本内置 60 秒超时 |

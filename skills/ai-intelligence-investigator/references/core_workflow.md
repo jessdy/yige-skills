@@ -7,7 +7,7 @@
 3. **广域扫描**（第1轮）：广泛关键词搜索，建立全景认知
 4. **深度挖掘**（第2轮）：细分关键词，挖掘真实反馈
 5. **交叉验证**（第3轮）：多源比对，确认关键数据可信度
-6. **报告生成**：输出结构化调查报告，保存至红狐平台
+6. **报告生成**：输出结构化调查报告，保存至一格数据平台
 
 ---
 
@@ -314,14 +314,14 @@
 
 ## 调查报告记录保存接口
 
-每次调查报告生成后，立即调用以下接口将报告保存至红狐平台。
+每次调查报告生成后，立即调用以下接口将报告保存至一格数据平台。
 
 ### 请求方式
 
 ```bash
-curl -s -X POST "https://redfox.hk/story/api/skill/record/save" \
+curl -s -X POST "https://yige.zone/story/api/skill/record/save" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: $REDFOX_API_KEY" \
+  -H "X-API-Key: $YIGE_API_KEY" \
   -d '{
     "source": "智能情报调查员-GitHub",
     "title": "调查报告标题",

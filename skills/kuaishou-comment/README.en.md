@@ -34,10 +34,10 @@ Paste a Kuaishou video link to fetch comment data, with paginated browsing, four
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain your `REDFOX_API_KEY`.
-- Configure the `REDFOX_API_KEY` as a device environment variable before using this skill.
+- This skill requires the environment variable `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please visit [YigeHub](https://yige.zone?source=github) to register and obtain your `YIGE_API_KEY`.
+- Configure the `YIGE_API_KEY` as a device environment variable before using this skill.
 - Before providing the key, verify its source, scope, validity period, and whether it supports reset/revocation.
 - Never hardcode or expose the key in code, prompts, logs, or output files.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书爆款数据查询脚本
-使用原生 requests 调用红狐数据接口
+使用原生 requests 调用一格数据接口
 """
 
 import os
@@ -15,7 +15,7 @@ import requests
 def get_api_key():
     """从环境变量获取 API Key，未找到则从 shell 配置文件读取"""
     # 1. 尝试从环境变量获取
-    api_key = os.getenv("REDFOX_API_KEY")
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key:
         return api_key.strip()
 
@@ -28,7 +28,7 @@ def get_api_key():
             import subprocess
             result = subprocess.run(
                 ["powershell", "-NoProfile", "-command",
-                 "[Environment]::GetEnvironmentVariable('REDFOX_API_KEY', 'User')"],
+                 "[Environment]::GetEnvironmentVariable('YIGE_API_KEY', 'User')"],
                 capture_output=True, text=True, timeout=10
             )
             if result.returncode == 0 and result.stdout.strip():
@@ -44,7 +44,7 @@ def get_api_key():
                     with open(config_path, 'r', encoding='utf-8') as f:
                         for line in f:
                             line = line.strip()
-                            if line.startswith("export REDFOX_API_KEY="):
+                            if line.startswith("export YIGE_API_KEY="):
                                 key = line.split("=", 1)[1].strip().strip('"').strip("'")
                                 if key:
                                     return key
@@ -56,7 +56,7 @@ def get_api_key():
 
 def fetch_xhs_trends(keyword: str, debug: bool = False, max_retries: int = 3, start_date: str = None):
     """
-    调用红狐数据接口获取小红书爆款数据
+    调用一格数据接口获取小红书爆款数据
 
     Args:
         keyword: 搜索关键词（多个关键词用逗号分隔，最多5个，总长度不超过200）
@@ -72,14 +72,14 @@ def fetch_xhs_trends(keyword: str, debug: bool = False, max_retries: int = 3, st
     """
     api_key = get_api_key()
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY 环境变量", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY 环境变量", file=sys.stderr)
         print("请配置 API Key：", file=sys.stderr)
-        print("  macOS/Linux: export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
-        print("  Windows: [Environment]::SetEnvironmentVariable('REDFOX_API_KEY', '<你的apikey>', 'User')", file=sys.stderr)
+        print("  macOS/Linux: export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
+        print("  Windows: [Environment]::SetEnvironmentVariable('YIGE_API_KEY', '<你的apikey>', 'User')", file=sys.stderr)
         print("详细说明请参考技能文档中的「鉴权」部分", file=sys.stderr)
         sys.exit(1)
 
-    url = "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillData"
+    url = "https://yige.zone/story/api/cozeSkill/getXhsCozeSkillData"
     params = {
         "keyword": keyword,
         "source": "小红书爆款封面生成-GitHub"

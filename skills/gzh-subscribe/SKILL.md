@@ -13,13 +13,13 @@ description: 微信公众号文章订阅 — 每天 6 点，盯梢竞对、同�
 
 **首次使用需先配置 API Key**
 
-前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key，三种配置方式任选其一：
+前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key，三种配置方式任选其一：
 
 | 配置方式 | 说明 | 命令 |
 |----------|------|------|
-| **环境变量**（推荐） | 设置一次，全局生效 | `export REDFOX_API_KEY=ak_你的密钥` |
+| **环境变量**（推荐） | 设置一次，全局生效 | `export YIGE_API_KEY=ak_你的密钥` |
 | **命令行参数** | 临时使用 | `python3 "$SKILL_PATH/assets/subscribe.py" fetch --api-key ak_你的密钥` |
-| **配置文件** | 持久化存储 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | 持久化存储 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 配置完成后，即可使用：
 
@@ -45,9 +45,9 @@ HTML 日报保存在 `~/Downloads/QoderGzhReports/` 目录，自动在浏览器�
 
 | 配置方式 | 说明 | 命令 |
 |----------|------|------|
-| **环境变量**（推荐） | 设置一次，全局生效 | `export REDFOX_API_KEY=ak_你的密钥` |
+| **环境变量**（推荐） | 设置一次，全局生效 | `export YIGE_API_KEY=ak_你的密钥` |
 | **命令行参数** | 临时使用 | `python3 "$SKILL_PATH/assets/subscribe.py" fetch --api-key ak_你的密钥` |
-| **配置文件** | 持久化存储 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | 持久化存储 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -59,9 +59,9 @@ HTML 日报保存在 `~/Downloads/QoderGzhReports/` 目录，自动在浏览器�
 - **关键数据一屏尽览**：发文日期、标题、简介、阅读数、点赞数，原文链接一键直达
 - **终端 + 日报双模式**：命令行实时查表，HTML 日报适合分享存档
 
-> **数据覆盖说明**：本 Skill 基于红狐优质热门库，覆盖主流热门公众号。
+> **数据覆盖说明**：本 Skill 基于一格数据优质热门库，覆盖主流热门公众号。
 > 部分垂直领域或小众账号可能不在库中。如需更广的公众号覆盖，
-> 可联系红狐 Hub 获取广域库数据：**redfoxdata@proton.me**
+> 可联系一格数据 Hub 获取广域库数据：**yigedata@proton.me**
 
 ---
 
@@ -192,10 +192,10 @@ A：专为微信公众号设计。微信没有 RSS，本 Skill 直接获取公�
 A：日报展示的是标题+简介+数据。如需对文章做摘要改写或风格仿写，可将拉取到的数据配合 LLM 进一步处理。
 
 **Q：额度用完了怎么办？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Token。
 
 **Q：为什么有些公众号查不到？**
-A：本 Skill 使用的是红狐**优质热门库**，主要收录主流热门公众号，部分垂直领域或小众账号可能不在库中。如需查询更多公众号，可联系红狐 Hub 获取广域库数据：**redfoxdata@proton.me**。
+A：本 Skill 使用的是一格数据**优质热门库**，主要收录主流热门公众号，部分垂直领域或小众账号可能不在库中。如需查询更多公众号，可联系一格数据 Hub 获取广域库数据：**yigedata@proton.me**。
 
 ---
 

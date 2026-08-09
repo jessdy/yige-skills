@@ -18,12 +18,12 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-API_URL = "https://redfox.hk/story/api/xhsData/query"
+API_URL = "https://yige.zone/story/api/xhsData/query"
 
 
 def _get_api_key() -> str:
     """从环境变量获取 API Key，返回格式 ak_xxxxxxxx。"""
-    return os.environ.get("REDFOX_API_KEY", "").strip()
+    return os.environ.get("YIGE_API_KEY", "").strip()
 
 
 def _http_post(url: str, payload: dict, timeout: int = 15) -> dict:
@@ -33,9 +33,9 @@ def _http_post(url: str, payload: dict, timeout: int = 15) -> dict:
     """
     api_key = _get_api_key()
     if not api_key:
-        print("[ERROR] 未设置 REDFOX_API_KEY 环境变量", file=sys.stderr)
-        print("[提示] 请访问 https://redfox.hk/ 注册获取 API Key", file=sys.stderr)
-        print("[提示] 设置方式：export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
+        print("[ERROR] 未设置 YIGE_API_KEY 环境变量", file=sys.stderr)
+        print("[提示] 请访问 https://yige.zone/ 注册获取 API Key", file=sys.stderr)
+        print("[提示] 设置方式：export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
         sys.exit(4)
 
     payload_bytes = json.dumps(payload).encode("utf-8")

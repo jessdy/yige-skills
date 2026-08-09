@@ -16,14 +16,14 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 # API配置
-API_URL = "https://redfox.hk/story/api/hotKeyword/list"
+API_URL = "https://yige.zone/story/api/hotKeyword/list"
 
 
 def _get_api_key() -> str:
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    api_key = os.environ.get("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    api_key = os.environ.get("YIGE_API_KEY")
     if not api_key:
-        raise SystemExit("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>")
+        raise SystemExit("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>")
     return api_key
 
 

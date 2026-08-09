@@ -9,7 +9,7 @@ The A-Share WeChat Official Account Influencer Rankings tool lets you retrieve a
 **Core Value**
 
 - **One-Stop Rankings**: Query data for 49 top A-share WeChat accounts in a single step, covering both official media/institutions and individual influencers
-- **Multi-Dimensional Data**: Simultaneously access average read counts, RedFox Index scores, article titles, read volumes, likes, comments, and other core metrics
+- **Multi-Dimensional Data**: Simultaneously access average read counts, Yige Index scores, article titles, read volumes, likes, comments, and other core metrics
 - **AI-Powered Summaries**: Automatically generates one-sentence key takeaways for each article, enabling quick content scanning
 - **Subscription Tracking**: Subscribe to accounts of interest by index number and query only your subscribed list daily, reducing redundant searches
 
@@ -27,7 +27,7 @@ The A-Share WeChat Official Account Influencer Rankings tool lets you retrieve a
 ### Core Features
 
 - **Rankings Query**: Query A-share WeChat account influencer rankings by date, with official media/institutions and individual influencers displayed separately — up to 30 accounts per category
-- **Account Data**: Retrieve core operational metrics for each account, including average read counts, RedFox Index scores, and account descriptions
+- **Account Data**: Retrieve core operational metrics for each account, including average read counts, Yige Index scores, and account descriptions
 - **Daily Articles**: Access the latest articles published by each account on the specified date, including titles, links, read counts, likes, and comment counts
 - **AI Content Summaries**: Automatically generate one-sentence key takeaways based on article titles for quick browsing
 - **Subscription Push**: Subscribe to official media or influencer accounts by index number and query the latest article updates for all subscribed accounts in a single step
@@ -36,10 +36,10 @@ The A-Share WeChat Official Account Influencer Rankings tool lets you retrieve a
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please visit [RedFoxHub](https://redfox.hk?source=github) to register an account and obtain your `REDFOX_API_KEY`.
-- Configure the environment variable `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please visit [YigeHub](https://yige.zone?source=github) to register an account and obtain your `YIGE_API_KEY`.
+- Configure the environment variable `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, verify its source, permitted scope, validity period, and whether it supports reset/revocation.
 - Never hardcode or expose your key in plaintext within code, prompts, logs, or output files.
 
@@ -67,7 +67,7 @@ Simply describe your needs in natural language — no commands to memorize.
 
 **【Official Media/Institutions】3 accounts**
 
-| # | Account | Avg Reads | RedFox Index | Latest Article | AI Summary | Reads | Likes | Published |
+| # | Account | Avg Reads | Yige Index | Latest Article | AI Summary | Reads | Likes | Published |
 |---|--------|----------|-------------|----------------|------------|-------|-------|-----------|
 | 1 | 央视财经 | 48k | 1011.3 | [Breaking! 9 Ministries Release Major Stimulus](link) | Nine ministries jointly release major favorable policies | 83k | 464 | 06-16 |
 | 2 | 券商中国 | 31k | 993.6 | [Late Trading Alert! Stock #601869 Hits Limit Up!](link) | Late-session unusual activity as stock hits limit-up, concept defies market | 50k | 202 | 06-16 |
@@ -75,7 +75,7 @@ Simply describe your needs in natural language — no commands to memorize.
 
 **【Individual Influencers】2 accounts**
 
-| # | Account | Avg Reads | RedFox Index | Latest Article | AI Summary | Reads | Likes | Published |
+| # | Account | Avg Reads | Yige Index | Latest Article | AI Summary | Reads | Likes | Published |
 |---|--------|----------|-------------|----------------|------------|-------|-------|-----------|
 | 1 | 好运哥2008 | 80k | 876.6 | [Good News Is Here!!](link) | Bullish on positive stimulus impact on A-shares | 100k+ | 2859 | 06-16 |
 | 2 | 孥孥的大树 | 24k | 810.8 | [Brokerages Should Learn from Cape Verde](link) | Brokerages should draw lessons from Cape Verde's development approach | 22k | 482 | 06-16 |
@@ -96,8 +96,8 @@ Simply describe your needs in natural language — no commands to memorize.
 
 ## Important Data Notes
 
-- Account data is sourced from WeChat accounts indexed by the RedFox API, covering 49 fixed top A-share accounts (19 individual influencers + 30 official media/institutions)
+- Account data is sourced from WeChat accounts indexed by the Yige API, covering 49 fixed top A-share accounts (19 individual influencers + 30 official media/institutions)
 - Article data consists of works published by accounts on the specified date, filtered and returned directly by the server
 - Engagement data (read counts, likes, comments, etc.) reflects the time of data ingestion and is not real-time
-- The RedFox platform updates the previous day's data daily at **07:00**; it is recommended to query after **07:30** for the latest daily report
+- The Yige platform updates the previous day's data daily at **07:00**; it is recommended to query after **07:30** for the latest daily report
 - Only accounts that published articles on the given date appear in the results, so the number of accounts may vary across different dates

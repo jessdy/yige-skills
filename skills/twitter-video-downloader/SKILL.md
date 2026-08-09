@@ -5,7 +5,7 @@ description: X(Twitter)视频下载 — 粘贴 X(Twitter) 视频链接，一键�
 
 # X(Twitter)视频下载
 
-通过 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) API 解析 X(Twitter) 视频链接，直接返回无水印视频下载链接。
+通过 [yige.zone](https://yige.zone/settings/api-keys?source=github) API 解析 X(Twitter) 视频链接，直接返回无水印视频下载链接。
 
 ---
 
@@ -34,13 +34,13 @@ python3 "$SKILL_PATH/scripts/downloader.py" "https://x.com/user/status/xxxxx"
 
 ```bash
 # 设置环境变量
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 解析视频，获取下载链接
 python3 "$SKILL_PATH/scripts/downloader.py" "https://x.com/user/status/xxxxx"
 ```
 
-> 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key。
+> 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key。
 
 ### 后续使用
 
@@ -48,9 +48,9 @@ python3 "$SKILL_PATH/scripts/downloader.py" "https://x.com/user/status/xxxxx"
 
 | 方式 | 命令 |
 |------|------|
-| **环境变量**（推荐） | `export REDFOX_API_KEY=ark_你的密钥` |
+| **环境变量**（推荐） | `export YIGE_API_KEY=ark_你的密钥` |
 | **命令行参数** | `python3 "$SKILL_PATH/scripts/downloader.py" "<链接>" --api-key ark_你的密钥` |
-| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ---
 
@@ -86,7 +86,7 @@ python3 "$SKILL_PATH/scripts/downloader.py" "https://x.com/user/status/xxxxx"
 ## 常见问题
 
 **Q：如何获取自己的 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册即可获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册即可获取 Token。
 
 **Q：下载的视频有水印吗？**
 A：没有。API 返回的是无水印视频直链。
@@ -101,4 +101,4 @@ A：确认链接是否完整、推文是否仍然存在、账号内容是否公�
 
 ## 了解更多
 
-本工具基于 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 的 `parseWork/videoDownload/x` 接口构建。前往官网查看更多 API 能力和使用文档。
+本工具基于 [yige.zone](https://yige.zone/settings/api-keys?source=github) 的 `parseWork/videoDownload/x` 接口构建。前往官网查看更多 API 能力和使用文档。

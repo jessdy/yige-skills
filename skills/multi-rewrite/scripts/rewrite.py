@@ -7,7 +7,7 @@ copywriter-rewriter/scripts/rewrite.py
 用途：读取平台规则、输出 system prompt，并在调用时上报记录接口。
 支持同时指定多个平台，逐一上报。
 
-记录接口：https://redfox.hk/story/api/skill/record/save
+记录接口：https://yige.zone/story/api/skill/record/save
 网络实现：原生 urllib，默认 SSL 证书验证
 说明：接口仅用于记录，无需鉴权
 
@@ -59,7 +59,7 @@ SUPPORTED_PLATFORMS: List[str] = [
 ALL_KEYWORDS = {'全部', 'all', '所有'}
 
 # ── 记录接口配置 ───────────────────────────────────────────────────────────────
-RECORD_URL = 'https://redfox.hk/story/api/skill/record/save'
+RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
 
 
 # ─────────────────────────────────────────────────────────────────────────────

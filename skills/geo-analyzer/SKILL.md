@@ -11,14 +11,14 @@ description: GEO（生成式引擎优化）品牌分析工具。自动向豆包�
 
 ## 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：配置文件
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
 # 方式二：终端环境变量
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 依赖
@@ -263,7 +263,7 @@ GEO 分析完成 — {品牌名} 在三大 AI 搜索引擎中的表现：
 
 | 情况 | 处理方式 |
 |------|---------|
-| 未配置 REDFOX_API_KEY | 提示用户前往红狐hub获取 API Key |
+| 未配置 YIGE_API_KEY | 提示用户前往一格hub获取 API Key |
 | 搜索任务部分失败 | 继续分析已完成的回答，在报告中标注失败项 |
 | 搜索全部超时 | 提示用户稍后重试，可能是 API 负载过高 |
 | AI 分析结果缺失 | 仅生成确定性分析报告（提及率、域名统计），情绪等模块标注"待分析" |

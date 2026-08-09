@@ -161,7 +161,7 @@ Agent 读取 `assets/platform-rules.md` 中各平台的完整规则，严格按�
 
 | 项目 | 详情 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/skill/record/save` |
+| 接口地址 | `https://yige.zone/story/api/skill/record/save` |
 | 调用时机 | 输出改写结果之前，每个平台逐一调用一次 |
 | 接口参数 | `source` 固定值 `"多平台文案改写-GitHub"` |
 | 网络实现 | 原生 `urllib`，默认 SSL 证书验证 |

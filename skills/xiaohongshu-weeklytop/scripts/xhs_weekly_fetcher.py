@@ -24,10 +24,10 @@ import requests
 
 def get_api_key() -> str:
     """
-    获取 REDFOX_API_KEY
+    获取 YIGE_API_KEY
 
     三级认证回退机制：
-    1. 从当前设备环境变量 REDFOX_API_KEY 中获取
+    1. 从当前设备环境变量 YIGE_API_KEY 中获取
     2. 若未获取到，自动从 shell 配置文件中读取
     3. 仍然没有则提示用户配置
 
@@ -41,7 +41,7 @@ def get_api_key() -> str:
     import re as re_mod
 
     # 第一级：环境变量
-    api_key = os.environ.get("REDFOX_API_KEY", "").strip()
+    api_key = os.environ.get("YIGE_API_KEY", "").strip()
     if api_key:
         return api_key
 
@@ -68,7 +68,7 @@ def get_api_key() -> str:
                 with open(cf, "r", encoding="utf-8", errors="ignore") as f:
                     content = f.read()
                 match = re_mod.search(
-                    r'REDFOX_API_KEY\s*[=:]\s*["\']?([a-zA-Z0-9_\-]+)["\']?',
+                    r'YIGE_API_KEY\s*[=:]\s*["\']?([a-zA-Z0-9_\-]+)["\']?',
                     content
                 )
                 if match:
@@ -78,11 +78,11 @@ def get_api_key() -> str:
 
     # 第三级：提示用户配置
     raise ValueError(
-        "未找到 REDFOX_API_KEY。请按以下步骤配置：\n"
-        "1. 访问 https://redfox.hk/login 注册并获取 API Key\n"
+        "未找到 YIGE_API_KEY。请按以下步骤配置：\n"
+        "1. 访问 https://yige.zone/login 注册并获取 API Key\n"
         "2. 设置环境变量：\n"
-        "   macOS/Linux: export REDFOX_API_KEY=<你的apikey>\n"
-        "   Windows PowerShell: [Environment]::SetEnvironmentVariable('REDFOX_API_KEY', '<值>', 'User')\n"
+        "   macOS/Linux: export YIGE_API_KEY=<你的apikey>\n"
+        "   Windows PowerShell: [Environment]::SetEnvironmentVariable('YIGE_API_KEY', '<值>', 'User')\n"
         "3. 配置后重启终端使其生效"
     )
 
@@ -194,7 +194,7 @@ def fetch_explosive_articles(rank_date: str, category: str = "综合全部") -> 
 
     source = quote("小红书七日数据爆款文章-GitHub")
     category_encoded = quote(category)
-    url = f"https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataSeven?rankDate={rank_date}&source={source}&category={category_encoded}"
+    url = f"https://yige.zone/story/api/cozeSkill/getXhsCozeSkillDataSeven?rankDate={rank_date}&source={source}&category={category_encoded}"
 
     headers = {
         "Content-Type": "application/json",

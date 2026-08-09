@@ -25,7 +25,7 @@ A full-pipeline operations article tool covering everything from topic selection
 ### Core Capabilities
 
 - **Link rewrite**: Provide any article link to automatically fetch its content and images, learn the style and structure, then produce a new article from a different angle with equivalent quality. Image styles match the originals — ideal for competitive analysis and content benchmarking.
-- **Skill promo**: Provide a Skill file path or name to auto-parse product capabilities and fetch the latest info from the target site, generating a promotional long-form article aligned with actual product features. Images use the RedFox illustrator style for visual and content consistency.
+- **Skill promo**: Provide a Skill file path or name to auto-parse product capabilities and fetch the latest info from the target site, generating a promotional long-form article aligned with actual product features. Images use the Yige illustrator style for visual and content consistency.
 - **Add images**: Provide complete article text to automatically analyze structure by section semantics and word density, intelligently determine image placement and count, then batch-generate consistent illustrations. Perfect for when you've finished writing but don't want to manually find images.
 - **Automated quality check**: Every article goes through 9 quality checks after generation (title length, section count, table count, word count, FAQ count, prohibited words, paragraph length, information density, etc.) with a JSON report output.
 
@@ -47,10 +47,10 @@ A full-pipeline operations article tool covering everything from topic selection
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`)
-- Register at [RedFoxHub](https://redfox.hk?source=github) to obtain `REDFOX_API_KEY`.
-- Configure `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`)
+- Register at [YigeHub](https://yige.zone?source=github) to obtain `YIGE_API_KEY`.
+- Configure `YIGE_API_KEY` on your device before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset or revoked.
 - Do not hard-code or expose keys in plain text in code, prompts, logs, or output files.
 

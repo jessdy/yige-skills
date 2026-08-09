@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """抖音涨粉账号推荐数据获取脚本
 
-通过红狐数据API获取抖音涨粉榜数据，支持日榜/周榜/月榜，27个分类查询。
-使用原生 urllib 发起请求，API Key 从环境变量 REDFOX_API_KEY 读取。
+通过一格数据API获取抖音涨粉榜数据，支持日榜/周榜/月榜，27个分类查询。
+使用原生 urllib 发起请求，API Key 从环境变量 YIGE_API_KEY 读取。
 
 用法:
     python scripts/gzh_growth_fetcher.py --rank_type day --keyword 科技 --top_n 50
@@ -29,7 +29,7 @@ if sys.platform == "win32":
 
 
 # ===== 常量 =====
-API_URL = "https://redfox.hk/story/api/dyData/getDyRiseFansRank"
+API_URL = "https://yige.zone/story/api/dyData/getDyRiseFansRank"
 SOURCE = "抖音涨粉账号推荐-GitHub"
 SKILL_ID = "7637816739572727835"
 
@@ -43,15 +43,15 @@ SHELL_RC_FILES = [
 
 
 def _get_api_key():
-    """获取 REDFOX_API_KEY，优先级：环境变量 > shell 配置文件 > 提示配置"""
+    """获取 YIGE_API_KEY，优先级：环境变量 > shell 配置文件 > 提示配置"""
     # 1. 优先从当前环境变量获取
-    key = os.environ.get("REDFOX_API_KEY", "").strip()
+    key = os.environ.get("YIGE_API_KEY", "").strip()
     if key:
         return key
 
     # 2. 尝试从 shell 配置文件中读取
     import re
-    pattern = re.compile(r'^\s*export\s+REDFOX_API_KEY\s*=\s*["\']?([^"\';\s]+)["\']?', re.MULTILINE)
+    pattern = re.compile(r'^\s*export\s+YIGE_API_KEY\s*=\s*["\']?([^"\';\s]+)["\']?', re.MULTILINE)
     for rc_file in SHELL_RC_FILES:
         if os.path.isfile(rc_file):
             try:
@@ -61,18 +61,18 @@ def _get_api_key():
                 if match:
                     key = match.group(1).strip()
                     if key:
-                        os.environ["REDFOX_API_KEY"] = key
+                        os.environ["YIGE_API_KEY"] = key
                         return key
             except Exception:
                 continue
 
     # 3. 未找到，提示用户配置
     raise ValueError(
-        "未找到 REDFOX_API_KEY。\n"
+        "未找到 YIGE_API_KEY。\n"
         "请按以下方式配置：\n"
-        "  macOS/Linux：export REDFOX_API_KEY=ak_xxxxxxxx（追加到 ~/.zshrc 或 ~/.bashrc 后执行 source）\n"
-        "  Windows：[Environment]::SetEnvironmentVariable(\"REDFOX_API_KEY\", \"ak_xxxxxxxx\", \"User\")\n"
-        "API Key 可在 https://redfox.hk/ 注册后于个人中心获取。"
+        "  macOS/Linux：export YIGE_API_KEY=ak_xxxxxxxx（追加到 ~/.zshrc 或 ~/.bashrc 后执行 source）\n"
+        "  Windows：[Environment]::SetEnvironmentVariable(\"YIGE_API_KEY\", \"ak_xxxxxxxx\", \"User\")\n"
+        "API Key 可在 https://yige.zone/ 注册后于个人中心获取。"
     )
 
 CATEGORIES = [

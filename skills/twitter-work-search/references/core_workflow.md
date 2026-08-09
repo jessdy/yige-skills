@@ -2,12 +2,12 @@
 
 ## Step 0: 鉴权前置检查
 
-1. 检查用户是否已配置 API Key（环境变量 `REDFOX_API_KEY` 或 `~/.openclaw/openclaw.json` 中配置）
-2. 未配置 → 引导用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取并配置：
+1. 检查用户是否已配置 API Key（环境变量 `YIGE_API_KEY` 或 `~/.openclaw/openclaw.json` 中配置）
+2. 未配置 → 引导用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取并配置：
    ```
    ⚠️ 未检测到 API Key，请先完成鉴权：
-   1. 前往 https://redfox.hk/settings/api-keys?source=github 获取 API Key
-   2. 设置环境变量 REDFOX_API_KEY 或在 ~/.openclaw/openclaw.json 中配置
+   1. 前往 https://yige.zone/settings/api-keys?source=github 获取 API Key
+   2. 设置环境变量 YIGE_API_KEY 或在 ~/.openclaw/openclaw.json 中配置
    3. 配置完成后重新发起搜索
    ```
 3. 已配置 → 进入 Step 1
@@ -56,7 +56,7 @@
 **请求头**：
 ```
 Content-Type: application/json
-REDFOX_API_KEY: {用户配置的API Key}
+YIGE_API_KEY: {用户配置的API Key}
 ```
 
 **请求体**：
@@ -71,7 +71,7 @@ REDFOX_API_KEY: {用户配置的API Key}
 
 ### 2.2 发送请求
 
-- **接口地址**：`POST https://redfox.hk/story/api/x/search`
+- **接口地址**：`POST https://yige.zone/story/api/x/search`
 - **超时设置**：30 秒
 - **重试策略**：失败时重试 1 次
 
@@ -191,7 +191,7 @@ function formatNumber(num):
 
 | 接口名称 | 请求方式 | 接口地址 |
 |---------|---------|----------|
-| X(Twitter)搜索 | POST | https://redfox.hk/story/api/x/search |
+| X(Twitter)搜索 | POST | https://yige.zone/story/api/x/search |
 
 ### 请求参数
 

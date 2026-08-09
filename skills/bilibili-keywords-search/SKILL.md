@@ -1,6 +1,6 @@
 ---
 name: B站关键词搜作品
-description: B站关键词搜作品工具。根据用户输入的关键词调用 Redfox 接口搜索B站最新视频，支持按排序方式和发布时间筛选，返回新鲜数据（非缓存/历史数据）。当用户要求搜索B站最新内容、查看某关键词下的视频数据时使用。触发词：B站搜索、B站最新视频、B站热门、B站搜作品、bilibili搜索。
+description: B站关键词搜作品工具。根据用户输入的关键词调用 Yige 接口搜索B站最新视频，支持按排序方式和发布时间筛选，返回新鲜数据（非缓存/历史数据）。当用户要求搜索B站最新内容、查看某关键词下的视频数据时使用。触发词：B站搜索、B站最新视频、B站热门、B站搜作品、bilibili搜索。
 ---
 
 # B站关键词搜作品
@@ -22,20 +22,20 @@ description: B站关键词搜作品工具。根据用户输入的关键词调用
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY
 
 ### 配置 API Key
 
-方案1: 以 Qoder 为例，将 REDFOX_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
+方案1: 以 Qoder 为例，将 YIGE_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 🔄 工作流程

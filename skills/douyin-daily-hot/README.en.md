@@ -35,10 +35,10 @@ Daily collection of Douyin (TikTok China) works across the entire platform, deli
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Please visit [RedFoxHub](https://redfox.hk?source=github) to register and obtain `REDFOX_API_KEY`.
-- Configure the environment variable `REDFOX_API_KEY` on your device before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Please visit [YigeHub](https://yige.zone?source=github) to register and obtain `YIGE_API_KEY`.
+- Configure the environment variable `YIGE_API_KEY` on your device before using this skill.
 - Before providing a key, confirm its source, scope, validity period, and whether it supports reset/revocation.
 - Do not hard-code or expose keys in plain text within code, prompts, logs, or output files.
 

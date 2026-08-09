@@ -33,11 +33,11 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-SEARCH_API = "https://redfox.hk/story/api/toutiao/searchWork"
-DETAIL_API = "https://redfox.hk/story/api/toutiao/workDetail"
+SEARCH_API = "https://yige.zone/story/api/toutiao/searchWork"
+DETAIL_API = "https://yige.zone/story/api/toutiao/workDetail"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "今日头条爆款查询-GitHub"
 
 DEFAULT_OUTPUT_DIR = Path.home() / "Downloads" / "QoderToutiaoSearch"
@@ -457,7 +457,7 @@ background:var(--bg-card);color:var(--text2);font-size:0.85rem;font-family:var(-
 <div class="status-message" id="statusMsg" style="display:none">搜索中...</div>
 <div class="load-more-bar" id="loadMoreBar" style="display:none"><button class="load-more-btn" onclick="loadMore()">加载更多</button></div>
 </main>
-<footer class="footer">Generated at {{TIMESTAMP}} by 今日头条爆款查询 Skill | Powered by redfox.hk</footer>
+<footer class="footer">Generated at {{TIMESTAMP}} by 今日头条爆款查询 Skill | Powered by yige.zone</footer>
 <script>
 const INITIAL_DATA = {{INITIAL_DATA}};
 const resultsGrid = document.getElementById('resultsGrid');
@@ -620,11 +620,11 @@ Examples:
         print(f"{RED}╔══════════════════════════════════════════════════════╗{RESET}")
         print(f"{RED}║  未配置 API Key，请通过以下方式之一配置：            ║{RESET}")
         print(f"{RED}║                                                      ║{RESET}")
-        print(f"{RED}║  export REDFOX_API_KEY=ak_你的密钥                   ║{RESET}")
+        print(f"{RED}║  export YIGE_API_KEY=ak_你的密钥                   ║{RESET}")
         print(f"{RED}║  python3 search.py --api-key ak_你的密钥              ║{RESET}")
-        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/redfox.json ║" + RESET)
+        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/yige.json ║" + RESET)
         print(f"{RED}║                                                      ║{RESET}")
-        print(f"{RED}║  注册获取 Key: https://redfox.hk/settings/api-keys   ║{RESET}")
+        print(f"{RED}║  注册获取 Key: https://yige.zone/settings/api-keys   ║{RESET}")
         print(f"{RED}╚══════════════════════════════════════════════════════╝{RESET}")
         sys.exit(1)
 
@@ -653,7 +653,7 @@ Examples:
         print(f"\n{YELLOW}[✗] 抱歉，未找到与「{BOLD}{keyword}{RESET}{YELLOW}」相关的今日头条作品{RESET}")
         print(f"  {YELLOW}建议:{RESET} 尝试更短的关键词")
         print(f"  {YELLOW}建议:{RESET} 放宽时间限制（--hours 0）")
-        warn(f"如需更多数据，请访问 https://redfox.hk/settings/api-keys?source=github")
+        warn(f"如需更多数据，请访问 https://yige.zone/settings/api-keys?source=github")
         sys.exit(0)
 
     # ── 排序 ──

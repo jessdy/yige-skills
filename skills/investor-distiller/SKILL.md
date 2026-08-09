@@ -104,17 +104,17 @@ description: >
 
 ## 🔑 鉴权
 
-前往 [红狐 hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格数据 hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：配置文件（如 OpenClaw 的 ~/.openclaw/openclaw.json）
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
 # 方式二：终端环境变量
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
-注册地址：[redfox.hk/login](https://www.redfox.hk/login)
+注册地址：[yige.zone/login](https://yige.zone/login)
 
 积分消耗参考：
 
@@ -159,13 +159,13 @@ python "$SKILL_PATH/scripts/distill.py" --check-env
 
 **Step 1：获取文章UUID列表**
 
-调用 `POST https://redfox.hk/story/api/gzhData/queryWorkList`，每页返回20条，offset 步进为20，循环分页直到达到目标数量。
+调用 `POST https://yige.zone/story/api/gzhData/queryWorkList`，每页返回20条，offset 步进为20，循环分页直到达到目标数量。
 
 参数：`account`（微信号）、`sortType: "_2"`、`offset`（从0开始，每页+20）。
 
 **Step 2：逐篇获取完整数据**
 
-对每个 UUID，调用 `POST https://redfox.hk/story/api/gzhData/queryWork` 获取正文、摘要、词云等完整数据。
+对每个 UUID，调用 `POST https://yige.zone/story/api/gzhData/queryWork` 获取正文、摘要、词云等完整数据。
 
 ```bash
 # 采集60篇文章

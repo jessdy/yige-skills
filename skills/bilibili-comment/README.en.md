@@ -8,7 +8,7 @@ Enter any Bilibili video link or BV ID to **instantly retrieve comment data**. A
 
 **Feature Overview**
 
-Bilibili Comment Analyzer is an intelligent comment insight tool built for content creators, UP owners, and brand operators. It pulls first-level comments in real time via the RedFox API — 20 comments per page with pagination support. The AI deeply understands Bilibili meme culture (awsl / yyds / 爷青回 and other barrage slang) and delivers four-dimension analysis with representative comment citations, then generates a dark-themed interactive HTML report for easy saving and sharing.
+Bilibili Comment Analyzer is an intelligent comment insight tool built for content creators, UP owners, and brand operators. It pulls first-level comments in real time via the Yige API — 20 comments per page with pagination support. The AI deeply understands Bilibili meme culture (awsl / yyds / 爷青回 and other barrage slang) and delivers four-dimension analysis with representative comment citations, then generates a dark-themed interactive HTML report for easy saving and sharing.
 
 **Core Value**
 
@@ -44,10 +44,10 @@ Bilibili Comment Analyzer is an intelligent comment insight tool built for conte
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [RedFox Hub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Register at [RedFox Hub](https://redfox.hk?source=github) to obtain `REDFOX_API_KEY`.
-- Configure `REDFOX_API_KEY` as a device environment variable before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [Yige Hub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Register at [Yige Hub](https://yige.zone?source=github) to obtain `YIGE_API_KEY`.
+- Configure `YIGE_API_KEY` as a device environment variable before using this skill.
 - Before providing your key, confirm its source, scope, validity period, and whether it can be reset or revoked.
 - Do not hard-code or expose keys in plain text in code, prompts, logs, or output files.
 

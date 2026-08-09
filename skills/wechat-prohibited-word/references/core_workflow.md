@@ -9,8 +9,8 @@
 | 项目 | 说明 |
 |---|---|
 | **数据来源** | 官方违禁词库 |
-| **API 地址** | `https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch` |
-| **认证方式** | 环境变量 `REDFOX_API_KEY`（格式 `ak_xxxxxxxx`），请求头 `X-API-KEY` |
+| **API 地址** | `https://yige.zone/story/api/cozeSkill/sensitiveWordSearch` |
+| **认证方式** | 环境变量 `YIGE_API_KEY`（格式 `ak_xxxxxxxx`），请求头 `X-API-KEY` |
 | **请求体字段** | `content`（待检测文案）、`platform`（固定为"公众号"）、`source`（来源标识） |
 | **HTTP 库** | `requests`（标准库） |
 
@@ -26,7 +26,7 @@
 
 ## 前置准备
 - 依赖说明：脚本依赖 python-docx（Word文档提取）、beautifulsoup4（网页内容提取）、playwright（无头浏览器渲染JS动态网页，需执行 `playwright install chromium` 安装浏览器）
-- 凭证配置：脚本通过环境变量 `REDFOX_API_KEY` 读取API Key（格式 `ak_xxxxxxxx`），请求头以 `X-API-KEY` 方式传递；若环境变量未设置，脚本自动从 `~/.bashrc`、`~/.zshrc` 等 Shell 配置文件中读取
+- 凭证配置：脚本通过环境变量 `YIGE_API_KEY` 读取API Key（格式 `ak_xxxxxxxx`），请求头以 `X-API-KEY` 方式传递；若环境变量未设置，脚本自动从 `~/.bashrc`、`~/.zshrc` 等 Shell 配置文件中读取
 - 非标准文件/文件夹准备：无
 
 ## 操作步骤
@@ -102,7 +102,7 @@
 | PDF 文件 | 「不支持 PDF 文件，请转为图片或文本文件后重新上传」 |
 | API 超时或网络异常 | 「检测服务暂时不可用，已自动重试仍失败，请稍后重试」 |
 | API 返回业务错误（code≠2000） | 「检测服务返回异常，请稍后重试」 |
-| 未配置 API Key | 「未配置 REDFOX_API_KEY，请设置环境变量 export REDFOX_API_KEY=ak_xxxxxxxx 或写入 ~/.bashrc」 |
+| 未配置 API Key | 「未配置 YIGE_API_KEY，请设置环境变量 export YIGE_API_KEY=ak_xxxxxxxx 或写入 ~/.bashrc」 |
 | 依赖缺失（python-docx/playwright 等） | 提示用户安装对应依赖后重试 |
 
 ---
@@ -183,7 +183,7 @@
 ---
 
 ## 资源索引
-- 脚本：见 [scripts/check_sensitive_words.py](../scripts/check_sensitive_words.py)（用途与参数：一站式公众号违禁词检测，支持三种输入方式——--content 直接传入文案文本，--file 传入TXT/DOC/DOCX等文本类型文件路径自动提取，--url 传入网页地址自动提取（使用Playwright无头浏览器渲染JS动态页面，回退到 requests 静态提取）；--extract-only 仅提取文本不检测，返回 content 和 length；API 使用 POST+JSON 方式调用 https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch，请求头含 X-API-KEY，平台已硬编码为公众号）
+- 脚本：见 [scripts/check_sensitive_words.py](../scripts/check_sensitive_words.py)（用途与参数：一站式公众号违禁词检测，支持三种输入方式——--content 直接传入文案文本，--file 传入TXT/DOC/DOCX等文本类型文件路径自动提取，--url 传入网页地址自动提取（使用Playwright无头浏览器渲染JS动态页面，回退到 requests 静态提取）；--extract-only 仅提取文本不检测，返回 content 和 length；API 使用 POST+JSON 方式调用 https://yige.zone/story/api/cozeSkill/sensitiveWordSearch，请求头含 X-API-KEY，平台已硬编码为公众号）
 
 ## 注意事项
 - API单次查询支持3000字符；内容总字数上限10000字符。**所有输入类型（文本/文件/网页/图片）超过3000字符且不超过10000字符时均必须暂停并询问用户**：

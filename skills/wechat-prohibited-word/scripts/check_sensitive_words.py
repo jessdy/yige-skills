@@ -24,10 +24,10 @@ MAX_CONTENT_LENGTH = 3000
 MAX_TOTAL_LENGTH = 10000
 
 # API地址
-API_URL = "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+API_URL = "https://yige.zone/story/api/cozeSkill/sensitiveWordSearch"
 
 # 环境变量名
-ENV_KEY_NAME = "REDFOX_API_KEY"
+ENV_KEY_NAME = "YIGE_API_KEY"
 
 # 常见 Shell 配置文件列表
 SHELL_CONFIG_FILES = [
@@ -41,7 +41,7 @@ SHELL_CONFIG_FILES = [
 def _get_api_key():
     """
     获取 API Key，优先级：
-    1. 环境变量 REDFOX_API_KEY
+    1. 环境变量 YIGE_API_KEY
     2. 自动从 Shell 配置文件（~/.bashrc、~/.zshrc 等）中读取
     3. 以上均未获取到则提示用户配置并退出
     """
@@ -57,7 +57,7 @@ def _get_api_key():
         if cfg_path.is_file():
             try:
                 content = cfg_path.read_text(encoding="utf-8", errors="replace")
-                # 匹配 export REDFOX_API_KEY="ak_xxx" 或 export REDFOX_API_KEY=ak_xxx
+                # 匹配 export YIGE_API_KEY="ak_xxx" 或 export YIGE_API_KEY=ak_xxx
                 match = re.search(
                     rf'export\s+{ENV_KEY_NAME}\s*=\s*["\']?([a-zA-Z0-9_\-]+)["\']?',
                     content
@@ -74,7 +74,7 @@ def _get_api_key():
         f"未配置 {ENV_KEY_NAME}，请通过以下方式之一配置：\n"
         f"  方式一（推荐）：设置环境变量 export {ENV_KEY_NAME}=ak_xxxxxxxx\n"
         f"  方式二：将上述 export 语句写入 ~/.bashrc 或 ~/.zshrc，然后执行 source ~/.bashrc\n"
-        f"  API Key 获取方式：访问 https://redfox.hk/ 注册登录后在个人中心获取"
+        f"  API Key 获取方式：访问 https://yige.zone/ 注册登录后在个人中心获取"
     )
 
 

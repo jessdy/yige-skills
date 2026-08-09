@@ -22,15 +22,15 @@ description: 文旅公众号信息源 — 搜索文旅相关公众号热门文�
 
 ## 🔑 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：环境变量（推荐）
-export REDFOX_API_KEY=ak_xxxx
+export YIGE_API_KEY=ak_xxxx
 
 # 方式二：配置文件
 mkdir -p ~/.qoder/apis
-echo '{"api_key":"ak_xxxx"}' > ~/.qoder/apis/redfox.json
+echo '{"api_key":"ak_xxxx"}' > ~/.qoder/apis/yige.json
 ```
 
 ## ⚙️ 参数提取

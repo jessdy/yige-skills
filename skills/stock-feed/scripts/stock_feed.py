@@ -33,7 +33,7 @@ for _stream in (sys.stdout, sys.stderr):
             pass
 
 # ─── 常量 ──────────────────────────────────────────────────────────────────────────
-API_BASE = "https://redfox.hk/story/api/multiPlatform/workSearch"
+API_BASE = "https://yige.zone/story/api/multiPlatform/workSearch"
 PLATFORMS = {
     "xhs": {
         "label": "小红书",
@@ -72,12 +72,12 @@ def get_api_key(cli_key: str | None = None) -> str:
     if cli_key:
         return cli_key
     # 环境变量
-    for env_name in ("REDFOX_API_KEY", "X_API_KEY"):
+    for env_name in ("YIGE_API_KEY", "X_API_KEY"):
         val = os.environ.get(env_name, "").strip()
         if val:
             return val
     # 配置文件
-    config_path = os.path.expanduser("~/.qoder/apis/redfox.json")
+    config_path = os.path.expanduser("~/.qoder/apis/yige.json")
     if os.path.isfile(config_path):
         try:
             with open(config_path) as f:
@@ -416,9 +416,9 @@ def search(
     key = get_api_key(api_key)
     if not key:
         sys.stderr.write("\u274c 未找到 API Key，请先配置：\n")
-        sys.stderr.write("   export REDFOX_API_KEY=ak_你的密钥\n")
+        sys.stderr.write("   export YIGE_API_KEY=ak_你的密钥\n")
         sys.stderr.write("   或使用 --api-key 参数传入\n")
-        sys.stderr.write("   注册地址: https://www.redfox.hk/login\n")
+        sys.stderr.write("   注册地址: https://yige.zone/login\n")
         sys.stderr.flush()
         sys.exit(1)
 
@@ -491,8 +491,8 @@ def search(
 
     except InsufficientCreditsError as e:
         sys.stderr.write(f"⚠️ {e}\n")
-        sys.stderr.write(f"请配置个人 API Key: export REDFOX_API_KEY=你的密钥\n")
-        sys.stderr.write(f"注册地址: https://www.redfox.hk/login\n")
+        sys.stderr.write(f"请配置个人 API Key: export YIGE_API_KEY=你的密钥\n")
+        sys.stderr.write(f"注册地址: https://yige.zone/login\n")
         sys.stderr.flush()
         credit_error = True
     except Exception as e:
@@ -953,7 +953,7 @@ def format_as_html(data: dict, max_items: int = 50, report_html: str = "") -> st
         {panels_html}
     </div>
     <div class="footer">
-        数据来源：<a href="https://redfox.hk" target="_blank">redfox.hk</a> API · 小红书 / 抖音 / 公众号 · A股每日新闻<br>
+        数据来源：<a href="https://yige.zone" target="_blank">yige.zone</a> API · 小红书 / 抖音 / 公众号 · A股每日新闻<br>
         互动数据为入库快照，实时数据可能持续增长
     </div>
     <script>

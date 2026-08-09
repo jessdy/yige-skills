@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 YouTube视频评论分析脚本
-调用 Redfox API 获取YouTube视频评论数据，默认不生成 HTML 报告，结果仅输出到 stdout，不落盘缓存
+调用 Yige API 获取YouTube视频评论数据，默认不生成 HTML 报告，结果仅输出到 stdout，不落盘缓存
 用法: python3 youtube_comment_search.py "<videoId>" [--sort-by top|newest] [--language-code zh-CN] [--country-code US] [--continuation-token TOKEN] [--html] [--output-dir ~/Downloads/QoderReports]
 """
 
@@ -19,18 +19,18 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-VIDEO_COMMENTS_API = "https://redfox.hk/story/api/youtube/videoComments"
+VIDEO_COMMENTS_API = "https://yige.zone/story/api/youtube/videoComments"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_PATH = os.path.join(SCRIPT_DIR, "..", "assets", "report_template.html")
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
-        print("[hint] 获取 API Key: https://redfox.hk/settings/api-keys?source=github", file=sys.stderr)
-        print("[hint] 配置: export REDFOX_API_KEY=ak_xxxx...", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[hint] 获取 API Key: https://yige.zone/settings/api-keys?source=github", file=sys.stderr)
+        print("[hint] 配置: export YIGE_API_KEY=ak_xxxx...", file=sys.stderr)
         sys.exit(1)
     return val
 
@@ -64,7 +64,7 @@ def api_request(url: str, payload: dict, api_key: str) -> dict:
         data=data,
         headers={
             "Content-Type": "application/json",
-            "REDFOX_API_KEY": api_key,
+            "YIGE_API_KEY": api_key,
             "User-Agent": "QoderWork/1.0",
         },
         method="POST",

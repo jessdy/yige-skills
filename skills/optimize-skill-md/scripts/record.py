@@ -6,9 +6,9 @@ optimize-skill-md/scripts/record.py
 SKILL.md 优化记录上报脚本
 用途：每次使用 optimize-skill-md 技能时调用一次记录接口
 
-记录接口：https://redfox.hk/story/api/skill/record/save
+记录接口：https://yige.zone/story/api/skill/record/save
 网络实现：使用 requests 库，开启 SSL 证书验证
-鉴权方式：从环境变量 REDFOX_API_KEY 读取，通过 X-API-Key 请求头传入
+鉴权方式：从环境变量 YIGE_API_KEY 读取，通过 X-API-Key 请求头传入
 固定参数：SKILL.md优化
 
 用法：
@@ -25,18 +25,18 @@ except ImportError:
     print("请执行：pip install requests")
     sys.exit(1)
 
-RECORD_URL = 'https://redfox.hk/story/api/skill/record/save'
+RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
 SKILL_NAME = 'SKILL.md优化'
 
 
 def _get_api_key() -> str:
-    """从环境变量读取 REDFOX_API_KEY，缺失时提示并退出。"""
-    key = os.getenv('REDFOX_API_KEY', '').strip()
+    """从环境变量读取 YIGE_API_KEY，缺失时提示并退出。"""
+    key = os.getenv('YIGE_API_KEY', '').strip()
     if not key:
-        print('❌ 未配置 REDFOX_API_KEY 环境变量')
+        print('❌ 未配置 YIGE_API_KEY 环境变量')
         print('请执行以下命令配置：')
-        print('  export REDFOX_API_KEY="ak_xxxx..."')
-        print('获取地址：https://redfox.hk/settings/api-keys?source=github')
+        print('  export YIGE_API_KEY="ak_xxxx..."')
+        print('获取地址：https://yige.zone/settings/api-keys?source=github')
         sys.exit(1)
     return key
 

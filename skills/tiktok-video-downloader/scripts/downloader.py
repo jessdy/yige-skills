@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 TikTok视频下载 - API 版本
-使用 redfox.hk API 解析 TikTok 视频链接，直接返回无水印视频下载链接
+使用 yige.zone API 解析 TikTok 视频链接，直接返回无水印视频下载链接
 支持单链接和批量链接解析，自动校验 TikTok 链接有效性
 
 Usage:
@@ -29,11 +29,11 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-API_URL = "https://redfox.hk/story/api/parseWork/videoDownload/tiktok"
+API_URL = "https://yige.zone/story/api/parseWork/videoDownload/tiktok"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
 
-ENV_KEY = "REDFOX_API_KEY"
+ENV_KEY = "YIGE_API_KEY"
 
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -181,7 +181,7 @@ def process_single_video(url, api_key, json_mode=False):
     step(f"URL: {url}")
 
     # ── Call API ──
-    step("Calling redfox.hk API...")
+    step("Calling yige.zone API...")
 
     session = requests.Session()
     session.headers.update({
@@ -209,7 +209,7 @@ def process_single_video(url, api_key, json_mode=False):
             raise ApiKeyError()
         elif code == 3107:
             error("API Key 无效或已失效，请检查是否正确")
-            print("  配置方式：export REDFOX_API_KEY=ark_你的密钥")
+            print("  配置方式：export YIGE_API_KEY=ark_你的密钥")
             raise ApiKeyError()
         elif code == 400:
             error(f"请求参数错误: {msg}")
@@ -279,7 +279,7 @@ def process_single_video(url, api_key, json_mode=False):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="TikTok视频下载 - 使用 redfox.hk API 解析视频并返回下载链接，支持批量解析",
+        description="TikTok视频下载 - 使用 yige.zone API 解析视频并返回下载链接，支持批量解析",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -290,8 +290,8 @@ Examples:
   # 批量链接（空格分隔）
   python3 downloader.py https://www.tiktok.com/@user/video/111 https://www.tiktok.com/@user/video/222
 
-也可通过环境变量 REDFOX_API_KEY 配置密钥：
-  export REDFOX_API_KEY=ark_xxxxx
+也可通过环境变量 YIGE_API_KEY 配置密钥：
+  export YIGE_API_KEY=ark_xxxxx
   python3 downloader.py <url> [<url> ...]
         """,
     )
@@ -322,8 +322,8 @@ Examples:
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        error("未找到 API Key，请设置环境变量 REDFOX_API_KEY 或使用 --api-key 参数")
-        print(f"  获取 Key: https://redfox.hk/settings/api-keys?source=github")
+        error("未找到 API Key，请设置环境变量 YIGE_API_KEY 或使用 --api-key 参数")
+        print(f"  获取 Key: https://yige.zone/settings/api-keys?source=github")
         sys.exit(1)
 
     # Save key if requested

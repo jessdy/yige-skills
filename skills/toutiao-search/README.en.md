@@ -39,10 +39,10 @@ Enter a keyword and instantly find the latest Toutiao works. Sort by view count 
 
 ## API Key Setup
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFox Hub](https://redfox.hk/settings/api-keys?source=github).
-- Register at [RedFox Hub](https://redfox.hk?source=github) to obtain your `REDFOX_API_KEY`.
-- Configure the `REDFOX_API_KEY` environment variable before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [Yige Hub](https://yige.zone/settings/api-keys?source=github).
+- Register at [Yige Hub](https://yige.zone?source=github) to obtain your `YIGE_API_KEY`.
+- Configure the `YIGE_API_KEY` environment variable before using this skill.
 - Verify the key's source, scope, validity period, and reset/revoke options before use.
 - Never hardcode or expose the key in code, prompts, logs, or output files.
 

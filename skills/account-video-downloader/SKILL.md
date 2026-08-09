@@ -42,7 +42,7 @@ description: 多平台账号主页视频提取器 — 输入平台名称和账�
 
 ## API 说明
 
-本 Skill 调用 redfox.hk 接口，每个平台分两步：
+本 Skill 调用 yige.zone 接口，每个平台分两步：
 
 | 步骤        | 接口路径                                             | 说明                     |
 | ----------- | ---------------------------------------------------- | ------------------------ |
@@ -51,14 +51,14 @@ description: 多平台账号主页视频提取器 — 输入平台名称和账�
 
 ### 认证
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，设为环境变量：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，设为环境变量：
 
 ```bash
 # macOS / Linux
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # Windows PowerShell
-$env:REDFOX_API_KEY="ak_你的密钥"
+$env:YIGE_API_KEY="ak_你的密钥"
 ```
 
 ---
@@ -175,7 +175,7 @@ Step 3: 调用脚本拉取作品 + 解析下载链接
 
 Step 4: 展示结果 + 询问翻页
   - 展示 Markdown 表格，含可点击的作品链接和下载链接
-  - 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+  - 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
   - 若可翻页：告诉用户「还有更多作品，是否需要翻看下一页？」，输入下一页翻页
   - 提示用户支持按时间范围提取作品
 
@@ -218,7 +218,7 @@ Step 6: 用户确认后执行下载
 
 **合计：** 10 条作品，8 条可下载，2 条下载失败
 
-> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **redfoxdata@proton.me** 处理。
+> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **yigedata@proton.me** 处理。
 
 > 💡 需要提取特定时间范围的作品？直接告诉我时间范围即可，如「7.1~7.20」「最近一周」
 
@@ -232,7 +232,7 @@ Step 6: 用户确认后执行下载
 ## 常见问题
 
 **Q：如何获取 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取。
 
 **Q：下载的视频有水印吗？**
 A：无水印。API 返回的视频/图文直链已去除平台水印。

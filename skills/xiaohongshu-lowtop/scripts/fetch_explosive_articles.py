@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-小红书低粉爆款笔记获取脚本 - 使用原生 socket+SSL 调用红狐数据 API
+小红书低粉爆款笔记获取脚本 - 使用原生 socket+SSL 调用一格数据 API
 
 功能：
 1. 获取小红书低粉爆款笔记
@@ -94,18 +94,18 @@ CATEGORY_KEYWORDS = {
 VALID_CATEGORIES = list(CATEGORY_KEYWORDS.keys())
 
 
-def get_redfox_api_key() -> str:
+def get_yige_api_key() -> str:
     """
-    三级回退获取 REDFOX_API_KEY：
-    1. 当前环境变量 REDFOX_API_KEY
+    三级回退获取 YIGE_API_KEY：
+    1. 当前环境变量 YIGE_API_KEY
     2. shell 配置文件（.zshrc / .bashrc / PowerShell profile）
     3. 提示用户配置
     返回 API Key 字符串，未找到则返回空字符串
     """
     # 第一级：当前环境变量
-    api_key = os.getenv("REDFOX_API_KEY", "").strip()
+    api_key = os.getenv("YIGE_API_KEY", "").strip()
     if api_key:
-        print(f"[鉴权] 从环境变量读取到 REDFOX_API_KEY（前8位: {api_key[:8]}...）", file=sys.stderr)
+        print(f"[鉴权] 从环境变量读取到 YIGE_API_KEY（前8位: {api_key[:8]}...）", file=sys.stderr)
         return api_key
 
     # 第二级：从 shell 配置文件中读取
@@ -142,18 +142,18 @@ def get_redfox_api_key() -> str:
                             continue
                         # 匹配多种写法：export KEY=val, KEY="val", $env:KEY="val", set KEY=val
                         for pattern in [
-                            r'(?:export\s+)?REDFOX_API_KEY\s*=\s*["\']([^"\'\n]+)["\']',
-                            r'(?:export\s+)?REDFOX_API_KEY\s*=\s*([^\s"\'\n]+)',
-                            r'\$env:REDFOX_API_KEY\s*=\s*["\']([^"\'\n]+)["\']',
-                            r'set\s+REDFOX_API_KEY\s*=\s*([^\s"\'\n]+)',
+                            r'(?:export\s+)?YIGE_API_KEY\s*=\s*["\']([^"\'\n]+)["\']',
+                            r'(?:export\s+)?YIGE_API_KEY\s*=\s*([^\s"\'\n]+)',
+                            r'\$env:YIGE_API_KEY\s*=\s*["\']([^"\'\n]+)["\']',
+                            r'set\s+YIGE_API_KEY\s*=\s*([^\s"\'\n]+)',
                         ]:
                             match = re.search(pattern, line_stripped)
                             if match:
                                 api_key = match.group(1).strip()
                                 if api_key:
-                                    print(f"[鉴权] 从 {config_path} 读取到 REDFOX_API_KEY（前8位: {api_key[:8]}...）", file=sys.stderr)
+                                    print(f"[鉴权] 从 {config_path} 读取到 YIGE_API_KEY（前8位: {api_key[:8]}...）", file=sys.stderr)
                                     # 自动注入到当前环境变量，方便后续使用
-                                    os.environ["REDFOX_API_KEY"] = api_key
+                                    os.environ["YIGE_API_KEY"] = api_key
                                     return api_key
             except Exception as e:
                 print(f"[鉴权] 读取 {config_path} 失败: {e}", file=sys.stderr)
@@ -161,22 +161,22 @@ def get_redfox_api_key() -> str:
 
     # 第三级：未找到，打印配置指引
     print("=" * 60, file=sys.stderr)
-    print("[鉴权] 未找到 REDFOX_API_KEY，请按以下步骤配置：", file=sys.stderr)
+    print("[鉴权] 未找到 YIGE_API_KEY，请按以下步骤配置：", file=sys.stderr)
     print("", file=sys.stderr)
     print("获取 API Key：", file=sys.stderr)
-    print("  1. 访问 https://redfox.hk/ 了解服务详情", file=sys.stderr)
-    print("  2. 前往 https://redfox.hk/login 注册账号（新用户赠送免费积分）", file=sys.stderr)
+    print("  1. 访问 https://yige.zone/ 了解服务详情", file=sys.stderr)
+    print("  2. 前往 https://yige.zone/login 注册账号（新用户赠送免费积分）", file=sys.stderr)
     print("  3. 登录后在个人中心获取 API Key（格式: ak_xxxxxxxx）", file=sys.stderr)
     print("", file=sys.stderr)
     print("配置方法：", file=sys.stderr)
     if sys.platform == "win32":
         print("  Windows PowerShell:", file=sys.stderr)
-        print('    [Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxxxxxxx", "User")', file=sys.stderr)
+        print('    [Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxxxxxxx", "User")', file=sys.stderr)
         print("  Git Bash:", file=sys.stderr)
-        print('    export REDFOX_API_KEY=ak_xxxxxxxx', file=sys.stderr)
+        print('    export YIGE_API_KEY=ak_xxxxxxxx', file=sys.stderr)
         print("  配置后需重启终端生效", file=sys.stderr)
     else:
-        print("  export REDFOX_API_KEY=ak_xxxxxxxx", file=sys.stderr)
+        print("  export YIGE_API_KEY=ak_xxxxxxxx", file=sys.stderr)
         print("  追加到 ~/.zshrc 或 ~/.bashrc 后执行 source 使其生效", file=sys.stderr)
     print("=" * 60, file=sys.stderr)
 
@@ -212,7 +212,7 @@ def match_category(keyword: str) -> str:
 
 def fetch_ranking_data(rank_date: str, source: str, category: str, top_n: int = 50) -> dict:
     """
-    使用原生 socket+SSL 发送 HTTPS 请求调用红狐数据 API
+    使用原生 socket+SSL 发送 HTTPS 请求调用一格数据 API
     返回字典：
       {"type": "data", "data": [...]}  - 有数据
       {"type": "empty"}                - 数据为空
@@ -222,9 +222,9 @@ def fetch_ranking_data(rank_date: str, source: str, category: str, top_n: int = 
     from urllib.parse import urlencode
 
     # 获取 API Key（三级回退）
-    api_key = get_redfox_api_key()
+    api_key = get_yige_api_key()
 
-    host = "redfox.hk"
+    host = "yige.zone"
     path = "/story/api/cozeSkill/getXhsCozeSkillDataLowFans"
 
     params = {

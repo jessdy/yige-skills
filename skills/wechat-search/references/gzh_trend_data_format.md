@@ -12,7 +12,7 @@
 
 ## 接口信息
 
-**请求地址**：`POST https://redfox.hk/story/api/gzh/search/hotArticle`
+**请求地址**：`POST https://yige.zone/story/api/gzh/search/hotArticle`
 
 **请求头**：
 ```

@@ -4,9 +4,9 @@ version: "2.0.0"
 description: "中国社媒平台话题研究工具。从小红书、抖音、公众号三大平台搜索近30天真实讨论，跨平台对比分析舆情趋势。当用户需要研究中国社交媒体热点话题、分析舆情趋势、对比品牌口碑时使用。触发词：小红书热点、抖音趋势、公众号舆情、跨平台分析、社媒研究、话题分析、舆情监测。"
 argument-hint: 'cn-last30days AI视频工具 | cn-last30days 大模型 | cn-last30days 小红书运营'
 allowed-tools: Bash, Read, Write, AskUserQuestion, WebSearch
-homepage: https://github.com/redfox-data/redfox-community/cn-last30days-skill
-repository: https://github.com/redfox-data/redfox-community
-author: redfox-community
+homepage: https://github.com/jessdy/yige-skills/cn-last30days-skill
+repository: https://github.com/jessdy/yige-skills
+author: yige-skills
 license: MIT
 user-invocable: true
 metadata:
@@ -15,10 +15,10 @@ metadata:
     requires:
       env: []
       optionalEnv:
-        - REDFOX_API_KEY
+        - YIGE_API_KEY
       bins:
         - python3
-    primaryEnv: REDFOX_API_KEY
+    primaryEnv: YIGE_API_KEY
     files:
       - "scripts/*"
     tags:
@@ -51,13 +51,13 @@ Last 30 Days—CN版 是中国社交媒体话题研究工具，从小红书、�
 
 ## 🔑 鉴权
 
-脚本需配置 API Key 使用。从 [红狐数据](https://www.redfox.hk/settings/api-keys?source=github) 获取个人 Key 并配置环境变量：
+脚本需配置 API Key 使用。从 [一格数据](https://yige.zone/settings/api-keys?source=github) 获取个人 Key 并配置环境变量：
 
 ```bash
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 ```
 
-优先级：命令行 `--api-key` > `REDFOX_API_KEY` / `X_API_KEY` 环境变量 > 配置文件。
+优先级：命令行 `--api-key` > `YIGE_API_KEY` / `X_API_KEY` 环境变量 > 配置文件。
 
 ---
 
@@ -86,8 +86,8 @@ export REDFOX_API_KEY=ak_你的密钥
 
 ### 1. 环境检查
 
-运行前需确保已配置 API Key（环境变量 `REDFOX_API_KEY` 或 `--api-key` 参数）。如未配置，提示用户：
-> 请配置 API Key：`export REDFOX_API_KEY=ak_你的密钥`，注册地址 https://www.redfox.hk/login
+运行前需确保已配置 API Key（环境变量 `YIGE_API_KEY` 或 `--api-key` 参数）。如未配置，提示用户：
+> 请配置 API Key：`export YIGE_API_KEY=ak_你的密钥`，注册地址 https://yige.zone/login
 
 ### 2. 关键词质量检查
 

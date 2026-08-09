@@ -41,12 +41,12 @@ dependency:
 
 ## 3.鉴权
 
-本技能调用 [红狐Hub API](https://redfox.hk/) 获取小红书低粉爆款数据，需要有效的 API Key 才能正常使用。
+本技能调用 [一格Hub API](https://yige.zone/) 获取小红书低粉爆款数据，需要有效的 API Key 才能正常使用。
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
@@ -56,7 +56,7 @@ dependency:
 
 | 优先级 | 来源 | 行为 |
 |:---:|------|------|
-| 1 | 当前环境变量 `REDFOX_API_KEY` | 直接使用 |
+| 1 | 当前环境变量 `YIGE_API_KEY` | 直接使用 |
 | 2 | Shell 配置文件（自动扫描 `~/.zshrc`、`~/.bashrc`、PowerShell profile 等） | 读取后注入当前环境变量 |
 | 3 | 未找到 | 打印详细的获取和配置指引 |
 
@@ -65,7 +65,7 @@ dependency:
 **macOS / Linux**：
 ```bash
 # 将以下行追加到 ~/.zshrc（zsh）或 ~/.bashrc（bash）
-export REDFOX_API_KEY=<你的apikey>
+export YIGE_API_KEY=<你的apikey>
 # 然后执行使其生效
 source ~/.zshrc  # 或 source ~/.bashrc
 ```
@@ -73,14 +73,14 @@ source ~/.zshrc  # 或 source ~/.bashrc
 **Windows**：
 ```powershell
 # PowerShell（管理员模式）
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的apikey>", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的apikey>", "User")
 ```
 配置后需重启终端生效。
 
 **验证配置**：
-- macOS / Linux：`echo $REDFOX_API_KEY`
-- Windows CMD：`echo %REDFOX_API_KEY%`
-- Windows PowerShell：`echo $env:REDFOX_API_KEY`
+- macOS / Linux：`echo $YIGE_API_KEY`
+- Windows CMD：`echo %YIGE_API_KEY%`
+- Windows PowerShell：`echo $env:YIGE_API_KEY`
 
 若不会配置，告诉Agent主动帮助设置。
 
@@ -106,7 +106,7 @@ source ~/.zshrc  # 或 source ~/.bashrc
 
 1. 触发技能后，先问用户要查什么分类、哪天的数据
 2. 调用主脚本获取数据，脚本通过原生 socket+SSL 请求 API，自动匹配分类、处理日期
-3. 脚本按三级回退（环境变量 → Shell 配置 → 提示用户）获取 REDFOX_API_KEY 进行鉴权
+3. 脚本按三级回退（环境变量 → Shell 配置 → 提示用户）获取 YIGE_API_KEY 进行鉴权
 4. 脚本生成 md 报告文件和数据缓存 JSON 文件（`*_cache.json`），读取 md 全部内容原样输出给用户
 5. 输出包含三部分：爆款笔记表格、爆款规律分析、功能选择入口
 6. 等待用户选择：订阅、导出文件包（回复「2」）、查看更多，或不操作

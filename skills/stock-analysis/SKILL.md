@@ -35,13 +35,13 @@ description: >
 
 ## 🔑 鉴权
 
-前往 [redfox.hk](https://www.redfox.hk/login) 注册获取 API Key，通过以下方式配置：
+前往 [yige.zone](https://yige.zone/login) 注册获取 API Key，通过以下方式配置：
 
 ```bash
 # 环境变量
 export X_API_KEY="ak_你的密钥"
 
-# 或配置文件 ~/.qoder/apis/redfox.json
+# 或配置文件 ~/.qoder/apis/yige.json
 {"api_key": "ak_你的密钥"}
 ```
 

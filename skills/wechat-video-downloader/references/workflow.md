@@ -2,8 +2,8 @@
 
 ## Step 0: 鉴权前置检查
 
-1. 检查环境变量 `REDFOX_API_KEY` 是否已配置
-2. 未配置 → 引导用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取并配置
+1. 检查环境变量 `YIGE_API_KEY` 是否已配置
+2. 未配置 → 引导用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取并配置
 3. 已配置 → 进入 Step 1
 
 ---
@@ -22,7 +22,7 @@
 
 ## Step 2: 执行数据采集
 
-**接口**: `POST https://redfox.hk/story/api/parseWork/videoDownload/sph`
+**接口**: `POST https://yige.zone/story/api/parseWork/videoDownload/sph`
 
 **请求头**: `Content-Type: application/json` + `X-API-KEY: {API Key}`
 

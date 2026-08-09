@@ -41,33 +41,33 @@ description: 获取抖音涨粉账号推荐数据，支持日榜/周榜/月榜�
 
 ### 前置条件
 
-- 已注册 [红狐Hub 官网](https://redfox.hk/) 账号
-- 前往 [注册页面](https://redfox.hk/login) 注册，新用户可获赠免费积分
+- 已注册 [一格Hub 官网](https://yige.zone/) 账号
+- 前往 [注册页面](https://yige.zone/login) 注册，新用户可获赠免费积分
 - 在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 | --- | --- | --- |
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
 
 ### 配置方式
 
 **macOS/Linux**：
 ```bash
-export REDFOX_API_KEY=<你的apikey>
-echo 'export REDFOX_API_KEY=<你的apikey>' >> ~/.bashrc
+export YIGE_API_KEY=<你的apikey>
+echo 'export YIGE_API_KEY=<你的apikey>' >> ~/.bashrc
 source ~/.bashrc
 ```
 
 **Windows**：
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的apikey>", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的apikey>", "User")
 ```
 
 配置完成后验证：
-- macOS/Linux：`echo $REDFOX_API_KEY`
-- Windows：`echo %REDFOX_API_KEY%`
+- macOS/Linux：`echo $YIGE_API_KEY`
+- Windows：`echo %YIGE_API_KEY%`
 
 ---
 
@@ -232,8 +232,8 @@ douyin-rise-ranking/
 | 项目 | 说明 |
 |------|------|
 | 运行环境 | Python 3.10+ |
-| 数据源 | 红狐Hub 抖音涨粉排行 API |
-| 认证方式 | `REDFOX_API_KEY` 环境变量 |
+| 数据源 | 一格Hub 抖音涨粉排行 API |
+| 认证方式 | `YIGE_API_KEY` 环境变量 |
 | 数据缓存 | `~/.workbuddy/cache/dy_rise_ranking_data.json` |
 
 ### 核心模块
@@ -254,12 +254,12 @@ douyin-rise-ranking/
 
 A: 请检查：
 1. Key 格式是否为 `ak_xxxxxxxx`
-2. 确认已在 红狐Hub 官网激活
+2. 确认已在 一格Hub 官网激活
 3. 检查 Key 前后是否有多余空格
 
 **Q2: 如何验证 API Key 配置成功？**
 
-A: Windows 执行 `echo %REDFOX_API_KEY%`，macOS/Linux 执行 `echo $REDFOX_API_KEY`，确认输出正确的 Key 值。
+A: Windows 执行 `echo %YIGE_API_KEY%`，macOS/Linux 执行 `echo $YIGE_API_KEY`，确认输出正确的 Key 值。
 
 ---
 
@@ -292,7 +292,7 @@ A: 查询完成后会显示订阅选项，回复数字 1-5 即可。也支持直
 **Q8: 数据不更新或查询失败？**
 
 A: 按以下步骤排查：
-1. 检查 `REDFOX_API_KEY` 是否过期
+1. 检查 `YIGE_API_KEY` 是否过期
 2. 确认当前时间是否已过榜单更新时间（均在 18:00 更新）
 3. 确认查询日期在允许的回溯范围内
 
@@ -301,4 +301,4 @@ A: 按以下步骤排查：
 ### 获取帮助
 
 如有其他问题，可通过以下方式联系：
-- 📧 邮箱：redfoxdata@proton.me
+- 📧 邮箱：yigedata@proton.me

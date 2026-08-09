@@ -93,7 +93,7 @@ python3 assets/daily_report.py --unsubscribe
 
 ### API调用参数
 
-**接口**:`POST https://redfox.hk/story/api/parseWork/queryContentExportTop`
+**接口**:`POST https://yige.zone/story/api/parseWork/queryContentExportTop`
 
 **请求头**:
 | 参数名 | 类型 | 说明 |
@@ -330,9 +330,9 @@ python3 "$SKILL_PATH/assets/daily_report.py" --keyword "AI" --platforms "0,3" --
 
 ## 🔒 安全约束
 
-1. **API Key**从环境变量`REDFOX_API_KEY`获取
+1. **API Key**从环境变量`YIGE_API_KEY`获取
 2. **禁止硬编码**密钥
-3. **数据来源唯一性**:仅使用红狐API
+3. **数据来源唯一性**:仅使用一格数据API
 
 ## 📋 平台适配说明
 
@@ -362,7 +362,7 @@ if not url and platform == 3 and photo_id:
 
 | 维度 | 值 |
 |------|------|
-| API端点 | `https://redfox.hk/story/api/parseWork/queryContentExportTop` |
+| API端点 | `https://yige.zone/story/api/parseWork/queryContentExportTop` |
 | 成功响应码 | `2000` |
 | 请求参数 | `platforms`(列表)+`keyword`+`startTime`+`endTime` |
 | 响应结构 | `data.platformGroups[].list[]` |

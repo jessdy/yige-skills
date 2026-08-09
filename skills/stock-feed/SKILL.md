@@ -4,9 +4,9 @@ version: "1.0.0"
 description: "A股每日新闻。从小红书、抖音、公众号三大平台搜索A股相关短讯，内置17个A股核心关键词一次性查询，默认近7天数据，自动过滤非股票内容，跨平台对比分析股市舆情。当用户需要研究A股舆情、股市讨论、大盘分析、选股策略、涨跌复盘时使用。触发词：A股、A股舆情、股市新闻、大盘分析、涨停、选股、A股复盘、股票讨论、股市热点。"
 argument-hint: 'stock-feed | stock-feed --days 30'
 allowed-tools: Bash, Read, Write, AskUserQuestion, WebSearch
-homepage: https://github.com/redfox-data/redfox-community/stock-feed-skill
-repository: https://github.com/redfox-data/redfox-community
-author: redfox-community
+homepage: https://github.com/jessdy/yige-skills/stock-feed-skill
+repository: https://github.com/jessdy/yige-skills
+author: yige-skills
 license: MIT
 user-invocable: true
 metadata:
@@ -15,10 +15,10 @@ metadata:
     requires:
       env: []
       optionalEnv:
-        - REDFOX_API_KEY
+        - YIGE_API_KEY
       bins:
         - python3
-    primaryEnv: REDFOX_API_KEY
+    primaryEnv: YIGE_API_KEY
     files:
       - "scripts/*"
     tags:
@@ -53,13 +53,13 @@ A股每日新闻是中国股市舆情研究工具，从小红书、抖音、公�
 
 ## 🔑 鉴权
 
-脚本需配置 API Key 使用。从 [红狐数据](https://www.redfox.hk/settings/api-keys?source=github) 获取个人 Key 并配置环境变量：
+脚本需配置 API Key 使用。从 [一格数据](https://yige.zone/settings/api-keys?source=github) 获取个人 Key 并配置环境变量：
 
 ```bash
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 ```
 
-优先级：命令行 `--api-key` > `REDFOX_API_KEY` / `X_API_KEY` 环境变量 > 配置文件。
+优先级：命令行 `--api-key` > `YIGE_API_KEY` / `X_API_KEY` 环境变量 > 配置文件。
 
 ---
 
@@ -88,8 +88,8 @@ export REDFOX_API_KEY=ak_你的密钥
 
 ### 1. 环境检查
 
-运行前需确保已配置 API Key（环境变量 `REDFOX_API_KEY` 或 `--api-key` 参数）。如未配置，提示用户：
-> 请配置 API Key：`export REDFOX_API_KEY=ak_你的密钥`，注册地址 https://www.redfox.hk/login
+运行前需确保已配置 API Key（环境变量 `YIGE_API_KEY` 或 `--api-key` 参数）。如未配置，提示用户：
+> 请配置 API Key：`export YIGE_API_KEY=ak_你的密钥`，注册地址 https://yige.zone/login
 
 ### 2. 关键词处理
 

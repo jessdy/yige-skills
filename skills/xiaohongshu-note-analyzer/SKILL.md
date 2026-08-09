@@ -19,16 +19,16 @@ dependency:
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
 
 ```bash
 {
   "env": {
-    "REDFOX_API_KEY": "ak_xxxx..."
+    "YIGE_API_KEY": "ak_xxxx..."
   }
 }
 ```
@@ -36,12 +36,12 @@ dependency:
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 前置准备
 
-**凭证配置**：本 Skill 需要配置 RedFox API 凭证才能调用爆款数据接口。请确保已配置环境变量 `REDFOX_API_KEY`。
+**凭证配置**：本 Skill 需要配置 Yige API 凭证才能调用爆款数据接口。请确保已配置环境变量 `YIGE_API_KEY`。
 
 ## 任务目标
 

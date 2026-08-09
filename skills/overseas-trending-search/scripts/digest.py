@@ -363,7 +363,7 @@ Examples:
     parser.add_argument("--top", type=int, default=5,
                         help="每平台最多返回条数（默认 5，0=不限）")
     parser.add_argument("--output-dir", help="输出目录（默认 ~/Downloads/QoderChinaDigest）")
-    parser.add_argument("--api-key", help="RedFox API Key")
+    parser.add_argument("--api-key", help="Yige API Key")
     parser.add_argument("--csv-only", action="store_true", help="仅生成 CSV")
     parser.add_argument("--no-open", action="store_true", help="不自动打开浏览器")
 

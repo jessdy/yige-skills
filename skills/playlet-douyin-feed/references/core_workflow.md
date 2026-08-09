@@ -196,7 +196,7 @@ python3 scripts/playlet_douyin_daily.py --unsubscribe
 | 错误码 | 错误信息 | 处理方式 |
 |--------|---------|---------|
 | 1002 | 每页条数不能超过200 | 自动限制 page_size ≤ 200 |
-| 3106 | 缺少 API Key | 提示用户配置 REDFOX_API_KEY |
+| 3106 | 缺少 API Key | 提示用户配置 YIGE_API_KEY |
 | 3107 | API Key 无效 | 检查 Key 格式和有效性 |
 | 3108 | 请求过于频繁 | 等待后重试 |
 | 3109 | 今日调用次数达上限 | 提示用户次日再试 |

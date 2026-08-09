@@ -13,7 +13,7 @@
     python douyin_weekly_surge.py --full                    # 输出全部 50 条
 
 环境变量:
-    REDFOX_API_KEY   API 密钥（必填）
+    YIGE_API_KEY   API 密钥（必填）
 """
 
 import os
@@ -28,7 +28,7 @@ from urllib.error import HTTPError, URLError
 # 常量
 # ────────────────────────────────────────────────────
 
-API_BASE = "https://redfox.hk/story/api/dy/search/hotContentRank"
+API_BASE = "https://yige.zone/story/api/dy/search/hotContentRank"
 DEFAULT_LIMIT = 20
 FULL_LIMIT = 50
 
@@ -83,9 +83,9 @@ def yesterday():
 def call_api(category="全部", start_time=None):
     """调用抖音七日点赞飙升榜接口，返回解析后的数据列表"""
 
-    api_key = os.environ.get("REDFOX_API_KEY", "")
+    api_key = os.environ.get("YIGE_API_KEY", "")
     if not api_key:
-        print("❌ 错误：未配置环境变量 REDFOX_API_KEY，请先设置 API 密钥。")
+        print("❌ 错误：未配置环境变量 YIGE_API_KEY，请先设置 API 密钥。")
         sys.exit(1)
 
     if start_time is None:
@@ -111,7 +111,7 @@ def call_api(category="全部", start_time=None):
             data = json.loads(resp.read().decode("utf-8"))
     except HTTPError as e:
         error_handlers = {
-            401: "API Key 无效或未配置，请检查 REDFOX_API_KEY 环境变量。",
+            401: "API Key 无效或未配置，请检查 YIGE_API_KEY 环境变量。",
             404: "该日期暂无数据。",
             429: "请求频率超限，请稍后重试。",
         }

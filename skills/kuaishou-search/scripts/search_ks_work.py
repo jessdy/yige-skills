@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 快手作品搜索脚本
-调用 Redfox API 搜索快手作品数据
+调用 Yige API 搜索快手作品数据
 用法: python3 search_ks_work.py "<关键词>" [--sort 最多点赞] [--note-time 一个月内] [--page 1] [--start-time YYYY-M-D] [--end-time YYYY-M-D]
 """
 
@@ -14,7 +14,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timedelta
 
-API_URL = "https://redfox.hk/story/api/ks/search/keywordSearchWork"
+API_URL = "https://yige.zone/story/api/ks/search/keywordSearchWork"
 
 # 排序方式枚举
 SORT_MAP = {
@@ -62,9 +62,9 @@ def compute_date_range(note_time: str):
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
         sys.exit(1)
     return val
 

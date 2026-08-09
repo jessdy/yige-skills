@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Qoder Video Generator - 基于 Seedance 2.0 的视频生成工具
-使用 redfox.hk API 提交视频生成任务并下载结果
+使用 yige.zone API 提交视频生成任务并下载结果
 
 Usage:
     python3 videogen.py "提示词" [options]
@@ -18,12 +18,12 @@ from pathlib import Path
 
 import requests
 
-SUBMIT_URL = "https://redfox.hk/story/api/parseWork/videoGen/submit"
-RESULT_URL = "https://redfox.hk/story/api/parseWork/videoGen/result"
-RECORD_URL = "https://redfox.hk/story/api/skill/record/save"
+SUBMIT_URL = "https://yige.zone/story/api/parseWork/videoGen/submit"
+RESULT_URL = "https://yige.zone/story/api/parseWork/videoGen/result"
+RECORD_URL = "https://yige.zone/story/api/skill/record/save"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "视频生成提示词专家-GitHub"
 VIDEO_SOURCE = "视频生成提示词专家-视频生成-GitHub"
 DEFAULT_MODEL = "doubao-seedance-2-0-260128"
@@ -74,7 +74,7 @@ def read_shell_config():
         except (FileNotFoundError, OSError):
             pass
     else:
-        # macOS/Linux: parse export REDFOX_API_KEY=xxx from shell rc files
+        # macOS/Linux: parse export YIGE_API_KEY=xxx from shell rc files
         rc_files = [
             Path.home() / ".zshrc",
             Path.home() / ".bashrc",
@@ -329,7 +329,7 @@ Examples:
                         help="返回视频尾帧图片 URL")
     parser.add_argument("--image-url",
                         help="参考图 URL (asset:// 格式引用预置虚拟人像)")
-    parser.add_argument("--api-key", help="API Key (前往 https://redfox.hk/settings/api-keys?source=github 注册获取)")
+    parser.add_argument("--api-key", help="API Key (前往 https://yige.zone/settings/api-keys?source=github 注册获取)")
     parser.add_argument("-o", "--output-dir", help="输出目录 (默认 ~/Downloads/QoderVideos)")
     parser.add_argument("--prefix", default="video", help="下载文件名前缀 (默认 video)")
     parser.add_argument("--no-download", action="store_true",
@@ -352,8 +352,8 @@ Examples:
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        error("未找到 API Key，请设置环境变量 REDFOX_API_KEY 或使用 --api-key 参数")
-        print(f"  获取 Key: https://redfox.hk/settings/api-keys?source=github")
+        error("未找到 API Key，请设置环境变量 YIGE_API_KEY 或使用 --api-key 参数")
+        print(f"  获取 Key: https://yige.zone/settings/api-keys?source=github")
         sys.exit(1)
 
     # ── Session (all requests use HTTPS with SSL verification) ──

@@ -47,25 +47,25 @@ B站短剧爆款内容追踪工具，每日自动扫描B站短剧创作内容，
 ### 前置条件
 
 - Python 3 运行环境
-- 已注册红狐Hub账号并获取 API Key
+- 已注册一格Hub账号并获取 API Key
 
 ### API Key 获取
 
-前往 [红狐Hub 官网](https://redfox.hk/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+前往 [一格Hub 官网](https://yige.zone/) 注册，登录后在个人中心获取，格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 ### 环境变量配置
 
-数据查询接口通过请求头 `X-API-KEY` 鉴权，Key 从环境变量 `REDFOX_API_KEY` 获取。
+数据查询接口通过请求头 `X-API-KEY` 鉴权，Key 从环境变量 `YIGE_API_KEY` 获取。
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
 
 **配置方式**：
 
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
-- **Windows**：`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`（需重启终端）
-- 配置后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 使其生效
+- **Windows**：`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`（需重启终端）
+- 配置后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 
 > 接口调用时通过 `source` 字段（值为 `短剧B站信息源-GitHub`）同步记录来源，无需额外请求保存接口。
 
@@ -291,7 +291,7 @@ python3 "$SKILL_PATH/assets/daily_report.py" --topics "悬疑,推理,反转,惊�
 |------|------|
 | 运行环境 | Python 3 |
 | 开发语言 | Python（脚本 `playlet_bili_daily.py`） |
-| 数据接口 | HTTP 调用红狐Hub B站短剧API（`queryPlayletMsgs`，`platform=6`） |
+| 数据接口 | HTTP 调用一格Hub B站短剧API（`queryPlayletMsgs`，`platform=6`） |
 | 前端渲染 | HTML 生成日报（B站蓝 `#00A1D6` 主题色，`<img>` 懒加载，BV号直链） |
 | 来源标识 | `source: "短剧B站信息源-GitHub"` |
 
@@ -329,7 +329,7 @@ A: 使用 `--subscribe` 开启每日自动产出，`--unsubscribe` 关闭。
 
 A: Windows PowerShell 的 GBK 编码问题。执行前设置环境变量：`$env:PYTHONIOENCODING='utf-8'`，然后重新运行脚本。
 
-**Q6: 提示"未找到 REDFOX_API_KEY 环境变量"？**
+**Q6: 提示"未找到 YIGE_API_KEY 环境变量"？**
 
 A: 请按"一键安装"章节配置环境变量。Windows 用户配置后需**重启终端**才能生效。
 

@@ -9,7 +9,7 @@ description: "全网内容出海信息源 — 每日扫描全平台(公众号/�
 
 **全网内容出海信息源**是一款专为内容出海创作者设计的全平台爆款内容追踪工具,参考AI-B站信息源的功能和样式设计。
 
-通过红狐Hub API (`queryContentExportTop`),你可以:
+通过一格Hub API (`queryContentExportTop`),你可以:
 - 📊 每日自动扫描全平台(公众号/抖音/视频号/小红书/快手/B站)内容出海Top50作品
 - 🏷️ 基于API返回的`topic`字段智能聚类题材方向
 - 📈 生成包含平台标签、封面图、互动数据与创作洞察的可视化HTML日报
@@ -40,32 +40,32 @@ description: "全网内容出海信息源 — 每日扫描全平台(公众号/�
 - **⚡ 智能日期判断**:脚本内置 `DATA_UPDATE_HOUR = 15` 常量,调用接口前自动检测目标日期是否在无数据区间
 - **🌐 全平台适配**:API返回各平台Top50,公众号按阅读数排序,其余按点赞数排序;作品链接直接使用API返回的url字段
 - **🏷️ 平台标签**:HTML日报中每条作品展示彩色平台标签(公众号绿/抖音黑/小红书红等)
-- **🔒 安全可靠**:API Key通过环境变量 `REDFOX_API_KEY` 获取,禁止硬编码
+- **🔒 安全可靠**:API Key通过环境变量 `YIGE_API_KEY` 获取,禁止硬编码
 
 ## 一键安装
 
 ### 前置条件
 
 - Python 3 运行环境
-- 已注册红狐Hub账号并获取 API Key
+- 已注册一格Hub账号并获取 API Key
 
 ### 安装步骤
 
 #### 1. 获取 API Key
 
-前往 [红狐Hub 官网](https://redfox.hk/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+前往 [一格Hub 官网](https://yige.zone/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 #### 2. 配置环境变量
 
 **macOS/Linux**:
 ```bash
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Windows**(PowerShell):
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxxxxxxx", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxxxxxxx", "User")
 ```
 配置后需**重启终端**使环境变量生效。
 
@@ -73,17 +73,17 @@ source ~/.zshrc
 
 ```bash
 # macOS/Linux
-echo $REDFOX_API_KEY
+echo $YIGE_API_KEY
 
 # Windows
-echo %REDFOX_API_KEY%
+echo %YIGE_API_KEY%
 ```
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API访问密钥,通过 `X-API-KEY` 请求头鉴权 |
+| `YIGE_API_KEY` | 是 | 一格Hub API访问密钥,通过 `X-API-KEY` 请求头鉴权 |
 
 ## 使用指南
 
@@ -237,8 +237,8 @@ multi-content-feed/
 | 组件 | 技术 | 说明 |
 |------|------|------|
 | 运行环境 | Python 3 | 脚本语言 |
-| 数据源 | 红狐Hub API | `X-API-KEY` 请求头鉴权 |
-| API端点 | `https://redfox.hk/story/api/parseWork/queryContentExportTop` | POST请求 |
+| 数据源 | 一格Hub API | `X-API-KEY` 请求头鉴权 |
+| API端点 | `https://yige.zone/story/api/parseWork/queryContentExportTop` | POST请求 |
 | 支持平台 | 0=公众号, 1=抖音, 2=视频号, 3=小红书, 4=快手, 6=B站 | 每个平台Top50 |
 | 排序规则 | 公众号按readCount倒序,其余按likeCount倒序 | API内置排序 |
 | 数据存储 | JSON缓存 | `~/.workbuddy/cache/content_export_top_data.json` |
@@ -273,16 +273,16 @@ HTML日报生成 + 终端摘要输出
 
 ### 安装相关问题
 
-**Q1: 安装时提示 "未找到 REDFOX_API_KEY 环境变量" 怎么办?**
+**Q1: 安装时提示 "未找到 YIGE_API_KEY 环境变量" 怎么办?**
 
 A: 请按以下步骤检查:
-1. 确认 API Key 已正确配置(Windows: `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxx", "User")`)
+1. 确认 API Key 已正确配置(Windows: `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxx", "User")`)
 2. 配置后需**重启终端**使环境变量生效
-3. 验证: `echo %REDFOX_API_KEY%` 应输出你的Key值
+3. 验证: `echo %YIGE_API_KEY%` 应输出你的Key值
 
 **Q2: API Key 如何获取?**
 
-A: 前往 [红狐Hub 官网](https://redfox.hk/) 注册账号,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+A: 前往 [一格Hub 官网](https://yige.zone/) 注册账号,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 ---
 
@@ -327,7 +327,7 @@ A: 脚本已内置fallback机制,加载失败时自动显示默认封面图(`ass
 
 A:
 - API Key仅通过环境变量获取,禁止硬编码
-- 数据来源唯一:仅使用红狐Hub API,禁止自主采集
+- 数据来源唯一:仅使用一格Hub API,禁止自主采集
 - 缓存文件存储在本地 `~/.workbuddy/cache/`
 
 ## 📚 参考文档

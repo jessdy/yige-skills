@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 B站关键词实时搜索脚本
-调用 Redfox API 实时搜索B站视频数据
+调用 Yige API 实时搜索B站视频数据
 用法: python3 search_bili_realtime.py "<关键词>" [--sort 排序] [--time 时间] [--page 页码]
 
 接口返回字段说明（opusInfoList 中每条）：
@@ -30,7 +30,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 
-API_URL = "https://redfox.hk/story/api/bili/search"
+API_URL = "https://yige.zone/story/api/bili/search"
 
 # sortType 枚举
 SORT_TYPE_MAP = {
@@ -49,9 +49,9 @@ PUBLISH_TIME_MAP = {
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
         sys.exit(1)
     return val
 

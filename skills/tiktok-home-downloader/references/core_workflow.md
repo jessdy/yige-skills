@@ -7,7 +7,7 @@
 
 ## API 接口说明
 
-本技能调用 redfox.hk 接口完成作品拉取与下载链接解析：
+本技能调用 yige.zone 接口完成作品拉取与下载链接解析：
 
 | 步骤 | 接口 | 说明 |
 | ---- | ---- | ---- |
@@ -16,7 +16,7 @@
 
 所有接口调用均需携带来源标识参数：`source=TikTok主页视频批量提取-GitHub`
 
-API Key 从以下位置按优先级获取：CLI `--api-key` > 环境变量 `REDFOX_API_KEY` > `~/.qoder/apis/redfox.json`
+API Key 从以下位置按优先级获取：CLI `--api-key` > 环境变量 `YIGE_API_KEY` > `~/.qoder/apis/yige.json`
 
 ---
 
@@ -25,7 +25,7 @@ API Key 从以下位置按优先级获取：CLI `--api-key` > 环境变量 `REDF
 ### 失败阈值保护
 
 - 同一账号在 6 小时内累计 5 次 API 调用失败后，后续请求将被拒绝
-- 拒绝时提示：「当前账号下载已超过失败阈值，请联系客服邮箱 redfoxdata@proton.me 处理」
+- 拒绝时提示：「当前账号下载已超过失败阈值，请联系客服邮箱 yigedata@proton.me 处理」
 - 距上次失败超过 6 小时，计数自动归零，恢复正常调用
 - 同一账号查询成功（API 返回正常数据），计数归零，恢复正常调用
 - 失败计数持久化至 `~/.qoder/tiktok-home-downloader_failures.json`
@@ -37,8 +37,8 @@ API Key 从以下位置按优先级获取：CLI `--api-key` > 环境变量 `REDF
 
 ### Step 0: 鉴权前置检查
 
-- 确认已配置 `REDFOX_API_KEY`（环境变量 / `~/.qoder/apis/redfox.json` / `--api-key`）
-- 未配置时引导用户前往 https://redfox.hk/settings/api-keys?source=github 获取
+- 确认已配置 `YIGE_API_KEY`（环境变量 / `~/.qoder/apis/yige.json` / `--api-key`）
+- 未配置时引导用户前往 https://yige.zone/settings/api-keys?source=github 获取
 
 ### Step 1: 确认用户意图与 TikTok 账号
 
@@ -47,7 +47,7 @@ API Key 从以下位置按优先级获取：CLI `--api-key` > 环境变量 `REDF
 - 若用户只提供了账号名称（中文/英文昵称），必须提示：「TikTok 账号名称存在多个重名情况，请提供准确的 TikTok 主页链接或 handle 以便精准查询。」
 - 若用户提供的是单条视频链接（含 `/video/`），提示改为提供账号主页链接
 - 若用户提供的 secUserId 格式不正确（不以 `MS4w` 开头 / 长度过短），将「secUserId 获取方式」章节的完整获取指引返回给用户，引导重新获取
-- 若用户一次输入多个账号（>1），先提示：「由于您输入了{n}个查询账号，本次查询共需{n}次红狐（红狐hub）积分，请确保积分充足后进行查询～ 回复【是】即可继续查询」，待用户明确确认后才执行后续流程
+- 若用户一次输入多个账号（>1），先提示：「由于您输入了{n}个查询账号，本次查询共需{n}次一格数据（一格hub）积分，请确保积分充足后进行查询～ 回复【是】即可继续查询」，待用户明确确认后才执行后续流程
 
 ### Step 2: 识别用户输入的时间范围
 
@@ -76,7 +76,7 @@ python3 "$SKILL_PATH/scripts/tiktok-home-downloader.py" --account "主页链接�
 ### Step 4: 展示结果 + 询问翻页
 
 - 展示 Markdown 表格，含可点击的作品链接和下载链接
-- 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+- 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
 - 若可翻页：告诉用户「还有更多作品，是否需要翻看下一页？」，输入下一页翻页
 - 提示用户支持按时间范围提取作品
 
@@ -95,7 +95,7 @@ python3 "$SKILL_PATH/scripts/tiktok-home-downloader.py" --account "主页链接�
 ### Step 7: 结尾企业采购引导
 
 在结果输出末尾附加：
-> 💼 另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可前往红狐hub[企业服务](https://redfox.hk/dashboard/enterprise)对接咨询
+> 💼 另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可前往一格hub[企业服务](https://yige.zone/dashboard/enterprise)对接咨询
 
 ---
 
@@ -126,7 +126,7 @@ Agent 必须原样展示脚本返回的完整表格，禁止以下行为：
 
 **合计：** 10 条作品，8 条可下载，2 条下载失败
 
-> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **redfoxdata@proton.me** 处理。
+> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **yigedata@proton.me** 处理。
 
 > 💡 需要提取特定时间范围的作品？直接告诉我时间范围即可，如「7.1~7.20」「最近一周」
 

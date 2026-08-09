@@ -143,7 +143,7 @@ python scripts/generate_image.py \
 ```
 
 **关键约束**：
-- 不强制叠加红狐风格（`--style reference` 或 `none`）
+- 不强制叠加一格数据风格（`--style reference` 或 `none`）
 - 原图作风格参照，新 prompt 控制内容
 - 配图数量与原文章保持一致
 - 配图位置与原文章保持一致
@@ -153,19 +153,19 @@ python scripts/generate_image.py \
 python scripts/generate_image.py \
   --prompt "<中文prompt>" \
   --image assets/skill标题.jpg \
-  --style redfox \
+  --style yige \
   --api-key "{apiKey}"
 ```
 
 **关键约束**：
-- 强制红狐讲解员 + 美式复古报刊风（`--style redfox`）
+- 强制一格讲解员 + 美式复古报刊风（`--style yige`）
 - 配图数量由 imageCount 参数控制（默认 3）
 - 配图位置按章节语义匹配
 
 #### 模式 C: add_images
 ```bash
 python scripts/decide_images.py --input article.md --output image_plan.json
-python scripts/generate_image.py --batch prompts.json --style redfox --api-key "{apiKey}"
+python scripts/generate_image.py --batch prompts.json --style yige --api-key "{apiKey}"
 ```
 
 **关键约束**：
@@ -173,7 +173,7 @@ python scripts/generate_image.py --batch prompts.json --style redfox --api-key "
 - 决策规则：H2 切分 + 字数密度（500-800字/张）+ 锚点词 + 标题视觉化关键词
 - 跳过 FAQ / 结语 / 引言（字数 < 300 强制跳过）
 - 全篇生图数上限由 `--max-images` 控制（默认 6）
-- 风格默认 redfox，可通过 `--style none` 关闭
+- 风格默认 yige，可通过 `--style none` 关闭
 
 **详细决策规则**见 [references/image-decision-rules.md](image-decision-rules.md)
 
@@ -226,11 +226,11 @@ python scripts/generate_image.py --batch prompts.json --style redfox --api-key "
 
 | 模式 | 适用场景 | 行为 |
 |------|---------|------|
-| `redfox`（默认） | 模式 B、C 默认 | 强制叠加红狐讲解员 + 美式复古报刊风 |
+| `yige`（默认） | 模式 B、C 默认 | 强制叠加一格讲解员 + 美式复古报刊风 |
 | `reference` | 模式 A 默认 | 原 prompt 不变，参考图自带风格 |
 | `none` | 用户明确要求 | 原 prompt 不变，无任何风格修饰 |
 
-### 红狐讲解员姿态-章节语义映射
+### 一格讲解员姿态-章节语义映射
 
 | 章节类型 | 狐狸姿态 |
 |----------|----------|
@@ -278,11 +278,11 @@ python scripts/validate_article.py --input article.md
 - [ ] 新文章与源文章核心论点一致但角度不同
 - [ ] 配图数量、位置与源文章对齐
 - [ ] 配图风格通过 i2i 参照原图
-- [ ] 未使用红狐风格（除非用户指定）
+- [ ] 未使用一格数据风格（除非用户指定）
 
 #### 模式 B: skill_promo
 - [ ] Skill 功能描述与目标网站最新信息对齐
-- [ ] 配图采用红狐风格
+- [ ] 配图采用一格数据风格
 - [ ] 无夸大、过时、虚构描述
 
 #### 模式 C: add_images
@@ -351,7 +351,7 @@ python scripts/validate_article.py --input article.md
 | 场景 | 降级策略 |
 |------|----------|
 | 模式 A 源文章抓取失败 | 提示用户粘贴正文，回退到模式 C |
-| 模式 A 原图下载失败 | 跳过 i2i 参照，改用文生图（`--style redfox`） |
+| 模式 A 原图下载失败 | 跳过 i2i 参照，改用文生图（`--style yige`） |
 | 模式 B Skill 文件解析失败 | 提示用户确认路径或名称 |
 | 模式 C 正文过短（< 500 字） | 不插图，提示「文章偏短，建议扩充后再配图」 |
 | API Key 缺失 | 跳过图片生成，输出纯文本文章 |

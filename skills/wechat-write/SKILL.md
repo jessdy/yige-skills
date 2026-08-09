@@ -1,13 +1,13 @@
 ---
 name: wechat-write
-description: 公众号文案创作工具。基于红狐数据公众号爆款雷达每日收录的热门文章，按关键词检索爆款、分析流量规律、生成可发布的完整文章。当用户写公众号文章、生成公众号文案、查找爆款文章、分析爆款规律时使用。触发词：公众号文案、公众号爆款、爆款文章、公众号写作、公众号文章生成。
+description: 公众号文案创作工具。基于一格数据公众号爆款雷达每日收录的热门文章，按关键词检索爆款、分析流量规律、生成可发布的完整文章。当用户写公众号文章、生成公众号文案、查找爆款文章、分析爆款规律时使用。触发词：公众号文案、公众号爆款、爆款文章、公众号写作、公众号文章生成。
 ---
 
 # 公众号文案创作
 
 ## 📋 概述
 
-基于红狐数据公众号爆款雷达，按关键词检索当下热门爆款文章，提炼流量密码与创作要点，生成可直接发布的完整文章。
+基于一格数据公众号爆款雷达，按关键词检索当下热门爆款文章，提炼流量密码与创作要点，生成可直接发布的完整文章。
 
 **数据范围**：全网公众号，每日持续收录爆款文章 | **核心流程**：查询爆款 → 分析规律 → 生成文案
 
@@ -15,20 +15,20 @@ description: 公众号文案创作工具。基于红狐数据公众号爆款雷�
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
 
 ```json
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 🔄 工作流程

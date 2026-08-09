@@ -35,20 +35,20 @@ B站关键词搜账号工具，根据关键词搜索B站相关账号，获取最
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY
 
 ### 配置 API Key
 
-方案1: 以 Qoder 为例，将 REDFOX_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
+方案1: 以 Qoder 为例，将 YIGE_API_KEY 添加到 `~/.openclaw/openclaw.json` 中：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 🔄 工作流程

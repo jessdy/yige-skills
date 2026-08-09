@@ -23,19 +23,19 @@ description: 快手AI内容日报生成工具。每日自动扫描快手平台AI
 
 ## 🔑 鉴权
 
-前往 [redfox.hk/login](https://www.redfox.hk/login) 注册获取 API Token,然后配置:
+前往 [yige.zone/login](https://yige.zone/login) 注册获取 API Token,然后配置:
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量(推荐) | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量(推荐) | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ## 🔌 API 接口规范
 
 ### 批量查询接口
 
-**接口地址**: `POST https://redfox.hk/story/api/parseWork/queryKsAiMsgs/batch`
+**接口地址**: `POST https://yige.zone/story/api/parseWork/queryKsAiMsgs/batch`
 
 **请求头**:
 ```

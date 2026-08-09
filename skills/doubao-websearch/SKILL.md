@@ -1,13 +1,13 @@
 ---
 name: doubao-websearch
-description: 豆包 WebSearch 搜索工具。基于红狐 API 调用豆包联网搜索能力，提交查询后自动轮询等待结果返回。当用户需要使用豆包搜索、联网搜索、AI 搜索获取实时信息时使用。触发词：豆包搜索、豆包websearch、联网搜索、AI搜索、doubao搜索。
+description: 豆包 WebSearch 搜索工具。基于一格数据 API 调用豆包联网搜索能力，提交查询后自动轮询等待结果返回。当用户需要使用豆包搜索、联网搜索、AI 搜索获取实时信息时使用。触发词：豆包搜索、豆包websearch、联网搜索、AI搜索、doubao搜索。
 ---
 
 # 豆包 WebSearch
 
 ## 📝 简介
 
-通过红狐 API 调用豆包联网搜索能力，提交查询后自动轮询等待结果返回。适用于需要联网实时搜索、AI 辅助信息检索的场景。
+通过一格数据 API 调用豆包联网搜索能力，提交查询后自动轮询等待结果返回。适用于需要联网实时搜索、AI 辅助信息检索的场景。
 
 ## ✨ 功能特性
 
@@ -21,14 +21,14 @@ description: 豆包 WebSearch 搜索工具。基于红狐 API 调用豆包联网
 
 ## 🔑 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：配置文件（如 OpenClaw 的 ~/.openclaw/openclaw.json）
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
 # 方式二：终端环境变量
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 🔄 工作流程
@@ -63,7 +63,7 @@ pip3 install requests
 
 | 情况 | 处理方式 |
 |------|---------|
-| 未配置 `REDFOX_API_KEY` | 提示用户前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key |
+| 未配置 `YIGE_API_KEY` | 提示用户前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key |
 | 提交失败 | 输出错误信息，建议用户重试 |
 | 轮询超时（5 分钟） | 提示超时，建议稍后重试 |
 | 任务失败（status=failed） | 输出失败详情 |

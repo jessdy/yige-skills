@@ -33,7 +33,7 @@ description: 抖音账号视频批量下载器 — 输入抖音号，自动拉�
 
 ## API 说明
 
-本 Skill 调用两个 redfox.hk 接口：
+本 Skill 调用两个 yige.zone 接口：
 
 | 步骤        | 接口                                             | 说明                           |
 | ----------- | ------------------------------------------------ | ------------------------------ |
@@ -42,14 +42,14 @@ description: 抖音账号视频批量下载器 — 输入抖音号，自动拉�
 
 ### 认证
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key。
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key。
 
 ```bash
 # 环境变量配置（推荐）
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # Windows PowerShell
-$env:REDFOX_API_KEY="ak_你的密钥"
+$env:YIGE_API_KEY="ak_你的密钥"
 ```
 
 ---
@@ -121,7 +121,7 @@ python3 "$SKILL_PATH/scripts/douyin_video_downloader.py" --account "Fish688688" 
 
 并附上获取抖音号的示例图供用户参考：
 
-![获取抖音号示例](https://lyy.redfox.hk/page/ljq.png)
+![获取抖音号示例](https://lyy.yige.zone/page/ljq.png)
 
 > **抖音号**是抖音 APP → 目标账号主页 → 昵称下方显示的唯一 ID（如 `Fish688688`、`YuZhouXiaoLi1220`），非中文昵称。
 
@@ -133,7 +133,7 @@ python3 "$SKILL_PATH/scripts/douyin_video_downloader.py" --account "Fish688688" 
 
 - **同一抖音号在 6 小时内累计 5 次 API 调用失败后，后续请求将被拒绝**
 
-- 拒绝时提示：「当前账号下载已超过失败阈值，请联系客服邮箱 <redfoxdata@proton.me> 处理」
+- 拒绝时提示：「当前账号下载已超过失败阈值，请联系客服邮箱 <yigedata@proton.me> 处理」
 
 - **距上次失败超过 6 小时**，计数自动归零，恢复正常调用
 
@@ -164,7 +164,7 @@ Step 1: 确认用户意图与抖音号
   - 若用户提供了抖音号（如 Fish688688），直接执行
   - 若用户只提供了账号名称（中文昵称，如"李佳琦"），必须提示：
     "抖音账号名称存在多个重名情况，请提供准确的抖音号以便精准查询。"
-    并展示获取抖音号的示例图：https://lyy.redfox.hk/page/ljq.png
+    并展示获取抖音号的示例图：https://lyy.yige.zone/page/ljq.png
 
 Step 2: 识别用户输入的时间范围（如有）
   - 若用户提到了作品时间范围，自动识别并转换为 --date-start / --date-end：
@@ -181,7 +181,7 @@ Step 3: 调用脚本拉取作品 + 解析下载链接
 
 Step 4: 展示结果 + 询问翻页
   - 展示 Markdown 表格，含可点击的作品链接和下载链接
-  - 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+  - 若有失败：提示「可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
   - 若可翻页：告诉用户「还有更多作品，是否需要翻看下一页？」，输入下一页翻页
   - 提示用户支持按时间范围提取作品
 
@@ -224,7 +224,7 @@ Step 6: 用户确认后执行下载
 
 **合计：** 10 条作品，8 条可下载，2 条下载失败
 
-> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **redfoxdata@proton.me** 处理。
+> ⚠️ 下载失败的视频可能是用户已删除该视频，如需数据核查可联系工作人员邮箱 **yigedata@proton.me** 处理。
 
 > 💡 需要提取特定时间范围的作品？直接告诉我时间范围即可，如「7.1~7.20」「最近一周」
 
@@ -236,7 +236,7 @@ Step 6: 用户确认后执行下载
 ## 常见问题
 
 **Q：如何获取 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取。
 
 **Q：下载的视频有水印吗？**
 A：无水印。API 返回的视频/图文直链已去除抖音水印。

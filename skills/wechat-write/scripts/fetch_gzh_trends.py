@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 公众号热门数据查询脚本
-接口：红狐数据 - 公众号爆款文章搜索
+接口：一格数据 - 公众号爆款文章搜索
 """
 
 import os
@@ -102,10 +102,10 @@ def fetch_gzh_trends(keyword: str, start_date: str = None, debug: bool = False, 
         - 最多5个关键词
         - 总长度不超过200字符
     """
-    base_url = "https://redfox.hk/story/api/gzh/search/hotArticleNew"
-    api_key = os.environ.get("REDFOX_API_KEY", "")
+    base_url = "https://yige.zone/story/api/gzh/search/hotArticleNew"
+    api_key = os.environ.get("YIGE_API_KEY", "")
     if not api_key:
-        raise Exception("缺少API Key：请设置环境变量 REDFOX_API_KEY。获取方式：https://redfox.hk/settings/api-keys?source=github")
+        raise Exception("缺少API Key：请设置环境变量 YIGE_API_KEY。获取方式：https://yige.zone/settings/api-keys?source=github")
     headers = {
         "Content-Type": "application/json",
         "X-API-Key": api_key
@@ -242,7 +242,7 @@ def format_output(data: dict, max_items: int = 10) -> str:
         output.append("- 尝试更细分的长尾关键词，如：**\"副业赚钱\"**、**\"时间管理技巧\"** 等\n")
         output.append("- 输入其他感兴趣的领域或赛道进行追踪\n\n")
         output.append("---\n\n")
-        output.append("*数据来源：红狐数据公众号爆款雷达，每日更新最新热门内容*\n")
+        output.append("*数据来源：一格数据公众号爆款雷达，每日更新最新热门内容*\n")
         return "\n".join(output)
 
     # 输出爆款文章表格
@@ -265,14 +265,14 @@ def format_output(data: dict, max_items: int = 10) -> str:
         output.append(f"| {idx} | {title} | {author_str} | **{clicks_count}** | {watch_count} | {like_count} | {comments_count} |")
 
     output.append("\n\n---\n\n")
-    output.append("*数据来源：红狐数据公众号爆款雷达，每日更新最新热门内容*\n")
+    output.append("*数据来源：一格数据公众号爆款雷达，每日更新最新热门内容*\n")
 
     return "\n".join(output)
 
 
 def main():
     """主函数"""
-    parser = argparse.ArgumentParser(description='公众号热门数据查询工具（红狐数据）')
+    parser = argparse.ArgumentParser(description='公众号热门数据查询工具（一格数据）')
     parser.add_argument('--keyword', required=True,
                        help='搜索关键词（多个关键词用英文逗号分隔，最多5个，总长度不超过200字符）')
     parser.add_argument('--max-items', type=int, default=10,
@@ -305,7 +305,7 @@ def main():
 
         # 直接输出到控制台
         print(output_content)
-        print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+        print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
     except Exception as e:
         print(f"❌ 错误: {str(e)}", file=sys.stderr)

@@ -26,20 +26,20 @@ description: 抖音每日点赞飙升榜查询工具。日度收录全平台抖�
 
 ## 🔑 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API Key，通过以下方式配置：
 
 ```bash
 # 方式一：配置文件（如 OpenClaw 的 ~/.openclaw/openclaw.json）
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 
 # 方式二：终端环境变量
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ## 📡 API 调用
 
-- **接口地址**：`POST https://redfox.hk/story/api/dy/search/hotContentRank`
-- **认证方式**：请求头 `X-API-KEY`，值从环境变量 `REDFOX_API_KEY` 获取
+- **接口地址**：`POST https://yige.zone/story/api/dy/search/hotContentRank`
+- **认证方式**：请求头 `X-API-KEY`，值从环境变量 `YIGE_API_KEY` 获取
 - **固定参数**：`source`（值见脚本）
 - **可选参数**：`type`（赛道）、`startTime`（日期）
 

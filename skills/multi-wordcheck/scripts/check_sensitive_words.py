@@ -5,9 +5,9 @@
 违禁词检测脚本（Skill：multi-wordcheck）
 
 默认将待检测文案通过 HTTPS POST（TLS 校验开启）发往 Skill 对接的第三方检测后端，不在本地持有词库。
-- 默认接口：https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch
-  域名 redfox.hk 为本 Skill 声明的检测服务端（见 SKILL.md「第三方服务与数据去向」）。
-- 认证方式：请求头 X-API-KEY，通过 REDFOX_API_KEY 三级回退获取。
+- 默认接口：https://yige.zone/story/api/cozeSkill/sensitiveWordSearch
+  域名 yige.zone 为本 Skill 声明的检测服务端（见 SKILL.md「第三方服务与数据去向」）。
+- 认证方式：请求头 X-API-KEY，通过 YIGE_API_KEY 三级回退获取。
 - 请求 JSON 字段：content、platform、source（来源标识）。
 - 自建/合规网关：设置环境变量 PROHIBITED_WORD_API_URL 为 https 完整 URL（优先级最高）。
 """
@@ -22,13 +22,13 @@ import requests
 
 def _get_api_key():
     """
-    三级回退获取 REDFOX_API_KEY：
-    1. 从当前设备环境变量 REDFOX_API_KEY 获取
+    三级回退获取 YIGE_API_KEY：
+    1. 从当前设备环境变量 YIGE_API_KEY 获取
     2. 从 shell 配置文件（.bashrc / .zshrc / .bash_profile 等）中读取
     3. 仍未获取到则提示用户配置
     """
     # 第一级：环境变量
-    api_key = os.environ.get("REDFOX_API_KEY", "").strip()
+    api_key = os.environ.get("YIGE_API_KEY", "").strip()
     if api_key:
         return api_key
 
@@ -44,7 +44,7 @@ def _get_api_key():
             with open(rc_path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     stripped = line.strip()
-                    if "REDFOX_API_KEY" in stripped and "=" in stripped:
+                    if "YIGE_API_KEY" in stripped and "=" in stripped:
                         assignment = stripped
                         if assignment.startswith("export "):
                             assignment = assignment[len("export "):]
@@ -57,9 +57,9 @@ def _get_api_key():
 
     # 第三级：仍未获取到，提示用户配置
     raise SystemExit(
-        "未找到 REDFOX_API_KEY，请通过以下方式配置：\n"
-        "  方式一：设置环境变量 export REDFOX_API_KEY=<你的apikey>\n"
-        "  方式二：在 shell 配置文件（~/.bashrc 或 ~/.zshrc）中添加 export REDFOX_API_KEY=<你的apikey>\n"
+        "未找到 YIGE_API_KEY，请通过以下方式配置：\n"
+        "  方式一：设置环境变量 export YIGE_API_KEY=<你的apikey>\n"
+        "  方式二：在 shell 配置文件（~/.bashrc 或 ~/.zshrc）中添加 export YIGE_API_KEY=<你的apikey>\n"
         "  配置后请重新打开终端或执行 source ~/.bashrc 使其生效"
     )
 
@@ -70,7 +70,7 @@ def check_sensitive_words(content, platform="公众号"):
 
     API 地址优先级：
     1. 环境变量 PROHIBITED_WORD_API_URL（自建/合规网关）
-    2. 默认地址 https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch
+    2. 默认地址 https://yige.zone/story/api/cozeSkill/sensitiveWordSearch
 
     Args:
         content: 待检测的文案内容
@@ -79,7 +79,7 @@ def check_sensitive_words(content, platform="公众号"):
     Returns:
         dict: 包含检测结果和格式化HTML的字典
     """
-    DEFAULT_API_URL = "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+    DEFAULT_API_URL = "https://yige.zone/story/api/cozeSkill/sensitiveWordSearch"
 
     # 优先使用 PROHIBITED_WORD_API_URL 环境变量（向后兼容）
     api_url = os.environ.get("PROHIBITED_WORD_API_URL", "").strip()

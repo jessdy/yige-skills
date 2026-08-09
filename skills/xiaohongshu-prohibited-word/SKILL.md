@@ -14,7 +14,7 @@ dependency:
 
 ## 简介
 
-小红书违禁词查询是一款专为小红书内容创作者、品牌运营和营销人员设计的智能违禁词检测工具，基于 红狐Hub 违禁词检测 API，在笔记发布前快速扫描文案中的敏感词并提供上下文智能替换建议。
+小红书违禁词查询是一款专为小红书内容创作者、品牌运营和营销人员设计的智能违禁词检测工具，基于 一格Hub 违禁词检测 API，在笔记发布前快速扫描文案中的敏感词并提供上下文智能替换建议。
 
 通过简单的文案输入，你可以：
 - 🔍 **违禁词标记** —— 原文中命中词用加粗标出，一眼看到风险点
@@ -61,8 +61,8 @@ dependency:
 
 ### 获取 API Key
 
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用 API 服务
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
@@ -72,22 +72,22 @@ dependency:
 
 | 优先级 | 来源 | 说明 |
 |--------|------|------|
-| 1 | 环境变量 `REDFOX_API_KEY` | 直接读取当前设备环境变量 |
+| 1 | 环境变量 `YIGE_API_KEY` | 直接读取当前设备环境变量 |
 | 2 | Shell 配置文件 | 自动扫描 `~/.zshrc` `~/.bashrc` `~/.bash_profile` `~/.profile` `~/.zprofile` |
 | 3 | 提示配置 | 以上均未找到时，提示用户手动配置 |
 
 **配置示例**：
 
 ```bash
-export REDFOX_API_KEY=ak_xxxxxxxx
+export YIGE_API_KEY=ak_xxxxxxxx
 ```
 
 ### 环境变量参考
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API 访问密钥，格式 `ak_xxxxxxxx` |
-| `XHS_SENSITIVE_WORD_API_URL` | 否 | 自定义 API 端点地址（默认使用 红狐Hub 官方） |
+| `YIGE_API_KEY` | 是 | 一格Hub API 访问密钥，格式 `ak_xxxxxxxx` |
+| `XHS_SENSITIVE_WORD_API_URL` | 否 | 自定义 API 端点地址（默认使用 一格Hub 官方） |
 | `XHS_SENSITIVE_WORD_VERIFY_SSL` | 否 | SSL 证书校验开关，默认 `1`（开启） |
 
 ## 使用指南
@@ -210,7 +210,7 @@ xiaohongshu-prohibited-word/
 | **HTTP 请求** | `urllib.request`（标准库） | 原生 HTTP 请求，内置重试与超时处理 |
 | **文档解析** | `python-docx` | Word 文档文本提取 |
 | **网页解析** | `beautifulsoup4` + `playwright` | 静态 HTML + JS 动态渲染双引擎 |
-| **API 服务** | 红狐Hub 违禁词检测 API | HTTPS POST，JSON 格式，X-API-KEY 鉴权 |
+| **API 服务** | 一格Hub 违禁词检测 API | HTTPS POST，JSON 格式，X-API-KEY 鉴权 |
 
 
 ## 常见问答
@@ -228,8 +228,8 @@ playwright install chromium
 **Q2: 提示"缺少凭证配置"怎么办？**
 
 A: 请按以下步骤操作：
-1. 访问 https://redfox.hk/login 注册获取 API Key（新用户赠免费积分）
-2. 配置环境变量：`export REDFOX_API_KEY=ak_xxxxxxxx`
+1. 访问 https://yige.zone/login 注册获取 API Key（新用户赠免费积分）
+2. 配置环境变量：`export YIGE_API_KEY=ak_xxxxxxxx`
 3. 或在 `~/.bashrc` / `~/.zshrc` 中添加后执行 `source ~/.bashrc`
 
 ### 使用相关
@@ -244,13 +244,13 @@ A: 不支持 PDF。请将 PDF 转为图片或文本文件后重新上传。
 
 **Q5: 检测结果能保证百分百准确吗？**
 
-A: 检测结果基于红狐Hub违禁词库，仅供参考。请根据企业经营范围和产品实际效果自行核对，最终以小红书平台审核结果为准。
+A: 检测结果基于一格Hub违禁词库，仅供参考。请根据企业经营范围和产品实际效果自行核对，最终以小红书平台审核结果为准。
 
 ### 故障排除
 
 **Q6: 提示"检测服务暂时不可用"？**
 
-A: 脚本已内置自动重试机制。若持续失败，请检查网络、确认 API Key 未过期、或访问 红狐Hub 官网确认服务状态。
+A: 脚本已内置自动重试机制。若持续失败，请检查网络、确认 API Key 未过期、或访问 一格Hub 官网确认服务状态。
 
 **Q7: 网页内容提取失败？**
 
@@ -262,5 +262,5 @@ A: 文字提取依赖图片清晰度和字体。建议使用高清晰度截图�
 
 ### 获取帮助
 
-- 🌐 红狐Hub 官网：[https://redfox.hk/](https://redfox.hk/)
+- 🌐 一格Hub 官网：[https://yige.zone/](https://yige.zone/)
 - 📧 联系邮箱：graves9758@gmail.com

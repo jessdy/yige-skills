@@ -31,20 +31,20 @@ dependency:
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -55,7 +55,7 @@ export REDFOX_API_KEY="ak_xxxx..."
 
 | 环境变量 | 说明 | 是否必填 | 获取方式 |
 | -------- | ---- | -------- | -------- |
-| `REDFOX_API_KEY` | 红狐数据 API Key | 是 | [红狐hub](https://redfox.hk/settings/api-keys?source=github) |
+| `YIGE_API_KEY` | 一格数据 API Key | 是 | [一格hub](https://yige.zone/settings/api-keys?source=github) |
 
 ## 4. 使用指南
 
@@ -501,7 +501,7 @@ python scripts/fetch_xhs_hot_articles.py --keyword <关键词> --start-date <日
 xiaohongshu-search/
 ├── SKILL.md                               # Skill 定义与使用文档（本文件）
 ├── scripts/
-│   └── fetch_xhs_hot_articles.py          # 核心搜索脚本，调用红狐 API 获取小红书热门笔记
+│   └── fetch_xhs_hot_articles.py          # 核心搜索脚本，调用一格数据 API 获取小红书热门笔记
 └── references/
     └── xhs_hot_article_format.md          # 数据字段格式参考文档
 ```
@@ -511,7 +511,7 @@ xiaohongshu-search/
 | 组件 | 技术 | 说明 |
 | ---- | ---- | ---- |
 | 运行环境 | Python 3.x | 标准库，无第三方依赖 |
-| 数据接口 | 红狐 API (Redfox) | 通过 REDFOX_API_KEY 鉴权 |
+| 数据接口 | 一格数据 API (Yige) | 通过 YIGE_API_KEY 鉴权 |
 | 输出格式 | JSON (stdout) + HTML (文件) | JSON 通过 stdout 输出供 AI 解析，HTML 为可视化报告文件 |
 | 展示格式 | Markdown 表格 | AI 代理将 JSON 渲染为表格展示 |
 | 执行限制 | 仅主 Agent | 不在子 Agent 中执行 |
@@ -520,13 +520,13 @@ xiaohongshu-search/
 
 | 模块 | 路径 | 功能 |
 | ---- | ---- | ---- |
-| 搜索脚本 | `scripts/fetch_xhs_hot_articles.py` | 调用红狐 API 获取小红书热门笔记，支持 --keyword、--start-date、--page-num、--page-size 参数，自动生成 HTML 报告 |
+| 搜索脚本 | `scripts/fetch_xhs_hot_articles.py` | 调用一格数据 API 获取小红书热门笔记，支持 --keyword、--start-date、--page-num、--page-size 参数，自动生成 HTML 报告 |
 | 数据格式参考 | `references/xhs_hot_article_format.md` | 详细说明接口返回的数据字段格式和输出规范 |
 | SKILL 定义 | `SKILL.md` | 定义 Skill 元数据、意图理解规则、泛化词拓展策略、展示策略、订阅逻辑、自检清单 |
 
 ### 资源索引
 
-- **核心脚本**：`scripts/fetch_xhs_hot_articles.py` — 调用红狐 API 获取小红书热门笔记数据并生成 HTML 报告
+- **核心脚本**：`scripts/fetch_xhs_hot_articles.py` — 调用一格数据 API 获取小红书热门笔记数据并生成 HTML 报告
 - **参考文档**：`references/xhs_hot_article_format.md` — 何时读取：需要了解数据字段格式和输出规范时
 
 ## 7. 常见问答
@@ -537,7 +537,7 @@ xiaohongshu-search/
 A: 本工具使用 Python 3 标准库，无需额外安装第三方依赖。确保系统已安装 Python 3.x 即可。
 
 **Q: 如何获取 API Key？**
-A: 请访问 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 注册并获取 API Key，按本文"一键安装"章节配置环境变量。
+A: 请访问 [一格hub](https://yige.zone/settings/api-keys?source=github) 注册并获取 API Key，按本文"一键安装"章节配置环境变量。
 
 ### 使用
 
@@ -565,7 +565,7 @@ A: 热门笔记收录标准为互动数1000+。如果关键词太小众或时间
 A: 数据库每日早上7点更新昨日数据，当天数据尚未入库。系统会自动展示最近可用的数据。
 
 **Q: 脚本执行报错？**
-A: 常见原因：(1) REDFOX_API_KEY 未配置或已过期；(2) Python 版本低于 3.x；(3) 网络连接问题。请逐一排查。
+A: 常见原因：(1) YIGE_API_KEY 未配置或已过期；(2) Python 版本低于 3.x；(3) 网络连接问题。请逐一排查。
 
 ### 安全许可
 
@@ -573,7 +573,7 @@ A: 常见原因：(1) REDFOX_API_KEY 未配置或已过期；(2) Python 版本�
 A: 推荐使用方案 1（配置到 openclaw.json 的 env 字段中），避免在终端历史中泄露。请勿将 API Key 硬编码在脚本中或上传到公开仓库。
 
 **Q: 数据来源和版权？**
-A: 数据来源于红狐 API 收录的小红书公开笔记。笔记版权归原作者所有，本工具仅供学习和内容创作参考使用。
+A: 数据来源于一格数据 API 收录的小红书公开笔记。笔记版权归原作者所有，本工具仅供学习和内容创作参考使用。
 
 **Q: 为什么要在主 Agent 中执行？**
 A: 小红书搜索工具涉及完整的意图理解、泛化词拓展和数据展示策略，流程复杂且依赖全局上下文判断，仅在主 Agent 中执行以确保行为一致和规则完整。

@@ -27,7 +27,7 @@ description: 将用户文案转换为知乎风格，携带2-3个特色关键词�
 
 ### 特色亮点
 - **⚡ 即输即用**：输入原文案，直接输出改写结果，不再询问
-- **📊 改写记录上报**：调用红狐 API 自动记录改写次数
+- **📊 改写记录上报**：调用一格数据 API 自动记录改写次数
 - **🔧 规则可定制**：通过 `assets/platform-rules.md` 自定义改写规则
 
 ## 一键安装
@@ -87,7 +87,7 @@ Agent 读取 `assets/platform-rules.md` 中的完整规则，严格按照知乎�
 
 | 项目 | 详情 |
 |------|------|
-| 接口地址 | `https://redfox.hk/story/api/skill/record/save` |
+| 接口地址 | `https://yige.zone/story/api/skill/record/save` |
 | 调用时机 | 输出改写结果之前（必须） |
 | 接口参数 | `source` 固定值 `"知乎文案改写-GitHub"` |
 | 网络实现 | `urllib.request`，标准 SSL 校验 |

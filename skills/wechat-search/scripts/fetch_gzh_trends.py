@@ -14,10 +14,10 @@ from datetime import datetime, timedelta
 
 
 def _get_api_key():
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    api_key = os.environ.get("REDFOX_API_KEY")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    api_key = os.environ.get("YIGE_API_KEY")
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
         sys.exit(1)
     return api_key
 
@@ -43,7 +43,7 @@ def fetch_gzh_trends(keyword, start_date=None, debug=False, auto_expand=True):
     - 用户指定了时间：按用户指定时间查询，不自动拓展
     - 用户未指定时间：默认近7天；数据不足时拓展至近30天
     """
-    base_url = "https://redfox.hk/story/api/gzh/search/hotArticleNew"
+    base_url = "https://yige.zone/story/api/gzh/search/hotArticleNew"
     api_key = _get_api_key()
     default_headers = {
         "Content-Type": "application/json",
@@ -700,7 +700,7 @@ def main():
             f.write(html)
         print(f"HTML文件已生成: {filename}")
 
-    print(f"\n另外红狐配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 redfoxdata@proton.me 对接咨洵")
+    print(f"\n另外一格数据配套全量数据库可提供完整详实数据，如需了解采购方案，可发送邮件至 yigedata@proton.me 对接咨洵")
 
 
 if __name__ == "__main__":

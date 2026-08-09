@@ -6,7 +6,7 @@ Deepseek WebSearch — 提交搜索查询并轮询结果
     python3 deepseek_search.py "<搜索关键词>"
 
 环境变量:
-    REDFOX_API_KEY — 红狐 API Key（必填）
+    YIGE_API_KEY — 一格数据 API Key（必填）
 """
 
 import os
@@ -21,8 +21,8 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-API_BASE = "https://redfox.hk/story/api/deepSearch"
-API_KEY = os.environ.get("REDFOX_API_KEY")
+API_BASE = "https://yige.zone/story/api/deepSearch"
+API_KEY = os.environ.get("YIGE_API_KEY")
 MAX_ATTEMPTS = 60  # 最多轮询 5 分钟
 POLL_INTERVAL = 5  # 轮询间隔（秒）
 
@@ -33,8 +33,8 @@ def main():
             json.dumps(
                 {
                     "error": (
-                        "未配置 REDFOX_API_KEY 环境变量，"
-                        "请前往 https://redfox.hk/settings/api-keys?source=github 获取 API Key"
+                        "未配置 YIGE_API_KEY 环境变量，"
+                        "请前往 https://yige.zone/settings/api-keys?source=github 获取 API Key"
                     )
                 },
                 ensure_ascii=False,
@@ -49,7 +49,7 @@ def main():
     query = sys.argv[1]
 
     headers = {
-        "REDFOX_API_KEY": API_KEY,
+        "YIGE_API_KEY": API_KEY,
         "Content-Type": "application/json",
     }
 

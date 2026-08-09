@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 抖音相似账号推荐脚本
-功能：调用红狐API查询抖音对标账号和头部账号，输出对标账号信息+近期作品+深度分析
+功能：调用一格数据API查询抖音对标账号和头部账号，输出对标账号信息+近期作品+深度分析
 接口文档：POST /dyUser/querySimilarAccounts
 """
 
@@ -21,8 +21,8 @@ import urllib.request
 # ============================================================
 
 def get_api_key():
-    """获取 RedFox API Key，依次从环境变量、shell配置文件中读取，均未找到则提示用户配置"""
-    api_key = os.getenv("REDFOX_API_KEY")
+    """获取 Yige API Key，依次从环境变量、shell配置文件中读取，均未找到则提示用户配置"""
+    api_key = os.getenv("YIGE_API_KEY")
     if api_key:
         return api_key.strip()
 
@@ -37,10 +37,10 @@ def get_api_key():
 
     if system == "Windows":
         config_hint = (
-            "未找到 REDFOX_API_KEY 配置，请按以下步骤配置：\n"
-            "  1. 访问 https://redfox.hk/ 注册账号并获取 API Key\n"
+            "未找到 YIGE_API_KEY 配置，请按以下步骤配置：\n"
+            "  1. 访问 https://yige.zone/ 注册账号并获取 API Key\n"
             "  2. 在 PowerShell 中执行：\n"
-            '     [Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的API Key>", "User")\n'
+            '     [Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的API Key>", "User")\n'
             "  3. 重启终端后生效"
         )
     else:
@@ -52,9 +52,9 @@ def get_api_key():
         else:
             rc_file = "~/.bashrc"
         config_hint = (
-            "未找到 REDFOX_API_KEY 配置，请按以下步骤配置：\n"
-            "  1. 访问 https://redfox.hk/ 注册账号并获取 API Key\n"
-            f"  2. 执行：echo 'export REDFOX_API_KEY=<你的API Key>' >> {rc_file}\n"
+            "未找到 YIGE_API_KEY 配置，请按以下步骤配置：\n"
+            "  1. 访问 https://yige.zone/ 注册账号并获取 API Key\n"
+            f"  2. 执行：echo 'export YIGE_API_KEY=<你的API Key>' >> {rc_file}\n"
             f"  3. 执行：source {rc_file}"
         )
     raise ValueError(config_hint)
@@ -74,7 +74,7 @@ def _read_api_key_from_unix_shell_config():
             with open(config_file, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     line = line.strip()
-                    m = re.match(r'^(?:export\s+)?REDFOX_API_KEY=["\']?(.+?)["\']?\s*$', line)
+                    m = re.match(r'^(?:export\s+)?YIGE_API_KEY=["\']?(.+?)["\']?\s*$', line)
                     if m:
                         return m.group(1)
         except (IOError, OSError):
@@ -87,7 +87,7 @@ def _read_api_key_from_windows():
         import winreg
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment")
         try:
-            value, _ = winreg.QueryValueEx(key, "REDFOX_API_KEY")
+            value, _ = winreg.QueryValueEx(key, "YIGE_API_KEY")
             if value:
                 return str(value)
         finally:
@@ -106,7 +106,7 @@ def _read_api_key_from_windows():
             with open(profile_path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
                     line = line.strip()
-                    m = re.match(r'\$env:REDFOX_API_KEY\s*=\s*["\']?(.+?)["\']?\s*$', line)
+                    m = re.match(r'\$env:YIGE_API_KEY\s*=\s*["\']?(.+?)["\']?\s*$', line)
                     if m:
                         return m.group(1)
         except (IOError, OSError):
@@ -127,18 +127,18 @@ def query_similar_accounts(accountId=None, accountName=None):
       2. 传入accountName：通过账号名称查询该账号信息并匹配对标账号
 
     响应字段：
-      data.currentAccount: DyUserInfoVO 当前账号信息（含redfoxIndex、similarAccounts）
-      data.benchmarkAccounts: List<DySimilarAccountDetailVO> 对标账号列表（红狐指数向上最近的5个）
-      data.topAccounts: List<DySimilarAccountDetailVO> 头部账号列表（同分类红狐指数倒序前5）
+      data.currentAccount: DyUserInfoVO 当前账号信息（含yigeIndex、similarAccounts）
+      data.benchmarkAccounts: List<DySimilarAccountDetailVO> 对标账号列表（一格指数向上最近的5个）
+      data.topAccounts: List<DySimilarAccountDetailVO> 头部账号列表（同分类一格指数倒序前5）
       账号详情 DySimilarAccountDetailVO: nickname, url, followerCount, uid,
         awemeCount, totalFavorited, awemeCountSeven, interactiveCountSeven,
-        interactiveCountThirty, lastAwemeCreateTime, redfoxIndex, works[]
+        interactiveCountThirty, lastAwemeCreateTime, yigeIndex, works[]
       作品 DyWorkVO: awemeId, title, coverUrl, desc, createTime, diggCount,
         commentCount, shareCount, playCount, interactiveCount, workUrl
     """
     credential = get_api_key()
 
-    url = "https://redfox.hk/story/api/dyUser/querySimilarAccounts"
+    url = "https://yige.zone/story/api/dyUser/querySimilarAccounts"
     headers = {
         "Content-Type": "application/json",
         "X-API-KEY": credential
@@ -468,22 +468,22 @@ def _describe_like_level(like_rate):
 # 推荐理由生成
 # ============================================================
 
-def generate_recommendation_reason(account, query_avg_play=None, query_redfox_index=None):
+def generate_recommendation_reason(account, query_avg_play=None, query_yige_index=None):
     """生成推荐理由：基于账号数据、内容数据、更新节奏等多维度总结值得学习点
 
-    当查询账号红狐指数为0时，走「学习点总结」模式：
+    当查询账号一格指数为0时，走「学习点总结」模式：
     基于账号数据、内容数据、更新节奏、整体内容策略定位等总结该账号的值得学习点
     eg: 同赛道近7天2篇爆文，全聚焦于历史人物、历史事件的深度分析，路径可复制
 
-    当查询账号红狐指数>0时，走标准8级维度模式。
+    当查询账号一格指数>0时，走标准8级维度模式。
     """
-    # 判断是否走「学习点总结」模式（查询账号红狐指数为0）
-    is_zero_redfox = query_redfox_index is None or query_redfox_index <= 0
+    # 判断是否走「学习点总结」模式（查询账号一格指数为0）
+    is_zero_yige = query_yige_index is None or query_yige_index <= 0
 
-    if is_zero_redfox:
+    if is_zero_yige:
         return _generate_learning_point_reason(account, query_avg_play)
 
-    # ===== 以下为标准8级维度模式（红狐指数>0） =====
+    # ===== 以下为标准8级维度模式（一格指数>0） =====
     parts = []
 
     works = account.get("works") or []
@@ -568,17 +568,17 @@ def generate_recommendation_reason(account, query_avg_play=None, query_redfox_in
         if like_rate and like_rate >= 0.01:
             parts.append(_describe_like_level(like_rate))
 
-    # 6. 粉丝量级 + 总获赞 + 红狐指数对比
+    # 6. 粉丝量级 + 总获赞 + 一格指数对比
     if follower_count > 0:
         parts.append(f"粉丝{format_number(follower_count)}，总获赞{format_number(total_favorited)}")
 
-    redfox_index = account.get("redfoxIndex")
-    if redfox_index is not None and query_redfox_index is not None and query_redfox_index > 0:
-        diff = redfox_index - query_redfox_index
+    yige_index = account.get("yigeIndex")
+    if yige_index is not None and query_yige_index is not None and query_yige_index > 0:
+        diff = yige_index - query_yige_index
         if diff > 0:
-            parts.append(f"红狐指数{redfox_index:.1f}，高出你{diff:.1f}点")
+            parts.append(f"一格指数{yige_index:.1f}，高出你{diff:.1f}点")
         elif abs(diff) < 5:
-            parts.append(f"红狐指数{redfox_index:.1f}，与你接近")
+            parts.append(f"一格指数{yige_index:.1f}，与你接近")
 
     # 7. 近7天互动数据
     if interactive_count_seven > 0 and effective_avg == 0:
@@ -612,7 +612,7 @@ def generate_recommendation_reason(account, query_avg_play=None, query_redfox_in
 
 
 def _generate_learning_point_reason(account, query_avg_play=None):
-    """红狐指数为0时的推荐理由：基于账号数据、内容数据、更新节奏、整体内容策略定位等总结值得学习点
+    """一格指数为0时的推荐理由：基于账号数据、内容数据、更新节奏、整体内容策略定位等总结值得学习点
 
     eg: 同赛道近7天2篇爆文，全聚焦于历史人物、历史事件的深度分析，路径可复制
     """
@@ -753,7 +753,7 @@ def format_account_info(account, label="查询账号"):
     province = account.get("province") or ""
     city = account.get("city") or ""
     ip_location = account.get("ipLocation") or ""
-    redfox_index = account.get("redfoxIndex")
+    yige_index = account.get("yigeIndex")
     crawl_time = account.get("crawlTime") or ""
 
     lines.append(f"- 账号名称：[{nickname}]({url})")
@@ -773,8 +773,8 @@ def format_account_info(account, label="查询账号"):
     lines.append(f"- 粉丝数：{format_number(follower_count)}")
     lines.append(f"- 总获赞数：{format_number(total_favorited)}")
     lines.append(f"- 作品总数：{format_number(aweme_count)}")
-    if redfox_index is not None:
-        lines.append(f"- 红狐指数：{redfox_index}")
+    if yige_index is not None:
+        lines.append(f"- 一格指数：{yige_index}")
     lines.append(f"- 近7天发布数：{aweme_count_seven}")
     lines.append(f"- 近7天互动量：{format_number(interactive_count_seven)}")
     if interactive_count_thirty:
@@ -804,12 +804,12 @@ def format_account_info(account, label="查询账号"):
     return "\n".join(lines)
 
 
-def format_table(accounts, title_line, query_avg_play=None, query_redfox_index=None, current_account=None):
-    """格式化对标账号Markdown表格（含红狐指数），本账号置首行"""
+def format_table(accounts, title_line, query_avg_play=None, query_yige_index=None, current_account=None):
+    """格式化对标账号Markdown表格（含一格指数），本账号置首行"""
     lines = []
     lines.append(title_line)
     lines.append("")
-    lines.append("| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 红狐指数 | 指数差距 | 推荐理由 |")
+    lines.append("| 账号名称 | 粉丝数 | 总获赞 | 近7天互动 | 一格指数 | 指数差距 | 推荐理由 |")
     lines.append("| --- | --- | --- | --- | --- | --- | --- |")
 
     # 本账号置首行
@@ -827,17 +827,17 @@ def format_table(accounts, title_line, query_avg_play=None, query_redfox_index=N
         ca_followers = current_account.get("followerCount") or 0
         ca_favorited = current_account.get("totalFavorited") or 0
         ca_interactive_seven = current_account.get("interactiveCountSeven") or 0
-        ca_redfox = current_account.get("redfoxIndex")
+        ca_yige = current_account.get("yigeIndex")
 
         ca_link = f"**[{ca_nickname}]({ca_url})**"
         ca_followers_display = format_number(ca_followers)
         ca_favorited_display = format_number(ca_favorited)
         ca_interactive_display = format_number(ca_interactive_seven)
-        ca_redfox_display = f"{ca_redfox:.1f}" if ca_redfox is not None else "-"
+        ca_yige_display = f"{ca_yige:.1f}" if ca_yige is not None else "-"
         ca_diff_display = "本账号"
         ca_reason = "「**本账号**」"
 
-        lines.append(f"| {ca_link} | {ca_followers_display} | {ca_favorited_display} | {ca_interactive_display} | {ca_redfox_display} | {ca_diff_display} | {ca_reason} |")
+        lines.append(f"| {ca_link} | {ca_followers_display} | {ca_favorited_display} | {ca_interactive_display} | {ca_yige_display} | {ca_diff_display} | {ca_reason} |")
 
     for account in accounts:
         nickname = account.get("nickname") or "未知"
@@ -853,17 +853,17 @@ def format_table(accounts, title_line, query_avg_play=None, query_redfox_index=N
         follower_count = account.get("followerCount") or 0
         total_favorited = account.get("totalFavorited") or 0
         interactive_count_seven = account.get("interactiveCountSeven") or 0
-        redfox_index = account.get("redfoxIndex")
+        yige_index = account.get("yigeIndex")
 
         account_link = f"[{nickname}]({url})"
         followers_display = format_number(follower_count)
         favorited_display = format_number(total_favorited)
         interactive_display = format_number(interactive_count_seven)
-        redfox_display = f"{redfox_index:.1f}" if redfox_index is not None else "-"
+        yige_display = f"{yige_index:.1f}" if yige_index is not None else "-"
 
         # 计算指数差距
-        if redfox_index is not None and query_redfox_index is not None and query_redfox_index > 0:
-            diff = redfox_index - query_redfox_index
+        if yige_index is not None and query_yige_index is not None and query_yige_index > 0:
+            diff = yige_index - query_yige_index
             if diff > 0:
                 diff_display = f"+{diff:.1f}"
             elif diff < 0:
@@ -873,13 +873,13 @@ def format_table(accounts, title_line, query_avg_play=None, query_redfox_index=N
         else:
             diff_display = "-"
 
-        recommendation = generate_recommendation_reason(account, query_avg_play, query_redfox_index)
-        lines.append(f"| {account_link} | {followers_display} | {favorited_display} | {interactive_display} | {redfox_display} | {diff_display} | {recommendation} |")
+        recommendation = generate_recommendation_reason(account, query_avg_play, query_yige_index)
+        lines.append(f"| {account_link} | {followers_display} | {favorited_display} | {interactive_display} | {yige_display} | {diff_display} | {recommendation} |")
 
     return "\n".join(lines)
 
 
-def generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play=None, query_redfox_index=None):
+def generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play=None, query_yige_index=None):
     """生成深度分析：共通点 + 差异 + 建议"""
     lines = []
     lines.append("")
@@ -922,11 +922,11 @@ def generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play=N
         avg_followers = sum(follower_counts) / len(follower_counts)
         common_points.append(f"- 粉丝量级：相似账号平均粉丝{format_number(avg_followers)}，处于同一发展阶段")
 
-    # 红狐指数分布
-    redfox_indices = [acc.get("redfoxIndex") for acc in all_accounts if acc.get("redfoxIndex") is not None]
-    if redfox_indices:
-        avg_redfox = sum(redfox_indices) / len(redfox_indices)
-        common_points.append(f"- 红狐指数：相似账号平均{avg_redfox:.1f}")
+    # 一格指数分布
+    yige_indices = [acc.get("yigeIndex") for acc in all_accounts if acc.get("yigeIndex") is not None]
+    if yige_indices:
+        avg_yige = sum(yige_indices) / len(yige_indices)
+        common_points.append(f"- 一格指数：相似账号平均{avg_yige:.1f}")
 
     if common_points:
         lines.extend(common_points)
@@ -938,24 +938,24 @@ def generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play=N
     lines.append("📊 **差异分析**")
     diff_points = []
 
-    # 红狐指数差异
-    if query_redfox_index is not None:
-        benchmark_redfox = [acc.get("redfoxIndex") for acc in (benchmark_accounts or []) if acc.get("redfoxIndex") is not None]
-        top_redfox = [acc.get("redfoxIndex") for acc in (top_accounts or []) if acc.get("redfoxIndex") is not None]
-        if benchmark_redfox:
-            avg_bench = sum(benchmark_redfox) / len(benchmark_redfox)
-            diff = avg_bench - query_redfox_index
+    # 一格指数差异
+    if query_yige_index is not None:
+        benchmark_yige = [acc.get("yigeIndex") for acc in (benchmark_accounts or []) if acc.get("yigeIndex") is not None]
+        top_yige = [acc.get("yigeIndex") for acc in (top_accounts or []) if acc.get("yigeIndex") is not None]
+        if benchmark_yige:
+            avg_bench = sum(benchmark_yige) / len(benchmark_yige)
+            diff = avg_bench - query_yige_index
             direction = "高" if diff > 0 else "低"
-            diff_points.append(f"- 红狐指数差距：对标账号平均{avg_bench:.1f}，比你{direction}{abs(diff):.1f}点")
-        if top_redfox:
-            max_top = max(top_redfox)
-            diff = max_top - query_redfox_index
+            diff_points.append(f"- 一格指数差距：对标账号平均{avg_bench:.1f}，比你{direction}{abs(diff):.1f}点")
+        if top_yige:
+            max_top = max(top_yige)
+            diff = max_top - query_yige_index
             if diff > 0:
-                diff_points.append(f"- 头部差距：头部标杆最高红狐指数{max_top:.1f}，比你高{diff:.1f}点")
+                diff_points.append(f"- 头部差距：头部标杆最高一格指数{max_top:.1f}，比你高{diff:.1f}点")
             elif diff < 0:
-                diff_points.append(f"- 红狐指数领先：你的红狐指数{query_redfox_index:.1f}已超过头部标杆最高{max_top:.1f}，表现优异")
+                diff_points.append(f"- 一格指数领先：你的一格指数{query_yige_index:.1f}已超过头部标杆最高{max_top:.1f}，表现优异")
             else:
-                diff_points.append(f"- 红狐指数持平：你的红狐指数与头部标杆最高{max_top:.1f}一致")
+                diff_points.append(f"- 一格指数持平：你的一格指数与头部标杆最高{max_top:.1f}一致")
 
     if query_avg_play and query_avg_play > 0:
         # 对标账号播放量差异
@@ -1028,7 +1028,7 @@ def generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play=N
     return "\n".join(lines)
 
 
-def format_output(current_account, benchmark_accounts, top_accounts, query_avg_play=None, query_redfox_index=None):
+def format_output(current_account, benchmark_accounts, top_accounts, query_avg_play=None, query_yige_index=None):
     """格式化完整文本输出（适配新版接口）"""
     output_lines = []
 
@@ -1052,15 +1052,15 @@ def format_output(current_account, benchmark_accounts, top_accounts, query_avg_p
 
         if benchmark_accounts:
             total_bench = bench_count + (1 if current_account else 0)
-            table_title = f"👉【对标账号（{total_bench}个）】（红狐指数向上最近的账号，可直接复制玩法）"
-            output_lines.append(format_table(benchmark_accounts, table_title, query_avg_play, query_redfox_index, current_account))
+            table_title = f"👉【对标账号（{total_bench}个）】（一格指数向上最近的账号，可直接复制玩法）"
+            output_lines.append(format_table(benchmark_accounts, table_title, query_avg_play, query_yige_index, current_account))
 
         if top_accounts:
-            table_title = f"👉【头部账号（{top_count}个）】（同分类红狐指数倒序前5，模式成熟可追赶）"
-            output_lines.append(format_table(top_accounts, table_title, query_avg_play, query_redfox_index))
+            table_title = f"👉【头部账号（{top_count}个）】（同分类一格指数倒序前5，模式成熟可追赶）"
+            output_lines.append(format_table(top_accounts, table_title, query_avg_play, query_yige_index))
 
         # 深度分析
-        analysis = generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play, query_redfox_index)
+        analysis = generate_analysis_summary(benchmark_accounts, top_accounts, query_avg_play, query_yige_index)
         if analysis:
             output_lines.append(analysis)
     else:
@@ -1072,7 +1072,7 @@ def format_output(current_account, benchmark_accounts, top_accounts, query_avg_p
     output_lines.append("")
     if crawl_time:
         output_lines.append(f"*数据更新时间：{crawl_time}*")
-    output_lines.append("*红狐指数：每周更新，若统计周期内账号未发布作品，红狐指数可能为0。*")
+    output_lines.append("*一格指数：每周更新，若统计周期内账号未发布作品，一格指数可能为0。*")
 
     # 订阅服务提示
     account_name = current_account.get("nickname") or account_id if current_account else account_id
@@ -1116,15 +1116,15 @@ def main():
 
         # 计算当前账号的平均播放量
         query_avg_play = None
-        query_redfox_index = None
+        query_yige_index = None
         if current_account:
             works = current_account.get("works") or []
             if works:
                 query_avg_play = sum(w.get("playCount") or 0 for w in works) / len(works)
-            query_redfox_index = current_account.get("redfoxIndex")
+            query_yige_index = current_account.get("yigeIndex")
 
         # 格式化输出
-        result = format_output(current_account, benchmark_accounts, top_accounts, query_avg_play, query_redfox_index)
+        result = format_output(current_account, benchmark_accounts, top_accounts, query_avg_play, query_yige_index)
         print(result)
 
     except Exception as e:

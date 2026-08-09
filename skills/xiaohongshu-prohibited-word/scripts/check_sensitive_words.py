@@ -24,10 +24,10 @@ except ImportError as e:
 MAX_CONTENT_LENGTH = 3000
 
 # API地址
-API_URL = "https://redfox.hk/story/api/cozeSkill/sensitiveWordSearch"
+API_URL = "https://yige.zone/story/api/cozeSkill/sensitiveWordSearch"
 
 # 环境变量名
-ENV_KEY_NAME = "REDFOX_API_KEY"
+ENV_KEY_NAME = "YIGE_API_KEY"
 
 # Shell 配置文件列表（按优先级排序，跨平台通用）
 SHELL_CONFIG_FILES = [
@@ -41,9 +41,9 @@ SHELL_CONFIG_FILES = [
 
 def _get_api_key():
     """
-    获取 红狐Hub API Key。
+    获取 一格Hub API Key。
     优先级：
-    1. 环境变量 REDFOX_API_KEY
+    1. 环境变量 YIGE_API_KEY
     2. 从 Shell 配置文件中读取
     3. 抛出异常提示用户配置
     """
@@ -62,7 +62,7 @@ def _get_api_key():
             content = config_path.read_text(encoding="utf-8", errors="replace")
         except Exception:
             continue
-        # 匹配 export REDFOX_API_KEY="value" 或 export REDFOX_API_KEY=value 或 REDFOX_API_KEY=value
+        # 匹配 export YIGE_API_KEY="value" 或 export YIGE_API_KEY=value 或 YIGE_API_KEY=value
         for pattern in [
             rf'export\s+{ENV_KEY_NAME}\s*=\s*["\']([^"\']+)["\']',
             rf'export\s+{ENV_KEY_NAME}\s*=\s*([^\s]+)',
@@ -77,9 +77,9 @@ def _get_api_key():
 
     # 3) 未找到
     raise ValueError(
-        f"未检测到 红狐Hub API Key。请将 {ENV_KEY_NAME} 设置为环境变量，格式为 ak_xxxxxxxx。\n"
-        "获取方式：访问 https://redfox.hk/login 注册登录后，在个人中心获取 API Key。\n"
-        "配置示例：export REDFOX_API_KEY=ak_xxxxxxxx"
+        f"未检测到 一格Hub API Key。请将 {ENV_KEY_NAME} 设置为环境变量，格式为 ak_xxxxxxxx。\n"
+        "获取方式：访问 https://yige.zone/login 注册登录后，在个人中心获取 API Key。\n"
+        "配置示例：export YIGE_API_KEY=ak_xxxxxxxx"
     )
 
 

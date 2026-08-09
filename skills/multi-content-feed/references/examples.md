@@ -158,7 +158,7 @@ python3 assets/daily_report.py --keyword "AI" --platforms "0,3" --latest
 └─────────────────────────────────────────────────┘
 
 Generated at 2026-06-16 10:30:45 by 全网内容出海信息源 Skill
-数据说明:每日15:00更新前一天的数据 | 数据来源:红狐Hub
+数据说明:每日15:00更新前一天的数据 | 数据来源:一格Hub
 ```
 
 ### 终端摘要输出
@@ -257,18 +257,18 @@ Agent:(直接执行 python3 daily_report.py --date 2026-06-10,无需确认)
 ### 问题1:API Key未配置
 
 ```
-❌ 错误:未找到 REDFOX_API_KEY 环境变量
-请先配置:export REDFOX_API_KEY=<你的apikey>
+❌ 错误:未找到 YIGE_API_KEY 环境变量
+请先配置:export YIGE_API_KEY=<你的apikey>
 ```
 
 **解决**:
 ```bash
 # macOS/Linux
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
 source ~/.zshrc
 
 # 验证
-echo $REDFOX_API_KEY
+echo $YIGE_API_KEY
 ```
 
 ### 问题2:目标日期无数据

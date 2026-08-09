@@ -38,10 +38,10 @@ A smart hot trend tool that tracks Douyin trending topics in real time, uncovers
 
 ## API Key Acquisition & Security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is provided by [RedFoxHub](https://redfox.hk/settings/api-keys?source=github) (`https://redfox.hk`).
-- Register an account at [RedFoxHub](https://redfox.hk?source=github) to obtain your `REDFOX_API_KEY`.
-- Configure the device environment variable `REDFOX_API_KEY` before using this skill.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is provided by [YigeHub](https://yige.zone/settings/api-keys?source=github) (`https://yige.zone`).
+- Register an account at [YigeHub](https://yige.zone?source=github) to obtain your `YIGE_API_KEY`.
+- Configure the device environment variable `YIGE_API_KEY` before using this skill.
 - Before providing a key, confirm its source, scope, expiration, and whether it supports reset/revocation.
 - Never hardcode or expose the key in plaintext in code, prompts, logs, or output files.
 

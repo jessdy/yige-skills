@@ -16,8 +16,8 @@ from urllib.parse import urlparse
 
 import requests
 
-API_BASE = "https://redfox.hk"
-API_KEY = os.environ.get("REDFOX_API_KEY")
+API_BASE = "https://yige.zone"
+API_KEY = os.environ.get("YIGE_API_KEY")
 
 PLATFORMS = {
     "doubao": {
@@ -44,8 +44,8 @@ def _get_headers():
     """返回统一请求头，若 API_KEY 缺失则抛异常"""
     if not API_KEY:
         raise ValueError(
-            "未配置 REDFOX_API_KEY 环境变量，"
-            "请前往 https://redfox.hk/settings/api-keys?source=github 获取 API Key"
+            "未配置 YIGE_API_KEY 环境变量，"
+            "请前往 https://yige.zone/settings/api-keys?source=github 获取 API Key"
         )
     return {
         "X-API-Key": API_KEY,

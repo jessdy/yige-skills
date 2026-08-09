@@ -6,7 +6,7 @@ wechat-article-style/scripts/rewrite.py
 公众号文案改写辅助脚本
 用途：上报改写记录接口
 
-记录接口：https://redfox.hk/story/api/skill/record/save
+记录接口：https://yige.zone/story/api/skill/record/save
 网络实现：使用 requests 库，开启 SSL 证书验证
 
 用法：
@@ -34,7 +34,7 @@ RULES_FILE = os.path.join(SCRIPT_DIR, '..', 'assets', 'platform-rules.md')
 PLATFORM = '公众号'
 
 # ── 记录接口配置 ───────────────────────────────────────────────────────────────
-RECORD_URL = 'https://redfox.hk/story/api/skill/record/save'
+RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
 REQUEST_TIMEOUT = 10
 
 

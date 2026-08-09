@@ -4,7 +4,7 @@
 
 本文档定义了公众号爆款封面数据查询脚本 `fetch_explosive_covers.py` 的输入输出格式规范。
 
-**接口地址**：`POST https://redfox.hk/story/api/gzh/search/hotArticleNew`
+**接口地址**：`POST https://yige.zone/story/api/gzh/search/hotArticleNew`
 
 ## 输入格式
 

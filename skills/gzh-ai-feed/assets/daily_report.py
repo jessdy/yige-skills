@@ -30,10 +30,10 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/parseWork/queryAiMsgs"
+API_URL = "https://yige.zone/story/api/parseWork/queryAiMsgs"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "AI公众号信息源-GitHub"
 
 DEFAULT_KEYWORDS = ["AI", "人工智能", "大模型", "GPT", "Agent", "AI绘画"]
@@ -145,7 +145,7 @@ def fetch_articles(session, keywords, target_count):
             page_articles = fetch_page(session, kw, page)
             if not page_articles:
                 if page == 1 and i == 0:
-                    warn(f"关键词 \"{kw}\" 暂无内容（当前仅搜索 AI 相关公众号，更多内容请访问 https://redfox.hk/settings/api-keys?source=github）")
+                    warn(f"关键词 \"{kw}\" 暂无内容（当前仅搜索 AI 相关公众号，更多内容请访问 https://yige.zone/settings/api-keys?source=github）")
                 break
 
             new_count = 0
@@ -687,7 +687,7 @@ def remove_subscription():
 
 # ─── API 代理 HTTP 服务 ─────────────────────────────────────────────────────────────
 class ProxyHTTPHandler(SimpleHTTPRequestHandler):
-    """静态文件服务 + /api/search 代理到 redfox.hk"""
+    """静态文件服务 + /api/search 代理到 yige.zone"""
     api_key = None
     search_url = API_URL
 
@@ -806,11 +806,11 @@ Examples:
         print(f"{RED}╔══════════════════════════════════════════════════╗{RESET}")
         print(f"{RED}║  未配置 API Key，请通过以下方式之一配置：      ║{RESET}")
         print(f"{RED}║                                                ║{RESET}")
-        print(f"{RED}║  export REDFOX_API_KEY=ak_你的密钥             ║{RESET}")
+        print(f"{RED}║  export YIGE_API_KEY=ak_你的密钥             ║{RESET}")
         print(f"{RED}║  python3 daily_report.py --api-key ak_你的密钥  ║{RESET}")
-        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/redfox.json ║" + RESET)
+        print(RED + "║  echo '{\"api_key\":\"ak_你的密钥\"}' > ~/.qoder/apis/yige.json ║" + RESET)
         print(f"{RED}║                                                ║{RESET}")
-        print(f"{RED}║  注册获取 Key: https://redfox.hk/settings/api-keys ║{RESET}")
+        print(f"{RED}║  注册获取 Key: https://yige.zone/settings/api-keys ║{RESET}")
         print(f"{RED}╚══════════════════════════════════════════════════╝{RESET}")
         sys.exit(1)
 
@@ -842,7 +842,7 @@ Examples:
     if not articles:
         error("未获取到任何文章")
         print(f"\n{YELLOW}  提示：当前仅搜索 AI 相关公众号作品。{RESET}")
-        print(f"{YELLOW}  如需搜索全量公众号内容，请访问 https://redfox.hk/settings/api-keys?source=github 获取公众号搜索 Skill{RESET}")
+        print(f"{YELLOW}  如需搜索全量公众号内容，请访问 https://yige.zone/settings/api-keys?source=github 获取公众号搜索 Skill{RESET}")
         sys.exit(1)
 
     info(f"扫描完成: {len(articles)} 篇热门文章")

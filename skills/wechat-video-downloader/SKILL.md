@@ -21,10 +21,10 @@ description: "一键解析视频号视频的真实下载地址。粘贴视频号
 
 ### 鉴权
 
-前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY
+前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY
 
 配置方式：
-1. 设置环境变量 `REDFOX_API_KEY`
+1. 设置环境变量 `YIGE_API_KEY`
 2. 或在 `~/.openclaw/openclaw.json` 中配置
 
 ### 快速开始

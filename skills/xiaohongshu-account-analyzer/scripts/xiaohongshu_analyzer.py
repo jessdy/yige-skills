@@ -11,7 +11,7 @@ import urllib.request
 from datetime import datetime, timedelta
 
 # 统一未收录提示
-UNIFIED_NOT_FOUND_MSG = "未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系红狐数据咨询：redfoxdata@proton.me"
+UNIFIED_NOT_FOUND_MSG = "未查询到相关账号：当前 Skill 仅收录热门账号。如需定制数据，可邮件联系一格数据咨询：yigedata@proton.me"
 
 # 导入HTML检查模块和生成模块
 try:
@@ -42,15 +42,15 @@ except ImportError:
     MULTI_REPORT_DATA_FILE = html_generator.MULTI_REPORT_DATA_FILE
 
 
-API_BASE_URL = "https://redfox.hk/story/api/xhsUser/query"
+API_BASE_URL = "https://yige.zone/story/api/xhsUser/query"
 RAW_DATA_FILE = "raw_data.json"
 
 
 def _get_api_key():
-    """从当前环境变量获取 REDFOX_API_KEY"""
-    api_key = os.environ.get("REDFOX_API_KEY", "")
+    """从当前环境变量获取 YIGE_API_KEY"""
+    api_key = os.environ.get("YIGE_API_KEY", "")
     if not api_key:
-        raise SystemExit("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>")
+        raise SystemExit("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>")
     return api_key
 
 
@@ -1323,7 +1323,7 @@ def cmd_sync_notes(red_ids, account_names=None):
         red_ids: 小红书账号ID列表（redId）
         account_names: 账号名称列表（可选）
     """
-    SYNC_API_URL = "https://redfox.hk/story/api/xhsUser/syncUserNotes"
+    SYNC_API_URL = "https://yige.zone/story/api/xhsUser/syncUserNotes"
     results = []
 
     for i, red_id in enumerate(red_ids):

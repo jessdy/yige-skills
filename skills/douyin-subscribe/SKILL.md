@@ -7,7 +7,7 @@ description_zh: 抖音账号订阅追踪工具，订阅后每日9点自动拉取
 description_en: Subscribe to Douyin accounts and get their latest works pulled automatically at 9:00 every day with a polished HTML report.
 category: data
 version: 1.1.0
-author: 红狐数据
+author: 一格数据
 ---
 
 # 抖音账号订阅追踪
@@ -35,20 +35,20 @@ author: 红狐数据
 
 ### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 ### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ---
@@ -176,7 +176,7 @@ python3 subscribe.py fetch --accounts "YuZhouXiaoLi1220,Fish688688" --html
    - **接口返回正常数据**：
      - **静默执行** add 订阅（见下一步）
    - **近 30 天无数据，自动回溯半年后仍无数据**：
-     - 告知用户：「抱歉您订阅的“xxx”账号近半年都未发布过作品，如果需要数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+     - 告知用户：「抱歉您订阅的“xxx”账号近半年都未发布过作品，如果需要数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
      - **询问用户**：「是否订阅明日推送？」
      - 用户回答「订阅」→ **静默执行** add 订阅
      - 用户未确认 → 不订阅
@@ -264,7 +264,7 @@ Agent 执行 fetch 后，**必须在对话回复中按以下格式输出数据**
 
 并附上获取抖音号的示例图供用户参考：
 
-![获取抖音号示例](https://lyy.redfox.hk/page/ljq.png)
+![获取抖音号示例](https://lyy.yige.zone/page/ljq.png)
 
 ### 数据规则
 
@@ -272,14 +272,14 @@ Agent 执行 fetch 后，**必须在对话回复中按以下格式输出数据**
 - **规则 1：未订阅账号（首次验证查询）**：
   - 默认查询近 30 天数据
   - 若近 30 天无数据，自动回溯近半年（180 天）
-  - 若近半年仍无数据，告知用户：「抱歉您订阅的“xxx”账号近半年都未发布过作品，如果需要数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+  - 若近半年仍无数据，告知用户：「抱歉您订阅的“xxx”账号近半年都未发布过作品，如果需要数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
 - **规则 2：已订阅账号（日常拉取）**：
   - 默认查前一天数据（T-1）
   - 若昨日无数据，告知用户：「昨日该账号暂未发布作品」
-  - 结尾固定提示：「如果需要数据核查可联系工作人员邮箱 redfoxdata@proton.me 处理」
+  - 结尾固定提示：「如果需要数据核查可联系工作人员邮箱 yigedata@proton.me 处理」
 - **规则 3：失败阈值保护**：
   - 同一抖音号在 6 小时内累计 3 次 API 调用失败后，后续请求将被拒绝
-  - 拒绝时提示：「当前账号订阅已超过失败阈值，请联系客服邮箱 redfoxdata@proton.me 处理」
+  - 拒绝时提示：「当前账号订阅已超过失败阈值，请联系客服邮箱 yigedata@proton.me 处理」
   - 距上次失败超过 6 小时 / 同一账号查询成功，计数归零，恢复正常调用
 - **用户指定日期不回溯**：若用户明确指定了日期或日期范围，查不到数据时直接告知用户，不自动回溯
 - **支持日期范围查询**：用户可指定起止日期（`--date-start YYYY-MM-DD --date-end YYYY-MM-DD`）拉取历史作品

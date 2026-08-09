@@ -7,7 +7,7 @@ description: 今日头条爆款内容查询 — 输入关键词搜索今日头�
 
 输入关键词搜索今日头条最新作品（图文/视频），终端表格展示 + CSV 导出 + 交互式 HTML 报告。
 
-> 需先配置 API Key，通过环境变量 REDFOX_API_KEY 或 --api-key 参数传入。
+> 需先配置 API Key，通过环境变量 YIGE_API_KEY 或 --api-key 参数传入。
 > 搜索范围：今日头条平台**最新发布的作品**，实时拉取，无缓存延迟。
 
 ---
@@ -110,11 +110,11 @@ CSV / HTML 默认保存在 `~/Downloads/QoderToutiaoSearch/`。
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
-注册地址：[redfox.hk](https://redfox.hk/settings/api-keys?source=github)
+注册地址：[yige.zone](https://yige.zone/settings/api-keys?source=github)
 
 ---
 
@@ -154,7 +154,7 @@ A：搜索接口只返回基础信息，同时提供单作品补全阅读量、�
 A：可以让 AI 为你导出 Excel，也可以让 AI 导出 HTML。
 
 **Q：额度用完怎么办？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 Token。
 
 **Q：最多能获取多少条？**
 A：每页约 10 条，默认翻 3 页（约 30 条）。可通过 `--pages` 参数调整。

@@ -5,7 +5,7 @@ description: 小红书视频下载 — 粘贴小红书视频链接，一键解�
 
 # 小红书视频下载
 
-粘贴小红书视频链接，一键获取无水印视频下载直链。通过 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 服务解析，支持单个或批量链接处理，自动识别并校验小红书视频链接。
+粘贴小红书视频链接，一键获取无水印视频下载直链。通过 [yige.zone](https://yige.zone/settings/api-keys?source=github) 服务解析，支持单个或批量链接处理，自动识别并校验小红书视频链接。
 
 ---
 
@@ -36,8 +36,8 @@ description: 小红书视频下载 — 粘贴小红书视频链接，一键解�
 
 ## 一键安装
 
-1. 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key
-2. 配置环境变量：`export REDFOX_API_KEY=ark_你的密钥`
+1. 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key
+2. 配置环境变量：`export YIGE_API_KEY=ark_你的密钥`
 3. 粘贴小红书视频链接即可使用
 
 ---
@@ -78,7 +78,7 @@ description: 小红书视频下载 — 粘贴小红书视频链接，一键解�
 ## 常见问答
 
 **Q：如何获取自己的 API Key？**
-A：前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册即可获取 Token。
+A：前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册即可获取 Token。
 
 **Q：下载的视频有水印吗？**
 A：没有。返回的是无水印视频直链。
@@ -96,4 +96,4 @@ A：确认链接是否完整、视频是否仍然存在、笔记内容是否公�
 
 ## 了解更多
 
-本工具基于 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 的视频解析服务构建。前往官网查看更多功能和使用文档。
+本工具基于 [yige.zone](https://yige.zone/settings/api-keys?source=github) 的视频解析服务构建。前往官网查看更多功能和使用文档。

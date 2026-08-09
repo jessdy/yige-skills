@@ -157,9 +157,9 @@ def main():
     # ── API Key ──
     api_key = get_api_key()
     if not api_key:
-        error("未找到 API Key，请设置 REDFOX_API_KEY 环境变量")
-        print(f"  获取 Key: https://redfox.hk/settings/api-keys?source=github")
-        print(f"  设置方式: export REDFOX_API_KEY=ak_你的密钥")
+        error("未找到 API Key，请设置 YIGE_API_KEY 环境变量")
+        print(f"  获取 Key: https://yige.zone/settings/api-keys?source=github")
+        print(f"  设置方式: export YIGE_API_KEY=ak_你的密钥")
         sys.exit(1)
 
     # ── 创建下载器 ──

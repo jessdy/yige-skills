@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Qoder Video Downloader - API 版本
-使用 redfox.hk API 解析并下载无水印视频/图文
+使用 yige.zone API 解析并下载无水印视频/图文
 支持：抖音、小红书、快手、视频号、B站、YouTube、Instagram、X、TikTok、Threads、Facebook、Vimeo 等
 
 Usage:
@@ -22,11 +22,11 @@ import requests
 warnings.filterwarnings("ignore", category=Warning)
 warnings.filterwarnings("ignore", message=".*NotOpenSSLWarning.*")
 
-API_URL = "https://redfox.hk/story/api/parseWork/parse"
+API_URL = "https://yige.zone/story/api/parseWork/parse"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
 
-ENV_KEY = "REDFOX_API_KEY"
+ENV_KEY = "YIGE_API_KEY"
 PUBLIC_API_KEY = "ak_b45b6a6881f4400fb321428947eb6661"
 
 PLATFORM_MAP = {
@@ -198,7 +198,7 @@ def show_url_guide():
 
 def main():
     parser = argparse.ArgumentParser(
-        description="短视频下载器 - 使用 redfox.hk API 下载无水印视频",
+        description="短视频下载器 - 使用 yige.zone API 下载无水印视频",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -206,8 +206,8 @@ Examples:
   python3 downloader.py https://b23.tv/xxxxxx --api-key ark_xxxxx
   python3 downloader.py https://xhslink.com/o/xxxxxx -o ~/Videos
 
-也可通过环境变量 REDFOX_API_KEY 配置密钥：
-  export REDFOX_API_KEY=ark_xxxxx
+也可通过环境变量 YIGE_API_KEY 配置密钥：
+  export YIGE_API_KEY=ark_xxxxx
   python3 downloader.py <url>
         """,
     )
@@ -255,7 +255,7 @@ Examples:
     info(f"检测到平台: {platform}")
 
     # ── Call API ──
-    step("Calling redfox.hk API...")
+    step("Calling yige.zone API...")
 
     session = requests.Session()
     session.headers.update({
@@ -282,7 +282,7 @@ Examples:
             error("缺少 API Key")
         elif code == 3107:
             error("API Key 无效或已失效，请检查是否正确")
-            print("  配置方式：export REDFOX_API_KEY=ark_你的密钥")
+            print("  配置方式：export YIGE_API_KEY=ark_你的密钥")
         elif code == 400:
             error(f"请求参数错误: {msg}")
         else:

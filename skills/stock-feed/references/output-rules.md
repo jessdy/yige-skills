@@ -95,8 +95,8 @@ HTML 报告已生成：[查看报告](HTML文件路径)
 ---
 
 📌 如果你想订阅股市大V账号动态，第一时间掌握KOL观点变化：
-- [公众号订阅Skill](https://redfox.hk/skills/no/H7TE4PQ3) - 订阅财经公众号，每日自动推送最新文章
-- [抖音订阅Skill](https://redfox.hk/skills/no/bsaEmnyv) - 订阅财经抖音号，每日自动推送最新作品
+- [公众号订阅Skill](https://yige.zone/skills/no/H7TE4PQ3) - 订阅财经公众号，每日自动推送最新文章
+- [抖音订阅Skill](https://yige.zone/skills/no/bsaEmnyv) - 订阅财经抖音号，每日自动推送最新作品
 ```
 
 **引用格式规范（多来源交叉验证）：**
@@ -150,6 +150,6 @@ HTML 报告已生成：[查看报告](HTML文件路径)
 ---
 
 📌 如果你想订阅股市大V账号动态，第一时间掌握KOL观点变化：
-- [公众号订阅Skill](https://redfox.hk/skills/no/H7TE4PQ3) - 订阅财经公众号，每日自动推送最新文章
-- [抖音订阅Skill](https://redfox.hk/skills/no/bsaEmnyv) - 订阅财经抖音号，每日自动推送最新作品
+- [公众号订阅Skill](https://yige.zone/skills/no/H7TE4PQ3) - 订阅财经公众号，每日自动推送最新文章
+- [抖音订阅Skill](https://yige.zone/skills/no/bsaEmnyv) - 订阅财经抖音号，每日自动推送最新作品
 ```

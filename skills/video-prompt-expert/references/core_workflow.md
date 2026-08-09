@@ -4,15 +4,15 @@
 
 ### Step 0: 鉴权前置检查
 
-> 每次技能被触发时，首先检查 `REDFOX_API_KEY` 是否可用。
+> 每次技能被触发时，首先检查 `YIGE_API_KEY` 是否可用。
 
-1. 读取当前环境变量 `REDFOX_API_KEY`
+1. 读取当前环境变量 `YIGE_API_KEY`
 2. 若不存在，尝试从 shell 配置文件读取（macOS/Linux: `~/.zshrc`、`~/.bashrc`；Windows: 用户环境变量）
 3. 若仍不存在，告知用户需要配置 API Key，并引导完成：
-   - 提示用户访问 [红狐Hub](https://redfox.hk/) 注册并获取 API Key
-   - **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
-   - **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
-   - 配置完成后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+   - 提示用户访问 [一格Hub](https://yige.zone/) 注册并获取 API Key
+   - **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc`（zsh）或 `~/.bashrc`（bash），然后 `source` 对应文件使其全局生效
+   - **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端生效）
+   - 配置完成后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 4. 若 API Key 可用，继续执行后续步骤
 
 ### Step 1: 需求分类

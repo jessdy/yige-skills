@@ -36,8 +36,8 @@ Continuously indexing trending notes with 1,000+ engagements from Xiaohongshu ac
 
 ## API key source and security
 
-- This skill requires the environment variable: `REDFOX_API_KEY`.
-- `REDFOX_API_KEY` is issued by [Redfox Hub](https://redfox.hk/dashboard/keys?source=github) (`https://redfox.hk`) for API authentication.
+- This skill requires the environment variable: `YIGE_API_KEY`.
+- `YIGE_API_KEY` is issued by [Yige Hub](https://yige.zone/dashboard/keys?source=github) (`https://yige.zone`) for API authentication.
 - Before providing the key, confirm its source, available scope, validity period, and whether reset/revocation is supported.
 - Do not hard-code or expose the key in plaintext within code, prompts, logs, or output files.
 
@@ -45,22 +45,22 @@ Continuously indexing trending notes with 1,000+ engagements from Xiaohongshu ac
 
 ## Prerequisites
 
-### Register a Redfox Hub account to obtain REDFOX_API_KEY
+### Register a Yige Hub account to obtain YIGE_API_KEY
 
-- Get REDFOX_API_KEY (apply at [Redfox Hub](https://redfox.hk/dashboard/keys?source=github))
+- Get YIGE_API_KEY (apply at [Yige Hub](https://yige.zone/dashboard/keys?source=github))
 
 ### Environment variables
 
 | Variable         | Required | Notes          |
 | ---------------- | -------- | -------------- |
-| `REDFOX_API_KEY` | Yes      | API access key |
+| `YIGE_API_KEY` | Yes      | API access key |
 
 **macOS (zsh)**
 
 Append one line to the end of `~/.zshrc` (replace the value in quotes with your key):
 
 ```bash
-export REDFOX_API_KEY="your_api_key_here"
+export YIGE_API_KEY="your_api_key_here"
 ```
 
 Then run:
@@ -74,13 +74,13 @@ source ~/.zshrc
 - **Current terminal only**: Takes effect immediately after run, **no other commands needed**; lost when the window is closed.
 
 ```powershell
-$env:REDFOX_API_KEY = "your_api_key_here"
+$env:YIGE_API_KEY = "your_api_key_here"
 ```
 
-- **Persist to user environment**: After running `setx`, the **current PowerShell window still won't have the variable**; you need to **close and reopen** the terminal (or restart Cursor / VS Code, etc.) for the new window to read `REDFOX_API_KEY`.
+- **Persist to user environment**: After running `setx`, the **current PowerShell window still won't have the variable**; you need to **close and reopen** the terminal (or restart Cursor / VS Code, etc.) for the new window to read `YIGE_API_KEY`.
 
 ```powershell
-setx REDFOX_API_KEY "your_api_key_here"
+setx YIGE_API_KEY "your_api_key_here"
 ```
 
 ---

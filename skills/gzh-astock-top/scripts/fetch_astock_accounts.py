@@ -24,13 +24,13 @@ import urllib.error
 
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-DAILY_PUBLISH_URL = "https://redfox.hk/story/api/gzh/search/dailyPublish"
+DAILY_PUBLISH_URL = "https://yige.zone/story/api/gzh/search/dailyPublish"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "A股公众号大V-GitHub"
 
-# 固定19个A股个人大V账号（verifyName验证通过，按红狐指数排序）
+# 固定19个A股个人大V账号（verifyName验证通过，按一格指数排序）
 FIXED_PERSONAL_ACCOUNTS = [
     "好运哥2008", "雷立刚本人", "孥孥的大树", "财经作家雷立刚", "凯恩斯",
     "冷眼局中人", "毛有话说", "EarlETF", "研报号角", "齐俊杰看财经",
@@ -94,7 +94,7 @@ def fetch_daily_publish(api_key, account_names, target_date):
     服务端直接按日期筛选，并自带 workUrl，无需二次查询。
     
     Args:
-        api_key: 红狐API Key
+        api_key: 一格数据API Key
         account_names: 账号名列表
         target_date: 目标日期 YYYY-MM-DD
     
@@ -143,7 +143,7 @@ def process_account_data(account):
         "accountName": account_name,
         "accountId": account.get("accountId", "-"),
         "avgReadCount": account.get("avgReadCount", 0),
-        "redfoxIndex": account.get("redfoxIndex", 0),
+        "yigeIndex": account.get("yigeIndex", 0),
         "description": account.get("description", ""),
     }
 
@@ -230,7 +230,7 @@ def main():
     # ── API Key ──
     api_key = get_api_key(cli_key=args.api_key)
     if not api_key:
-        print("❌ 未找到 REDFOX_API_KEY，请配置环境变量：export REDFOX_API_KEY=<你的apikey>", file=sys.stderr)
+        print("❌ 未找到 YIGE_API_KEY，请配置环境变量：export YIGE_API_KEY=<你的apikey>", file=sys.stderr)
         sys.exit(1)
 
     print(f"🔍 A股公众号大V · 查询日期: {args.date}", file=sys.stderr)

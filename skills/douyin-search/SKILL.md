@@ -21,9 +21,9 @@ description: 抖音作品查询工具。根据关键词搜索抖音热门爆款�
 
 ## 🔑 鉴权
 
-- 获取 API Key：前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github)
-- 配置方式1：写入 `~/.openclaw/openclaw.json` → `{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }`
-- 配置方式2：终端执行 `export REDFOX_API_KEY="ak_xxxx..."`
+- 获取 API Key：前往 [一格hub](https://yige.zone/settings/api-keys?source=github)
+- 配置方式1：写入 `~/.openclaw/openclaw.json` → `{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }`
+- 配置方式2：终端执行 `export YIGE_API_KEY="ak_xxxx..."`
 
 ## ⚙️ 工作流程
 

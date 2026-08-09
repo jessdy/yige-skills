@@ -9,7 +9,7 @@ description: "短剧-小红书信息源 — 每日扫描小红书短剧爆款内
 
 **短剧-小红书信息源**是一款专为短剧创作者设计的小红书爆款内容追踪工具,参考AI-B站信息源的功能和样式设计。
 
-通过红狐Hub API,你可以:
+通过一格Hub API,你可以:
 - 📊 每日自动扫描小红书短剧内容,按互动量筛选爆款作品
 - 🏷️ 智能聚类题材方向(穿越/霸总/重生/悬疑等)
 - 📈 生成包含封面图、互动数据与创作洞察的可视化HTML日报
@@ -39,32 +39,32 @@ description: "短剧-小红书信息源 — 每日扫描小红书短剧爆款内
 
 - **⚡ 智能日期判断**:脚本内置 `DATA_UPDATE_HOUR = 15` 常量,调用接口前自动检测目标日期是否在无数据区间
 - **📱 小红书适配**:作品链接自动拼接 `xiaohongshu.com/explore/{photoId}`,互动数据为0的字段自动隐藏
-- **🔒 安全可靠**:API Key通过环境变量 `REDFOX_API_KEY` 获取,禁止硬编码
+- **🔒 安全可靠**:API Key通过环境变量 `YIGE_API_KEY` 获取,禁止硬编码
 
 ## 一键安装
 
 ### 前置条件
 
 - Python 3 运行环境
-- 已注册红狐Hub账号并获取 API Key
+- 已注册一格Hub账号并获取 API Key
 
 ### 安装步骤
 
 #### 1. 获取 API Key
 
-前往 [红狐Hub 官网](https://redfox.hk/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+前往 [一格Hub 官网](https://yige.zone/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 #### 2. 配置环境变量
 
 **macOS/Linux**:
 ```bash
-echo 'export REDFOX_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
+echo 'export YIGE_API_KEY=ak_xxxxxxxx' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Windows**(PowerShell):
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxxxxxxx", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxxxxxxx", "User")
 ```
 配置后需**重启终端**使环境变量生效。
 
@@ -72,17 +72,17 @@ source ~/.zshrc
 
 ```bash
 # macOS/Linux
-echo $REDFOX_API_KEY
+echo $YIGE_API_KEY
 
 # Windows
-echo %REDFOX_API_KEY%
+echo %YIGE_API_KEY%
 ```
 
 ### 环境变量配置
 
 | 变量名 | 必填 | 说明 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 是 | 红狐Hub API访问密钥,通过 `X-API-KEY` 请求头鉴权 |
+| `YIGE_API_KEY` | 是 | 一格Hub API访问密钥,通过 `X-API-KEY` 请求头鉴权 |
 
 ## 使用指南
 
@@ -235,8 +235,8 @@ python3 assets/daily_report.py --latest --output-dir "/Users/xxx/Desktop/Reports
 | 组件 | 技术 | 说明 |
 |------|------|------|
 | 运行环境 | Python 3 | 脚本语言 |
-| 数据源 | 红狐Hub API | `X-API-KEY` 请求头鉴权,`source` 字段追踪来源 |
-| API端点 | `https://redfox.hk/story/api/parseWork/queryPlayletMsgs` | POST请求 |
+| 数据源 | 一格Hub API | `X-API-KEY` 请求头鉴权,`source` 字段追踪来源 |
+| API端点 | `https://yige.zone/story/api/parseWork/queryPlayletMsgs` | POST请求 |
 | 平台标识 | `platform=3` | 小红书(1=抖音,2=视频号) |
 | 来源标识 | `source` | `"短剧小红书信息源-GitHub"` |
 | 数据存储 | JSON缓存 | `~/.workbuddy/cache/playlet_xhs_data.json` |
@@ -271,16 +271,16 @@ HTML日报生成 + 终端摘要输出
 
 ### 安装相关问题
 
-**Q1: 安装时提示 "未找到 REDFOX_API_KEY 环境变量" 怎么办?**
+**Q1: 安装时提示 "未找到 YIGE_API_KEY 环境变量" 怎么办?**
 
 A: 请按以下步骤检查:
-1. 确认 API Key 已正确配置(Windows: `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "ak_xxx", "User")`)
+1. 确认 API Key 已正确配置(Windows: `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "ak_xxx", "User")`)
 2. 配置后需**重启终端**使环境变量生效
-3. 验证: `echo %REDFOX_API_KEY%` 应输出你的Key值
+3. 验证: `echo %YIGE_API_KEY%` 应输出你的Key值
 
 **Q2: API Key 如何获取?**
 
-A: 前往 [红狐Hub 官网](https://redfox.hk/) 注册账号,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+A: 前往 [一格Hub 官网](https://yige.zone/) 注册账号,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 ---
 
@@ -325,7 +325,7 @@ A: 脚本已内置fallback机制,加载失败时自动显示默认封面图(`ass
 
 A:
 - API Key仅通过环境变量获取,禁止硬编码
-- 数据来源唯一:仅使用红狐Hub API,禁止自主采集
+- 数据来源唯一:仅使用一格Hub API,禁止自主采集
 - 缓存文件存储在本地 `~/.workbuddy/cache/`
 
 ## 📚 参考文档
@@ -362,14 +362,14 @@ description: "短剧-小红书信息源 — 每日扫描小红书短剧爆款内
 
 ## 🔑 鉴权
 
-数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `REDFOX_API_KEY` 获取。
+数据查询接口通过请求头 `X-API-KEY` 鉴权,Key 从环境变量 `YIGE_API_KEY` 获取。
 
-**API Key 获取**:前往 [红狐Hub 官网](https://redfox.hk/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
+**API Key 获取**:前往 [一格Hub 官网](https://yige.zone/) 注册,登录后在个人中心获取,格式为 `ak_xxxxxxxx`。新注册用户获赠免费积分。
 
 **配置方式**:
-- **macOS/Linux**:将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
-- **Windows**:`[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")`(需重启终端)
-- 配置后验证:`echo $REDFOX_API_KEY`(macOS/Linux)或 `echo %REDFOX_API_KEY%`(Windows)
+- **macOS/Linux**:将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`,然后 `source` 使其生效
+- **Windows**:`[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")`(需重启终端)
+- 配置后验证:`echo $YIGE_API_KEY`(macOS/Linux)或 `echo %YIGE_API_KEY%`(Windows)
 
 查询接口调用时通过 `source` 字段（固定值 `"短剧小红书信息源-GitHub"`）同步记录,无需额外请求保存接口。
 

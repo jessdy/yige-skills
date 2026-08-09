@@ -48,20 +48,20 @@ dependency:
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中，部分内容如下：
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
 方案2: 终端配置：
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -74,7 +74,7 @@ pip install python-dateutil
 
 | 变量名 | 说明 | 必填 |
 |--------|------|------|
-| `REDFOX_API_KEY` | 红狐 API Key | 是 |
+| `YIGE_API_KEY` | 一格数据 API Key | 是 |
 
 ## 4. 使用指南
 
@@ -290,7 +290,7 @@ trending-hub/
 |------|------|------|
 | 脚本语言 | Python 3 | 使用标准库 urllib.request |
 | 外部依赖 | python-dateutil | 日期处理 |
-| 数据接口 | Redfox API | 多平台热点数据聚合 |
+| 数据接口 | Yige API | 多平台热点数据聚合 |
 | 输出格式 | JSON / Markdown | 结构化和可视化输出 |
 
 ### 核心模块说明
@@ -312,8 +312,8 @@ trending-hub/
 **Q: 脚本运行报错 "ModuleNotFoundError: No module named 'dateutil'"**
 A: 请安装依赖：`pip install python-dateutil`
 
-**Q: 提示 "REDFOX_API_KEY not found"**
-A: 请确保已配置环境变量 `REDFOX_API_KEY`，可参考上方鉴权章节配置。
+**Q: 提示 "YIGE_API_KEY not found"**
+A: 请确保已配置环境变量 `YIGE_API_KEY`，可参考上方鉴权章节配置。
 
 ### 使用相关
 

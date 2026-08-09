@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 抖音账号诊断 - API调用脚本
-基于红狐API接口 /story/api/dyUser/query 查询抖音账号数据和作品数据
+基于一格数据API接口 /story/api/dyUser/query 查询抖音账号数据和作品数据
 """
 
 import os
@@ -11,16 +11,16 @@ from typing import List, Dict, Optional
 
 
 class DouyinUserAPI:
-    """抖音用户API调用类 - 红狐API /story/api/dyUser/query"""
+    """抖音用户API调用类 - 一格数据API /story/api/dyUser/query"""
 
     # API基础地址
-    BASE_URL = "https://redfox.hk"
+    BASE_URL = "https://yige.zone"
 
     # 接口路径（已验证可用）
     QUERY_ENDPOINT = "/story/api/dyUser/query"
 
     # 环境变量名
-    ENV_VAR = "REDFOX_API_KEY"
+    ENV_VAR = "YIGE_API_KEY"
 
     def __init__(self, api_key: Optional[str] = None):
         """
@@ -84,7 +84,7 @@ class DouyinUserAPI:
             msg = result.get("msg", "")
             data = result.get("data")
 
-            # 成功（红狐API成功码为200或2000，兼容新旧版本）
+            # 成功（一格数据API成功码为200或2000，兼容新旧版本）
             if code in (200, 2000):
                 accounts = data if isinstance(data, list) else ([data] if data else [])
                 return {
@@ -220,7 +220,7 @@ class DouyinUserAPI:
             "followerCount": account_data.get("followerCount", 0),
             "awemeCount": account_data.get("awemeCount", 0),
             "totalFavorited": account_data.get("totalFavorited", 0),
-            "redfoxIndex": account_data.get("redfoxIndex"),
+            "yigeIndex": account_data.get("yigeIndex"),
             "crawlTime": account_data.get("crawlTime", ""),
         }
 
@@ -396,7 +396,7 @@ def print_account_summary(result: Dict):
         print(f"\n👥 相似账号（共{len(similar)}个）:")
         for s in similar[:5]:
             classify = CATEGORY_MAP.get(s.get('accountClassifyFirst', ''), s.get('accountClassifyFirst', '-'))
-            print(f"  - {s.get('nickname', '-')} | 粉丝:{format_number(s.get('followerCount'))} | 分类:{classify} | 红狐指数:{s.get('redfoxIndex', '-')}")
+            print(f"  - {s.get('nickname', '-')} | 粉丝:{format_number(s.get('followerCount'))} | 分类:{classify} | 一格指数:{s.get('yigeIndex', '-')}")
 
 
 # 使用示例

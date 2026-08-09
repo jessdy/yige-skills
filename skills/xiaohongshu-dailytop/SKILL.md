@@ -43,7 +43,7 @@ description: 小红书每日爆款笔记是追踪小红书各领域每日趋势�
 
 - Python 3.8 及以上
 - `requests`：`pip install requests`
-- [红狐Hub](https://redfox.hk/) 账号与 API Key（格式 `ak_xxxxxxxx`，新用户注册赠免费积分）
+- [一格Hub](https://yige.zone/) 账号与 API Key（格式 `ak_xxxxxxxx`，新用户注册赠免费积分）
 
 ### 安装方式
 
@@ -52,13 +52,13 @@ description: 小红书每日爆款笔记是追踪小红书各领域每日趋势�
 1. 前往 [SkillHub](https://skillhub.cn) 或 [ClawHub](https://clawhub.ai)
 2. 搜索 **xiaohongshu-dailytop** 或 **小红书每日爆款笔记**
 3. 按平台指引安装技能包
-4. 在对话环境或本机配置 `REDFOX_API_KEY`（见下方）
+4. 在对话环境或本机配置 `YIGE_API_KEY`（见下方）
 
 #### WorkBuddy / 龙虾（本地技能）
 
 1. 将本技能目录放入 WorkBuddy 的 `skills` 路径（如 `~/.workbuddy/skills/xiaohongshu-dailytop`）
 2. 在对话中通过技能名或描述触发（如「查小红书每日爆款笔记」「睫毛膏爆款」）
-3. 配置 `REDFOX_API_KEY` 后重启终端，确保 Agent 与脚本均可读取
+3. 配置 `YIGE_API_KEY` 后重启终端，确保 Agent 与脚本均可读取
 
 #### 命令行独立使用
 
@@ -75,28 +75,28 @@ python scripts/gen_xhs_html.py --keyword "睫毛膏" --top 20 --input_json /tmp/
 
 | 变量名 | 必填 | 说明 |
 | --- | --- | --- |
-| `REDFOX_API_KEY` | 是 | 红狐 API 密钥，格式 `ak_xxxxxxxx` |
+| `YIGE_API_KEY` | 是 | 一格数据 API 密钥，格式 `ak_xxxxxxxx` |
 
-**获取 API Key**：访问 [红狐Hub官网](https://redfox.hk/) → [注册/登录](https://redfox.hk/login) → 个人中心复制 Key。
+**获取 API Key**：访问 [一格Hub官网](https://yige.zone/) → [注册/登录](https://yige.zone/login) → 个人中心复制 Key。
 
 **macOS / Linux**：
 
 ```bash
-echo 'export REDFOX_API_KEY=<你的apikey>' >> ~/.zshrc
+echo 'export YIGE_API_KEY=<你的apikey>' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Windows**（PowerShell）：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<你的apikey>", "User")
+[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<你的apikey>", "User")
 ```
 
-验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）。未生效请重启终端。
+验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）。未生效请重启终端。
 
 **Windows Git Bash 注意事项**：PowerShell 设置的用户级环境变量 Git Bash 可能无法读取，需在命令中显式注入：
 ```bash
-export REDFOX_API_KEY="ak_xxx" && python scripts/xhs_daily_fetcher.py ...
+export YIGE_API_KEY="ak_xxx" && python scripts/xhs_daily_fetcher.py ...
 ```
 
 ---
@@ -260,8 +260,8 @@ xiaohongshu-dailytop/
 | --- | --- |
 | 运行环境 | Python 3.8+ |
 | 核心依赖 | `requests` |
-| 数据来源 | 红狐 API `getXhsCozeSkillDataOne` |
-| 鉴权 | 请求头 `X-API-KEY` ← 环境变量 `REDFOX_API_KEY` |
+| 数据来源 | 一格数据 API `getXhsCozeSkillDataOne` |
+| 鉴权 | 请求头 `X-API-KEY` ← 环境变量 `YIGE_API_KEY` |
 | 部署方式 | SkillHub / ClawHub / WorkBuddy 本地技能 / 命令行 |
 
 ### 核心模块
@@ -278,13 +278,13 @@ xiaohongshu-dailytop/
 
 ### 安装相关问题
 
-**Q1：提示未找到 `REDFOX_API_KEY` 怎么办？**
+**Q1：提示未找到 `YIGE_API_KEY` 怎么办？**
 
-按 [一键安装](#一键安装) 注册 红狐Hub官网 并配置环境变量；配置后重启终端。若用户不会配置，Agent 应协助写入 `~/.zshrc` / `~/.bashrc` 或 Windows 用户级环境变量。
+按 [一键安装](#一键安装) 注册 一格Hub官网 并配置环境变量；配置后重启终端。若用户不会配置，Agent 应协助写入 `~/.zshrc` / `~/.bashrc` 或 Windows 用户级环境变量。
 
 **Q2：如何验证 API Key 已生效？**
 
-执行 `echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows），确认以 `ak_` 开头。
+执行 `echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows），确认以 `ak_` 开头。
 
 **Q3：支持哪些安装/调用方式？**
 

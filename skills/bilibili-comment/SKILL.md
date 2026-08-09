@@ -34,9 +34,9 @@ B站评论分析是一款专为内容创作者、UP主、品牌运营和研究�
 
 ## 鉴权
 
-- 获取 API Key：前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github)
-- 配置方式1：写入 `~/.openclaw/openclaw.json` → `{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }`
-- 配置方式2：终端执行 `export REDFOX_API_KEY="ak_xxxx..."`
+- 获取 API Key：前往 [一格hub](https://yige.zone/settings/api-keys?source=github)
+- 配置方式1：写入 `~/.openclaw/openclaw.json` → `{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }`
+- 配置方式2：终端执行 `export YIGE_API_KEY="ak_xxxx..."`
 
 ## 工作流程
 
@@ -89,7 +89,7 @@ bilibili-comment/
 
 | 模块 | 职责 |
 |------|------|
-| `bili_comment_search.py` | 调用红狐 API 获取评论数据，生成含占位符的 HTML 报告 |
+| `bili_comment_search.py` | 调用一格数据 API 获取评论数据，生成含占位符的 HTML 报告 |
 | `backfill_html.py` | 将 AI 四维分析 JSON 安全回填至 HTML 报告，支持文件直读模式 |
 | `report_template.html` | 深色主题交互式报告模板 |
 
@@ -99,9 +99,9 @@ bilibili-comment/
 
 ### 安装相关
 
-**Q1: 如何获取 REDFOX_API_KEY？**
+**Q1: 如何获取 YIGE_API_KEY？**
 
-A: 前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 注册账号并申请 API Key，按鉴权章节说明配置到本地环境变量。
+A: 前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 注册账号并申请 API Key，按鉴权章节说明配置到本地环境变量。
 
 **Q2: 需要安装额外依赖吗？**
 
@@ -111,7 +111,7 @@ A: 不需要。脚本使用 Python 标准库 `urllib`，Python 3.6+ 环境即可
 
 **Q3: 一次能获取多少条评论？**
 
-A: 每次调用获取1页（20条）。如需更多数据，通过翻页命令逐页获取，或前往 [红狐平台](https://redfox.hk/) 联系客服获取批量能力。
+A: 每次调用获取1页（20条）。如需更多数据，通过翻页命令逐页获取，或前往 [一格数据平台](https://yige.zone/) 联系客服获取批量能力。
 
 **Q4: 支持获取二级评论（回复）吗？**
 
@@ -125,4 +125,4 @@ A: 这是编码回填环节的兼容性问题。解决方案：用 Python 写入
 
 **Q6: 如有其他问题如何获取帮助？**
 
-A: 前往 [红狐平台](https://redfox.hk/) 联系客服，或查阅技能文档。
+A: 前往 [一格数据平台](https://yige.zone/) 联系客服，或查阅技能文档。

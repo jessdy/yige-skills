@@ -58,7 +58,7 @@ B站搜索批量下载是一款智能视频采集工具，输入关键词即可�
 
 前置条件：Python 3.6+，无需额外依赖。
 
-配置数据服务接入凭证（REDFOX_API_KEY），详见使用指南 - 鉴权配置部分。
+配置数据服务接入凭证（YIGE_API_KEY），详见使用指南 - 鉴权配置部分。
 
 ---
 
@@ -75,5 +75,5 @@ B站搜索批量下载是一款智能视频采集工具，输入关键词即可�
 
 ## 获取帮助
 
-- 红狐Hub 官网：[https://redfox.hk/](https://redfox.hk/)
-- 企业服务：[https://redfox.hk/dashboard/enterprise](https://redfox.hk/dashboard/enterprise)
+- 一格Hub 官网：[https://yige.zone/](https://yige.zone/)
+- 企业服务：[https://yige.zone/dashboard/enterprise](https://yige.zone/dashboard/enterprise)

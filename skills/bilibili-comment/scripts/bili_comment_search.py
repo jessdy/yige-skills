@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 B站评论分析脚本
-调用 Redfox API 获取B站视频一级评论数据，同步生成 HTML 报告
+调用 Yige API 获取B站视频一级评论数据，同步生成 HTML 报告
 两步异步接口：commentSubmit 提交任务 → commentResult 轮询结果
 用法: python3 bili_comment_search.py "<bvId>" [--page 1] [--no-html] [--output-dir ~/Downloads/QoderReports]
 """
@@ -17,9 +17,9 @@ import urllib.error
 import urllib.parse
 from datetime import datetime
 
-SUBMIT_API = "https://redfox.hk/story/api/bili/commentSubmit"
-RESULT_API = "https://redfox.hk/story/api/bili/commentResult"
-WORK_DETAIL_API = "https://redfox.hk/story/api/bili/workDetail"
+SUBMIT_API = "https://yige.zone/story/api/bili/commentSubmit"
+RESULT_API = "https://yige.zone/story/api/bili/commentResult"
+WORK_DETAIL_API = "https://yige.zone/story/api/bili/workDetail"
 PAGE_SIZE = 20  # 每页固定 20 条
 MAX_POLL_ATTEMPTS = 30  # 最大轮询次数
 POLL_INTERVAL = 2  # 轮询间隔（秒）
@@ -30,11 +30,11 @@ TEMPLATE_PATH = os.path.join(SCRIPT_DIR, "..", "assets", "report_template.html")
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
-        print("[hint] 获取 API Key: https://redfox.hk/settings/api-keys?source=github", file=sys.stderr)
-        print("[hint] 配置: export REDFOX_API_KEY=ak_xxxx...", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[hint] 获取 API Key: https://yige.zone/settings/api-keys?source=github", file=sys.stderr)
+        print("[hint] 配置: export YIGE_API_KEY=ak_xxxx...", file=sys.stderr)
         sys.exit(1)
     return val
 

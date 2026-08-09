@@ -7,7 +7,7 @@ description_zh: 输入关键词（中英文均可），一次搜索 X / TikTok /
 description_en: Search any keyword (Chinese or English) across X / TikTok / YouTube and get each platform's Top N trending posts in one unified list (platform/title/author/views/likes/comments/date). Language-aware ranking: a Chinese keyword surfaces Chinese content first, an English keyword surfaces English content first, other languages as fallback. Grouped terminal table + CSV export + interactive HTML report (card/table views) — ideal for trend tracking, cross-platform comparison and content research.
 category: data-analysis
 version: 1.3.0
-author: 红狐数据
+author: 一格数据
 permissions:
   - network
   - filesystem-write
@@ -17,7 +17,7 @@ permissions:
 
 输入任意关键词（中文/英文），一键搜索 X / TikTok / YouTube 三平台热门内容，每平台按点赞/播放/评论/发布时间取 Top N（默认 5），输出统一字段列表：平台、标题、作者、播放数、点赞数、评论数、发布时间、链接。
 
-> API 请求均携带 `ChinaTrendingDigest-RedSkill` 标识。需先配置 API Key，通过环境变量 REDFOX_API_KEY 或 --api-key 参数传入。
+> API 请求均携带 `ChinaTrendingDigest-RedSkill` 标识。需先配置 API Key，通过环境变量 YIGE_API_KEY 或 --api-key 参数传入。
 > 架构为平台适配器模式：新平台（如 YouTube）只需新增适配器文件，主流程零改动。
 
 ---
@@ -98,7 +98,7 @@ CSV / HTML 默认保存在 `~/Downloads/QoderOverseasTrending/`。
 | `--sort` | 排序：`views` / `likes` / `comments` / `time` | `views` |
 | `--top` | 每平台最多返回条数（0=不限） | `5` |
 | `--output-dir` | 输出目录 | `~/Downloads/QoderOverseasTrending` |
-| `--api-key` | 指定 RedFox API Key | — |
+| `--api-key` | 指定 Yige API Key | — |
 | `--csv-only` | 仅生成 CSV，不生成 HTML | — |
 | `--no-open` | 不自动打开浏览器 | — |
 
@@ -110,11 +110,11 @@ CSV / HTML 默认保存在 `~/Downloads/QoderOverseasTrending/`。
 
 | 方式 | 命令 |
 |------|------|
-| 环境变量（推荐） | `export REDFOX_API_KEY=ak_你的密钥` |
+| 环境变量（推荐） | `export YIGE_API_KEY=ak_你的密钥` |
 | 命令行参数 | `--api-key ak_你的密钥` |
-| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| 配置文件 | `echo '{"api_key":"ak_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
-注册地址：[redfox.hk](https://redfox.hk/settings/api-keys?source=redskill)
+注册地址：[yige.zone](https://yige.zone/settings/api-keys?source=redskill)
 
 ---
 
@@ -123,7 +123,7 @@ CSV / HTML 默认保存在 `~/Downloads/QoderOverseasTrending/`。
 ```
 scripts/
 ├── digest.py            # 主编排器：关键词×平台采集 → 时间过滤 → 排序 → 输出
-├── config.py            # RedFox 网关地址、密钥加载（三级优先级）
+├── config.py            # Yige 网关地址、密钥加载（三级优先级）
 └── sources/             # 平台适配器（新增平台只需加一个文件并在 __init__ 登记）
     ├── base.py          # BaseSource：统一 schema + 递增延迟重试
     ├── x_source.py      # X：search/tweetDetail/tweetComments
@@ -154,7 +154,7 @@ pip3 install requests
 ## 常见问题
 
 **Q：X 搜索返回 3203 报错？**
-A：X search 接口的 `searchType` 为必填参数（`Top` 热门 / `Latest` 最新），缺失时 RedFox 会返回误导性的 3203「X能力调用失败」。本技能已内置该参数；另外过期/无效的 tweetId 调 tweetDetail 也会报 3203。
+A：X search 接口的 `searchType` 为必填参数（`Top` 热门 / `Latest` 最新），缺失时 Yige 会返回误导性的 3203「X能力调用失败」。本技能已内置该参数；另外过期/无效的 tweetId 调 tweetDetail 也会报 3203。
 
 **Q：TikTok 搜索需要调详情接口补数据吗？**
 A：不需要。searchVideo 一次请求即返回点赞/评论/播放/分享数和发布时间，日常概要足够。

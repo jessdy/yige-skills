@@ -22,19 +22,19 @@ import os
 from datetime import datetime, timedelta
 import requests
 
-REDFOX_API_BASE = "https://redfox.hk/story/api/cozeSkill/getXhsCozeSkillDataOne"
-REDFOX_API_SOURCE = "小红书单日数据爆款文章-GitHub"
+YIGE_API_BASE = "https://yige.zone/story/api/cozeSkill/getXhsCozeSkillDataOne"
+YIGE_API_SOURCE = "小红书单日数据爆款文章-GitHub"
 
 
-def get_redfox_api_key():
+def get_yige_api_key():
     """
-    获取 RedFox API Key，三级回退策略：
-    1. 从环境变量 REDFOX_API_KEY 获取
+    获取 Yige API Key，三级回退策略：
+    1. 从环境变量 YIGE_API_KEY 获取
     2. 从 shell 配置文件读取
     3. 提示用户配置
     """
     # 第一级：从环境变量获取
-    api_key = os.environ.get("REDFOX_API_KEY")
+    api_key = os.environ.get("YIGE_API_KEY")
     if api_key:
         return api_key
 
@@ -51,7 +51,7 @@ def get_redfox_api_key():
             with open(fpath, "r", encoding="utf-8") as f:
                 for line in f:
                     stripped = line.strip()
-                    if stripped.startswith("export REDFOX_API_KEY="):
+                    if stripped.startswith("export YIGE_API_KEY="):
                         key_part = stripped.split("=", 1)[1].strip().strip('"').strip("'")
                         if key_part:
                             return key_part
@@ -60,12 +60,12 @@ def get_redfox_api_key():
 
     # 第三级：仍未获取到，提示用户配置
     raise RuntimeError(
-        "未找到 REDFOX_API_KEY 配置。\n"
+        "未找到 YIGE_API_KEY 配置。\n"
         "请设置环境变量后重试：\n"
-        "  macOS/Linux: export REDFOX_API_KEY=<你的apikey>\n"
-        "  Windows PowerShell: [Environment]::SetEnvironmentVariable('REDFOX_API_KEY', '<值>', 'User')\n"
+        "  macOS/Linux: export YIGE_API_KEY=<你的apikey>\n"
+        "  Windows PowerShell: [Environment]::SetEnvironmentVariable('YIGE_API_KEY', '<值>', 'User')\n"
         "\n"
-        "获取 API Key: https://redfox.hk/login"
+        "获取 API Key: https://yige.zone/login"
     )
 
 
@@ -191,20 +191,20 @@ def fetch_xhs_weekly(rank_date=None, category="综合全部"):
     if not rank_date:
         rank_date = datetime.now().strftime("%Y-%m-%d")
 
-    api_key = get_redfox_api_key()
+    api_key = get_yige_api_key()
 
     headers = {
         "X-API-KEY": api_key,
     }
     params = {
         "rankDate": rank_date,
-        "source": REDFOX_API_SOURCE,
+        "source": YIGE_API_SOURCE,
         "category": category,
     }
 
     try:
         # 接口仅支持 GET（query 参数）；POST 会返回系统错误
-        response = requests.get(REDFOX_API_BASE, params=params, headers=headers, timeout=30)
+        response = requests.get(YIGE_API_BASE, params=params, headers=headers, timeout=30)
         if response.status_code >= 400:
             return {"fetch_time": rank_date + " 19:00", "query_type": "日榜", "category": category, "hot_list": []}
 

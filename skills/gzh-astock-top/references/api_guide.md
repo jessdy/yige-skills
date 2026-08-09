@@ -8,12 +8,12 @@
 
 ## 核心接口：每日发布文章查询
 
-**请求地址**：`POST https://redfox.hk/story/api/gzh/search/dailyPublish`
+**请求地址**：`POST https://yige.zone/story/api/gzh/search/dailyPublish`
 
 **请求头**：
 ```
 Content-Type: application/json
-X-API-Key: <REDFOX_API_KEY>
+X-API-Key: <YIGE_API_KEY>
 ```
 
 ### 请求参数
@@ -44,7 +44,7 @@ X-API-Key: <REDFOX_API_KEY>
         "accountName": "招商策略",
         "accountId": "xxx",
         "avgReadCount": 85000,
-        "redfoxIndex": 72.3,
+        "yigeIndex": 72.3,
         "description": "招商证券策略研究",
         "verifyName": "招商证券股份有限公司",
         "works": [
@@ -82,7 +82,7 @@ X-API-Key: <REDFOX_API_KEY>
 | `accountName` | string | 公众号名称 |
 | `accountId` | string | 公众号ID |
 | `avgReadCount` | int | 平均阅读数 |
-| `redfoxIndex` | float | 红狐指数 |
+| `yigeIndex` | float | 一格指数 |
 | `description` | string | 账号描述 |
 | `verifyName` | string | 认证主体名称 |
 | `works` | array | 当日文章列表（已按日期筛选） |
@@ -138,12 +138,12 @@ X-API-Key: <REDFOX_API_KEY>
 
 ## Step 1: 爆款文章搜索接口
 
-**请求地址**：`POST https://redfox.hk/story/api/gzh/search/hotArticle`
+**请求地址**：`POST https://yige.zone/story/api/gzh/search/hotArticle`
 
 **请求头**：
 ```
 Content-Type: application/json
-X-API-Key: <REDFOX_API_KEY>
+X-API-Key: <YIGE_API_KEY>
 ```
 
 ### 请求参数
@@ -219,12 +219,12 @@ X-API-Key: <REDFOX_API_KEY>
 
 ## Step 2: 账号详情查询接口
 
-**请求地址**：`POST https://redfox.hk/story/api/gzhUser/query`
+**请求地址**：`POST https://yige.zone/story/api/gzhUser/query`
 
 **请求头**：
 ```
 Content-Type: application/json
-X-API-Key: <REDFOX_API_KEY>
+X-API-Key: <YIGE_API_KEY>
 ```
 
 ### 请求参数
@@ -253,7 +253,7 @@ X-API-Key: <REDFOX_API_KEY>
       "accountName": "招商策略",
       "accountId": "xxx",
       "avgReadCount": 85000,
-      "redfoxIndex": 72.3,
+      "yigeIndex": 72.3,
       "description": "招商证券策略研究",
       "avatar": "https://...",
       "works": [
@@ -283,7 +283,7 @@ X-API-Key: <REDFOX_API_KEY>
 | `accountName` | string | 公众号名称 |
 | `accountId` | string | 公众号ID |
 | `avgReadCount` | int | **平均阅读数** |
-| `redfoxIndex` | float | **红狐指数** |
+| `yigeIndex` | float | **一格指数** |
 | `description` | string | 账号描述 |
 | `avatar` | string | 头像URL |
 | `verifyName` | string | 认证名称 |
@@ -328,7 +328,7 @@ X-API-Key: <REDFOX_API_KEY>
       "accountName": "招商策略",
       "accountId": "xxx",
       "avgReadCount": 85000,
-      "redfoxIndex": 72.3,
+      "yigeIndex": 72.3,
       "description": "招商证券策略研究",
       "latestArticle": {
         "title": "A股反弹信号确认",

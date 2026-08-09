@@ -11,11 +11,11 @@ description: 公众号账号诊断工具是对任意公众号账号进行四维�
 
 ## 简介
 
-**公众号账号诊断** 是一款智能分析工具，通过红狐 API 获取公众号真实运营数据，基于内容健康度、用户活跃度、核心数据表现、运营规范性四维度进行评分诊断，自动生成对标行业水平的优化建议。
+**公众号账号诊断** 是一款智能分析工具，通过一格数据 API 获取公众号真实运营数据，基于内容健康度、用户活跃度、核心数据表现、运营规范性四维度进行评分诊断，自动生成对标行业水平的优化建议。
 
 - **核心价值**：告别主观判断，用数据驱动公众号运营决策。一次诊断即可看清账号全貌，明确优化方向
 - **适用对象**：公众号号主、新媒体运营、MCN机构、品牌方、内容创作者
-- **技术基础**：基于红狐数据平台，结合智能评分引擎自动生成诊断报告
+- **技术基础**：基于一格数据平台，结合智能评分引擎自动生成诊断报告
 
 ---
 
@@ -44,7 +44,7 @@ description: 公众号账号诊断工具是对任意公众号账号进行四维�
 
 ### 前置条件
 - 已安装 Python 3.8+
-- 已注册 [红狐Hub](https://redfox.hk/) 账号并获取 API Key
+- 已注册 [一格Hub](https://yige.zone/) 账号并获取 API Key
 
 ### 安装步骤
 
@@ -58,19 +58,19 @@ description: 公众号账号诊断工具是对任意公众号账号进行四维�
 ### 配置 API Key
 
 #### 获取 API Key
-1. 访问 [红狐Hub 官网](https://redfox.hk/) 了解服务详情
-2. 前往 [注册页面](https://redfox.hk/login) 注册账号
+1. 访问 [一格Hub 官网](https://yige.zone/) 了解服务详情
+2. 前往 [注册页面](https://yige.zone/login) 注册账号
 3. **新注册用户将获赠免费积分**，可立即开始使用
 4. 注册登录后，在个人中心获取 API Key，格式为 `ak_xxxxxxxx`
 
 #### 设置环境变量
 
-`REDFOX_API_KEY` 需从环境变量获取。若未设置，Agent 会主动帮你配置：
+`YIGE_API_KEY` 需从环境变量获取。若未设置，Agent 会主动帮你配置：
 
-- **macOS/Linux**：将 `export REDFOX_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 对应文件
-- **Windows**：使用 `[Environment]::SetEnvironmentVariable("REDFOX_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端）
+- **macOS/Linux**：将 `export YIGE_API_KEY=<值>` 追加到 `~/.zshrc` 或 `~/.bashrc`，然后 `source` 对应文件
+- **Windows**：使用 `[Environment]::SetEnvironmentVariable("YIGE_API_KEY", "<值>", "User")` 设置用户级永久环境变量（需重启终端）
 
-配置完成后验证：`echo $REDFOX_API_KEY`（macOS/Linux）或 `echo %REDFOX_API_KEY%`（Windows）
+配置完成后验证：`echo $YIGE_API_KEY`（macOS/Linux）或 `echo %YIGE_API_KEY%`（Windows）
 
 ---
 
@@ -190,9 +190,9 @@ description: 公众号账号诊断工具是对任意公众号账号进行四维�
 |------|------|
 | 运行环境 | Python 3.8+ |
 | HTTP 客户端 | requests（原生） |
-| 数据源 | 红狐API (`redfox.hk`) |
+| 数据源 | 一格数据API (`yige.zone`) |
 | 输出格式 | Markdown + JSON + HTML |
-| 认证方式 | Header `X-API-KEY` + 环境变量 `REDFOX_API_KEY` |
+| 认证方式 | Header `X-API-KEY` + 环境变量 `YIGE_API_KEY` |
 
 ### 核心模块
 
@@ -212,7 +212,7 @@ description: 公众号账号诊断工具是对任意公众号账号进行四维�
 
 ### 安装相关
 
-**Q1: 提示"未找到 REDFOX_API_KEY"怎么办？**
+**Q1: 提示"未找到 YIGE_API_KEY"怎么办？**
 
 A: 请按「一键安装 → 配置 API Key」中的步骤设置环境变量。如果不会配置，直接告诉 Agent，它会帮你操作。
 
@@ -234,7 +234,7 @@ A: 可以。输入"对比诊断 A 和 B"即可获得多账号对比报告。
 
 **Q5: 数据多久更新一次？**
 
-A: 数据来自红狐API，时效性取决于API缓存策略。报告末尾会标注数据置信度。
+A: 数据来自一格数据API，时效性取决于API缓存策略。报告末尾会标注数据置信度。
 
 ---
 
@@ -246,11 +246,11 @@ A: 可能原因：① 账号名称输入有误；② 该账号暂无相关数据
 
 **Q7: 数据看起来不对怎么办？**
 
-A: 所有数据来自红狐API接口，诊断结果仅反映接口返回的数据。如有疑问可联系红狐平台确认数据准确性。
+A: 所有数据来自一格数据API接口，诊断结果仅反映接口返回的数据。如有疑问可联系一格数据平台确认数据准确性。
 
 ---
 
 ### 获取帮助
 
-- 红狐Hub 官网：[https://redfox.hk/](https://redfox.hk/)
+- 一格Hub 官网：[https://yige.zone/](https://yige.zone/)
 - 技能实现细节：参见 [核心工作流](references/core_workflow.md)

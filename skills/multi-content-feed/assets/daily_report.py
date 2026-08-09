@@ -16,7 +16,7 @@ from urllib import request, error
 
 
 # API 配置
-API_BASE_URL = "https://redfox.hk/story/api/parseWork/queryContentExportTop"
+API_BASE_URL = "https://yige.zone/story/api/parseWork/queryContentExportTop"
 CACHE_DIR = os.path.expanduser("~/.workbuddy/cache")
 CACHE_FILE = os.path.join(CACHE_DIR, "content_export_top_data.json")
 OUTPUT_DIR = os.path.expanduser("~/Downloads/QoderReports")
@@ -31,10 +31,10 @@ PLATFORM_ICONS = {0: "📰", 1: "🎵", 2: "📺", 3: "📕", 4: "⚡", 6: "📺
 
 def get_api_key():
     """从环境变量获取 API Key"""
-    api_key = os.environ.get("REDFOX_API_KEY")
+    api_key = os.environ.get("YIGE_API_KEY")
     if not api_key:
-        print("❌ 错误:未找到 REDFOX_API_KEY 环境变量")
-        print("请先配置:export REDFOX_API_KEY=<你的apikey>")
+        print("❌ 错误:未找到 YIGE_API_KEY 环境变量")
+        print("请先配置:export YIGE_API_KEY=<你的apikey>")
         sys.exit(1)
     return api_key
 
@@ -402,7 +402,7 @@ a.atitle:hover {{ color: #FF2442; text-decoration: underline; }}
 <div class="pgrid">
 {platform_sections}
 </div>
-<div class="footer">Generated at {timestamp} by 全网内容出海信息源 Skill<br>数据说明:每日15:00更新前一天的数据 | 数据来源:红狐Hub</div>
+<div class="footer">Generated at {timestamp} by 全网内容出海信息源 Skill<br>数据说明:每日15:00更新前一天的数据 | 数据来源:一格Hub</div>
 <script>
 function switchTopic(el,pid){{var tags=el.parentNode.querySelectorAll('.topic-tag');tags.forEach(function(t){{t.classList.remove('active')}});el.classList.add('active');var target=el.getAttribute('data-target');var section=el.closest('.psection');var lists=section.querySelectorAll('.topic-list');lists.forEach(function(l){{l.classList.remove('active')}});var match=section.querySelector('.topic-list[data-list="'+target+'"]');if(match){{match.classList.add('active')}}}}
 </script>

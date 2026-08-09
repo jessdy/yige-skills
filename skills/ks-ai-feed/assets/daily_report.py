@@ -43,10 +43,10 @@ except ImportError:
     HAS_REQUESTS = False
 
 # ─── 配置 ─────────────────────────────────────────────────────────────────────────
-API_URL = "https://redfox.hk/story/api/parseWork/queryKsAiMsgs/batch"
+API_URL = "https://yige.zone/story/api/parseWork/queryKsAiMsgs/batch"
 CONFIG_DIR = Path.home() / ".qoder" / "apis"
-CONFIG_FILE = CONFIG_DIR / "redfox.json"
-ENV_KEY = "REDFOX_API_KEY"
+CONFIG_FILE = CONFIG_DIR / "yige.json"
+ENV_KEY = "YIGE_API_KEY"
 SOURCE = "AI快手信息源-GitHub"
 
 DEFAULT_KEYWORDS = ["AI", "人工智能", "大模型", "GPT", "Agent", "AI绘画", "AI教程"]
@@ -202,7 +202,7 @@ def fetch_articles(session, keywords, target_count, start_time=None, end_time=No
         
         if not page_articles:
             if page_num == 1:
-                warn(f"所有关键词均暂无内容(当前仅搜索 AI 相关快手视频,更多内容请访问 redfox.hk)")
+                warn(f"所有关键词均暂无内容(当前仅搜索 AI 相关快手视频,更多内容请访问 yige.zone)")
             break
 
         # 统计本次新增数量
@@ -1121,7 +1121,7 @@ def remove_subscription():
 
 # ─── API 代理 HTTP 服务 ─────────────────────────────────────────────────────────────
 class ProxyHTTPHandler(SimpleHTTPRequestHandler):
-    """静态文件服务 + /api/search 代理到 redfox.hk"""
+    """静态文件服务 + /api/search 代理到 yige.zone"""
     api_key = ""  # 将由 start_server 调用旹覆盖
     search_url = API_URL
 
@@ -1283,7 +1283,7 @@ Examples:
         error("未配置 API Key，请通过以下方式之一提供：")
         print(f"  1. 环境变量: export {ENV_KEY}=ak_你的密鑰")
         print(f"  2. 命令行参数: --api-key ak_你的密鑰")
-        print(f"  3. 配置文件: echo '{{\"api_key\":\"ak_你的密鑰\"}}' > ~/.qoder/apis/redfox.json")
+        print(f"  3. 配置文件: echo '{{\"api_key\":\"ak_你的密鑰\"}}' > ~/.qoder/apis/yige.json")
         sys.exit(1)
     # ── Session ──
     session = requests.Session()

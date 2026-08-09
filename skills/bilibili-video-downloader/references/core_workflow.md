@@ -35,25 +35,25 @@ python3 "$SKILL_PATH/scripts/downloader.py" "https://www.bilibili.com/video/BVaa
 
 | 方式 | 命令 |
 |------|------|
-| **环境变量**（推荐） | `export REDFOX_API_KEY=ark_你的密钥` |
+| **环境变量**（推荐） | `export YIGE_API_KEY=ark_你的密钥` |
 | **命令行参数** | `python3 "$SKILL_PATH/scripts/downloader.py" "<链接>" --api-key ark_你的密钥` |
-| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/redfox.json` |
+| **配置文件** | `echo '{"api_key":"ark_你的密钥"}' > ~/.qoder/apis/yige.json` |
 
 ### 首次使用
 
 ```bash
 # 设置环境变量
-export REDFOX_API_KEY=ak_你的密钥
+export YIGE_API_KEY=ak_你的密钥
 
 # 解析视频，获取下载链接
 python3 "$SKILL_PATH/scripts/downloader.py" "https://www.bilibili.com/video/BVxxxxxx"
 ```
 
-> 前往 [redfox.hk](https://redfox.hk/settings/api-keys?source=github) 注册获取 API Key。
+> 前往 [yige.zone](https://yige.zone/settings/api-keys?source=github) 注册获取 API Key。
 
 ## API 调用细节
 
-- **API 端点**：`https://redfox.hk/story/api/parseWork/videoDownload/bilibili`
+- **API 端点**：`https://yige.zone/story/api/parseWork/videoDownload/bilibili`
 - **请求方法**：POST，Content-Type: application/json，Header: X-API-KEY
 - **请求体**：`{"url": "<链接>", "source": "bilibili/B站视频下载-GitHub"}`
 - **成功判断**：响应 code 以 2 开头（如 200、2000）

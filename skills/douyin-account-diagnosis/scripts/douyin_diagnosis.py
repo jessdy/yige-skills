@@ -2,10 +2,10 @@
 """
 抖音账号诊断工具
 用于「抖音账号诊断」技能的数据获取、六维度评分与报告生成。
-通过红狐(RedFox) API 获取抖音账号数据，进行六维度诊断分析并输出报告。
+通过一格数据(Yige) API 获取抖音账号数据，进行六维度诊断分析并输出报告。
 
 用法: python douyin_diagnosis.py <抖音昵称或抖音号> [--api-key <你的API Key>]
-API Key 优先级: 命令行 --api-key > 环境变量 REDFOX_API_KEY > 内置默认密钥
+API Key 优先级: 命令行 --api-key > 环境变量 YIGE_API_KEY > 内置默认密钥
 """
 
 import os
@@ -19,7 +19,7 @@ import statistics
 # ============================================================
 # API 配置
 # ============================================================
-API_URL = "https://redfox.hk/story/api/dyUser/queryData"
+API_URL = "https://yige.zone/story/api/dyUser/queryData"
 
 # 技能来源标识（所有接口调用必须携带）
 SOURCE = "抖音账号诊断-GitHub"
@@ -29,15 +29,15 @@ DEFAULT_API_KEY = "ak_1e449a28ae344cd1b7aa14ca481de8bb"
 
 
 def resolve_api_key(cli_key=None):
-    """解析使用的 API Key：命令行参数 > 环境变量 REDFOX_API_KEY > 内置默认密钥"""
-    return cli_key or os.environ.get("REDFOX_API_KEY") or DEFAULT_API_KEY
+    """解析使用的 API Key：命令行参数 > 环境变量 YIGE_API_KEY > 内置默认密钥"""
+    return cli_key or os.environ.get("YIGE_API_KEY") or DEFAULT_API_KEY
 
 # ============================================================
 # 工具函数
 # ============================================================
 
 def query_account(keyword, api_key):
-    """调用红狐API查询抖音账号数据。keyword 可为昵称或抖音号。"""
+    """调用一格数据API查询抖音账号数据。keyword 可为昵称或抖音号。"""
     headers = {
         "Content-Type": "application/json",
         "X-API-KEY": api_key,
@@ -56,7 +56,7 @@ def query_account(keyword, api_key):
             if result.get("code") == 2000 and result.get("data"):
                 return result["data"][0]
             elif result.get("code") == 3201:
-                print("[错误] API积分不足，请前往 redfox.hk 充值。")
+                print("[错误] API积分不足，请前往 yige.zone 充值。")
                 return None
             else:
                 print(f"[错误] API返回异常: code={result.get('code')}, msg={result.get('msg', '')}")
@@ -791,7 +791,7 @@ def generate_report(acc):
 
     lines.append("")
     lines.append("-" * 60)
-    lines.append("  数据来源: 红狐RedFox API (redfox.hk)")
+    lines.append("  数据来源: 一格数据Yige API (yige.zone)")
     lines.append("-" * 60)
 
     return "\n".join(lines)

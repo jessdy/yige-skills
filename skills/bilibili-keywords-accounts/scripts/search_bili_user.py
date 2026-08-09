@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 B站关键词搜账号脚本
-调用 Redfox API 根据关键词搜索B站账号
+调用 Yige API 根据关键词搜索B站账号
 用法: python3 search_bili_user.py "<关键词>" [--order 排序] [--page 页码]
 
-接口: https://redfox.hk/story/api/bili/userSearch (POST)
+接口: https://yige.zone/story/api/bili/userSearch (POST)
 
 请求字段:
   keyword   搜索关键词（必填）
@@ -32,7 +32,7 @@ import argparse
 import urllib.request
 import urllib.error
 
-API_URL = "https://redfox.hk/story/api/bili/userSearch"
+API_URL = "https://yige.zone/story/api/bili/userSearch"
 
 ORDER_MAP = {
     "totalrank": "综合排序",
@@ -41,9 +41,9 @@ ORDER_MAP = {
 
 
 def get_api_key() -> str:
-    val = os.environ.get("REDFOX_API_KEY", "")
+    val = os.environ.get("YIGE_API_KEY", "")
     if not val:
-        print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+        print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
         sys.exit(1)
     return val
 

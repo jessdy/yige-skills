@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 小红书作品爬取脚本
-调用 Redfox API 爬取小红书热门作品数据
+调用 Yige API 爬取小红书热门作品数据
 用法: python3 crawl_xhs.py "<关键词>" [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--sort-type _0|_2|_4]
 """
 
@@ -17,15 +17,15 @@ except ImportError:
     print("[error] 缺少 requests 库，请执行: pip3 install requests", file=sys.stderr)
     sys.exit(1)
 
-API_URL = "https://redfox.hk/story/api/xhs/crawl/work"
+API_URL = "https://yige.zone/story/api/xhs/crawl/work"
 
 
 def get_api_key() -> str:
     """从环境变量获取 API Key"""
-    val = os.environ.get("REDFOX_API_KEY")
+    val = os.environ.get("YIGE_API_KEY")
     if val:
         return val
-    print("[error] 未找到环境变量 REDFOX_API_KEY，请确认已设置 API Key", file=sys.stderr)
+    print("[error] 未找到环境变量 YIGE_API_KEY，请确认已设置 API Key", file=sys.stderr)
     sys.exit(1)
 
 

@@ -41,20 +41,20 @@ dependency:
 
 #### 获取 API Key
 
-请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取API KEY
+请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
 
 #### 配置 API Key
 
-方案1: 以OpenClaw为例，将REDFOX_API_KEY添加到~/.openclaw/openclaw.json中
+方案1: 以OpenClaw为例，将YIGE_API_KEY添加到~/.openclaw/openclaw.json中
 
 ```bash
-{ "env": { "REDFOX_API_KEY": "ak_xxxx..." } }
+{ "env": { "YIGE_API_KEY": "ak_xxxx..." } }
 ```
 
-方案2: 终端配置：export REDFOX_API_KEY="ak_xxxx..."
+方案2: 终端配置：export YIGE_API_KEY="ak_xxxx..."
 
 ```bash
-export REDFOX_API_KEY="ak_xxxx..."
+export YIGE_API_KEY="ak_xxxx..."
 ```
 
 ### 依赖安装
@@ -216,7 +216,7 @@ python scripts/fetch_xhs_trends.py --keyword "" --start-date <日期>
 xiaohongshu-title/
 ├── SKILL.md                      # 本文件
 └── scripts/
-    └── fetch_xhs_trends.py       # 数据查询脚本，调用红狐API获取爆款标题数据
+    └── fetch_xhs_trends.py       # 数据查询脚本，调用一格数据API获取爆款标题数据
 ```
 
 ### 技术栈
@@ -224,12 +224,12 @@ xiaohongshu-title/
 | 技术 | 用途 |
 | ---- | ---- |
 | Python + requests | HTTP 请求与数据获取 |
-| 红狐 API | 小红书爆款标题数据来源 |
+| 一格数据 API | 小红书爆款标题数据来源 |
 | AI 智能分析 | 爆款规律提炼与新标题生成 |
 
 ### 核心模块说明
 
-- **fetch_xhs_trends.py**：接收关键词和时间范围参数，调用红狐 API 查询小红书热门笔记标题数据，输出 Markdown 格式的爆款数据文件（`关键词_爆款数据.md`），供后续分析使用。
+- **fetch_xhs_trends.py**：接收关键词和时间范围参数，调用一格数据 API 查询小红书热门笔记标题数据，输出 Markdown 格式的爆款数据文件（`关键词_爆款数据.md`），供后续分析使用。
 
 ### 资源索引
 
@@ -247,7 +247,7 @@ xiaohongshu-title/
 A: 需要 `requests` 库，如未安装可执行 `pip install requests`。
 
 **Q: 如何配置 API Key？**
-A: 请前往 [红狐hub](https://redfox.hk/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `REDFOX_API_KEY` 配置。
+A: 请前往 [一格hub](https://yige.zone/settings/api-keys?source=github) 获取 API KEY，通过环境变量 `YIGE_API_KEY` 配置。
 
 ### 使用
 
