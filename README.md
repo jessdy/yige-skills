@@ -1,39 +1,57 @@
 <p align="center">
   <a href="https://yige.zone/?source=github">
-    <img src="https://github.com/jessdy/yige-skills/blob/main/logo.png" alt="Yige Logo" width="200">
+    <img src="./logo.png" alt="一格数据" width="220">
   </a>
 </p>
 
-<p align="right">
-  中文
-  <a href="https://github.com/jessdy/yige-skills/blob/main/README.en.md">English</a>
+<p align="center">
+  <b>一格数据 · Agent Skills</b><br>
+  <sub>面向灵感、选题、文案创作与数据复盘的可复用 Agent 技能合集</sub>
 </p>
 
-# 一格数据 · Agent Skills
+<p align="center">
+  <a href="./README.md">中文</a> ·
+  <a href="./README.en.md">English</a> ·
+  <a href="https://yige.zone/?source=github">官网</a> ·
+  <a href="https://yige.zone/skills?source=github">Skills 市场</a> ·
+  <a href="https://yige.zone/apis?source=github">API 文档</a>
+</p>
 
-本仓库收录 **一格数据（yige.zone）** 社区维护的多枚 Agent 技能（Skill），面向灵感、选题、文案创作、数据复盘等场景。技能以 `SKILL.md` 为核心，可与 Cursor、Claude Code 等支持 Agent Skills 的工具配合使用。
+---
+
+本仓库由 **一格数据（[yige.zone](https://yige.zone/)）** 维护，收录多枚 Agent Skill。每个技能以 `SKILL.md` 为核心，可与 Cursor、Claude Code、OpenClaw 等支持 Agent Skills 的工具配合使用。
+
+## 目录
+
+- [仓库结构](#仓库结构)
+- [技能目录约定](#技能目录约定)
+- [身份认证](#身份认证)
+- [如何使用 Skill](#如何使用-skill)
+- [多平台 API](#多平台-api)
+- [参与贡献](#参与贡献)
 
 ## 仓库结构
 
 ```text
 .
-├── README.md          # 本说明（中文）
+├── README.md          # 中文说明
 ├── README.en.md       # English README
-├── skills/            # 技能（每个子目录一枚技能）
-│   └── <skill-name>/
-│       ├── SKILL.md
-│       └── …          # 脚本、参考文档等（可选）
+├── logo.png           # 品牌标识
+└── skills/            # 技能（每个子目录一枚）
+    └── <skill-name>/
+        ├── SKILL.md
+        └── …          # scripts / references / assets（可选）
 ```
 
 ## 技能目录约定
 
 每个技能是一个**独立子文件夹**，且至少包含：
 
-| 文件       | 说明                                                              |
-| ---------- | ----------------------------------------------------------------- |
+| 文件 | 说明 |
+| --- | --- |
 | `SKILL.md` | 技能入口：YAML frontmatter + 正文（触发条件、步骤、约束、示例等） |
 
-建议在 `SKILL.md` 的 frontmatter 中提供清晰元信息，便于检索与导入平台识别，例如：
+建议在 `SKILL.md` 的 frontmatter 中提供清晰元信息，便于检索与导入：
 
 ```yaml
 ---
@@ -42,43 +60,29 @@ description: 一句话说明技能适用场景与能力边界（建议具体，�
 ---
 ```
 
-可选：`references/`、`scripts/`、`assets/` 等，与 `SKILL.md` 同目录存放，保持单技能自包含、路径相对引用即可。
-
-## 一格数据首页
-
-<p align="center">
-  <a href="https://yige.zone/?source=github">
-    <img src="https://lyy.yige.zone/page/yige-page-3.png" alt="Yige Logo" width="100%">
-  </a>
-</p>
+可选目录：`references/`、`scripts/`、`assets/`，与 `SKILL.md` 同级存放，保持单技能自包含、使用相对路径引用。
 
 ## 身份认证
 
-所有 API 请求都需要有效的 API KEY。
+所有 API 请求都需要有效的 API Key。
 
-### 获取链接：
-
-请前往 [一格数据 Hub](https://yige.zone/settings/api-keys?source=github) 获取API KEY
-
-## 丰富多样的Skill
-
-<p align="center">
-  <a href="https://yige.zone/skills?source=github">
-    <img src="https://lyy.yige.zone/page/yige-page-2.png" alt="Yige Logo" width="100%">
-  </a>
-</p>
-
-### Skill如何使用
-
-#### 本地 / Cursor
-
-将需要的技能目录复制到你所用工具的 skills 目录（例如 Cursor 的 user skills 或项目内 `.cursor/skills/` 等，以你当前客户端文档为准），或通过客户端提供的「添加技能」入口指向该子文件夹。
-
-#### For Agent
-
-直接告诉智能体Agent（openclaw/workbuddy/qoder）：
+请前往 [一格数据 Hub](https://yige.zone/settings/api-keys?source=github) 获取，并配置环境变量：
 
 ```bash
+export YIGE_API_KEY="ak_xxxx..."
+```
+
+## 如何使用 Skill
+
+### 本地 / Cursor
+
+将需要的技能目录复制到所用工具的 skills 目录（如 Cursor 的 user skills，或项目内 `.cursor/skills/`），或通过客户端「添加技能」入口指向该子文件夹。
+
+### Agent 安装提示词
+
+直接告诉智能体（OpenClaw / WorkBuddy / Qoder 等）：
+
+```text
 请帮我在当前工作区检查并安装以下 Agent Skill。
 
 Skill：小红书最新热门笔记 / xiaohongshu-realtime-search
@@ -94,111 +98,99 @@ Skill：小红书最新热门笔记 / xiaohongshu-realtime-search
 网络受限时可尝试 git clone 或 curl；有歧义或冲突时先询问我。
 ```
 
-#### skills cli
-
-在交互终端执行以下命令，可直接复制
+### skills CLI
 
 ```bash
-npx skills init //安装skills cli
+# 安装 skills CLI
+npx skills init
 
-npx skills add yige-data/yige-skills //检索yige仓库选择安装skill
+# 浏览仓库并选择安装
+npx skills add jessdy/yige-skills
 
-npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/seedance-video-gen //安装具体skill
+# 安装指定技能
+npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/seedance-video-gen
 ```
 
-根据提示将skill安装在指定的agent文件夹中或者安装在全局
+按提示安装到指定 Agent 目录，或安装为全局技能。
 
-#### SkillHub
+### SkillHub
 
-访问SkillHub搜索skills目录中对应技能的中文名安装：https://skillhub.cn/skills
+访问 [SkillHub](https://skillhub.cn/skills)，搜索 `skills/` 目录中对应技能的中文名安装。
 
-搜索示例：公众号爆款文章查询 或 抖音每日最具影响力账号
+搜索示例：`公众号爆款文章查询`、`抖音每日最具影响力账号`
 
-#### ClawHub（`clawhub`）
+### ClawHub
 
-访问 clawhub 一格数据官方主页搜索安装 skill：https://clawhub.ai/user/yige-data
+访问一格数据官方主页安装：<https://clawhub.ai/user/yige-data>
 
-## 多平台API文档
+## 多平台 API
 
-<p align="center">
-  <a href="https://yige.zone/apis?source=github">
-    <img src="https://lyy.yige.zone/page/yige-page-1.png" alt="Yige Logo" width="100%">
-  </a>
-</p>
+完整文档见：[yige.zone/apis](https://yige.zone/apis?source=github)
 
-### API文档中包含：
+文档包含：请求头、请求参数、返回结构、请求/响应示例、常见状态码。
 
-- 请求头说明
-- 请求参数说明
-- 返回值和数据结构说明
-- 请求示例
-- 响应示例
-- 常见状态码说明
+### 抖音
 
-### API明细：
+- [获取作品内容详情（优质库）](https://yige.zone/apis/douyin/0OT1E306)
+- [获取账号信息（优质库）](https://yige.zone/apis/douyin/XUT4CECZ)
+- [搜索关键词获取账号（优质库）](https://yige.zone/apis/douyin/P5CHB3BZ)
+- [搜索关键词获取作品（优质库）](https://yige.zone/apis/douyin/774OBKK0)
+- [获取账号作品列表（优质库）](https://yige.zone/apis/douyin/QEQLCKD6)
+- [搜索关键词获取 AI 作品（优质库）](https://yige.zone/apis/douyin/I8P3HTVH)
 
-#### 抖音：
+### 小红书
 
-- [获取抖音作品内容详情 (优质库)](https://yige.zone/apis/douyin/0OT1E306)
-- [获取抖音账号信息 (优质库)](https://yige.zone/apis/douyin/XUT4CECZ)
-- [搜索关键词获取抖音账号 (优质库)](https://yige.zone/apis/douyin/P5CHB3BZ)
-- [搜索关键词获取抖音作品 (优质库)](https://yige.zone/apis/douyin/774OBKK0)
-- [获取抖音账号作品列表 (优质库)](https://yige.zone/apis/douyin/QEQLCKD6)
-- [搜索关键词获取抖音 AI 作品(优质库)](https://yige.zone/apis/douyin/I8P3HTVH)
+- [获取账号信息（优质库）](https://yige.zone/apis/xiaohongshu/4IVIDHEN)
+- [获取作品内容详情（优质库）](https://yige.zone/apis/xiaohongshu/KR1LPTBF)
+- [搜索关键词获取账号（优质库）](https://yige.zone/apis/xiaohongshu/439NFLBD)
+- [搜索关键词获取作品（优质库）](https://yige.zone/apis/xiaohongshu/384C6W6B)
+- [搜索关键词获取 AI 作品（优质库）](https://yige.zone/apis/xiaohongshu/047JJ3UA)
 
-#### 小红书：
+### 公众号
 
-- [获取小红书账号信息 (优质库)](https://yige.zone/apis/xiaohongshu/4IVIDHEN)
-- [获取小红书作品内容详情 (优质库)](https://yige.zone/apis/xiaohongshu/KR1LPTBF)
-- [搜索关键词获取小红书账号 (优质库)](https://yige.zone/apis/xiaohongshu/439NFLBD)
-- [搜索关键词获取小红书作品 (优质库)](https://yige.zone/apis/xiaohongshu/384C6W6B)
-- [搜索关键词获取小红书 AI 作品(优质库)](https://yige.zone/apis/xiaohongshu/047JJ3UA)
+- [获取账号信息（优质库）](https://yige.zone/apis/gongzhonghao/6C4A77XR)
+- [根据作品 UUID 获取作品（优质库）](https://yige.zone/apis/gongzhonghao/XEO0QQNF)
+- [搜索关键词获取账号（优质库）](https://yige.zone/apis/gongzhonghao/DNVPQZEZ)
+- [搜索关键词获取作品（优质库）](https://yige.zone/apis/gongzhonghao/PW97QFBS)
+- [获取账号作品列表（优质库）](https://yige.zone/apis/gongzhonghao/XNV30XZ3)
+- [根据作品地址获取作品（优质库）](https://yige.zone/apis/gongzhonghao/VUTTKTP6)
+- [搜索关键词获取 AI 创作作品（优质库）](https://yige.zone/apis/gongzhonghao/IE0887SO)
 
-#### 公众号：
+### 哔哩哔哩
 
-- [获取公众号账号信息 (优质库)](https://yige.zone/apis/gongzhonghao/6C4A77XR)
-- [根据作品uuid获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/XEO0QQNF)
-- [搜索关键词获取公众号账号 (优质库)](https://yige.zone/apis/gongzhonghao/DNVPQZEZ)
-- [搜索关键词获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/PW97QFBS)
-- [获取公众号账号作品列表 (优质库)](https://yige.zone/apis/gongzhonghao/XNV30XZ3)
-- [根据作品地址获取公众号作品 (优质库)](https://yige.zone/apis/gongzhonghao/VUTTKTP6)
-- [搜索关键词获取公众号 AI 创作作品 (优质库)](https://yige.zone/apis/gongzhonghao/IE0887SO)
+- [获取作品内容详情（优质库）](https://yige.zone/apis/bilibili/TIN1NMTZ)
+- [获取账号信息（优质库）](https://yige.zone/apis/bilibili/EH53TOT7)
+- [搜索关键词获取账号（优质库）](https://yige.zone/apis/bilibili/ZXJLJQ21)
+- [搜索关键词获取作品（优质库）](https://yige.zone/apis/bilibili/LEN9QXR3)
+- [获取账号作品列表（优质库）](https://yige.zone/apis/bilibili/VPA67I98)
 
-#### 哔哩哔哩：
+### 今日头条
 
-- [获取哔哩哔哩作品内容详情 (优质库)](https://yige.zone/apis/bilibili/TIN1NMTZ)
-- [获取哔哩哔哩账号信息 (优质库)](https://yige.zone/apis/bilibili/EH53TOT7)
-- [搜索关键词获取哔哩哔哩账号 (优质库)](https://yige.zone/apis/bilibili/ZXJLJQ21)
-- [搜索关键词获取哔哩哔哩作品 (优质库)](https://yige.zone/apis/bilibili/LEN9QXR3)
-- [获取哔哩哔哩账号作品列表 (优质库)](https://yige.zone/apis/bilibili/VPA67I98)
+- [获取账号作品列表（实时）](https://yige.zone/apis/jinritoutiao/28CFGF5I)
+- [获取作品内容详情（实时）](https://yige.zone/apis/jinritoutiao/PAB6Z75Y)
 
-#### 今日头条
+### TikTok
 
-- [获取今日头条账号作品列表 (实时)](https://yige.zone/apis/jinritoutiao/28CFGF5I)
-- [获取今日头条作品内容详情 (实时)](https://yige.zone/apis/jinritoutiao/PAB6Z75Y)
+- [关键词搜索账号](https://yige.zone/apis/tool-tiktok/20070019)
 
-#### Tiktok：
+### AI 搜索
 
-- [Tiktok关键词搜索账号](https://yige.zone/apis/tool-tiktok/20070019)
-
-#### AI搜索：
-
-- [kimi纯文字搜索](https://yige.zone/apis/tool-ai-search/USDIOVU23)
+- [Kimi 纯文字搜索](https://yige.zone/apis/tool-ai-search/USDIOVU23)
 - [豆包纯文字搜索](https://yige.zone/apis/tool-ai-search/I9R9LIDL)
-- [Deepseek纯文字搜索](https://yige.zone/apis/tool-ai-search/KGX4SDXQ)
+- [DeepSeek 纯文字搜索](https://yige.zone/apis/tool-ai-search/KGX4SDXQ)
 
-#### AI工具：
+### AI 工具
 
-- [GPT图片生成](https://yige.zone/apis/tool/HUV4KRFQ)
+- [GPT 图片生成](https://yige.zone/apis/tool/HUV4KRFQ)
 - [豆包图片生成](https://yige.zone/apis/tool/7OM96HCF)
 - [豆包视频生成](https://yige.zone/apis/tool/ER2ATHKI)
 - [上传图片](https://yige.zone/apis/tool/FXDGJO1V)
-- [上传视频/图片/音频](https://yige.zone/apis/tool/6L178PZD)
+- [上传视频 / 图片 / 音频](https://yige.zone/apis/tool/6L178PZD)
 - [短视频下载器](https://yige.zone/apis/tool/AWUTFI4V)
 
-#### 更多平台API：
+### 更多平台
 
-- [敬请期待！！](https://yige.zone/apis)
+- [敬请期待](https://yige.zone/apis)
 
 ## 参与贡献
 
