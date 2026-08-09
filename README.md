@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://yige.zone/?source=github">
-    <img src="./logo.png" alt="一格数据" width="220">
+    <img src="https://raw.githubusercontent.com/jessdy/yige-skills/main/logo.png" alt="一格数据" width="220">
   </a>
 </p>
 
@@ -10,11 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="./README.md">中文</a> ·
-  <a href="./README.en.md">English</a> ·
+  <a href="https://github.com/jessdy/yige-skills/blob/main/README.md">中文</a> ·
+  <a href="https://github.com/jessdy/yige-skills/blob/main/README.en.md">English</a> ·
+  <a href="https://github.com/jessdy/yige-skills/tree/main/skills">Skills 目录</a> ·
   <a href="https://yige.zone/?source=github">官网</a> ·
   <a href="https://yige.zone/skills?source=github">Skills 市场</a> ·
-  <a href="https://yige.zone/apis?source=github">API 文档</a>
+  <a href="https://yige.zone/docs?source=github">API 文档</a>
 </p>
 
 ---
@@ -85,8 +86,8 @@ export YIGE_API_KEY="ak_xxxx..."
 ```text
 请帮我在当前工作区检查并安装以下 Agent Skill。
 
-Skill：小红书最新热门笔记 / xiaohongshu-realtime-search
-源码地址：https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-realtime-search
+Skill：小红书爆款笔记查询 / xiaohongshu-search
+源码地址：https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
 
 请按顺序执行：
 1. 检查本项目是否已安装该 Skill
@@ -108,89 +109,32 @@ npx skills init
 npx skills add jessdy/yige-skills
 
 # 安装指定技能
-npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/seedance-video-gen
+npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
 ```
 
 按提示安装到指定 Agent 目录，或安装为全局技能。
+
+更多技能见仓库目录：<https://github.com/jessdy/yige-skills/tree/main/skills>
 
 ### SkillHub
 
 访问 [SkillHub](https://skillhub.cn/skills)，搜索 `skills/` 目录中对应技能的中文名安装。
 
-搜索示例：`公众号爆款文章查询`、`抖音每日最具影响力账号`
+搜索示例：`小红书爆款笔记查询`、`抖音相似账号`、`B站关键词搜作品`
 
 ### ClawHub
 
-访问一格数据官方主页安装：<https://clawhub.ai/user/yige-data>
+访问官方主页安装：<https://clawhub.ai/jessdy>
 
 ## 多平台 API
 
-完整文档见：[yige.zone/apis](https://yige.zone/apis?source=github)
+完整接口文档见：[yige.zone/docs](https://yige.zone/docs?source=github)
 
-文档包含：请求头、请求参数、返回结构、请求/响应示例、常见状态码。
+- **Base URL**：`https://yige.zone`（或 `https://www.yige.zone`）
+- **鉴权**：请求头 `Authorization: Bearer <YIGE_API_KEY>`
+- **路径前缀**：`/v1/{platform}/...`（如 `/v1/douyin/...`、`/v1/xiaohongshu/...`）
 
-### 抖音
-
-- [获取作品内容详情（优质库）](https://yige.zone/apis/douyin/0OT1E306)
-- [获取账号信息（优质库）](https://yige.zone/apis/douyin/XUT4CECZ)
-- [搜索关键词获取账号（优质库）](https://yige.zone/apis/douyin/P5CHB3BZ)
-- [搜索关键词获取作品（优质库）](https://yige.zone/apis/douyin/774OBKK0)
-- [获取账号作品列表（优质库）](https://yige.zone/apis/douyin/QEQLCKD6)
-- [搜索关键词获取 AI 作品（优质库）](https://yige.zone/apis/douyin/I8P3HTVH)
-
-### 小红书
-
-- [获取账号信息（优质库）](https://yige.zone/apis/xiaohongshu/4IVIDHEN)
-- [获取作品内容详情（优质库）](https://yige.zone/apis/xiaohongshu/KR1LPTBF)
-- [搜索关键词获取账号（优质库）](https://yige.zone/apis/xiaohongshu/439NFLBD)
-- [搜索关键词获取作品（优质库）](https://yige.zone/apis/xiaohongshu/384C6W6B)
-- [搜索关键词获取 AI 作品（优质库）](https://yige.zone/apis/xiaohongshu/047JJ3UA)
-
-### 公众号
-
-- [获取账号信息（优质库）](https://yige.zone/apis/gongzhonghao/6C4A77XR)
-- [根据作品 UUID 获取作品（优质库）](https://yige.zone/apis/gongzhonghao/XEO0QQNF)
-- [搜索关键词获取账号（优质库）](https://yige.zone/apis/gongzhonghao/DNVPQZEZ)
-- [搜索关键词获取作品（优质库）](https://yige.zone/apis/gongzhonghao/PW97QFBS)
-- [获取账号作品列表（优质库）](https://yige.zone/apis/gongzhonghao/XNV30XZ3)
-- [根据作品地址获取作品（优质库）](https://yige.zone/apis/gongzhonghao/VUTTKTP6)
-- [搜索关键词获取 AI 创作作品（优质库）](https://yige.zone/apis/gongzhonghao/IE0887SO)
-
-### 哔哩哔哩
-
-- [获取作品内容详情（优质库）](https://yige.zone/apis/bilibili/TIN1NMTZ)
-- [获取账号信息（优质库）](https://yige.zone/apis/bilibili/EH53TOT7)
-- [搜索关键词获取账号（优质库）](https://yige.zone/apis/bilibili/ZXJLJQ21)
-- [搜索关键词获取作品（优质库）](https://yige.zone/apis/bilibili/LEN9QXR3)
-- [获取账号作品列表（优质库）](https://yige.zone/apis/bilibili/VPA67I98)
-
-### 今日头条
-
-- [获取账号作品列表（实时）](https://yige.zone/apis/jinritoutiao/28CFGF5I)
-- [获取作品内容详情（实时）](https://yige.zone/apis/jinritoutiao/PAB6Z75Y)
-
-### TikTok
-
-- [关键词搜索账号](https://yige.zone/apis/tool-tiktok/20070019)
-
-### AI 搜索
-
-- [Kimi 纯文字搜索](https://yige.zone/apis/tool-ai-search/USDIOVU23)
-- [豆包纯文字搜索](https://yige.zone/apis/tool-ai-search/I9R9LIDL)
-- [DeepSeek 纯文字搜索](https://yige.zone/apis/tool-ai-search/KGX4SDXQ)
-
-### AI 工具
-
-- [GPT 图片生成](https://yige.zone/apis/tool/HUV4KRFQ)
-- [豆包图片生成](https://yige.zone/apis/tool/7OM96HCF)
-- [豆包视频生成](https://yige.zone/apis/tool/ER2ATHKI)
-- [上传图片](https://yige.zone/apis/tool/FXDGJO1V)
-- [上传视频 / 图片 / 音频](https://yige.zone/apis/tool/6L178PZD)
-- [短视频下载器](https://yige.zone/apis/tool/AWUTFI4V)
-
-### 更多平台
-
-- [敬请期待](https://yige.zone/apis)
+文档内按平台分组（抖音 / 小红书 / Bilibili / 公众号 / TikTok / X 等），含请求参数、示例与状态码说明。获取密钥：[一格数据 Hub](https://yige.zone/settings/api-keys?source=github)。
 
 ## 参与贡献
 
