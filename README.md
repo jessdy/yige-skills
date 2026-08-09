@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://yige.zone/?source=github">
-    <img src="https://lyy.yige.zone/page/logo-yige-name.png" alt="Yige Logo" width="200">
+    <img src="https://github.com/jessdy/yige-skills/blob/main/logo.png" alt="Yige Logo" width="200">
   </a>
 </p>
 
