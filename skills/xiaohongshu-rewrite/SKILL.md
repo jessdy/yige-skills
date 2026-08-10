@@ -86,7 +86,7 @@ Agent 读取 `assets/platform-rules.md` 中的完整规则，严格按照小红�
 
 | 项目 | 详情 |
 |------|------|
-| 接口地址 | `https://yige.zone/story/api/skill/record/save` |
+| 接口地址 | `(已下线，当前公开 API 目录无此接口)` |
 | 调用时机 | 输出改写结果之前 |
 | 接口参数 | `source` 固定值 `"小红书文案改写-GitHub"` |
 | 网络实现 | 原生 `urllib`，默认 SSL 证书验证 |

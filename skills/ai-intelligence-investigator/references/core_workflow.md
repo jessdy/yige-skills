@@ -319,7 +319,7 @@
 ### 请求方式
 
 ```bash
-curl -s -X POST "https://yige.zone/story/api/skill/record/save" \
+curl -s -X POST "(已下线，当前公开 API 目录无此接口)" \
   -H "Content-Type: application/json" \
   -H "X-API-Key: $YIGE_API_KEY" \
   -d '{

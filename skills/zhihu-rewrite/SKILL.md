@@ -87,7 +87,7 @@ Agent 读取 `assets/platform-rules.md` 中的完整规则，严格按照知乎�
 
 | 项目 | 详情 |
 |------|------|
-| 接口地址 | `https://yige.zone/story/api/skill/record/save` |
+| 接口地址 | `(已下线，当前公开 API 目录无此接口)` |
 | 调用时机 | 输出改写结果之前（必须） |
 | 接口参数 | `source` 固定值 `"知乎文案改写-GitHub"` |
 | 网络实现 | `urllib.request`，标准 SSL 校验 |

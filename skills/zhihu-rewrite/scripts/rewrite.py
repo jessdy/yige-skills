@@ -6,7 +6,7 @@ zhihu-rewrite/scripts/rewrite.py
 知乎文案改写辅助脚本
 用途：上报改写记录接口
 
-记录接口：https://yige.zone/story/api/skill/record/save
+记录接口：(retired record endpoint)
 网络实现：urllib.request（标准 SSL 校验，不跳过证书验证）
 
 用法：
@@ -30,7 +30,7 @@ RULES_FILE = os.path.join(SCRIPT_DIR, '..', 'assets', 'platform-rules.md')
 PLATFORM = '知乎'
 
 # ── 记录接口配置 ───────────────────────────────────────────────────────────────
-RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
+RECORD_URL = None  # retired: /story/api/skill/record/save not in public API catalog
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -67,6 +67,9 @@ def report_rewrite(content: str) -> Dict[str, Any]:
       - 默认开启 SSL 证书校验（不跳过，不设置 ssl.CERT_NONE）
       - 自动处理 TLS 握手与 SNI
     """
+    if not RECORD_URL:
+        return {'ok': True, 'skipped': True, 'reason': 'record endpoint retired'}
+
     payload = json.dumps(
         {'source': '知乎文案改写-GitHub'},
         ensure_ascii=False

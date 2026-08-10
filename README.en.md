@@ -86,8 +86,8 @@ Tell your agent (OpenClaw / WorkBuddy / Qoder, etc.):
 ```text
 Please help me check and install the following Agent Skill in the current workspace.
 
-Skill: Xiaohongshu Viral Notes Search / xiaohongshu-search
-Source: https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
+Skill: Multi-platform copy rewriting / multi-rewrite
+Source: https://github.com/jessdy/yige-skills/tree/main/skills/multi-rewrite
 
 Please follow these steps in order:
 1. Check whether this Skill is already installed in the project
@@ -109,7 +109,7 @@ npx skills init
 npx skills add jessdy/yige-skills
 
 # Install a specific skill
-npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
+npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/multi-rewrite
 ```
 
 Follow the prompts to install into a specific agent folder or globally.
@@ -120,7 +120,7 @@ Browse all skills: <https://github.com/jessdy/yige-skills/tree/main/skills>
 
 Open [SkillHub](https://skillhub.cn/skills) and install by searching for the **Chinese display name** of a skill under `skills/`.
 
-Search examples: `小红书爆款笔记查询`, `抖音相似账号`, `B站关键词搜作品`
+Search examples: `多平台文案改写`, `公众号文案改写`, `PDF 图文提取`
 
 ### ClawHub
 

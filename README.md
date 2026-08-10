@@ -86,8 +86,8 @@ export YIGE_API_KEY="ak_xxxx..."
 ```text
 请帮我在当前工作区检查并安装以下 Agent Skill。
 
-Skill：小红书爆款笔记查询 / xiaohongshu-search
-源码地址：https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
+Skill：多平台文案改写 / multi-rewrite
+源码地址：https://github.com/jessdy/yige-skills/tree/main/skills/multi-rewrite
 
 请按顺序执行：
 1. 检查本项目是否已安装该 Skill
@@ -109,7 +109,7 @@ npx skills init
 npx skills add jessdy/yige-skills
 
 # 安装指定技能
-npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongshu-search
+npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/multi-rewrite
 ```
 
 按提示安装到指定 Agent 目录，或安装为全局技能。
@@ -120,7 +120,7 @@ npx skills add https://github.com/jessdy/yige-skills/tree/main/skills/xiaohongsh
 
 访问 [SkillHub](https://skillhub.cn/skills)，搜索 `skills/` 目录中对应技能的中文名安装。
 
-搜索示例：`小红书爆款笔记查询`、`抖音相似账号`、`B站关键词搜作品`
+搜索示例：`多平台文案改写`、`公众号文案改写`、`PDF 图文提取`
 
 ### ClawHub
 

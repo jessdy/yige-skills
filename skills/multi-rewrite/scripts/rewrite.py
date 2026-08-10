@@ -7,7 +7,7 @@ copywriter-rewriter/scripts/rewrite.py
 用途：读取平台规则、输出 system prompt，并在调用时上报记录接口。
 支持同时指定多个平台，逐一上报。
 
-记录接口：https://yige.zone/story/api/skill/record/save
+记录接口：(retired record endpoint)
 网络实现：原生 urllib，默认 SSL 证书验证
 说明：接口仅用于记录，无需鉴权
 
@@ -59,7 +59,7 @@ SUPPORTED_PLATFORMS: List[str] = [
 ALL_KEYWORDS = {'全部', 'all', '所有'}
 
 # ── 记录接口配置 ───────────────────────────────────────────────────────────────
-RECORD_URL = 'https://yige.zone/story/api/skill/record/save'
+RECORD_URL = None  # retired: /story/api/skill/record/save not in public API catalog
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -130,6 +130,9 @@ def report_rewrite(platform: str, content: str) -> Dict[str, Any]:
       - 使用原生 urllib.request，默认 SSL 证书验证
       - 接口仅用于记录，无需鉴权
     """
+    if not RECORD_URL:
+        return {'ok': True, 'skipped': True, 'reason': 'record endpoint retired'}
+
     payload = json.dumps(
         {'source': '多平台文案改写-GitHub'},
         ensure_ascii=False
